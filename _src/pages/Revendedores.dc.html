@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Envíos para vendedores de Mercado Libre | TerraBox</title>
+<meta name="description" content="Importa para vender: consolidamos proveedores, inspeccionamos la mercancía y te damos tu costo real por unidad.">
+<link rel="stylesheet" href="_ds/terrabox-cargo-design-system-cccd872f-d644-4349-8450-b88a6dd7b8b5/styles.css">
+<script src="_ds/terrabox-cargo-design-system-cccd872f-d644-4349-8450-b88a6dd7b8b5/_ds_bundle.js"></script>
+<script src="site.js"></script>
+</helmet>
+<dc-import name="Site-Header" active="negocios" wa-page="Revendedores" sticky-cta="{{ true }}" sticky-label="Solicitar tarifa" sticky-href="#solicitar" hint-size="100%,68px"></dc-import>
+<main id="main" tabindex="-1" style="outline:none">
+  <section aria-labelledby="h1" style="background:var(--navy-800);padding:clamp(40px,7vw,88px) var(--space-5)">
+    <div style="max-width:var(--container-max);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-6)">
+      <nav aria-label="Ruta de navegación" style="font:400 13px/1.4 var(--font-sans);color:var(--navy-200)"><a href="Inicio.dc.html" style="color:var(--navy-100)">Inicio</a> / <a href="Negocios.dc.html" style="color:var(--navy-100)">Negocios</a> / <span aria-current="page">Revendedores</span></nav>
+      <h1 id="h1" style="margin:0;font:700 clamp(34px,5.4vw,56px)/1.06 var(--font-display);letter-spacing:var(--ls-display);color:#fff;max-width:18ch;text-wrap:balance">Importa para vender con tu margen bajo control</h1>
+      <p style="margin:0;font:400 18px/1.55 var(--font-sans);color:var(--navy-100);max-width:62ch;text-wrap:pretty">Consolidamos las compras de tus proveedores en Miami, inspeccionamos y fotografiamos la mercancía, y te damos el costo real por unidad antes de que fijes tu precio en Mercado Libre, Instagram o tu tienda online.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:var(--space-3)">
+        <a href="#solicitar" style="flex:1 1 220px;max-width:280px;display:flex;align-items:center;justify-content:center;height:52px;border-radius:var(--radius-md);background:#fff;color:var(--tb-navy);font:600 16px/1 var(--font-sans)" style-hover="background:var(--navy-50);color:var(--tb-navy);text-decoration:none">Solicitar tarifa de revendedor</a>
+        <a href="{{ waHref }}" target="_blank" rel="noopener" style="flex:1 1 220px;max-width:280px;display:flex;align-items:center;justify-content:center;height:52px;border-radius:var(--radius-md);border:1px solid var(--navy-300);color:#fff;font:600 16px/1 var(--font-sans)" style-hover="background:var(--navy-700);color:#fff;text-decoration:none">Hablar con un asesor</a>
+      </div>
+    </div>
+  </section>
+  <nav aria-label="En esta página" style="position:sticky;top:68px;z-index:20;background:var(--surface-page);border-bottom:1px solid var(--border-subtle)">
+    <div style="max-width:var(--container-max);margin:0 auto;padding:0 var(--space-5);display:flex;gap:var(--space-1);overflow-x:auto">
+      <a href="#servicios" style="display:flex;align-items:center;min-height:44px;padding:0 12px;font:600 14px/1 var(--font-sans);white-space:nowrap">Servicios</a>
+      <a href="#ejemplo" style="display:flex;align-items:center;min-height:44px;padding:0 12px;font:600 14px/1 var(--font-sans);white-space:nowrap">Ejemplo de costo</a>
+      <a href="#tarifas" style="display:flex;align-items:center;min-height:44px;padding:0 12px;font:600 14px/1 var(--font-sans);white-space:nowrap">Tarifas</a>
+      <a href="#solicitar" style="display:flex;align-items:center;min-height:44px;padding:0 12px;font:600 14px/1 var(--font-sans);white-space:nowrap">Solicitar</a>
+    </div>
+  </nav>
+  <section aria-labelledby="prob-h" style="padding:clamp(56px,8vw,88px) var(--space-5)">
+    <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:var(--space-4)">
+      <h2 id="prob-h" style="margin:0;font:700 clamp(26px,3.4vw,36px)/1.15 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">El precio del proveedor es solo el comienzo</h2>
+      <p style="margin:0;font:400 18px/1.65 var(--font-sans);color:var(--fg-1);text-wrap:pretty">El envío dentro de Estados Unidos, el flete internacional, los impuestos y la comisión de tu canal de venta pueden convertir un buen producto en una pérdida. La mayoría de casilleros te cobra por libra. Nosotros te ayudamos a calcular cuánto ganas.</p>
+    </div>
+  </section>
+  <section id="servicios" aria-labelledby="serv-h" style="background:#fff;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);padding:clamp(56px,8vw,88px) var(--space-5)">
+    <div style="max-width:var(--container-max);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-8)">
+      <h2 id="serv-h" style="margin:0;font:700 clamp(26px,3.4vw,36px)/1.15 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">Servicios pensados para quien vende</h2>
+      <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:var(--space-6) var(--space-8)">
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+          <li style="display:grid;grid-template-columns:40px 1fr;gap:var(--space-4);align-items:start">
+            <span aria-hidden="true" style="width:40px;height:40px;border-radius:var(--radius-md);background:var(--navy-50);display:flex;align-items:center;justify-content:center;color:var(--tb-navy)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span>
+            <p style="margin:0;padding-top:8px;font:400 16px/1.55 var(--font-sans);color:var(--fg-2)"><strong style="font-weight:600;color:var(--navy-800)">{{ s.t }}</strong> {{ s.d }}</p>
+          </li>
+        </sc-for>
+      </ul>
+    </div>
+  </section>
+  <section id="ejemplo" aria-labelledby="ej-h" style="padding:clamp(56px,8vw,88px) var(--space-5)">
+    <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:var(--space-5)">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-3)"><h2 id="ej-h" style="margin:0;font:700 clamp(26px,3.4vw,36px)/1.15 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">Así se calcula tu margen</h2><span style="font:600 12px/1 var(--font-sans);padding:6px 10px;border-radius:var(--radius-sm);background:var(--status-warning-bg);color:#99600a">Cifras ilustrativas</span></div>
+      <div style="overflow-x:auto;background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg)">
+        <table style="width:100%;min-width:420px;border-collapse:collapse;font:400 15px/1.45 var(--font-sans)">
+          <thead><tr style="background:var(--surface-sunken);text-align:left"><th scope="col" style="padding:14px 18px;font:600 13px var(--font-sans);color:var(--fg-2)">Concepto</th><th scope="col" style="padding:14px 18px;font:600 13px var(--font-sans);color:var(--fg-2);text-align:right">Por unidad</th></tr></thead>
+          <tbody>
+            <sc-for list="{{ landed }}" as="r" hint-placeholder-count="8">
+              <tr style="border-top:1px solid var(--border-subtle);background:{{ r.bg }}"><th scope="row" style="padding:14px 18px;text-align:left;font-weight:{{ r.fw }};color:var(--navy-800)">{{ r.k }}</th><td style="padding:14px 18px;text-align:right;font-family:var(--font-mono);font-weight:{{ r.fw }}">{{ r.v }}</td></tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section id="tarifas" aria-labelledby="tar-h" style="background:#fff;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);padding:clamp(56px,8vw,88px) var(--space-5)">
+    <div style="max-width:var(--container-max);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-6)">
+      <h2 id="tar-h" style="margin:0;font:700 clamp(26px,3.4vw,36px)/1.15 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">Tarifas por volumen</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:var(--space-4)">
+        <sc-for list="{{ tiers }}" as="t" hint-placeholder-count="3">
+          <div style="padding:var(--space-6);border:{{ t.bd }};border-radius:var(--radius-lg);display:flex;flex-direction:column;gap:var(--space-2)"><h3 style="margin:0;font:700 20px/1.25 var(--font-display);color:var(--navy-800)">{{ t.p }}</h3><span style="font:500 15px/1.5 var(--font-mono);color:var(--fg-1)">{{ t.v }}</span><span style="font:500 15px/1.5 var(--font-mono);color:var(--fg-1)">{{ t.r }}</span></div>
+        </sc-for>
+      </div>
+      <a href="Negocios.dc.html#planes" style="font:600 15px/1 var(--font-sans);min-height:44px;display:flex;align-items:center;align-self:flex-start">Comparar los tres planes</a>
+    </div>
+  </section>
+  <section aria-labelledby="cuid-h" style="padding:clamp(56px,8vw,88px) var(--space-5)">
+    <div style="max-width:var(--container-max);margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:var(--space-10)">
+      <div style="display:flex;flex-direction:column;gap:var(--space-4)">
+        <h2 id="cuid-h" style="margin:0;font:700 clamp(26px,3.4vw,36px)/1.15 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">Revisamos tu mercancía al llegar</h2>
+        <ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:10px;font:400 16px/1.55 var(--font-sans)"><li>Contamos unidades contra tu prealerta</li><li>Fotografiamos el estado de cada caja y producto</li><li>Te avisamos de faltantes o daños antes del despacho</li><li>[Otros puntos de inspección confirmados]</li></ul>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-3)">
+        <div role="img" aria-label="Foto de inspección (pendiente)" style="aspect-ratio:1;border:1px dashed var(--border-strong);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;text-align:center;padding:8px;font:500 12px/1.4 var(--font-mono);color:var(--fg-3)">Foto real de inspección · pendiente</div>
+        <div role="img" aria-label="Foto de inspección (pendiente)" style="aspect-ratio:1;border:1px dashed var(--border-strong);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;text-align:center;padding:8px;font:500 12px/1.4 var(--font-mono);color:var(--fg-3)">Foto real de inspección · pendiente</div>
+      </div>
+    </div>
+  </section>
+  <section aria-labelledby="faq-h" style="background:#fff;border-top:1px solid var(--border-subtle);padding:clamp(56px,8vw,88px) var(--space-5)">
+    <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:var(--space-6)">
+      <h2 id="faq-h" style="margin:0;font:700 clamp(26px,3.4vw,36px)/1.15 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">Preguntas de revendedores</h2>
+      <dc-import name="Faq" items="{{ faqs }}" hint-size="100%,300px"></dc-import>
+    </div>
+  </section>
+  <section id="solicitar" aria-labelledby="sol-h" style="background:var(--surface-highlight);border-top:1px solid var(--cyan-100);padding:clamp(56px,8vw,88px) var(--space-5)">
+    <div style="max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:var(--space-5)">
+      <h2 id="sol-h" style="margin:0;font:700 clamp(26px,3.4vw,36px)/1.15 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading);text-wrap:balance">Cuéntanos qué vendes y te enviamos tu tarifa en [24] horas</h2>
+      <p style="margin:0;font:400 16px/1.6 var(--font-sans);color:var(--fg-2)">Indica tus productos, volumen mensual y frecuencia de compra. Un asesor te responde con una propuesta por escrito. ¿Quieres darnos más detalle? <a href="Solicitar-Tarifa.dc.html?tipo=revendedor">Usa el formulario completo</a>.</p>
+      <dc-import name="Lead-Form" form-id="rev" endpoint="solicitud" aria-label="Solicitar tarifa de revendedor" fields="{{ fields }}" initial="{{ initial }}" submit-label="Solicitar tarifa de revendedor" success-body="Te escribimos en [24] horas hábiles con tu tarifa por escrito." wa-intro="Hola, quiero una tarifa de revendedor:" hint-size="100%,420px"></dc-import>
+    </div>
+  </section>
+</main>
+<dc-import name="Site-Footer" wa-page="Revendedores" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="application/json" data-page>
+{
+ "waHref": {
+  "$wa": "Hola, vengo de la página Revendedores"
+ },
+ "services": [
+  {
+   "t": "Consolidación de varios proveedores",
+   "d": "en un solo despacho, para pagar un solo flete."
+  },
+  {
+   "t": "Inspección y fotos",
+   "d": "de cada paquete al llegar: confirmas cantidades y estado antes del envío."
+  },
+  {
+   "t": "Retiro de facturas y reempaque",
+   "d": "para que la mercancía llegue lista para vender."
+  },
+  {
+   "t": "Almacenamiento gratuito por [X] días",
+   "d": "mientras completas tu pedido."
+  },
+  {
+   "t": "Despachos fijos [días],",
+   "d": "para que planees tu inventario."
+  },
+  {
+   "t": "Un asesor asignado",
+   "d": "por WhatsApp, que conoce tu negocio."
+  }
+ ],
+ "landed": [
+  {
+   "k": "Precio del proveedor",
+   "v": "US$[X]",
+   "fw": 400,
+   "bg": "transparent"
+  },
+  {
+   "k": "Envío a Miami",
+   "v": "US$[X]",
+   "fw": 400,
+   "bg": "transparent"
+  },
+  {
+   "k": "Flete a Colombia (consolidado)",
+   "v": "US$[X]",
+   "fw": 400,
+   "bg": "transparent"
+  },
+  {
+   "k": "Impuestos estimados",
+   "v": "US$[X]",
+   "fw": 400,
+   "bg": "transparent"
+  },
+  {
+   "k": "Costo puesto en Colombia",
+   "v": "US$[X] (COP [X])",
+   "fw": 700,
+   "bg": "var(--navy-50)"
+  },
+  {
+   "k": "Precio de venta en Mercado Libre",
+   "v": "COP [X]",
+   "fw": 400,
+   "bg": "transparent"
+  },
+  {
+   "k": "Comisión y envío de Mercado Libre",
+   "v": "COP [X]",
+   "fw": 400,
+   "bg": "transparent"
+  },
+  {
+   "k": "Ganancia por unidad",
+   "v": "COP [X] ([X] %)",
+   "fw": 700,
+   "bg": "var(--navy-50)"
+  }
+ ],
+ "tiers": [
+  {
+   "p": "Personal",
+   "v": "Hasta [X] lb",
+   "r": "US$[X] por libra",
+   "bd": "1px solid var(--border-subtle)"
+  },
+  {
+   "p": "Revendedor",
+   "v": "[X]–[Y] lb",
+   "r": "US$[X] por libra",
+   "bd": "2px solid var(--tb-navy)"
+  },
+  {
+   "p": "Empresa",
+   "v": "Más de [Y] lb",
+   "r": "Tarifa negociada y asesor dedicado",
+   "bd": "1px solid var(--border-subtle)"
+  }
+ ],
+ "faqs": [
+  {
+   "id": "minimo",
+   "q": "¿Hay un volumen mínimo?",
+   "a": "[Volumen mínimo confirmado para el plan Revendedor].",
+   "href": "Negocios.dc.html#planes",
+   "linkLabel": "Ver planes"
+  },
+  {
+   "id": "facturas",
+   "q": "¿Pueden retirar las facturas?",
+   "a": "Sí, retiramos facturas y reempacamos. [Condiciones].",
+   "href": "Consolidacion.dc.html",
+   "linkLabel": "Ver reempaque"
+  },
+  {
+   "id": "devoluciones-rev",
+   "q": "¿Qué pasa si un proveedor envía algo equivocado?",
+   "a": "[Proceso confirmado de devoluciones a proveedores].",
+   "href": "Reclamos-Seguro.dc.html",
+   "linkLabel": "Ver reclamos"
+  },
+  {
+   "id": "pago-rev",
+   "q": "¿Cómo pago?",
+   "a": "[Medios de pago y condiciones para cuentas de revendedor].",
+   "href": "Ayuda.dc.html",
+   "linkLabel": "Ver más preguntas"
+  },
+  {
+   "id": "dias-despacho",
+   "q": "¿Qué días despachan?",
+   "a": "Despachamos [días de despacho] desde Miami.",
+   "href": "Envios-Colombia.dc.html#tiempos",
+   "linkLabel": "Ver tiempos de entrega"
+  }
+ ],
+ "initial": {
+  "tipo": "revendedor"
+ },
+ "fields": [
+  {
+   "name": "nombre",
+   "label": "Nombre",
+   "required": true,
+   "autocomplete": "name"
+  },
+  {
+   "name": "whatsapp",
+   "label": "WhatsApp",
+   "type": "tel",
+   "required": true,
+   "autocomplete": "tel"
+  },
+  {
+   "name": "productos",
+   "label": "Qué vendes",
+   "required": true,
+   "placeholder": "Ropa deportiva, accesorios de celular…"
+  },
+  {
+   "name": "volumen",
+   "label": "Volumen mensual aproximado",
+   "type": "select",
+   "required": true,
+   "options": [
+    "Menos de [X] lb",
+    "[X]–[Y] lb",
+    "Más de [Y] lb",
+    "Aún no lo sé"
+   ]
+  },
+  {
+   "name": "consent",
+   "short": "Tratamiento de datos",
+   "label": "Acepto el tratamiento de mis datos personales.",
+   "type": "check",
+   "required": true,
+   "linkHref": "Legal-Datos.dc.html",
+   "linkLabel": "Ver política"
+  }
+ ]
+}
+</script>
+</body>
+</html>

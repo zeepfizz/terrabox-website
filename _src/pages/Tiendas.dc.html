@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Comprar en Amazon y tiendas de USA desde Colombia | TerraBox</title>
+<meta name="description" content="Tiendas de Estados Unidos que envían a tu casillero en Miami y cómo poner tu dirección TerraBox al pagar.">
+<link rel="stylesheet" href="_ds/terrabox-cargo-design-system-cccd872f-d644-4349-8450-b88a6dd7b8b5/styles.css">
+<script src="_ds/terrabox-cargo-design-system-cccd872f-d644-4349-8450-b88a6dd7b8b5/_ds_bundle.js"></script>
+<script src="site.js"></script>
+</helmet>
+<dc-import name="Site-Header" active="envios" wa-page="Tiendas recomendadas" sticky-cta="{{ true }}" hint-size="100%,68px"></dc-import>
+<main id="main" tabindex="-1" style="outline:none">
+  <section aria-labelledby="h1" style="padding:clamp(32px,5vw,56px) var(--space-5) var(--space-10)">
+    <div style="max-width:var(--container-max);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-5)">
+      <nav aria-label="Ruta de navegación" style="font:400 13px/1.4 var(--font-sans);color:var(--fg-3)"><a href="Inicio.dc.html">Inicio</a> / <a href="Envios-Colombia.dc.html">Envíos a Colombia</a> / <span aria-current="page">Tiendas recomendadas</span></nav>
+      <h1 id="h1" style="margin:0;font:700 clamp(32px,4.6vw,48px)/1.08 var(--font-display);letter-spacing:var(--ls-display);color:var(--text-heading);max-width:22ch;text-wrap:balance">Dónde comprar con tu dirección en Miami</h1>
+      <p style="margin:0;font:400 17px/1.6 var(--font-sans);color:var(--fg-2);max-width:62ch">Tiendas que envían a direcciones en Miami, con un consejo para cada una. Actualizado el [fecha].</p>
+    </div>
+  </section>
+  <section aria-label="Tiendas" style="padding:0 var(--space-5) clamp(48px,7vw,80px)">
+    <ul style="list-style:none;margin:0 auto;padding:0;max-width:var(--container-max);display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:var(--space-4)">
+      <sc-for list="{{ stores }}" as="s" hint-placeholder-count="10">
+        <li style="background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-1);padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-2)">
+          <h2 style="margin:0;font:700 19px/1.25 var(--font-display);color:var(--navy-800)">{{ s.n }}</h2>
+          <p style="margin:0;font:400 14px/1.5 var(--font-sans);color:var(--fg-2)">{{ s.t }}</p>
+        </li>
+      </sc-for>
+    </ul>
+  </section>
+  <section aria-labelledby="pasos-h" style="background:#fff;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);padding:clamp(48px,7vw,80px) var(--space-5)">
+    <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:var(--space-6)">
+      <h2 id="pasos-h" style="margin:0;font:700 clamp(24px,3vw,32px)/1.2 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">Cómo poner tu dirección TerraBox al pagar</h2>
+      <ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:var(--space-4)">
+        <sc-for list="{{ steps }}" as="p" hint-placeholder-count="4">
+          <li style="display:grid;grid-template-columns:40px 1fr;gap:var(--space-4);align-items:start">
+            <span style="width:40px;height:40px;border-radius:var(--radius-md);background:var(--navy-50);display:flex;align-items:center;justify-content:center;font:600 15px/1 var(--font-mono);color:var(--tb-navy)">{{ p.n }}</span>
+            <div style="padding-top:8px"><strong style="font:600 16px/1.4 var(--font-sans);color:var(--fg-1)">{{ p.t }}</strong> <span style="font:400 16px/1.55 var(--font-sans);color:var(--fg-2)">{{ p.d }}</span></div>
+          </li>
+        </sc-for>
+      </ol>
+      <div style="padding:var(--space-5);background:var(--surface-sunken);border-radius:var(--radius-lg);font:500 14px/1.8 var(--font-mono);color:var(--fg-1)">
+        <div style="font:600 11px/1 var(--font-sans);letter-spacing:var(--ls-overline);text-transform:uppercase;color:var(--tb-blue);margin-bottom:var(--space-3)">Así se ve en el formulario de la tienda</div>
+        Full name: Tu nombre TBX-[número]<br>Address line 1: [Dirección de la bodega]<br>Address line 2: TBX-[número]<br>City: Miami · State: FL · ZIP: [código postal]<br>Phone: [teléfono de la bodega]
+      </div>
+    </div>
+  </section>
+  <section style="background:var(--navy-800);padding:clamp(48px,7vw,80px) var(--space-5)">
+    <div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-5)">
+      <h2 style="margin:0;font:700 clamp(26px,3.6vw,40px)/1.15 var(--font-display);color:#fff">Abre tu casillero y empieza a comprar</h2>
+      <a href="Registro.dc.html" style="display:flex;align-items:center;justify-content:center;height:52px;padding:0 26px;border-radius:var(--radius-md);background:#fff;color:var(--tb-navy);font:600 16px/1 var(--font-sans)" style-hover="background:var(--navy-50);color:var(--tb-navy);text-decoration:none">Abrir casillero gratis</a>
+    </div>
+  </section>
+</main>
+<dc-import name="Site-Footer" wa-page="Tiendas recomendadas" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="application/json" data-page>
+{
+ "stores": [
+  {
+   "n": "Amazon",
+   "t": "[Consejo verificado para comprar en Amazon con dirección en Miami]"
+  },
+  {
+   "n": "Walmart",
+   "t": "[Consejo verificado para comprar en Walmart con dirección en Miami]"
+  },
+  {
+   "n": "Target",
+   "t": "[Consejo verificado para comprar en Target con dirección en Miami]"
+  },
+  {
+   "n": "eBay",
+   "t": "[Consejo verificado para comprar en eBay con dirección en Miami]"
+  },
+  {
+   "n": "Best Buy",
+   "t": "[Consejo verificado para comprar en Best Buy con dirección en Miami]"
+  },
+  {
+   "n": "Apple",
+   "t": "[Consejo verificado para comprar en Apple con dirección en Miami]"
+  },
+  {
+   "n": "Nike",
+   "t": "[Consejo verificado para comprar en Nike con dirección en Miami]"
+  },
+  {
+   "n": "Sephora",
+   "t": "[Consejo verificado para comprar en Sephora con dirección en Miami]"
+  },
+  {
+   "n": "Shein",
+   "t": "[Consejo verificado para comprar en Shein con dirección en Miami]"
+  },
+  {
+   "n": "Temu",
+   "t": "[Consejo verificado para comprar en Temu con dirección en Miami]"
+  }
+ ],
+ "steps": [
+  {
+   "n": "1",
+   "t": "Copia tu dirección.",
+   "d": "La encuentras en Mi cuenta, con un botón para copiar cada línea."
+  },
+  {
+   "n": "2",
+   "t": "Pega tu nombre y número de casillero.",
+   "d": "Escribe TBX-[número] junto a tu nombre y en la segunda línea de dirección."
+  },
+  {
+   "n": "3",
+   "t": "Usa Miami, FL y el código postal.",
+   "d": "La tienda calcula el envío nacional hasta nuestra bodega."
+  },
+  {
+   "n": "4",
+   "t": "Prealerta tu compra.",
+   "d": "Sube la factura en tu cuenta para que identifiquemos el paquete al llegar."
+  }
+ ]
+}
+</script>
+</body>
+</html>

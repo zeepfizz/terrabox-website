@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Página no encontrada | TerraBox</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="_ds/terrabox-cargo-design-system-cccd872f-d644-4349-8450-b88a6dd7b8b5/styles.css">
+<script src="_ds/terrabox-cargo-design-system-cccd872f-d644-4349-8450-b88a6dd7b8b5/_ds_bundle.js"></script>
+<script src="site.js"></script>
+</helmet>
+<dc-import name="Site-Header" wa-page="404" hint-size="100%,68px"></dc-import>
+<main id="main" tabindex="-1" style="outline:none">
+  <section aria-labelledby="h1" style="padding:clamp(56px,9vw,120px) var(--space-5)">
+    <div style="max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:var(--space-6)">
+      <span style="font:600 14px/1 var(--font-mono);color:var(--tb-blue)">404</span>
+      <h1 id="h1" style="margin:0;font:700 clamp(32px,4.6vw,48px)/1.08 var(--font-display);letter-spacing:var(--ls-display);color:var(--text-heading)">No encontramos esta página</h1>
+      <form action="Ayuda.dc.html" method="get" role="search" style="display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:flex-end">
+        <div style="flex:1 1 260px"><x-import component-from-global-scope="TerraboxCargoDesignSystem_cccd87.Input" label="Busca en preguntas frecuentes" type="search" name="q" size="lg"></x-import></div>
+        <x-import component-from-global-scope="TerraboxCargoDesignSystem_cccd87.Button" type="submit" size="lg" hint-size="100px,48px">Buscar</x-import>
+      </form>
+      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:var(--space-3)">
+        <li><a href="Tarifas.dc.html" style="display:flex;align-items:center;height:44px;padding:0 16px;border:1px solid var(--border-strong);border-radius:var(--radius-md);background:#fff;font:600 14px/1 var(--font-sans);color:var(--tb-navy)">Tarifas y calculadora</a></li>
+        <li><a href="Rastreo.dc.html" style="display:flex;align-items:center;height:44px;padding:0 16px;border:1px solid var(--border-strong);border-radius:var(--radius-md);background:#fff;font:600 14px/1 var(--font-sans);color:var(--tb-navy)">Rastrear envío</a></li>
+        <li><a href="Inicio.dc.html" style="display:flex;align-items:center;height:44px;padding:0 16px;border:1px solid var(--border-strong);border-radius:var(--radius-md);background:#fff;font:600 14px/1 var(--font-sans);color:var(--tb-navy)">Inicio</a></li>
+        <li><a href="{{ waHref }}" target="_blank" rel="noopener" style="display:flex;align-items:center;height:44px;padding:0 16px;border-radius:var(--radius-md);background:var(--action-primary);font:600 14px/1 var(--font-sans);color:#fff">WhatsApp</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+<dc-import name="Site-Footer" wa-page="404" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="application/json" data-page>
+{
+ "waHref": {
+  "$wa": "Hola, llegué a una página que no existe en su sitio"
+ }
+}
+</script>
+</body>
+</html>

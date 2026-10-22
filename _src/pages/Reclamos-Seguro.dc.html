@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>¿Qué pasa si mi paquete llega dañado? Reclamos y seguro | TerraBox</title>
+<meta name="description" content="Cobertura incluida y seguro opcional, cómo documentamos tus paquetes y cómo abrir un reclamo con TerraBox.">
+<link rel="stylesheet" href="_ds/terrabox-cargo-design-system-cccd872f-d644-4349-8450-b88a6dd7b8b5/styles.css">
+<script src="_ds/terrabox-cargo-design-system-cccd872f-d644-4349-8450-b88a6dd7b8b5/_ds_bundle.js"></script>
+<script src="site.js"></script>
+</helmet>
+<dc-import name="Site-Header" active="ayuda" wa-page="Reclamos y seguro" hint-size="100%,68px"></dc-import>
+<main id="main" tabindex="-1" style="outline:none">
+  <section aria-labelledby="h1" style="padding:clamp(32px,5vw,56px) var(--space-5) var(--space-10)">
+    <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:var(--space-5)">
+      <nav aria-label="Ruta de navegación" style="font:400 13px/1.4 var(--font-sans);color:var(--fg-3)"><a href="Inicio.dc.html">Inicio</a> / <a href="Ayuda.dc.html">Ayuda</a> / <span aria-current="page">Reclamos y seguro</span></nav>
+      <h1 id="h1" style="margin:0;font:700 clamp(32px,4.6vw,48px)/1.08 var(--font-display);letter-spacing:var(--ls-display);color:var(--text-heading);text-wrap:balance">¿Qué pasa si mi paquete llega dañado?</h1>
+      <p style="margin:0;font:400 18px/1.6 var(--font-sans);color:var(--fg-1);max-width:62ch">Lo documentamos con fotos al recibirlo y gestionamos tu reclamo en [X] días hábiles.</p>
+    </div>
+  </section>
+  <section aria-labelledby="cob-h" style="background:#fff;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);padding:clamp(48px,7vw,80px) var(--space-5)">
+    <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:var(--space-6)">
+      <h2 id="cob-h" style="margin:0;font:700 clamp(24px,3vw,32px)/1.2 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">Qué cubre cada opción</h2>
+      <div style="overflow-x:auto;border:1px solid var(--border-subtle);border-radius:var(--radius-lg)">
+        <table style="width:100%;min-width:480px;border-collapse:collapse;font:400 15px/1.45 var(--font-sans)">
+          <thead><tr style="background:var(--surface-sunken);text-align:left"><th scope="col" style="padding:14px 18px;font:600 13px var(--font-sans);color:var(--fg-2)"></th><th scope="col" style="padding:14px 18px;font:600 13px var(--font-sans);color:var(--fg-2)">Cobertura incluida</th><th scope="col" style="padding:14px 18px;font:600 13px var(--font-sans);color:var(--fg-2)">Seguro opcional</th></tr></thead>
+          <tbody>
+            <tr style="border-top:1px solid var(--border-subtle)"><th scope="row" style="padding:14px 18px;text-align:left;font-weight:600">Costo</th><td style="padding:14px 18px">Sin costo</td><td style="padding:14px 18px;font-family:var(--font-mono)">[X] % del valor declarado</td></tr>
+            <tr style="border-top:1px solid var(--border-subtle)"><th scope="row" style="padding:14px 18px;text-align:left;font-weight:600">Límite</th><td style="padding:14px 18px;font-family:var(--font-mono)">US$[X]</td><td style="padding:14px 18px;font-family:var(--font-mono)">Hasta US$[X]</td></tr>
+            <tr style="border-top:1px solid var(--border-subtle)"><th scope="row" style="padding:14px 18px;text-align:left;font-weight:600">Cubre</th><td style="padding:14px 18px">[Condiciones]</td><td style="padding:14px 18px">[Condiciones]</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section aria-labelledby="pasos-h" style="padding:clamp(48px,7vw,80px) var(--space-5)">
+    <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:var(--space-6)">
+      <h2 id="pasos-h" style="margin:0;font:700 clamp(24px,3vw,32px)/1.2 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">Cómo funciona un reclamo</h2>
+      <ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:var(--space-4)">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+          <li style="display:grid;grid-template-columns:40px 1fr;gap:var(--space-4)"><span style="width:40px;height:40px;border-radius:var(--radius-md);background:var(--navy-50);display:flex;align-items:center;justify-content:center;font:600 15px var(--font-mono);color:var(--tb-navy)">{{ s.n }}</span><p style="margin:0;padding-top:8px;font:400 16px/1.55 var(--font-sans);color:var(--fg-2)"><strong style="font-weight:600;color:var(--fg-1)">{{ s.t }}</strong> {{ s.d }}</p></li>
+        </sc-for>
+      </ol>
+    </div>
+  </section>
+  <section id="reclamo" aria-labelledby="form-h" style="background:#fff;border-top:1px solid var(--border-subtle);padding:clamp(48px,7vw,80px) var(--space-5)">
+    <div style="max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:var(--space-5)">
+      <h2 id="form-h" style="margin:0;font:700 clamp(24px,3vw,32px)/1.2 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">Abrir un reclamo</h2>
+      <p style="margin:0;font:400 15px/1.6 var(--font-sans);color:var(--fg-2)">¿Tienes cuenta? <a href="Ingresar.dc.html">Ingresa</a> y abre el reclamo con el envío ya seleccionado.</p>
+      <dc-import name="Lead-Form" form-id="rec" endpoint="reclamo" aria-label="Abrir un reclamo" fields="{{ fields }}" submit-label="Enviar reclamo" success-title="Recibimos tu reclamo" success-body="Te enviaremos la próxima actualización antes del [fecha], por email y WhatsApp." wa-intro="Hola, quiero abrir un reclamo:" hint-size="100%,620px"></dc-import>
+    </div>
+  </section>
+  <section style="padding:var(--space-12) var(--space-5)">
+    <div style="max-width:880px;margin:0 auto;display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center;justify-content:space-between">
+      <p style="margin:0;font:500 16px/1.5 var(--font-sans);color:var(--fg-1)">¿Prefieres hablar con alguien?</p>
+      <a href="{{ waHref }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;height:48px;padding:0 20px;border-radius:var(--radius-md);background:#fff;border:1px solid var(--border-strong);color:var(--tb-navy);font:600 15px/1 var(--font-sans)" style-hover="background:var(--navy-50);text-decoration:none">Escribir por WhatsApp</a>
+    </div>
+  </section>
+</main>
+<dc-import name="Site-Footer" wa-page="Reclamos y seguro" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="application/json" data-page>
+{
+ "waHref": {
+  "$wa": "Hola, vengo de la página Reclamos y seguro"
+ },
+ "steps": [
+  {
+   "n": "1",
+   "t": "Fotografiamos al recibir.",
+   "d": "Cada paquete queda documentado con foto, peso y medidas en tu cuenta."
+  },
+  {
+   "n": "2",
+   "t": "Abres el reclamo.",
+   "d": "Dentro de [X] días después de la entrega, con fotos del daño."
+  },
+  {
+   "n": "3",
+   "t": "Revisamos el caso.",
+   "d": "Comparamos las fotos de recepción y entrega y te respondemos en [X] días hábiles."
+  },
+  {
+   "n": "4",
+   "t": "Resolvemos.",
+   "d": "[Forma de compensación según cobertura]."
+  }
+ ],
+ "fields": [
+  {
+   "name": "guia",
+   "label": "Número de guía",
+   "required": true,
+   "placeholder": "TBX-0000-0000"
+  },
+  {
+   "name": "email",
+   "label": "Email",
+   "type": "email",
+   "required": true,
+   "autocomplete": "email"
+  },
+  {
+   "name": "descripcion",
+   "label": "Qué pasó",
+   "type": "textarea",
+   "required": true,
+   "placeholder": "Describe el daño o faltante"
+  },
+  {
+   "name": "foto",
+   "label": "Foto del daño",
+   "type": "file",
+   "accept": "image/jpeg,image/png,image/heic",
+   "maxMb": 10,
+   "hint": "JPG, PNG o HEIC, máximo 10 MB.",
+   "full": true
+  },
+  {
+   "name": "consent",
+   "short": "Tratamiento de datos",
+   "label": "Acepto el tratamiento de mis datos personales.",
+   "type": "check",
+   "required": true,
+   "linkHref": "Legal-Datos.dc.html",
+   "linkLabel": "Ver política"
+  }
+ ]
+}
+</script>
+</body>
+</html>

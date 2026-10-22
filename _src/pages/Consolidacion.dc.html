@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Consolidar paquetes en Miami | TerraBox</title>
+<meta name="description" content="Agrupamos tus compras de varias tiendas en un solo envío a Colombia para que pagues un solo flete. Reempaque y retiro de cajas.">
+<link rel="stylesheet" href="_ds/terrabox-cargo-design-system-cccd872f-d644-4349-8450-b88a6dd7b8b5/styles.css">
+<script src="_ds/terrabox-cargo-design-system-cccd872f-d644-4349-8450-b88a6dd7b8b5/_ds_bundle.js"></script>
+<script src="site.js"></script>
+</helmet>
+<dc-import name="Site-Header" active="servicios" wa-page="Consolidación" sticky-cta="{{ true }}" hint-size="100%,68px"></dc-import>
+<main id="main" tabindex="-1" style="outline:none">
+  <section aria-labelledby="h1" style="background:var(--navy-800);padding:clamp(40px,7vw,88px) var(--space-5)">
+    <div style="max-width:var(--container-max);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-6)">
+      <nav aria-label="Ruta de navegación" style="font:400 13px/1.4 var(--font-sans);color:var(--navy-200)"><a href="Inicio.dc.html" style="color:var(--navy-100)">Inicio</a> / <span>Servicios</span> / <span aria-current="page">Consolidación y reempaque</span></nav>
+      <h1 id="h1" style="margin:0;font:700 clamp(34px,5.4vw,56px)/1.06 var(--font-display);letter-spacing:var(--ls-display);color:#fff;text-wrap:balance">Varias compras, un solo envío</h1>
+      <p style="margin:0;font:400 18px/1.55 var(--font-sans);color:var(--navy-100);max-width:58ch">Recibimos tus paquetes de distintas tiendas, los agrupamos en una sola caja y te cobramos un solo flete.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:var(--space-3)">
+        <a href="Registro.dc.html" style="flex:1 1 200px;max-width:260px;display:flex;align-items:center;justify-content:center;height:52px;border-radius:var(--radius-md);background:#fff;color:var(--tb-navy);font:600 16px/1 var(--font-sans)" style-hover="background:var(--navy-50);color:var(--tb-navy);text-decoration:none">Abrir casillero gratis</a>
+        <a href="Tarifas.dc.html#calculadora" style="flex:1 1 200px;max-width:260px;display:flex;align-items:center;justify-content:center;height:52px;border-radius:var(--radius-md);border:1px solid var(--navy-300);color:#fff;font:600 16px/1 var(--font-sans)" style-hover="background:var(--navy-700);color:#fff;text-decoration:none">Calcular mi envío</a>
+      </div>
+    </div>
+  </section>
+  <section aria-labelledby="como-h" style="padding:clamp(56px,8vw,88px) var(--space-5)">
+    <div style="max-width:var(--container-max);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-8)">
+      <h2 id="como-h" style="margin:0;font:700 clamp(26px,3.4vw,36px)/1.15 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">Así consolidas desde tu cuenta</h2>
+      <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:var(--space-5)">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="3">
+          <li style="padding-top:var(--space-4);border-top:2px solid var(--tb-navy);display:flex;flex-direction:column;gap:var(--space-2)"><span style="font:500 13px/1 var(--font-mono);color:var(--tb-blue)">{{ s.n }}</span><h3 style="margin:0;font:600 18px/1.3 var(--font-display);color:var(--navy-800)">{{ s.t }}</h3><p style="margin:0;font:400 15px/1.55 var(--font-sans);color:var(--fg-2)">{{ s.d }}</p></li>
+        </sc-for>
+      </ol>
+    </div>
+  </section>
+  <section aria-labelledby="comp-h" style="background:#fff;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);padding:clamp(56px,8vw,88px) var(--space-5)">
+    <div style="max-width:var(--container-max);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-6)">
+      <h2 id="comp-h" style="margin:0;font:700 clamp(26px,3.4vw,36px)/1.15 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">3 paquetes por separado o consolidados</h2>
+      <div style="overflow-x:auto;border:1px solid var(--border-subtle);border-radius:var(--radius-lg)">
+        <table style="width:100%;min-width:520px;border-collapse:collapse;font:400 15px/1.45 var(--font-sans)">
+          <thead><tr style="background:var(--surface-sunken);text-align:left"><th scope="col" style="padding:14px 18px;font:600 13px var(--font-sans);color:var(--fg-2)">Concepto</th><th scope="col" style="padding:14px 18px;font:600 13px var(--font-sans);color:var(--fg-2)">Por separado</th><th scope="col" style="padding:14px 18px;font:600 13px var(--font-sans);color:var(--fg-2)">Consolidados</th></tr></thead>
+          <tbody>
+            <tr style="border-top:1px solid var(--border-subtle)"><th scope="row" style="padding:14px 18px;text-align:left;font-weight:600">Peso cobrado</th><td style="padding:14px 18px;font-family:var(--font-mono)">[X] lb</td><td style="padding:14px 18px;font-family:var(--font-mono)">[X] lb</td></tr>
+            <tr style="border-top:1px solid var(--border-subtle)"><th scope="row" style="padding:14px 18px;text-align:left;font-weight:600">Cargos mínimos</th><td style="padding:14px 18px;font-family:var(--font-mono)">3 × US$[X]</td><td style="padding:14px 18px;font-family:var(--font-mono)">1 × US$[X]</td></tr>
+            <tr style="border-top:1px solid var(--border-subtle)"><th scope="row" style="padding:14px 18px;text-align:left;font-weight:600">Consolidación</th><td style="padding:14px 18px;font-family:var(--font-mono)">—</td><td style="padding:14px 18px;font-family:var(--font-mono)">[Gratis o US$X]</td></tr>
+            <tr style="border-top:1px solid var(--border-subtle);background:var(--navy-50)"><th scope="row" style="padding:14px 18px;text-align:left;font-weight:700;color:var(--navy-800)">Total</th><td style="padding:14px 18px;font:600 15px var(--font-mono)">US$[X]</td><td style="padding:14px 18px;font:600 15px var(--font-mono)">US$[X]</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:var(--space-4)">
+        <div role="img" aria-label="Foto antes de consolidar (pendiente)" style="aspect-ratio:4/3;border:1px dashed var(--border-strong);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;font:500 13px var(--font-mono);color:var(--fg-3)">Foto real: antes · pendiente</div>
+        <div role="img" aria-label="Foto después de consolidar (pendiente)" style="aspect-ratio:4/3;border:1px dashed var(--border-strong);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;font:500 13px var(--font-mono);color:var(--fg-3)">Foto real: después · pendiente</div>
+      </div>
+    </div>
+  </section>
+  <section aria-labelledby="opt-h" style="padding:clamp(56px,8vw,88px) var(--space-5)">
+    <div style="max-width:var(--container-max);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-6)">
+      <h2 id="opt-h" style="margin:0;font:700 clamp(26px,3.4vw,36px)/1.15 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">Opciones de reempaque</h2>
+      <dl style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:var(--space-4)">
+        <sc-for list="{{ options }}" as="o" hint-placeholder-count="3">
+          <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-2)"><dt style="font:600 16px/1.35 var(--font-sans);color:var(--navy-800)">{{ o.t }}</dt><dd style="margin:0;font:400 14px/1.5 var(--font-sans);color:var(--fg-2)">{{ o.d }}</dd><dd style="margin:0;font:500 14px var(--font-mono);color:var(--fg-1)">{{ o.p }}</dd></div>
+        </sc-for>
+      </dl>
+    </div>
+  </section>
+  <section aria-labelledby="faq-h" style="background:#fff;border-top:1px solid var(--border-subtle);padding:clamp(56px,8vw,88px) var(--space-5)">
+    <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:var(--space-6)">
+      <h2 id="faq-h" style="margin:0;font:700 clamp(26px,3.4vw,36px)/1.15 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">Preguntas sobre consolidación</h2>
+      <dc-import name="Faq" items="{{ faqs }}" hint-size="100%,200px"></dc-import>
+      <p style="margin:0;font:400 15px/1.6 var(--font-sans);color:var(--fg-2)">¿No puedes pagar en la tienda? <a href="Compramos-Por-Ti.dc.html">Compramos por ti</a>. ¿Importas para vender? <a href="Revendedores.dc.html">Ver servicios para revendedores</a>.</p>
+    </div>
+  </section>
+  <section style="background:var(--navy-800);padding:clamp(56px,8vw,88px) var(--space-5)">
+    <div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-5)">
+      <h2 style="margin:0;font:700 clamp(28px,4vw,44px)/1.1 var(--font-display);color:#fff">Empieza a juntar tus compras</h2>
+      <a href="Registro.dc.html" style="display:flex;align-items:center;justify-content:center;height:52px;padding:0 26px;border-radius:var(--radius-md);background:#fff;color:var(--tb-navy);font:600 16px/1 var(--font-sans)" style-hover="background:var(--navy-50);color:var(--tb-navy);text-decoration:none">Abrir casillero gratis</a>
+    </div>
+  </section>
+</main>
+<dc-import name="Site-Footer" wa-page="Consolidación" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="application/json" data-page>
+{
+ "steps": [
+  {
+   "n": "01",
+   "t": "Llegan tus paquetes",
+   "d": "Cada uno aparece en tu cuenta con foto, peso y medidas."
+  },
+  {
+   "n": "02",
+   "t": "Eliges cuáles agrupar",
+   "d": "Seleccionas los paquetes y las opciones de reempaque."
+  },
+  {
+   "n": "03",
+   "t": "Te enviamos la cotización",
+   "d": "La apruebas, pagas en línea y despachamos en el siguiente día de salida."
+  }
+ ],
+ "options": [
+  {
+   "t": "Retiro de cajas originales",
+   "d": "Quitamos cajas vacías para reducir el peso volumétrico.",
+   "p": "[Gratis o US$X]"
+  },
+  {
+   "t": "Reempaque reforzado",
+   "d": "Para artículos frágiles o de valor.",
+   "p": "US$[X]"
+  },
+  {
+   "t": "Retiro de facturas",
+   "d": "Útil si envías un regalo o mercancía para vender.",
+   "p": "[Condición]"
+  }
+ ],
+ "faqs": [
+  {
+   "id": "cuantos",
+   "q": "¿Cuántos paquetes puedo consolidar?",
+   "a": "[Límite confirmado de paquetes o peso por consolidación].",
+   "href": "Tarifas.dc.html",
+   "linkLabel": "Ver tarifas"
+  },
+  {
+   "id": "espera",
+   "q": "¿Cuánto tiempo esperan mis paquetes?",
+   "a": "[X] días sin costo mientras llegan tus otras compras.",
+   "href": "Casillero-Virtual.dc.html#almacenamiento",
+   "linkLabel": "Ver almacenamiento"
+  },
+  {
+   "id": "impuestos-consolidar",
+   "q": "¿Consolidar cambia los impuestos?",
+   "a": "[Respuesta confirmada por el agente de aduanas].",
+   "href": "Aduana-Impuestos.dc.html",
+   "linkLabel": "Ver guía de impuestos"
+  }
+ ]
+}
+</script>
+</body>
+</html>

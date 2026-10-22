@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Solicitar tarifa para negocios | TerraBox</title>
+<meta name="description" content="Cuéntanos qué vendes o importas y recibe tu tarifa por escrito en [24] horas hábiles.">
+<link rel="stylesheet" href="_ds/terrabox-cargo-design-system-cccd872f-d644-4349-8450-b88a6dd7b8b5/styles.css">
+<script src="_ds/terrabox-cargo-design-system-cccd872f-d644-4349-8450-b88a6dd7b8b5/_ds_bundle.js"></script>
+<script src="site.js"></script>
+</helmet>
+<dc-import name="Site-Header" active="negocios" wa-page="Solicitar tarifa" hide-wa="{{ true }}" hint-size="100%,68px"></dc-import>
+<main id="main" tabindex="-1" style="outline:none">
+  <section aria-labelledby="h1" style="padding:clamp(32px,5vw,56px) var(--space-5) clamp(56px,8vw,88px)">
+    <div style="max-width:var(--container-max);margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:var(--space-10);align-items:start">
+      <div style="display:flex;flex-direction:column;gap:var(--space-5)">
+        <nav aria-label="Ruta de navegación" style="font:400 13px/1.4 var(--font-sans);color:var(--fg-3)"><a href="Inicio.dc.html">Inicio</a> / <a href="Negocios.dc.html">Negocios</a> / <span aria-current="page">Solicitar tarifa</span></nav>
+        <h1 id="h1" style="margin:0;font:700 clamp(32px,4.6vw,48px)/1.08 var(--font-display);letter-spacing:var(--ls-display);color:var(--text-heading);text-wrap:balance">{{ title }}</h1>
+        <p style="margin:0;font:400 17px/1.6 var(--font-sans);color:var(--fg-2)">Un asesor te responde en [24] horas hábiles con una propuesta por escrito.</p>
+        <ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px;font:400 15px/1.5 var(--font-sans);color:var(--fg-1)"><li>Sin compromiso</li><li>Tarifa según tu volumen real</li><li>Asesor asignado desde el primer contacto</li></ul>
+        <a href="{{ waHref }}" target="_blank" rel="noopener" style="align-self:flex-start;font:600 15px/1 var(--font-sans);min-height:44px;display:flex;align-items:center">Prefiero escribir por WhatsApp</a>
+      </div>
+      <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-1);padding:clamp(20px,3vw,32px)">
+        <dc-import name="Lead-Form" form-id="sol" endpoint="solicitud" aria-label="Solicitar tarifa" fields="{{ fields }}" initial="{{ initial }}" submit-label="Enviar solicitud" success-title="Recibimos tu solicitud" success-body="Te escribimos en [24] horas hábiles. Tu asesor será [nombre del asesor, si está asignado]." wa-intro="Hola, quiero solicitar una tarifa de negocios:" hint-size="100%,900px"></dc-import>
+      </div>
+    </div>
+  </section>
+</main>
+<dc-import name="Site-Footer" wa-page="Solicitar tarifa" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="application/json" data-page>
+{
+ "title": "Solicitar tarifa para tu negocio",
+ "waHref": {
+  "$wa": "Hola, quiero solicitar una tarifa para mi negocio"
+ },
+ "initial": {},
+ "fields": [
+  {
+   "name": "tipo",
+   "label": "Tipo de cuenta",
+   "type": "select",
+   "required": true,
+   "options": [
+    "Revendedor",
+    "Empresa o importador",
+    "Carga aérea o marítima"
+   ],
+   "full": true
+  },
+  {
+   "name": "nombre",
+   "label": "Nombre",
+   "required": true,
+   "autocomplete": "name"
+  },
+  {
+   "name": "empresa",
+   "label": "Empresa o tienda",
+   "autocomplete": "organization",
+   "hint": "Opcional"
+  },
+  {
+   "name": "whatsapp",
+   "label": "WhatsApp",
+   "type": "tel",
+   "required": true,
+   "autocomplete": "tel"
+  },
+  {
+   "name": "email",
+   "label": "Email",
+   "type": "email",
+   "required": true,
+   "autocomplete": "email"
+  },
+  {
+   "name": "producto",
+   "label": "Qué vendes o importas",
+   "type": "select",
+   "required": true,
+   "options": [
+    "Ropa y calzado",
+    "Tecnología y accesorios",
+    "Belleza y cuidado personal",
+    "Hogar",
+    "Repuestos",
+    "Suplementos",
+    "Otro"
+   ]
+  },
+  {
+   "name": "productoOtro",
+   "label": "¿Qué otro producto?",
+   "required": true,
+   "showIf": {
+    "field": "producto",
+    "value": "Otro"
+   }
+  },
+  {
+   "name": "volumen",
+   "label": "Volumen mensual aproximado",
+   "type": "select",
+   "required": true,
+   "options": [
+    "Menos de [X] lb",
+    "[X]–[Y] lb",
+    "Más de [Y] lb",
+    "Aún no lo sé"
+   ]
+  },
+  {
+   "name": "frecuencia",
+   "label": "Frecuencia de compra",
+   "type": "select",
+   "required": true,
+   "options": [
+    "Semanal",
+    "Quincenal",
+    "Mensual",
+    "Ocasional"
+   ]
+  },
+  {
+   "name": "ciudad",
+   "label": "Ciudad",
+   "type": "select",
+   "required": true,
+   "options": "@cities"
+  },
+  {
+   "name": "canales",
+   "label": "Canales de venta",
+   "type": "multi",
+   "options": [
+    "Mercado Libre",
+    "Instagram",
+    "TikTok",
+    "Tienda online",
+    "Tienda física"
+   ]
+  },
+  {
+   "name": "llamada",
+   "short": "Llamada",
+   "label": "Prefiero una llamada",
+   "type": "check"
+  },
+  {
+   "name": "horario",
+   "label": "Horario para la llamada (hora de Colombia)",
+   "type": "select",
+   "required": true,
+   "options": [
+    "8:00–10:00",
+    "10:00–12:00",
+    "14:00–16:00",
+    "16:00–18:00"
+   ],
+   "showIf": {
+    "field": "llamada"
+   },
+   "full": true
+  },
+  {
+   "name": "consent",
+   "short": "Tratamiento de datos",
+   "label": "Acepto el tratamiento de mis datos personales.",
+   "type": "check",
+   "required": true,
+   "linkHref": "Legal-Datos.dc.html",
+   "linkLabel": "Ver política"
+  }
+ ]
+}
+</script>
+<script src="assets/js/pages/solicitar-tarifa.js"></script>
+</body>
+</html>

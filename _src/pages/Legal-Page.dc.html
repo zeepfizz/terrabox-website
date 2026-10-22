@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/terrabox-cargo-design-system-cccd872f-d644-4349-8450-b88a6dd7b8b5/styles.css">
+<style>@media print{header,footer,[role=region]{display:none!important}}</style>
+</helmet>
+<section aria-labelledby="h1" style="padding:clamp(32px,5vw,56px) var(--space-5) clamp(56px,8vw,88px)">
+  <div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:var(--space-6)">
+    <nav aria-label="Ruta de navegación" style="font:400 13px/1.4 var(--font-sans);color:var(--fg-3)"><a href="Inicio.dc.html">Inicio</a> / <span aria-current="page">{{ title }}</span></nav>
+    <h1 id="h1" style="margin:0;font:700 clamp(30px,4.2vw,44px)/1.1 var(--font-display);letter-spacing:var(--ls-display);color:var(--text-heading)">{{ title }}</h1>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:var(--space-3)">
+      <span style="font:400 14px/1.4 var(--font-sans);color:var(--fg-3)">Última actualización: [fecha]</span>
+      <button type="button" onClick="{{ print }}" style="min-height:40px;padding:0 14px;border:1px solid var(--border-strong);background:#fff;border-radius:var(--radius-md);font:600 14px/1 var(--font-sans);color:var(--tb-navy);cursor:pointer" style-hover="background:var(--navy-50)">Imprimir</button>
+    </div>
+    <aside aria-label="Resumen" style="padding:var(--space-6);background:var(--navy-50);border-radius:var(--radius-lg);display:flex;flex-direction:column;gap:var(--space-3)">
+      <h2 style="margin:0;font:600 17px/1.3 var(--font-sans);color:var(--navy-800)">En resumen</h2>
+      <ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px;font:400 15px/1.55 var(--font-sans);color:var(--fg-1)">
+        <sc-for list="{{ summary }}" as="s" hint-placeholder-count="3"><li>{{ s }}</li></sc-for>
+      </ul>
+    </aside>
+    <div role="note" style="padding:var(--space-5);border:1px dashed var(--amber-500);border-radius:var(--radius-lg);font:400 15px/1.6 var(--font-sans);color:var(--fg-2)">[Texto legal completo, pendiente de redacción y revisión por un abogado conforme a la normativa colombiana y estadounidense aplicable.]</div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;600px&quot;},&quot;title&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Términos del servicio&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;summary&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string[]&quot;,&quot;default&quot;:[&quot;[Punto de resumen]&quot;]}}">
+class Component extends DCLogic {
+  renderVals() { return { title: this.props.title || 'Documento legal', summary: this.props.summary || [], print: () => window.print() }; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+/* TerraBox Cargo design tokens (from the Claude Design system). Fonts are loaded in each page <head>. */
+:root{
+--font-sans:'Instrument Sans',ui-sans-serif,system-ui,sans-serif;
+--font-display:'Instrument Sans',ui-sans-serif,system-ui,sans-serif;
+--font-mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+--fw-regular:400;/* @kind font */--fw-medium:500;/* @kind font */--fw-semibold:600;/* @kind font */--fw-bold:700;/* @kind font */
+--fs-display:56px;--fs-h1:40px;--fs-h2:30px;--fs-h3:22px;--fs-h4:18px;--fs-body-lg:17px;--fs-body:15px;--fs-small:13px;--fs-caption:12px;--fs-overline:11px;
+--lh-tight:1.1;/* @kind font */--lh-snug:1.25;/* @kind font */--lh-body:1.5;/* @kind font */
+--ls-display:-0.025em;--ls-heading:-0.015em;--ls-overline:0.14em;
+}
+:root{
+/* Brand — sampled from vector master (terrabox-logos.pdf) */
+--tb-navy:#15369c;--tb-blue:#228ecf;--tb-cyan:#4dd1f3;
+/* Brand — soft variant (terrabox-logo.png) */
+--tb-navy-soft:#313b88;--tb-blue-soft:#4b81c0;--tb-cyan-soft:#7ec0eb;
+/* Navy scale */
+--navy-50:#eef2fb;--navy-100:#d9e1f5;--navy-200:#b3c2eb;--navy-300:#8099da;--navy-400:#4a69c0;--navy-500:#15369c;--navy-600:#112c82;--navy-700:#0d2266;--navy-800:#0a1a4d;--navy-900:#071235;
+/* Blue scale */
+--blue-50:#ebf6fc;--blue-100:#cfe9f7;--blue-200:#9fd2ef;--blue-300:#66b7e3;--blue-400:#3fa1d8;--blue-500:#228ecf;--blue-600:#1a74ab;--blue-700:#145a85;
+/* Cyan scale */
+--cyan-50:#ecfafe;--cyan-100:#cdf3fc;--cyan-200:#a2e8f9;--cyan-300:#4dd1f3;--cyan-400:#22bde3;--cyan-500:#0e9cbf;
+/* Neutrals — cool, navy-tinted */
+--ink-0:#ffffff;--ink-25:#f8f9fc;--ink-50:#f2f4f8;--ink-100:#e6e9f0;--ink-200:#d3d8e3;--ink-300:#b4bccc;--ink-400:#8a93a8;--ink-500:#646d84;--ink-600:#4a5268;--ink-700:#343b50;--ink-800:#222838;--ink-900:#131826;
+/* Semantic status */
+--green-500:#1f9d6b;--green-50:#e8f6ef;--amber-500:#d98a0b;--amber-50:#fdf3e1;--red-500:#d23b3b;--red-50:#fcebeb;
+
+/* Semantic aliases */
+--fg-1:var(--ink-900);--fg-2:var(--ink-600);--fg-3:var(--ink-500);--fg-inverse:#ffffff;--fg-brand:var(--tb-navy);--fg-link:var(--blue-600);
+--text-body:var(--fg-1);--text-muted:var(--fg-2);--text-heading:var(--navy-800);
+--surface-page:var(--ink-25);--surface-card:#ffffff;--surface-sunken:var(--ink-50);--surface-brand:var(--tb-navy);--surface-brand-deep:var(--navy-800);--surface-highlight:var(--cyan-50);
+--border-subtle:var(--ink-100);--border-default:var(--ink-200);--border-strong:var(--ink-300);--border-focus:var(--blue-500);
+--action-primary:var(--tb-navy);--action-primary-hover:var(--navy-600);--action-primary-press:var(--navy-700);
+--action-secondary:var(--tb-blue);--action-secondary-hover:var(--blue-600);
+--accent:var(--tb-cyan);
+--status-success:var(--green-500);--status-success-bg:var(--green-50);--status-warning:var(--amber-500);--status-warning-bg:var(--amber-50);--status-danger:var(--red-500);--status-danger-bg:var(--red-50);--status-info:var(--blue-500);--status-info-bg:var(--blue-50);
+}
+:root{
+--space-0:0;--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;--space-6:24px;--space-8:32px;--space-10:40px;--space-12:48px;--space-16:64px;--space-20:80px;
+--radius-xs:3px;--radius-sm:4px;--radius-md:6px;--radius-lg:10px;--radius-xl:14px;--radius-pill:999px;
+--shadow-1:0 1px 2px rgba(13,34,102,.08);
+--shadow-2:0 1px 2px rgba(13,34,102,.06),0 4px 12px rgba(13,34,102,.08);
+--shadow-3:0 2px 4px rgba(13,34,102,.06),0 12px 32px rgba(13,34,102,.14);
+--focus-ring:0 0 0 3px rgba(34,142,207,.35);
+--ease-out:cubic-bezier(.2,.7,.2,1);/* @kind other */--dur-fast:120ms;/* @kind other */--dur-base:180ms;/* @kind other */--dur-slow:280ms;/* @kind other */
+--container-max:1200px;--control-h-sm:32px;--control-h-md:40px;--control-h-lg:48px;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;font-family:var(--font-sans);font-size:var(--fs-body);line-height:var(--lh-body);color:var(--text-body);background:var(--surface-page);-webkit-font-smoothing:antialiased}
+a{color:var(--fg-link);text-decoration:none}a:hover{color:var(--tb-navy);text-decoration:underline}
+:focus-visible{outline:none;box-shadow:var(--focus-ring)}

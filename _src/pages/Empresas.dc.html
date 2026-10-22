@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Importar mercancía para tu negocio desde Miami | TerraBox</title>
+<meta name="description" content="Despachos programados, almacenamiento en Miami, carga aérea y marítima y un asesor dedicado para empresas que importan a Colombia.">
+<link rel="stylesheet" href="_ds/terrabox-cargo-design-system-cccd872f-d644-4349-8450-b88a6dd7b8b5/styles.css">
+<script src="_ds/terrabox-cargo-design-system-cccd872f-d644-4349-8450-b88a6dd7b8b5/_ds_bundle.js"></script>
+<script src="site.js"></script>
+</helmet>
+<dc-import name="Site-Header" active="negocios" wa-page="Empresas" sticky-cta="{{ true }}" sticky-label="Agendar llamada" sticky-href="Solicitar-Tarifa.dc.html?tipo=empresa&amp;llamada=1" hint-size="100%,68px"></dc-import>
+<main id="main" tabindex="-1" style="outline:none">
+  <section aria-labelledby="h1" style="background:var(--navy-800);padding:clamp(40px,7vw,88px) var(--space-5)">
+    <div style="max-width:var(--container-max);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-6)">
+      <nav aria-label="Ruta de navegación" style="font:400 13px/1.4 var(--font-sans);color:var(--navy-200)"><a href="Inicio.dc.html" style="color:var(--navy-100)">Inicio</a> / <a href="Negocios.dc.html" style="color:var(--navy-100)">Negocios</a> / <span aria-current="page">Empresas e importadores</span></nav>
+      <h1 id="h1" style="margin:0;font:700 clamp(34px,5.4vw,56px)/1.06 var(--font-display);letter-spacing:var(--ls-display);color:#fff;max-width:20ch;text-wrap:balance">Tu operación de importación, sin un freight forwarder</h1>
+      <p style="margin:0;font:400 18px/1.55 var(--font-sans);color:var(--navy-100);max-width:58ch">Para negocios que ya superaron el casillero: cajas y estibas, almacenamiento en Miami y despachos programados, con un asesor que conoce tu operación.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:var(--space-3)">
+        <a href="Solicitar-Tarifa.dc.html?tipo=empresa&amp;llamada=1" style="flex:1 1 200px;max-width:260px;display:flex;align-items:center;justify-content:center;height:52px;border-radius:var(--radius-md);background:#fff;color:var(--tb-navy);font:600 16px/1 var(--font-sans)" style-hover="background:var(--navy-50);color:var(--tb-navy);text-decoration:none">Agendar llamada</a>
+        <a href="Solicitar-Tarifa.dc.html?tipo=empresa" style="flex:1 1 200px;max-width:260px;display:flex;align-items:center;justify-content:center;height:52px;border-radius:var(--radius-md);border:1px solid var(--navy-300);color:#fff;font:600 16px/1 var(--font-sans)" style-hover="background:var(--navy-700);color:#fff;text-decoration:none">Solicitar tarifa</a>
+      </div>
+    </div>
+  </section>
+  <section aria-labelledby="serv-h" style="padding:clamp(56px,8vw,88px) var(--space-5)">
+    <div style="max-width:var(--container-max);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-8)">
+      <h2 id="serv-h" style="margin:0;font:700 clamp(26px,3.4vw,36px)/1.15 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">Lo que hacemos por tu operación</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:var(--space-4)">
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
+          <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-2)"><h3 style="margin:0;font:600 18px/1.3 var(--font-display);color:var(--navy-800)">{{ s.t }}</h3><p style="margin:0;font:400 15px/1.55 var(--font-sans);color:var(--fg-2)">{{ s.d }}</p></div>
+        </sc-for>
+      </div>
+      <p style="margin:0;font:400 15px/1.6 var(--font-sans);color:var(--fg-2)">Compara opciones en <a href="Carga.dc.html">Carga aérea y marítima</a>.</p>
+    </div>
+  </section>
+  <section aria-labelledby="cuenta-h" style="background:#fff;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);padding:clamp(56px,8vw,88px) var(--space-5)">
+    <div style="max-width:var(--container-max);margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:var(--space-10)">
+      <div style="display:flex;flex-direction:column;gap:var(--space-4)">
+        <h2 id="cuenta-h" style="margin:0;font:700 24px/1.2 var(--font-display);color:var(--text-heading)">Cómo funciona tu cuenta</h2>
+        <ol style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:10px;font:400 16px/1.55 var(--font-sans)"><li>Hablamos de tu volumen, tus proveedores y tus fechas.</li><li>Te enviamos una propuesta por escrito.</li><li>Un asesor dedicado coordina cada despacho contigo.</li></ol>
+        <p style="margin:0;font:400 15px/1.6 var(--font-sans);color:var(--fg-2)">Límites del seguro y reclamos: <a href="Reclamos-Seguro.dc.html">Reclamos y seguro</a>. Almacenamiento: [condiciones].</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4)">
+        <h2 style="margin:0;font:700 24px/1.2 var(--font-display);color:var(--text-heading)">Documentos que necesitas</h2>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--space-2)">
+          <sc-for list="{{ docs }}" as="d"><li style="display:flex;gap:10px;align-items:flex-start;font:400 16px/1.5 var(--font-sans)"><span aria-hidden="true" style="flex-shrink:0;width:20px;height:20px;margin-top:2px;border:1.5px solid var(--border-strong);border-radius:var(--radius-xs)"></span>{{ d }}</li></sc-for>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section style="background:var(--navy-800);padding:clamp(56px,8vw,88px) var(--space-5)">
+    <div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-5)">
+      <h2 style="margin:0;font:700 clamp(28px,4vw,44px)/1.1 var(--font-display);color:#fff">Hablemos de tu operación</h2>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-3);width:100%">
+        <a href="Solicitar-Tarifa.dc.html?tipo=empresa&amp;llamada=1" style="flex:1 1 220px;max-width:280px;display:flex;align-items:center;justify-content:center;height:52px;border-radius:var(--radius-md);background:#fff;color:var(--tb-navy);font:600 16px/1 var(--font-sans)" style-hover="background:var(--navy-50);color:var(--tb-navy);text-decoration:none">Agendar llamada</a>
+        <a href="{{ waHref }}" target="_blank" rel="noopener" style="flex:1 1 220px;max-width:280px;display:flex;align-items:center;justify-content:center;height:52px;border-radius:var(--radius-md);border:1px solid var(--navy-300);color:#fff;font:600 16px/1 var(--font-sans)" style-hover="background:var(--navy-700);color:#fff;text-decoration:none">Escribir por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</main>
+<dc-import name="Site-Footer" wa-page="Empresas" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="application/json" data-page>
+{
+ "waHref": {
+  "$wa": "Hola, vengo de la página Empresas"
+ },
+ "services": [
+  {
+   "t": "Despachos programados",
+   "d": "Salidas fijas [días] para que planees tu inventario."
+  },
+  {
+   "t": "Almacenamiento en Miami",
+   "d": "Recibimos de varios proveedores y guardamos hasta completar tu carga. [Condiciones]."
+  },
+  {
+   "t": "Aire o mar",
+   "d": "Elegimos contigo el modo según urgencia, volumen y valor."
+  },
+  {
+   "t": "Documentos",
+   "d": "Te decimos qué se necesita y revisamos que esté completo antes del despacho."
+  }
+ ],
+ "docs": [
+  "Factura comercial",
+  "Lista de empaque",
+  "RUT de la empresa [confirmar]",
+  "[Registros o permisos según el producto]"
+ ]
+}
+</script>
+</body>
+</html>
