@@ -1,0 +1,12 @@
+[
+ {"id": "armas", "icon": "crosshair", "t": "Armas y explosivos", "d": "armas de fuego, municiones, réplicas, juguetes bélicos, granadas y material explosivo."},
+ {"id": "dinero", "icon": "banknote", "t": "Dinero y valores", "d": "efectivo, monedas, joyas, metales preciosos, títulos al portador, tarjetas de crédito o débito."},
+ {"id": "drogas", "icon": "cannabis", "t": "Drogas y estupefacientes", "d": "sustancias psicoactivas, marihuana, CBD, THC y precursores químicos ilegales."},
+ {"id": "electronicos", "icon": "battery-warning", "t": "Electrónicos y baterías peligrosas", "d": "drones de cualquier tamaño, patinetas eléctricas o scooters, y baterías de litio que excedan los 100 Wh."},
+ {"id": "celulares", "icon": "smartphone", "t": "Celulares y ropa", "d": "celulares que no cumplan con la regulación colombiana vigente y ropa usada."},
+ {"id": "quimicos", "icon": "flask-conical", "t": "Químicos y materiales peligrosos", "d": "gases comprimidos, cilindros, aerosoles, químicos corrosivos, materiales radiactivos y encendedores."},
+ {"id": "alimentos", "icon": "apple", "t": "Alimentos y perecederos", "d": "alimentos que requieran refrigeración o que no cuenten con registro sanitario."},
+ {"id": "plantas", "icon": "sprout", "t": "Plantas y animales", "d": "plantas vivas, semillas, animales vivos o muertos, y artículos de piel."},
+ {"id": "medicamentos", "icon": "pill", "t": "Medicamentos", "d": "fármacos sin receta médica o que no estén en su empaque original con aprobación del INVIMA."},
+ {"id": "sensible", "icon": "cigarette", "t": "Material sensible", "d": "material pornográfico, tabaco, cigarrillos y cigarrillos electrónicos."}
+]

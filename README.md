@@ -25,15 +25,18 @@ The `_src` folder is ignored by GitHub Pages; it only holds the sources used to 
 
 ## Before going live: fill in the business data
 
-Placeholders in square brackets (`[X]`, `[teléfono]`, `[Dirección completa]`, `[fecha]`…) come from the design and still need real values.
-The connections live in one file, **`assets/js/config.js`**:
+Some placeholders in square brackets (`[email]`, `[horario de atención]`, `[X]`, `[fecha]`…) still need real values.
+Contact data, links and prices live in one file, **`assets/js/config.js`**:
 
 | Setting | What it does |
 |---|---|
 | `waNumber` | WhatsApp number in international format without `+` (e.g. `13055551234`). Every WhatsApp button uses it. |
-| `endpoints` | URLs that receive the forms as JSON (`registro`, `solicitud`, `contacto`, `compra`, `reclamo`), shipment tracking (`rastreo`) and login (`login`). Until they are set, forms validate and then offer to send the same details by WhatsApp. |
-| `rates` | Price per lb and minimum per city, e.g. `{ 'Bogotá': { perLb: 4.5, min: 10 } }`. Turns on real totals in the calculator. |
-| `volumetricDivisorIn` | Volumetric divisor in in³/lb (e.g. `166`). |
+| `email`, `hours` | Shown in the footer and contact sections. |
+| `social` | Instagram / Facebook profile URLs. The footer icons appear once set. |
+| `urls.login`, `urls.register` | Where **Ingresar** and **Registrarse** point (today the site's own pages; later `app.terraboxcargo.com`). |
+| `pricing` | Official Colombia prices: tiers (US$25 for 1–4 lb, US$30 for 5–10 lb), US$3 per extra pound, `roundUp` (4,2 lb is charged as 5 lb), tax-free limit (US$200). The calculator and price cards use these values. |
+| `track(guia)` | What "Rastrea tu envío" does. Until there is a tracking system it opens WhatsApp with the guide number. |
+| `endpoints` | URLs that receive the forms as JSON (`registro`, `solicitud`, `contacto`, `compra`, `reclamo`), tracking (`rastreo`) and login (`login`). A Formspree form URL works for `contacto`. Until set, forms validate and then offer to send the same details by WhatsApp. |
 
 ## Editing pages
 
@@ -45,7 +48,9 @@ python _src/build.py
 ```
 
 The build writes every `*.html` page in this folder and `assets/css/interactions.css`. The shared header, footer and FAQ
-markup is defined in `_src/build.py`.
+markup is defined in `_src/build.py`; the price block and calculator are shared partials in `_src/partials/`; the prohibited-items
+list (used on the home and the Artículos prohibidos page) is `_src/data/prohibidos.json`; icons are inline Lucide SVGs (`_src/icons.py`,
+used as `<i data-icon="plane"></i>` in sources).
 
 To preview locally:
 
@@ -62,9 +67,14 @@ index.html, tarifas.html, …   the 25 pages (index.html is the homepage, 404.ht
 assets/css/tokens.css         design tokens (colours, type, spacing)
 assets/css/site.css           components: buttons, fields, header, forms
 assets/css/interactions.css   generated hover styles
+assets/css/redesign.css       redesign v1: header, footer, home, Tarifas, Prohibidos, Contacto
+assets/js/calculator.js       shipping calculator (rates from config.js)
 assets/js/config.js           business settings (see above)
 assets/js/site.js             header menus, cookie banner, FAQ, lead forms
 assets/js/pages/*.js          page-specific behaviour (calculator, tracking, login, …)
 assets/img/                   logos
-_src/                         page sources and build script
+_src/                         page sources, partials, data and build script
+docs/                         handoff notes
 ```
+
+Photos are free-licensed Unsplash images loaded from Unsplash's CDN (sized and served as WebP/AVIF automatically).

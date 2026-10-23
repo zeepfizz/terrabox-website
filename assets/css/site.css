@@ -14,10 +14,7 @@ main:focus{outline:none}
 @media (min-width:1024px){.mobile-only{display:none!important}.sticky-desktop{position:sticky!important}}
 
 /* Header */
-@media (max-width:419.98px){#site-header>div{gap:var(--space-3)!important}#site-header img{height:28px!important}.hide-xs{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
 #site-header.is-hidden{transform:translateY(-100%)}
-.nav-btn{white-space:nowrap}
-.nav-btn:hover,.nav-btn.is-current,.nav-btn[aria-expanded="true"]{background:var(--navy-50)!important}
 #menu-movil:not([hidden]){display:flex!important}
 #menu-movil [id^="m-"]:not([hidden]){display:flex}
 #sticky-bar:not([hidden]){display:grid!important}

@@ -18,7 +18,11 @@ import hashlib
 import html
 import json
 import re
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from icons import ICONS  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / '_src' / 'pages'
@@ -184,7 +188,7 @@ def component(kind, attrs_s, children, ctx, page):
     if kind == 'dc-import':
         name = dict(attrs)['name']
         fn = {'Site-Header': site_header, 'Site-Footer': site_footer, 'Faq': faq,
-              'Legal-Page': legal_page, 'Lead-Form': lead_form}[name]
+              'Legal-Page': legal_page, 'Lead-Form': lead_form, 'Include': include}[name]
         return fn(props, ctx, page)
     comp = dict(attrs)['component-from-global-scope'].split('.')[-1]
     children = subst(children, ctx, page)
@@ -265,186 +269,129 @@ def ds_button(p, children):
 
 # ---------------------------------------------------------------- shared site chrome
 
+# (id, label, link). Ingresar / Registrarse live in the header actions; their URLs come from TB.urls in config.js.
 NAV = [
-    ('envios', 'Envíos a Colombia', [('Envíos a Colombia', 'Envios-Colombia'), ('Tarifas y calculadora', 'Tarifas'),
-                                     ('Aduana e impuestos', 'Aduana-Impuestos'), ('Productos restringidos', 'Productos-Restringidos'),
-                                     ('Tiendas recomendadas', 'Tiendas')]),
-    ('como', 'Cómo funciona', 'Casillero-Virtual'),
-    ('servicios', 'Servicios', [('Consolidación y reempaque', 'Consolidacion'), ('Compramos por ti', 'Compramos-Por-Ti'),
-                                ('Carga aérea y marítima', 'Carga')]),
-    ('negocios', 'Negocios', [('Soluciones para negocios', 'Negocios'), ('Revendedores', 'Revendedores'),
-                              ('Empresas e importadores', 'Empresas'), ('Solicitar tarifa', 'Solicitar-Tarifa')]),
-    ('ayuda', 'Ayuda', [('Preguntas frecuentes', 'Ayuda'), ('Reclamos y seguro', 'Reclamos-Seguro'), ('Contacto', 'Contacto')]),
+    ('inicio', 'Inicio', 'Inicio.dc.html'),
+    ('como', '¿Cómo funciona?', 'Casillero-Virtual.dc.html'),
+    ('tarifas', 'Tarifas', 'Tarifas.dc.html'),
+    ('calculadora', 'Calculadora', 'Tarifas.dc.html#calculadora'),
+    ('prohibidos', 'Artículos prohibidos', 'Productos-Restringidos.dc.html'),
+    ('contacto', 'Contacto', 'Contacto.dc.html'),
 ]
+NAV_MORE = [('Rastrear envío', 'Rastreo'), ('Preguntas frecuentes', 'Ayuda'), ('Consolidación', 'Consolidacion'),
+            ('Compramos por ti', 'Compramos-Por-Ti'), ('Negocios y revendedores', 'Negocios'), ('Carga aérea y marítima', 'Carga')]
 
-CHEVRON_NAV = ('<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" '
-               'stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>')
+ARROW = '<i data-icon="arrow-right" class="btn__arrow"></i>'
+WA_ICON = '<i data-icon="message-circle"></i>'
 
 
 def site_header(p, ctx, page):
     active = p.get('active') or ''
     wa_href = wa('Hola, vengo de la página ' + (p.get('waPage') or 'de inicio'))
     sticky = bool(p.get('stickyCta'))
-    hide_wa = bool(p.get('hideWa'))
     sticky_href = p.get('stickyHref') or 'Registro.dc.html'
-    sticky_label = p.get('stickyLabel') or 'Abrir casillero gratis'
+    sticky_label = p.get('stickyLabel') or 'Regístrate gratis'
 
-    desk = []
-    for gid, label, items in NAV:
-        cur = gid == active
-        if isinstance(items, list):
-            links = ''.join(
-                f'<a href="{h}.dc.html" style="display:flex;align-items:center;min-height:44px;padding:0 12px;border-radius:var(--radius-md);'
-                f'font:500 14px/1.3 var(--font-sans);color:var(--fg-1)" style-hover="background:var(--navy-50);color:var(--tb-navy);'
-                f'text-decoration:none">{esc(t)}</a>' for t, h in items)
-            desk.append(
-                f'<div class="nav-group" data-group="{gid}" style="position:relative">'
-                f'<button type="button" class="nav-btn{" is-current" if cur else ""}" id="nav-{gid}" aria-expanded="false" '
-                f'aria-controls="dd-{gid}" style="display:flex;align-items:center;gap:6px;height:44px;padding:0 12px;border:0;'
-                f'background:transparent;border-radius:var(--radius-md);font:600 14px/1 var(--font-sans);color:var(--navy-800);'
-                f'cursor:pointer">{esc(label)}{CHEVRON_NAV}</button>'
-                f'<div id="dd-{gid}" class="nav-dd" hidden style="position:absolute;top:calc(100% + 6px);left:0;min-width:260px;'
-                f'background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-3);'
-                f'padding:var(--space-2);display:flex;flex-direction:column">{links}</div></div>')
-        else:
-            desk.append(
-                f'<div style="position:relative"><a href="{items}.dc.html"{" aria-current=\"page\"" if cur else ""} '
-                f'class="nav-btn{" is-current" if cur else ""}" style="display:flex;align-items:center;height:44px;padding:0 12px;'
-                f'border-radius:var(--radius-md);font:600 14px/1 var(--font-sans);color:var(--navy-800);background:transparent" '
-                f'style-hover="color:var(--navy-800);text-decoration:none">{esc(label)}</a></div>')
-
-    mob = []
-    for gid, label, items in NAV:
-        if isinstance(items, list):
-            links = ''.join(
-                f'<a href="{h}.dc.html" style="display:flex;align-items:center;min-height:44px;padding-left:var(--space-3);'
-                f'font:500 15px/1.3 var(--font-sans);color:var(--fg-1)">{esc(t)}</a>' for t, h in items)
-            mob.append(
-                f'<div style="border-bottom:1px solid var(--border-subtle)"><button type="button" class="m-group-btn" '
-                f'aria-expanded="false" aria-controls="m-{gid}" style="width:100%;display:flex;align-items:center;'
-                f'justify-content:space-between;min-height:56px;border:0;background:transparent;font:600 17px/1.2 var(--font-sans);'
-                f'color:var(--navy-800);cursor:pointer;padding:0">{esc(label)}<span aria-hidden="true" class="m-sign" '
-                f'style="font:400 22px/1 var(--font-sans);color:var(--fg-3)">+</span></button>'
-                f'<div id="m-{gid}" hidden style="flex-direction:column;padding-bottom:var(--space-3)">{links}</div></div>')
-        else:
-            mob.append(
-                f'<div style="border-bottom:1px solid var(--border-subtle)"><a href="{items}.dc.html" style="display:flex;'
-                f'align-items:center;min-height:56px;font:600 17px/1.2 var(--font-sans);color:var(--navy-800)">{esc(label)}</a></div>')
-
-    float_wa = '' if hide_wa else (
-        f'<a href="{wa_href}" target="_blank" rel="noopener" id="float-wa" class="{"desktop-only" if sticky else ""}" '
-        f'aria-label="Escribir por WhatsApp (se abre en una pestaña nueva)" style="position:fixed;right:20px;bottom:20px;z-index:90;'
-        f'display:flex;align-items:center;gap:8px;height:48px;padding:0 18px;border-radius:var(--radius-pill);background:var(--navy-800);'
-        f'color:#fff;font:600 15px/1 var(--font-sans);box-shadow:var(--shadow-3)" style-hover="background:var(--tb-navy);color:#fff;'
-        f'text-decoration:none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" '
-        f'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>WhatsApp</a>')
+    desk = ''.join(
+        f'<a class="hdr__link{" is-current" if gid == active else ""}" href="{href}"'
+        f'{" aria-current=\"page\"" if gid == active else ""}>{esc(label)}</a>' for gid, label, href in NAV)
+    mob = ''.join(f'<a class="mnav__link" href="{href}">{esc(label)}</a>' for gid, label, href in NAV)
+    more = ''.join(f'<a class="mnav__sublink" href="{h}.dc.html">{esc(t)}</a>' for t, h in NAV_MORE)
     sticky_bar = '' if not sticky else (
-        f'<div id="sticky-bar" hidden style="position:fixed;left:0;right:0;bottom:0;z-index:90;background:#fff;border-top:1px solid '
-        f'var(--border-subtle);box-shadow:var(--shadow-3);padding:10px var(--space-4);grid-template-columns:minmax(0,1.6fr) '
-        f'minmax(0,1fr);gap:var(--space-2)"><a href="{esc(sticky_href)}" style="display:flex;align-items:center;justify-content:center;'
-        f'height:48px;border-radius:var(--radius-md);background:var(--action-primary);color:#fff;font:600 15px/1 var(--font-sans);'
-        f'text-align:center">{esc(sticky_label)}</a><a href="{wa_href}" target="_blank" rel="noopener" style="display:flex;'
-        f'align-items:center;justify-content:center;height:48px;border-radius:var(--radius-md);background:#fff;border:1px solid '
-        f'var(--border-strong);color:var(--tb-navy);font:600 15px/1 var(--font-sans)">WhatsApp</a></div>')
-
-    return HEADER_TPL.format(desk=''.join(desk), mob=''.join(mob), wa=wa_href, float_wa=float_wa, sticky_bar=sticky_bar)
+        f'<div id="sticky-bar" class="sticky-bar" hidden><a class="btn btn--primary" href="{esc(sticky_href)}"'
+        f'{" data-tb-url=\"register\"" if sticky_href == "Registro.dc.html" else ""}>{esc(sticky_label)}</a>'
+        f'<a class="btn btn--outline" href="{wa_href}" target="_blank" rel="noopener">WhatsApp</a></div>')
+    return HEADER_TPL.format(desk=desk, mob=mob, more=more, wa=wa_href, sticky_bar=sticky_bar, arrow=ARROW, wa_icon=WA_ICON)
 
 
-HEADER_TPL = '''<a href="#main" class="skip-link" style="position:absolute;left:12px;top:-60px;z-index:200;padding:12px 16px;background:var(--navy-800);color:#fff;border-radius:var(--radius-md);font:600 14px/1 var(--font-sans)" style-focus="top:12px;color:#fff">Saltar al contenido</a>
-<header id="site-header" style="position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--border-subtle);transition:transform var(--dur-base) var(--ease-out)">
-  <div style="max-width:var(--container-max);margin:0 auto;padding:0 var(--space-5);height:68px;display:flex;align-items:center;gap:var(--space-6)">
-    <a href="Inicio.dc.html" aria-label="TerraBox Cargo, inicio" style="display:flex;align-items:center;flex-shrink:0;min-height:44px">
-      <img src="assets/img/logo-horizontal.svg" alt="TerraBox Cargo" width="150" height="34" style="display:block;height:34px;width:auto">
-    </a>
-    <nav class="desktop-only" aria-label="Principal" style="display:flex;align-items:center;gap:2px;flex:1;min-width:0">{desk}</nav>
-    <div class="desktop-only" style="display:flex;align-items:center;gap:var(--space-2);flex-shrink:0">
-      <a href="Rastreo.dc.html" style="display:flex;align-items:center;gap:6px;height:44px;padding:0 10px;font:600 14px/1 var(--font-sans);color:var(--blue-600)">Rastrear</a>
-      <a href="Ingresar.dc.html" style="display:flex;align-items:center;height:44px;padding:0 10px;font:600 14px/1 var(--font-sans);color:var(--blue-600)">Ingresar</a>
-      <a href="Registro.dc.html" style="display:inline-flex;align-items:center;height:40px;padding:0 16px;border-radius:var(--radius-md);background:var(--action-primary);color:#fff;font:600 14px/1 var(--font-sans);white-space:nowrap" style-hover="background:var(--action-primary-hover);color:#fff;text-decoration:none">Abrir casillero gratis</a>
+HEADER_TPL = '''<a href="#main" class="skip-link">Saltar al contenido</a>
+<header id="site-header" class="hdr">
+  <div class="hdr__bar">
+    <a class="hdr__logo" href="Inicio.dc.html" aria-label="TerraBox Cargo, inicio"><img src="assets/img/logo-horizontal.svg" alt="TerraBox Cargo" width="178" height="30"></a>
+    <nav class="hdr__nav" aria-label="Principal">{desk}</nav>
+    <div class="hdr__actions">
+      <a class="btn btn--outline btn--sm" href="Ingresar.dc.html" data-tb-url="login">Ingresar</a>
+      <a class="btn btn--primary btn--sm" href="Registro.dc.html" data-tb-url="register">Registrarse {arrow}</a>
     </div>
-    <div class="mobile-only" style="margin-left:auto;display:flex;align-items:center;gap:var(--space-1)">
-      <a href="Rastreo.dc.html" style="display:flex;align-items:center;gap:6px;height:44px;padding:0 10px;font:600 14px/1 var(--font-sans);color:var(--blue-600)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg><span class="hide-xs">Rastrear</span></a>
-      <button type="button" id="menu-btn" aria-expanded="false" aria-controls="menu-movil" style="display:flex;align-items:center;gap:8px;height:44px;padding:0 12px;border:1px solid var(--border-strong);background:#fff;border-radius:var(--radius-md);font:600 14px/1 var(--font-sans);color:var(--navy-800);cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>Menú</button>
-    </div>
+    <button type="button" id="menu-btn" class="hdr__menu" aria-expanded="false" aria-controls="menu-movil"><i data-icon="menu"></i>Menú</button>
   </div>
 </header>
-<div id="menu-movil" role="dialog" aria-modal="true" aria-label="Menú" hidden style="position:fixed;inset:0;z-index:300;background:#fff;flex-direction:column">
-  <div style="display:flex;align-items:center;justify-content:space-between;height:68px;padding:0 var(--space-5);border-bottom:1px solid var(--border-subtle);flex-shrink:0">
-    <img src="assets/img/logo-horizontal.svg" alt="TerraBox Cargo" width="140" height="32" style="height:32px;width:auto">
-    <button type="button" id="menu-close" aria-label="Cerrar menú" style="width:44px;height:44px;border:1px solid var(--border-strong);background:#fff;border-radius:var(--radius-md);font:400 22px/1 var(--font-sans);color:var(--navy-800);cursor:pointer">×</button>
+<div id="menu-movil" class="mnav" role="dialog" aria-modal="true" aria-label="Menú" hidden>
+  <div class="mnav__top">
+    <img src="assets/img/logo-horizontal.svg" alt="TerraBox Cargo" width="166" height="28">
+    <button type="button" id="menu-close" class="mnav__close" aria-label="Cerrar menú"><i data-icon="x"></i></button>
   </div>
-  <nav aria-label="Principal" style="flex:1;overflow-y:auto;padding:var(--space-2) var(--space-5)">{mob}
-    <a href="Ingresar.dc.html" style="display:flex;align-items:center;min-height:56px;font:600 17px/1.2 var(--font-sans);color:var(--blue-600)">Ingresar</a>
+  <nav class="mnav__list" aria-label="Principal">{mob}
+    <div class="mnav__group">
+      <button type="button" class="m-group-btn mnav__link" aria-expanded="false" aria-controls="m-mas">Más servicios y ayuda<span aria-hidden="true" class="m-sign">+</span></button>
+      <div id="m-mas" class="mnav__sub" hidden>{more}</div>
+    </div>
   </nav>
-  <div style="flex-shrink:0;padding:var(--space-4) var(--space-5);border-top:1px solid var(--border-subtle);display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3)">
-    <a href="Registro.dc.html" style="display:flex;align-items:center;justify-content:center;height:48px;border-radius:var(--radius-md);background:var(--action-primary);color:#fff;font:600 15px/1 var(--font-sans);text-align:center">Abrir casillero gratis</a>
-    <a href="{wa}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;height:48px;border-radius:var(--radius-md);background:#fff;border:1px solid var(--border-strong);color:var(--tb-navy);font:600 15px/1 var(--font-sans)">WhatsApp</a>
+  <div class="mnav__actions">
+    <a class="btn btn--outline" href="Ingresar.dc.html" data-tb-url="login">Ingresar</a>
+    <a class="btn btn--primary" href="Registro.dc.html" data-tb-url="register">Registrarse</a>
+    <a class="btn btn--whatsapp mnav__wa" href="{wa}" target="_blank" rel="noopener">{wa_icon}Escribir por WhatsApp</a>
   </div>
 </div>
-{float_wa}
+<a href="{wa}" target="_blank" rel="noopener" id="float-wa" class="float-wa" aria-label="Escribir por WhatsApp (se abre en una pestaña nueva)">{wa_icon}<span>WhatsApp</span></a>
 {sticky_bar}'''
 
 FOOTER_COLS = [
-    ('Envíos', [('Envíos a Colombia', 'Envios-Colombia'), ('Tarifas y calculadora', 'Tarifas'), ('Aduana e impuestos', 'Aduana-Impuestos'),
-                ('Productos restringidos', 'Productos-Restringidos'), ('Tiendas', 'Tiendas')]),
-    ('Servicios', [('Casillero virtual', 'Casillero-Virtual'), ('Consolidación', 'Consolidacion'), ('Compramos por ti', 'Compramos-Por-Ti'),
-                   ('Carga aérea y marítima', 'Carga')]),
-    ('Negocios', [('Revendedores', 'Revendedores'), ('Empresas', 'Empresas'), ('Solicitar tarifa', 'Solicitar-Tarifa')]),
-    ('TerraBox', [('Nosotros', 'Nosotros'), ('Preguntas frecuentes', 'Ayuda'), ('Reclamos y seguro', 'Reclamos-Seguro'),
-                  ('Contacto', 'Contacto'), ('Rastrear', 'Rastreo')]),
+    ('Navegación', [('Inicio', 'Inicio'), ('¿Cómo funciona?', 'Casillero-Virtual'), ('Tarifas', 'Tarifas'),
+                    ('Calculadora', 'Tarifas.dc.html#calculadora'), ('Artículos prohibidos', 'Productos-Restringidos'), ('Contacto', 'Contacto')]),
+    ('Servicios', [('Consolidación', 'Consolidacion'), ('Compramos por ti', 'Compramos-Por-Ti'), ('Carga aérea y marítima', 'Carga'),
+                   ('Negocios', 'Negocios'), ('Revendedores', 'Revendedores'), ('Empresas', 'Empresas')]),
+    ('Ayuda', [('Rastrear envío', 'Rastreo'), ('Preguntas frecuentes', 'Ayuda'), ('Aduana e impuestos', 'Aduana-Impuestos'),
+               ('Reclamos y seguro', 'Reclamos-Seguro'), ('Tiendas recomendadas', 'Tiendas'), ('Nosotros', 'Nosotros')]),
 ]
 
 
 def site_footer(p, ctx, page):
     wa_href = wa('Hola, vengo de la página ' + (p.get('waPage') or 'de inicio'))
     cols = ''.join(
-        f'<nav aria-label="{esc(t)}" style="display:flex;flex-direction:column;gap:2px"><h2 style="margin:0 0 var(--space-2);'
-        f'font:600 11px/1 var(--font-sans);letter-spacing:var(--ls-overline);text-transform:uppercase;color:var(--tb-cyan)">{esc(t)}</h2>'
-        + ''.join(f'<a href="{h}.dc.html" style="display:flex;align-items:center;min-height:36px;font:400 14px/1.3 var(--font-sans);'
-                  f'color:#fff" style-hover="color:var(--tb-cyan);text-decoration:underline">{esc(l)}</a>' for l, h in links)
+        f'<nav class="ftr__col" aria-label="{esc(t)}"><h2 class="ftr__title">{esc(t)}</h2>'
+        + ''.join(f'<a href="{h if ".dc.html" in h else h + ".dc.html"}">{esc(l)}</a>' for l, h in links)
         + '</nav>' for t, links in FOOTER_COLS)
-    return FOOTER_TPL.format(cols=cols, wa=wa_href)
+    return FOOTER_TPL.format(cols=cols, wa=wa_href, wa_icon=WA_ICON)
 
 
-FOOTER_TPL = '''<footer style="background:var(--navy-800);color:var(--navy-100);padding:var(--space-16) var(--space-5) var(--space-8)">
-  <div style="max-width:var(--container-max);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-12)">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--space-10) var(--space-8)">
-      <div style="display:flex;flex-direction:column;gap:var(--space-4);grid-column:span 1">
-        <img src="assets/img/logo-horizontal-reversed.svg" alt="TerraBox Cargo" width="160" height="36" style="height:36px;width:auto;align-self:flex-start">
-        <p style="margin:0;font:400 14px/1.5 var(--font-sans);color:var(--navy-100);max-width:260px;text-wrap:pretty">Casillero en Miami y envíos de Estados Unidos a Colombia.</p>
+FOOTER_TPL = '''<footer class="ftr">
+  <div class="ftr__inner">
+    <div class="ftr__grid">
+      <div class="ftr__brand">
+        <img src="assets/img/logo-horizontal-reversed.svg" alt="TerraBox Cargo" width="190" height="32">
+        <p>Compra en Estados Unidos y recíbelo en Colombia en 5 a 7 días hábiles, con seguro incluido.</p>
+        <div class="ftr__social">
+          <a href="#" data-social="instagram" hidden aria-label="Instagram de TerraBox (se abre en una pestaña nueva)" target="_blank" rel="noopener"><i data-icon="instagram"></i></a>
+          <a href="#" data-social="facebook" hidden aria-label="Facebook de TerraBox (se abre en una pestaña nueva)" target="_blank" rel="noopener"><i data-icon="facebook"></i></a>
+        </div>
       </div>
       {cols}
-      <div style="display:flex;flex-direction:column;gap:var(--space-2)">
-        <h2 style="margin:0 0 var(--space-2);font:600 11px/1 var(--font-sans);letter-spacing:var(--ls-overline);text-transform:uppercase;color:var(--tb-cyan)">Contacto</h2>
-        <address style="font-style:normal;font:400 14px/1.6 var(--font-sans);color:#fff">Bodega en Miami<br>[Dirección completa], Miami, FL [código postal]</address>
-        <p style="margin:0;font:400 14px/1.5 var(--font-sans);color:var(--navy-100)">Lunes a viernes, [horario] (hora de Miami, ET)</p>
-        <a href="{wa}" target="_blank" rel="noopener" style="display:flex;align-items:center;min-height:36px;font:600 14px/1.3 var(--font-sans);color:#fff" style-hover="color:var(--tb-cyan)">WhatsApp</a>
-        <p style="margin:0;font:400 14px/1.5 var(--font-sans);color:#fff">Teléfono: [teléfono]<br>Email: [email]</p>
+      <div class="ftr__col">
+        <h2 class="ftr__title">Contacto</h2>
+        <a href="{wa}" target="_blank" rel="noopener" class="ftr__wa">{wa_icon}WhatsApp</a>
+        <p><span class="ftr__label">Email</span><a data-tb="email" href="Contacto.dc.html">[email]</a></p>
+        <p><span class="ftr__label">Horario</span><span data-tb="hours">[horario de atención]</span></p>
       </div>
     </div>
-    <div style="border-top:1px solid var(--navy-600);padding-top:var(--space-6);display:flex;flex-wrap:wrap;gap:var(--space-4) var(--space-6);align-items:center;justify-content:space-between">
-      <div style="display:flex;flex-wrap:wrap;gap:var(--space-2) var(--space-5)">
-        <a href="Legal-Terminos.dc.html" style="font:400 13px/1 var(--font-sans);color:#fff;min-height:32px;display:flex;align-items:center">Términos</a>
-        <a href="Legal-Datos.dc.html" style="font:400 13px/1 var(--font-sans);color:#fff;min-height:32px;display:flex;align-items:center">Tratamiento de datos</a>
-        <a href="Legal-Cookies.dc.html" style="font:400 13px/1 var(--font-sans);color:#fff;min-height:32px;display:flex;align-items:center">Cookies</a>
-        <button type="button" id="cookie-reopen" style="border:0;background:transparent;padding:0;font:400 13px/1 var(--font-sans);color:#fff;min-height:32px;cursor:pointer;text-decoration:underline">Preferencias de cookies</button>
+    <div class="ftr__bottom">
+      <div class="ftr__legal">
+        <a href="Legal-Terminos.dc.html">Términos y condiciones</a>
+        <a href="Legal-Datos.dc.html">Tratamiento de datos</a>
+        <a href="Legal-Cookies.dc.html">Cookies</a>
+        <button type="button" id="cookie-reopen">Preferencias de cookies</button>
       </div>
-      <div style="display:flex;flex-wrap:wrap;gap:var(--space-4);align-items:center">
-        <label style="display:flex;align-items:center;gap:8px;font:400 13px/1 var(--font-sans);color:var(--navy-100)">País
-          <select aria-label="País" style="height:32px;padding:0 8px;border-radius:var(--radius-md);border:1px solid var(--navy-400);background:var(--navy-800);color:#fff;font:400 13px var(--font-sans)"><option>Colombia</option></select>
-        </label>
-        <span style="font:400 13px/1 var(--font-sans);color:var(--navy-100)">© <span id="year">2026</span> TerraBox Cargo</span>
-      </div>
+      <span>© <span id="year">2026</span> TerraBox Cargo</span>
     </div>
   </div>
 </footer>
-<div id="cookie-banner" role="region" aria-label="Aviso de cookies" hidden style="position:fixed;left:16px;right:16px;bottom:16px;z-index:250;max-width:560px;margin:0 auto;background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-xl);box-shadow:var(--shadow-3);padding:var(--space-5);flex-direction:column;gap:var(--space-4)">
-  <p style="margin:0;font:400 14px/1.5 var(--font-sans);color:var(--fg-1)">Usamos cookies necesarias para que el sitio funcione. Con tu permiso, usamos también cookies de medición. <a href="Legal-Cookies.dc.html">Ver política de cookies</a></p>
-  <div id="cookie-cfg" hidden style="flex-direction:column;gap:var(--space-2)">
-    <label style="display:flex;gap:10px;align-items:center;font:500 14px/1.3 var(--font-sans)"><input type="checkbox" checked disabled style="width:18px;height:18px;accent-color:var(--tb-navy)">Necesarias (siempre activas)</label>
-    <label style="display:flex;gap:10px;align-items:center;font:500 14px/1.3 var(--font-sans);cursor:pointer"><input type="checkbox" id="cookie-analytics" style="width:18px;height:18px;accent-color:var(--tb-navy)">Medición y análisis</label>
+<div id="cookie-banner" class="cookie" role="region" aria-label="Aviso de cookies" hidden>
+  <p>Usamos cookies necesarias para que el sitio funcione. Con tu permiso, usamos también cookies de medición. <a href="Legal-Cookies.dc.html">Ver política de cookies</a></p>
+  <div id="cookie-cfg" class="cookie__cfg" hidden>
+    <label><input type="checkbox" checked disabled>Necesarias (siempre activas)</label>
+    <label><input type="checkbox" id="cookie-analytics">Medición y análisis</label>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:var(--space-2)">
+  <div class="cookie__actions">
     <button type="button" class="tb-btn tb-btn--outline tb-btn--md tb-btn--full" data-cookie="reject">Rechazar</button>
     <button type="button" class="tb-btn tb-btn--outline tb-btn--md tb-btn--full" data-cookie="configure">Configurar</button>
     <button type="button" class="tb-btn tb-btn--outline tb-btn--md tb-btn--full" data-cookie="accept">Aceptar</button>
@@ -479,6 +426,13 @@ def legal_page(p, ctx, page):
     tpl = src[src.index('</helmet>') + len('</helmet>'):src.index('</x-dc>')]
     tpl = tpl.replace('onClick="{{ print }}"', 'onclick="window.print()"')
     return render(tpl, {'title': p.get('title'), 'summary': p.get('summary') or []}, page)
+
+
+def include(p, ctx, page):
+    """<dc-import name="Include" file="x"> renders _src/partials/x.html with the page data."""
+    tpl = (ROOT / '_src' / 'partials' / (p['file'] + '.html')).read_text(encoding='utf-8')
+    tpl = re.sub(r'^<!--.*?-->\n', '', tpl, flags=re.S)
+    return render(tpl, {**ctx, **p}, page)
 
 
 def lead_form(p, ctx, page):
@@ -523,17 +477,19 @@ def write_hover_css():
 
 
 PAGE_TPL = '''<!DOCTYPE html>
-<html lang="es-CO">
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="es_CO">
 <meta property="og:site_name" content="{site}">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
-<meta name="theme-color" content="#0a1a4d">
+<meta name="theme-color" content="#15369c">
+<script>document.documentElement.classList.add('js')</script>
 <link rel="icon" type="image/svg+xml" href="assets/img/logo-symbol.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -541,10 +497,12 @@ PAGE_TPL = '''<!DOCTYPE html>
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/site.css">
 <link rel="stylesheet" href="assets/css/interactions.css">
+<link rel="stylesheet" href="assets/css/redesign.css">
 {head_extra}</head>
 <body>
 {body}
 <script src="assets/js/config.js"></script>
+<script src="assets/js/calculator.js"></script>
 <script src="assets/js/site.js"></script>
 {scripts}</body>
 </html>
@@ -574,7 +532,7 @@ def build_page(path):
     body = render(body_tpl, ctx, name).strip()
     out = PAGE_TPL.format(title=esc(html.unescape(title)), desc=esc(html.unescape(desc_m.group(1))) if desc_m else '',
                           site=SITE_NAME, head_extra=head_extra, body=body, scripts=scripts)
-    out = hover_classes(rewrite_links(out))
+    out = inline_icons(hover_classes(rewrite_links(out)))
     leftover = re.findall(r'\{\{.*?\}\}|<sc-|<dc-import|<x-import|style-hover', out)
     if leftover:
         raise ValueError(f'{name}: unrendered template code: {leftover[:5]}')
@@ -582,11 +540,28 @@ def build_page(path):
     return slug(name) + '.html'
 
 
+ICON_RE = re.compile(r'<i data-icon="([\w-]+)"(?: class="([^"]*)")?></i>')
+
+
+def inline_icons(s):
+    """<i data-icon="plane" class="x"></i> becomes the inline Lucide SVG."""
+    def rep(m):
+        name, cls = m.group(1), m.group(2)
+        if name not in ICONS:
+            raise ValueError('unknown icon: ' + name)
+        return (f'<svg class="icon{" " + cls if cls else ""}" width="24" height="24" viewBox="0 0 24 24" fill="none" '
+                f'stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" '
+                f'focusable="false">{ICONS[name]}</svg>')
+    return ICON_RE.sub(rep, s)
+
+
 def expand_wa(v):
-    """{"$wa": "text"} in page data becomes a WhatsApp link."""
+    """{"$wa": "text"} in page data becomes a WhatsApp link; {"$data": "name"} loads _src/data/name.json."""
     if isinstance(v, dict):
         if set(v) == {'$wa'}:
             return wa(v['$wa'])
+        if set(v) == {'$data'}:
+            return expand_wa(json.loads((ROOT / '_src' / 'data' / (v['$data'] + '.json')).read_text(encoding='utf-8')))
         return {k: expand_wa(x) for k, x in v.items()}
     if isinstance(v, list):
         return [expand_wa(x) for x in v]
