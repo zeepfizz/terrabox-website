@@ -1,0 +1,18 @@
+<!-- Shipping calculator (handoff section 4). Logic in assets/js/calculator.js. -->
+      <form class="calc" novalidate aria-labelledby="calc-h">
+        <div class="calc__inputs">
+          <h3><i data-icon="calculator"></i>Datos de tu caja</h3>
+          <label class="field"><span class="field__label">Peso</span><span class="field__control"><input name="peso" type="text" inputmode="decimal" autocomplete="off" placeholder="Ej. 6"><span class="field__affix">lb</span></span><span class="field__hint">Redondeamos a la libra siguiente.</span></label>
+          <label class="field"><span class="field__label">Valor declarado</span><span class="field__control"><span class="field__affix field__affix--pre">US$</span><input name="valor" type="text" inputmode="decimal" autocomplete="off" placeholder="Ej. 150"></span><span class="field__hint">Hasta US$200 por caja: cero pago de impuestos.</span></label>
+          <button type="submit" class="btn btn--navy">Calcular <i data-icon="arrow-right" class="btn__arrow"></i></button>
+        </div>
+        <div class="calc__result" tabindex="-1" aria-live="polite">
+          <span class="eyebrow">Tu envío</span>
+          <span class="calc__price">—</span>
+          <p class="calc__detail">Escribe el peso para ver tu precio.</p>
+          <p class="calc__tax" hidden></p>
+          <p class="calc__includes"><i data-icon="circle-check"></i>Incluye seguro y transporte nacional a ciudades principales</p>
+          <a class="btn btn--white" href="Registro.dc.html" data-tb-url="register">Regístrate gratis <i data-icon="arrow-right" class="btn__arrow"></i></a>
+          <p class="calc__fine">Valor de referencia. El precio final se confirma al recibir el paquete en bodega.</p>
+        </div>
+      </form>

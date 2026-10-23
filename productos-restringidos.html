@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="es-CO">
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Qué productos no puedo enviar a Colombia | TerraBox</title>
-<meta name="description" content="Lista de productos prohibidos y con restricciones para envíos de Estados Unidos a Colombia: celulares, baterías, perfumes, suplementos y más.">
+<title>Artículos prohibidos para enviar a Colombia | TerraBox Cargo</title>
+<meta name="description" content="Qué no puedes enviar a Colombia por courier: armas, dinero, drogas, baterías peligrosas, químicos, alimentos perecederos, medicamentos y más. Límites de cantidad y valor.">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="es_CO">
 <meta property="og:site_name" content="TerraBox Cargo">
-<meta property="og:title" content="Qué productos no puedo enviar a Colombia | TerraBox">
-<meta property="og:description" content="Lista de productos prohibidos y con restricciones para envíos de Estados Unidos a Colombia: celulares, baterías, perfumes, suplementos y más.">
-<meta name="theme-color" content="#0a1a4d">
+<meta property="og:title" content="Artículos prohibidos para enviar a Colombia | TerraBox Cargo">
+<meta property="og:description" content="Qué no puedes enviar a Colombia por courier: armas, dinero, drogas, baterías peligrosas, químicos, alimentos perecederos, medicamentos y más. Límites de cantidad y valor.">
+<meta name="theme-color" content="#15369c">
+<script>document.documentElement.classList.add('js')</script>
 <link rel="icon" type="image/svg+xml" href="assets/img/logo-symbol.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,222 +19,173 @@
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/site.css">
 <link rel="stylesheet" href="assets/css/interactions.css">
+<link rel="stylesheet" href="assets/css/redesign.css">
 </head>
 <body>
-<a href="#main" class="ff5a594 skip-link" style="position:absolute;left:12px;top:-60px;z-index:200;padding:12px 16px;background:var(--navy-800);color:#fff;border-radius:var(--radius-md);font:600 14px/1 var(--font-sans)">Saltar al contenido</a>
-<header id="site-header" style="position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--border-subtle);transition:transform var(--dur-base) var(--ease-out)">
-  <div style="max-width:var(--container-max);margin:0 auto;padding:0 var(--space-5);height:68px;display:flex;align-items:center;gap:var(--space-6)">
-    <a href="index.html" aria-label="TerraBox Cargo, inicio" style="display:flex;align-items:center;flex-shrink:0;min-height:44px">
-      <img src="assets/img/logo-horizontal.svg" alt="TerraBox Cargo" width="150" height="34" style="display:block;height:34px;width:auto">
-    </a>
-    <nav class="desktop-only" aria-label="Principal" style="display:flex;align-items:center;gap:2px;flex:1;min-width:0"><div class="nav-group" data-group="envios" style="position:relative"><button type="button" class="nav-btn is-current" id="nav-envios" aria-expanded="false" aria-controls="dd-envios" style="display:flex;align-items:center;gap:6px;height:44px;padding:0 12px;border:0;background:transparent;border-radius:var(--radius-md);font:600 14px/1 var(--font-sans);color:var(--navy-800);cursor:pointer">Envíos a Colombia<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><div id="dd-envios" class="nav-dd" hidden style="position:absolute;top:calc(100% + 6px);left:0;min-width:260px;background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-3);padding:var(--space-2);display:flex;flex-direction:column"><a class="h207c06" href="envios-colombia.html" style="display:flex;align-items:center;min-height:44px;padding:0 12px;border-radius:var(--radius-md);font:500 14px/1.3 var(--font-sans);color:var(--fg-1)">Envíos a Colombia</a><a class="h207c06" href="tarifas.html" style="display:flex;align-items:center;min-height:44px;padding:0 12px;border-radius:var(--radius-md);font:500 14px/1.3 var(--font-sans);color:var(--fg-1)">Tarifas y calculadora</a><a class="h207c06" href="aduana-impuestos.html" style="display:flex;align-items:center;min-height:44px;padding:0 12px;border-radius:var(--radius-md);font:500 14px/1.3 var(--font-sans);color:var(--fg-1)">Aduana e impuestos</a><a class="h207c06" href="productos-restringidos.html" style="display:flex;align-items:center;min-height:44px;padding:0 12px;border-radius:var(--radius-md);font:500 14px/1.3 var(--font-sans);color:var(--fg-1)">Productos restringidos</a><a class="h207c06" href="tiendas.html" style="display:flex;align-items:center;min-height:44px;padding:0 12px;border-radius:var(--radius-md);font:500 14px/1.3 var(--font-sans);color:var(--fg-1)">Tiendas recomendadas</a></div></div><div style="position:relative"><a href="casillero-virtual.html" class="h3c8094 nav-btn" style="display:flex;align-items:center;height:44px;padding:0 12px;border-radius:var(--radius-md);font:600 14px/1 var(--font-sans);color:var(--navy-800);background:transparent">Cómo funciona</a></div><div class="nav-group" data-group="servicios" style="position:relative"><button type="button" class="nav-btn" id="nav-servicios" aria-expanded="false" aria-controls="dd-servicios" style="display:flex;align-items:center;gap:6px;height:44px;padding:0 12px;border:0;background:transparent;border-radius:var(--radius-md);font:600 14px/1 var(--font-sans);color:var(--navy-800);cursor:pointer">Servicios<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><div id="dd-servicios" class="nav-dd" hidden style="position:absolute;top:calc(100% + 6px);left:0;min-width:260px;background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-3);padding:var(--space-2);display:flex;flex-direction:column"><a class="h207c06" href="consolidacion.html" style="display:flex;align-items:center;min-height:44px;padding:0 12px;border-radius:var(--radius-md);font:500 14px/1.3 var(--font-sans);color:var(--fg-1)">Consolidación y reempaque</a><a class="h207c06" href="compramos-por-ti.html" style="display:flex;align-items:center;min-height:44px;padding:0 12px;border-radius:var(--radius-md);font:500 14px/1.3 var(--font-sans);color:var(--fg-1)">Compramos por ti</a><a class="h207c06" href="carga.html" style="display:flex;align-items:center;min-height:44px;padding:0 12px;border-radius:var(--radius-md);font:500 14px/1.3 var(--font-sans);color:var(--fg-1)">Carga aérea y marítima</a></div></div><div class="nav-group" data-group="negocios" style="position:relative"><button type="button" class="nav-btn" id="nav-negocios" aria-expanded="false" aria-controls="dd-negocios" style="display:flex;align-items:center;gap:6px;height:44px;padding:0 12px;border:0;background:transparent;border-radius:var(--radius-md);font:600 14px/1 var(--font-sans);color:var(--navy-800);cursor:pointer">Negocios<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><div id="dd-negocios" class="nav-dd" hidden style="position:absolute;top:calc(100% + 6px);left:0;min-width:260px;background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-3);padding:var(--space-2);display:flex;flex-direction:column"><a class="h207c06" href="negocios.html" style="display:flex;align-items:center;min-height:44px;padding:0 12px;border-radius:var(--radius-md);font:500 14px/1.3 var(--font-sans);color:var(--fg-1)">Soluciones para negocios</a><a class="h207c06" href="revendedores.html" style="display:flex;align-items:center;min-height:44px;padding:0 12px;border-radius:var(--radius-md);font:500 14px/1.3 var(--font-sans);color:var(--fg-1)">Revendedores</a><a class="h207c06" href="empresas.html" style="display:flex;align-items:center;min-height:44px;padding:0 12px;border-radius:var(--radius-md);font:500 14px/1.3 var(--font-sans);color:var(--fg-1)">Empresas e importadores</a><a class="h207c06" href="solicitar-tarifa.html" style="display:flex;align-items:center;min-height:44px;padding:0 12px;border-radius:var(--radius-md);font:500 14px/1.3 var(--font-sans);color:var(--fg-1)">Solicitar tarifa</a></div></div><div class="nav-group" data-group="ayuda" style="position:relative"><button type="button" class="nav-btn" id="nav-ayuda" aria-expanded="false" aria-controls="dd-ayuda" style="display:flex;align-items:center;gap:6px;height:44px;padding:0 12px;border:0;background:transparent;border-radius:var(--radius-md);font:600 14px/1 var(--font-sans);color:var(--navy-800);cursor:pointer">Ayuda<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><div id="dd-ayuda" class="nav-dd" hidden style="position:absolute;top:calc(100% + 6px);left:0;min-width:260px;background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-3);padding:var(--space-2);display:flex;flex-direction:column"><a class="h207c06" href="ayuda.html" style="display:flex;align-items:center;min-height:44px;padding:0 12px;border-radius:var(--radius-md);font:500 14px/1.3 var(--font-sans);color:var(--fg-1)">Preguntas frecuentes</a><a class="h207c06" href="reclamos-seguro.html" style="display:flex;align-items:center;min-height:44px;padding:0 12px;border-radius:var(--radius-md);font:500 14px/1.3 var(--font-sans);color:var(--fg-1)">Reclamos y seguro</a><a class="h207c06" href="contacto.html" style="display:flex;align-items:center;min-height:44px;padding:0 12px;border-radius:var(--radius-md);font:500 14px/1.3 var(--font-sans);color:var(--fg-1)">Contacto</a></div></div></nav>
-    <div class="desktop-only" style="display:flex;align-items:center;gap:var(--space-2);flex-shrink:0">
-      <a href="rastreo.html" style="display:flex;align-items:center;gap:6px;height:44px;padding:0 10px;font:600 14px/1 var(--font-sans);color:var(--blue-600)">Rastrear</a>
-      <a href="ingresar.html" style="display:flex;align-items:center;height:44px;padding:0 10px;font:600 14px/1 var(--font-sans);color:var(--blue-600)">Ingresar</a>
-      <a class="h831ff8" href="registro.html" style="display:inline-flex;align-items:center;height:40px;padding:0 16px;border-radius:var(--radius-md);background:var(--action-primary);color:#fff;font:600 14px/1 var(--font-sans);white-space:nowrap">Abrir casillero gratis</a>
+<a href="#main" class="skip-link">Saltar al contenido</a>
+<header id="site-header" class="hdr">
+  <div class="hdr__bar">
+    <a class="hdr__logo" href="index.html" aria-label="TerraBox Cargo, inicio"><img src="assets/img/logo-horizontal.svg" alt="TerraBox Cargo" width="178" height="30"></a>
+    <nav class="hdr__nav" aria-label="Principal"><a class="hdr__link" href="index.html">Inicio</a><a class="hdr__link" href="casillero-virtual.html">¿Cómo funciona?</a><a class="hdr__link" href="tarifas.html">Tarifas</a><a class="hdr__link" href="tarifas.html#calculadora">Calculadora</a><a class="hdr__link is-current" href="productos-restringidos.html" aria-current="page">Artículos prohibidos</a><a class="hdr__link" href="contacto.html">Contacto</a></nav>
+    <div class="hdr__actions">
+      <a class="btn btn--outline btn--sm" href="ingresar.html" data-tb-url="login">Ingresar</a>
+      <a class="btn btn--primary btn--sm" href="registro.html" data-tb-url="register">Registrarse <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a>
     </div>
-    <div class="mobile-only" style="margin-left:auto;display:flex;align-items:center;gap:var(--space-1)">
-      <a href="rastreo.html" style="display:flex;align-items:center;gap:6px;height:44px;padding:0 10px;font:600 14px/1 var(--font-sans);color:var(--blue-600)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg><span class="hide-xs">Rastrear</span></a>
-      <button type="button" id="menu-btn" aria-expanded="false" aria-controls="menu-movil" style="display:flex;align-items:center;gap:8px;height:44px;padding:0 12px;border:1px solid var(--border-strong);background:#fff;border-radius:var(--radius-md);font:600 14px/1 var(--font-sans);color:var(--navy-800);cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>Menú</button>
-    </div>
+    <button type="button" id="menu-btn" class="hdr__menu" aria-expanded="false" aria-controls="menu-movil"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="4" x2="20" y1="12" y2="12"/> <line x1="4" x2="20" y1="6" y2="6"/> <line x1="4" x2="20" y1="18" y2="18"/></svg>Menú</button>
   </div>
 </header>
-<div id="menu-movil" role="dialog" aria-modal="true" aria-label="Menú" hidden style="position:fixed;inset:0;z-index:300;background:#fff;flex-direction:column">
-  <div style="display:flex;align-items:center;justify-content:space-between;height:68px;padding:0 var(--space-5);border-bottom:1px solid var(--border-subtle);flex-shrink:0">
-    <img src="assets/img/logo-horizontal.svg" alt="TerraBox Cargo" width="140" height="32" style="height:32px;width:auto">
-    <button type="button" id="menu-close" aria-label="Cerrar menú" style="width:44px;height:44px;border:1px solid var(--border-strong);background:#fff;border-radius:var(--radius-md);font:400 22px/1 var(--font-sans);color:var(--navy-800);cursor:pointer">×</button>
+<div id="menu-movil" class="mnav" role="dialog" aria-modal="true" aria-label="Menú" hidden>
+  <div class="mnav__top">
+    <img src="assets/img/logo-horizontal.svg" alt="TerraBox Cargo" width="166" height="28">
+    <button type="button" id="menu-close" class="mnav__close" aria-label="Cerrar menú"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/> <path d="m6 6 12 12"/></svg></button>
   </div>
-  <nav aria-label="Principal" style="flex:1;overflow-y:auto;padding:var(--space-2) var(--space-5)"><div style="border-bottom:1px solid var(--border-subtle)"><button type="button" class="m-group-btn" aria-expanded="false" aria-controls="m-envios" style="width:100%;display:flex;align-items:center;justify-content:space-between;min-height:56px;border:0;background:transparent;font:600 17px/1.2 var(--font-sans);color:var(--navy-800);cursor:pointer;padding:0">Envíos a Colombia<span aria-hidden="true" class="m-sign" style="font:400 22px/1 var(--font-sans);color:var(--fg-3)">+</span></button><div id="m-envios" hidden style="flex-direction:column;padding-bottom:var(--space-3)"><a href="envios-colombia.html" style="display:flex;align-items:center;min-height:44px;padding-left:var(--space-3);font:500 15px/1.3 var(--font-sans);color:var(--fg-1)">Envíos a Colombia</a><a href="tarifas.html" style="display:flex;align-items:center;min-height:44px;padding-left:var(--space-3);font:500 15px/1.3 var(--font-sans);color:var(--fg-1)">Tarifas y calculadora</a><a href="aduana-impuestos.html" style="display:flex;align-items:center;min-height:44px;padding-left:var(--space-3);font:500 15px/1.3 var(--font-sans);color:var(--fg-1)">Aduana e impuestos</a><a href="productos-restringidos.html" style="display:flex;align-items:center;min-height:44px;padding-left:var(--space-3);font:500 15px/1.3 var(--font-sans);color:var(--fg-1)">Productos restringidos</a><a href="tiendas.html" style="display:flex;align-items:center;min-height:44px;padding-left:var(--space-3);font:500 15px/1.3 var(--font-sans);color:var(--fg-1)">Tiendas recomendadas</a></div></div><div style="border-bottom:1px solid var(--border-subtle)"><a href="casillero-virtual.html" style="display:flex;align-items:center;min-height:56px;font:600 17px/1.2 var(--font-sans);color:var(--navy-800)">Cómo funciona</a></div><div style="border-bottom:1px solid var(--border-subtle)"><button type="button" class="m-group-btn" aria-expanded="false" aria-controls="m-servicios" style="width:100%;display:flex;align-items:center;justify-content:space-between;min-height:56px;border:0;background:transparent;font:600 17px/1.2 var(--font-sans);color:var(--navy-800);cursor:pointer;padding:0">Servicios<span aria-hidden="true" class="m-sign" style="font:400 22px/1 var(--font-sans);color:var(--fg-3)">+</span></button><div id="m-servicios" hidden style="flex-direction:column;padding-bottom:var(--space-3)"><a href="consolidacion.html" style="display:flex;align-items:center;min-height:44px;padding-left:var(--space-3);font:500 15px/1.3 var(--font-sans);color:var(--fg-1)">Consolidación y reempaque</a><a href="compramos-por-ti.html" style="display:flex;align-items:center;min-height:44px;padding-left:var(--space-3);font:500 15px/1.3 var(--font-sans);color:var(--fg-1)">Compramos por ti</a><a href="carga.html" style="display:flex;align-items:center;min-height:44px;padding-left:var(--space-3);font:500 15px/1.3 var(--font-sans);color:var(--fg-1)">Carga aérea y marítima</a></div></div><div style="border-bottom:1px solid var(--border-subtle)"><button type="button" class="m-group-btn" aria-expanded="false" aria-controls="m-negocios" style="width:100%;display:flex;align-items:center;justify-content:space-between;min-height:56px;border:0;background:transparent;font:600 17px/1.2 var(--font-sans);color:var(--navy-800);cursor:pointer;padding:0">Negocios<span aria-hidden="true" class="m-sign" style="font:400 22px/1 var(--font-sans);color:var(--fg-3)">+</span></button><div id="m-negocios" hidden style="flex-direction:column;padding-bottom:var(--space-3)"><a href="negocios.html" style="display:flex;align-items:center;min-height:44px;padding-left:var(--space-3);font:500 15px/1.3 var(--font-sans);color:var(--fg-1)">Soluciones para negocios</a><a href="revendedores.html" style="display:flex;align-items:center;min-height:44px;padding-left:var(--space-3);font:500 15px/1.3 var(--font-sans);color:var(--fg-1)">Revendedores</a><a href="empresas.html" style="display:flex;align-items:center;min-height:44px;padding-left:var(--space-3);font:500 15px/1.3 var(--font-sans);color:var(--fg-1)">Empresas e importadores</a><a href="solicitar-tarifa.html" style="display:flex;align-items:center;min-height:44px;padding-left:var(--space-3);font:500 15px/1.3 var(--font-sans);color:var(--fg-1)">Solicitar tarifa</a></div></div><div style="border-bottom:1px solid var(--border-subtle)"><button type="button" class="m-group-btn" aria-expanded="false" aria-controls="m-ayuda" style="width:100%;display:flex;align-items:center;justify-content:space-between;min-height:56px;border:0;background:transparent;font:600 17px/1.2 var(--font-sans);color:var(--navy-800);cursor:pointer;padding:0">Ayuda<span aria-hidden="true" class="m-sign" style="font:400 22px/1 var(--font-sans);color:var(--fg-3)">+</span></button><div id="m-ayuda" hidden style="flex-direction:column;padding-bottom:var(--space-3)"><a href="ayuda.html" style="display:flex;align-items:center;min-height:44px;padding-left:var(--space-3);font:500 15px/1.3 var(--font-sans);color:var(--fg-1)">Preguntas frecuentes</a><a href="reclamos-seguro.html" style="display:flex;align-items:center;min-height:44px;padding-left:var(--space-3);font:500 15px/1.3 var(--font-sans);color:var(--fg-1)">Reclamos y seguro</a><a href="contacto.html" style="display:flex;align-items:center;min-height:44px;padding-left:var(--space-3);font:500 15px/1.3 var(--font-sans);color:var(--fg-1)">Contacto</a></div></div>
-    <a href="ingresar.html" style="display:flex;align-items:center;min-height:56px;font:600 17px/1.2 var(--font-sans);color:var(--blue-600)">Ingresar</a>
+  <nav class="mnav__list" aria-label="Principal"><a class="mnav__link" href="index.html">Inicio</a><a class="mnav__link" href="casillero-virtual.html">¿Cómo funciona?</a><a class="mnav__link" href="tarifas.html">Tarifas</a><a class="mnav__link" href="tarifas.html#calculadora">Calculadora</a><a class="mnav__link" href="productos-restringidos.html">Artículos prohibidos</a><a class="mnav__link" href="contacto.html">Contacto</a>
+    <div class="mnav__group">
+      <button type="button" class="m-group-btn mnav__link" aria-expanded="false" aria-controls="m-mas">Más servicios y ayuda<span aria-hidden="true" class="m-sign">+</span></button>
+      <div id="m-mas" class="mnav__sub" hidden><a class="mnav__sublink" href="rastreo.html">Rastrear envío</a><a class="mnav__sublink" href="ayuda.html">Preguntas frecuentes</a><a class="mnav__sublink" href="consolidacion.html">Consolidación</a><a class="mnav__sublink" href="compramos-por-ti.html">Compramos por ti</a><a class="mnav__sublink" href="negocios.html">Negocios y revendedores</a><a class="mnav__sublink" href="carga.html">Carga aérea y marítima</a></div>
+    </div>
   </nav>
-  <div style="flex-shrink:0;padding:var(--space-4) var(--space-5);border-top:1px solid var(--border-subtle);display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3)">
-    <a href="registro.html" style="display:flex;align-items:center;justify-content:center;height:48px;border-radius:var(--radius-md);background:var(--action-primary);color:#fff;font:600 15px/1 var(--font-sans);text-align:center">Abrir casillero gratis</a>
-    <a href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20Productos%20restringidos" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;height:48px;border-radius:var(--radius-md);background:#fff;border:1px solid var(--border-strong);color:var(--tb-navy);font:600 15px/1 var(--font-sans)">WhatsApp</a>
+  <div class="mnav__actions">
+    <a class="btn btn--outline" href="ingresar.html" data-tb-url="login">Ingresar</a>
+    <a class="btn btn--primary" href="registro.html" data-tb-url="register">Registrarse</a>
+    <a class="btn btn--whatsapp mnav__wa" href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20Art%C3%ADculos%20prohibidos" target="_blank" rel="noopener"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Escribir por WhatsApp</a>
   </div>
 </div>
-<a href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20Productos%20restringidos" target="_blank" rel="noopener" id="float-wa" class="h5d1be1 " aria-label="Escribir por WhatsApp (se abre en una pestaña nueva)" style="position:fixed;right:20px;bottom:20px;z-index:90;display:flex;align-items:center;gap:8px;height:48px;padding:0 18px;border-radius:var(--radius-pill);background:var(--navy-800);color:#fff;font:600 15px/1 var(--font-sans);box-shadow:var(--shadow-3)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>WhatsApp</a>
+<a href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20Art%C3%ADculos%20prohibidos" target="_blank" rel="noopener" id="float-wa" class="float-wa" aria-label="Escribir por WhatsApp (se abre en una pestaña nueva)"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg><span>WhatsApp</span></a>
 
-<main id="main" tabindex="-1" style="outline:none">
-  <section aria-labelledby="h1" style="padding:clamp(32px,5vw,56px) var(--space-5) var(--space-8)">
-    <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:var(--space-5)">
-      <nav aria-label="Ruta de navegación" style="font:400 13px/1.4 var(--font-sans);color:var(--fg-3)"><a href="index.html">Inicio</a> / <a href="envios-colombia.html">Envíos a Colombia</a> / <span aria-current="page">Productos restringidos</span></nav>
-      <h1 id="h1" style="margin:0;font:700 clamp(32px,4.6vw,48px)/1.08 var(--font-display);letter-spacing:var(--ls-display);color:var(--text-heading);text-wrap:balance">Antes de comprar, revisa qué se puede enviar</h1>
-      <p style="margin:0;font:400 17px/1.6 var(--font-sans);color:var(--fg-2);max-width:62ch">Si no encuentras tu producto, envíanos el enlace y te confirmamos antes de que compres.</p>
-      <p role="note" style="margin:0;padding:var(--space-3) var(--space-4);background:var(--status-warning-bg);border-radius:var(--radius-md);font:500 14px/1.5 var(--font-sans);color:#7a4c08">Lista pendiente de validación por TerraBox. Actualizada el [fecha].</p>
-      <label class="tb-field"><span class="tb-label">Busca un producto</span><span class="tb-input tb-input--lg"><input id="pr-search" type="search" placeholder="Por ejemplo: perfume, batería, celular"></span></label>
-      <span id="pr-count" role="status" aria-live="polite" style="font:400 13px/1.4 var(--font-sans);color:var(--fg-3)"></span>
+<main id="main" tabindex="-1">
+  <section class="page-hero" aria-labelledby="h1">
+    <div class="container">
+      <nav class="crumbs" aria-label="Ruta de navegación"><a href="index.html">Inicio</a> / <span aria-current="page">Artículos prohibidos</span></nav>
+      <span class="eyebrow">Antes de comprar</span>
+      <h1 id="h1" class="h1">Artículos prohibidos Colombia</h1>
+      <p class="lead">El envío de paquetes y mercancías por courier o tráfico postal a Colombia tiene prohibiciones estrictas según la DIAN y las principales empresas de transporte.</p>
     </div>
   </section>
-  <section aria-label="Lista de productos" style="padding:0 var(--space-5) clamp(48px,7vw,80px)">
-    <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:var(--space-4)">
-      
-        
-          <div class="pr-group" data-group="prohibidos" style="background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);overflow:hidden">
-            <h2 style="margin:0">
-              <button type="button" class="pr-toggle" aria-expanded="true" aria-controls="pr-list-prohibidos" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);min-height:64px;padding:var(--space-4) var(--space-6);border:0;background:transparent;cursor:pointer;text-align:left">
-                <span style="display:flex;align-items:center;gap:var(--space-3);font:700 20px/1.25 var(--font-display);color:var(--navy-800)">Prohibidos <span style="font:600 12px/1 var(--font-sans);padding:5px 8px;border-radius:var(--radius-sm);background:var(--status-danger-bg);color:#a82b2b">No se envían</span></span>
-                <span aria-hidden="true" style="font:400 22px/1 var(--font-sans);color:var(--fg-3)" class="pr-sign">−</span>
-              </button>
-            </h2>
-            <ul id="pr-list-prohibidos" style="list-style:none;margin:0;padding:0 var(--space-6) var(--space-3)">
-                
-                  <li id="prohibidos-0" class="pr-item" data-search="Armas, municiones y réplicas [Confirmar alcance]." style="padding:var(--space-4) 0;border-top:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:4px">
-                    <span style="font:600 16px/1.35 var(--font-sans);color:var(--fg-1)">Armas, municiones y réplicas</span>
-                    <span style="font:400 14px/1.5 var(--font-sans);color:var(--fg-2)">[Confirmar alcance].</span>
-                  </li>
-                
-                  <li id="prohibidos-1" class="pr-item" data-search="Sustancias ilegales [Confirmar alcance]." style="padding:var(--space-4) 0;border-top:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:4px">
-                    <span style="font:600 16px/1.35 var(--font-sans);color:var(--fg-1)">Sustancias ilegales</span>
-                    <span style="font:400 14px/1.5 var(--font-sans);color:var(--fg-2)">[Confirmar alcance].</span>
-                  </li>
-                
-                  <li id="prohibidos-2" class="pr-item" data-search="Explosivos e inflamables Incluye aerosoles inflamables. [Confirmar]." style="padding:var(--space-4) 0;border-top:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:4px">
-                    <span style="font:600 16px/1.35 var(--font-sans);color:var(--fg-1)">Explosivos e inflamables</span>
-                    <span style="font:400 14px/1.5 var(--font-sans);color:var(--fg-2)">Incluye aerosoles inflamables. [Confirmar].</span>
-                  </li>
-                
-                  <li id="prohibidos-3" class="pr-item" data-search="Dinero en efectivo y valores [Confirmar]." style="padding:var(--space-4) 0;border-top:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:4px">
-                    <span style="font:600 16px/1.35 var(--font-sans);color:var(--fg-1)">Dinero en efectivo y valores</span>
-                    <span style="font:400 14px/1.5 var(--font-sans);color:var(--fg-2)">[Confirmar].</span>
-                  </li>
-                
-              </ul>
-          </div>
-      
-        
-          <div class="pr-group" data-group="restricciones" style="background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);overflow:hidden">
-            <h2 style="margin:0">
-              <button type="button" class="pr-toggle" aria-expanded="true" aria-controls="pr-list-restricciones" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);min-height:64px;padding:var(--space-4) var(--space-6);border:0;background:transparent;cursor:pointer;text-align:left">
-                <span style="display:flex;align-items:center;gap:var(--space-3);font:700 20px/1.25 var(--font-display);color:var(--navy-800)">Con restricciones <span style="font:600 12px/1 var(--font-sans);padding:5px 8px;border-radius:var(--radius-sm);background:var(--status-warning-bg);color:#99600a">Requieren revisión</span></span>
-                <span aria-hidden="true" style="font:400 22px/1 var(--font-sans);color:var(--fg-3)" class="pr-sign">−</span>
-              </button>
-            </h2>
-            <ul id="pr-list-restricciones" style="list-style:none;margin:0;padding:0 var(--space-6) var(--space-3)">
-                
-                  <li id="cel" class="pr-item" data-search="Celulares [Cantidad permitida y requisitos]. Ver la sección Celulares." style="padding:var(--space-4) 0;border-top:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:4px">
-                    <span style="font:600 16px/1.35 var(--font-sans);color:var(--fg-1)">Celulares</span>
-                    <span style="font:400 14px/1.5 var(--font-sans);color:var(--fg-2)">[Cantidad permitida y requisitos]. Ver la sección Celulares.</span>
-                  </li>
-                
-                  <li id="restricciones-1" class="pr-item" data-search="Baterías de litio sueltas [Condiciones de envío]." style="padding:var(--space-4) 0;border-top:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:4px">
-                    <span style="font:600 16px/1.35 var(--font-sans);color:var(--fg-1)">Baterías de litio sueltas</span>
-                    <span style="font:400 14px/1.5 var(--font-sans);color:var(--fg-2)">[Condiciones de envío].</span>
-                  </li>
-                
-                  <li id="restricciones-2" class="pr-item" data-search="Perfumes [Cantidad y condiciones]." style="padding:var(--space-4) 0;border-top:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:4px">
-                    <span style="font:600 16px/1.35 var(--font-sans);color:var(--fg-1)">Perfumes</span>
-                    <span style="font:400 14px/1.5 var(--font-sans);color:var(--fg-2)">[Cantidad y condiciones].</span>
-                  </li>
-                
-                  <li id="restricciones-3" class="pr-item" data-search="Medicamentos [Requisitos y documentos]." style="padding:var(--space-4) 0;border-top:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:4px">
-                    <span style="font:600 16px/1.35 var(--font-sans);color:var(--fg-1)">Medicamentos</span>
-                    <span style="font:400 14px/1.5 var(--font-sans);color:var(--fg-2)">[Requisitos y documentos].</span>
-                  </li>
-                
-                  <li id="restricciones-4" class="pr-item" data-search="Suplementos [Requisitos y cantidades]." style="padding:var(--space-4) 0;border-top:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:4px">
-                    <span style="font:600 16px/1.35 var(--font-sans);color:var(--fg-1)">Suplementos</span>
-                    <span style="font:400 14px/1.5 var(--font-sans);color:var(--fg-2)">[Requisitos y cantidades].</span>
-                  </li>
-                
-              </ul>
-          </div>
-      
-        
-          <div class="pr-group" data-group="condiciones" style="background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);overflow:hidden">
-            <h2 style="margin:0">
-              <button type="button" class="pr-toggle" aria-expanded="true" aria-controls="pr-list-condiciones" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);min-height:64px;padding:var(--space-4) var(--space-6);border:0;background:transparent;cursor:pointer;text-align:left">
-                <span style="display:flex;align-items:center;gap:var(--space-3);font:700 20px/1.25 var(--font-display);color:var(--navy-800)">Permitidos con condiciones <span style="font:600 12px/1 var(--font-sans);padding:5px 8px;border-radius:var(--radius-sm);background:var(--status-success-bg);color:#15734e">Se envían</span></span>
-                <span aria-hidden="true" style="font:400 22px/1 var(--font-sans);color:var(--fg-3)" class="pr-sign">−</span>
-              </button>
-            </h2>
-            <ul id="pr-list-condiciones" style="list-style:none;margin:0;padding:0 var(--space-6) var(--space-3)">
-                
-                  <li id="condiciones-0" class="pr-item" data-search="Equipos con batería integrada Portátiles, tablets, relojes. [Condiciones]." style="padding:var(--space-4) 0;border-top:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:4px">
-                    <span style="font:600 16px/1.35 var(--font-sans);color:var(--fg-1)">Equipos con batería integrada</span>
-                    <span style="font:400 14px/1.5 var(--font-sans);color:var(--fg-2)">Portátiles, tablets, relojes. [Condiciones].</span>
-                  </li>
-                
-                  <li id="condiciones-1" class="pr-item" data-search="Cosméticos [Cantidades por envío]." style="padding:var(--space-4) 0;border-top:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:4px">
-                    <span style="font:600 16px/1.35 var(--font-sans);color:var(--fg-1)">Cosméticos</span>
-                    <span style="font:400 14px/1.5 var(--font-sans);color:var(--fg-2)">[Cantidades por envío].</span>
-                  </li>
-                
-                  <li id="condiciones-2" class="pr-item" data-search="Repuestos de vehículos [Condiciones]." style="padding:var(--space-4) 0;border-top:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:4px">
-                    <span style="font:600 16px/1.35 var(--font-sans);color:var(--fg-1)">Repuestos de vehículos</span>
-                    <span style="font:400 14px/1.5 var(--font-sans);color:var(--fg-2)">[Condiciones].</span>
-                  </li>
-                
-              </ul>
-          </div>
-      
-      <div id="pr-none" hidden>
-        <div style="padding:var(--space-8);background:#fff;border:1px dashed var(--border-strong);border-radius:var(--radius-lg);display:flex;flex-direction:column;gap:var(--space-3);align-items:flex-start">
-          <h2 style="margin:0;font:700 20px/1.3 var(--font-display);color:var(--navy-800)">0 resultados para “<span id="pr-q"></span>”</h2>
-          <p style="margin:0;font:400 15px/1.55 var(--font-sans);color:var(--fg-2)">Envíanos el enlace del producto y te confirmamos si podemos enviarlo.</p>
-          <a class="h831ff8" id="pr-waq" href="https://wa.me/?text=Quiero%20confirmar%20si%20puedo%20enviar%20este%20producto%3A%20" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:var(--radius-md);background:var(--action-primary);color:#fff;font:600 15px/1 var(--font-sans)">Consultar por WhatsApp</a>
+
+  <section class="section" style="padding-top:clamp(24px,4vw,40px)" aria-labelledby="sust-h">
+    <div class="container">
+      <div class="section__head">
+        <h2 id="sust-h" class="h2">Artículos y sustancias prohibidas</h2>
+      </div>
+      <div class="acc">
+        <div class="faq">
+          
+            <div id="armas" class="faq-item">
+              <h3 class="acc__h"><button type="button" class="faq-btn acc__btn" id="q-armas" aria-expanded="false" aria-controls="a-armas"><span class="acc__title"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/> <line x1="22" x2="18" y1="12" y2="12"/> <line x1="6" x2="2" y1="12" y2="12"/> <line x1="12" x2="12" y1="6" y2="2"/> <line x1="12" x2="12" y1="22" y2="18"/></svg>Armas y explosivos</span><span aria-hidden="true" class="faq-sign">+</span></button></h3>
+              <div id="a-armas" role="region" aria-labelledby="q-armas" hidden class="acc__panel"><p><strong>Armas y explosivos:</strong> armas de fuego, municiones, réplicas, juguetes bélicos, granadas y material explosivo.</p></div>
+            </div>
+          
+            <div id="dinero" class="faq-item">
+              <h3 class="acc__h"><button type="button" class="faq-btn acc__btn" id="q-dinero" aria-expanded="false" aria-controls="a-dinero"><span class="acc__title"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="20" height="12" x="2" y="6" rx="2"/> <circle cx="12" cy="12" r="2"/> <path d="M6 12h.01M18 12h.01"/></svg>Dinero y valores</span><span aria-hidden="true" class="faq-sign">+</span></button></h3>
+              <div id="a-dinero" role="region" aria-labelledby="q-dinero" hidden class="acc__panel"><p><strong>Dinero y valores:</strong> efectivo, monedas, joyas, metales preciosos, títulos al portador, tarjetas de crédito o débito.</p></div>
+            </div>
+          
+            <div id="drogas" class="faq-item">
+              <h3 class="acc__h"><button type="button" class="faq-btn acc__btn" id="q-drogas" aria-expanded="false" aria-controls="a-drogas"><span class="acc__title"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 22v-4"/> <path d="M7 12c-1.5 0-4.5 1.5-5 3 3.5 1.5 6 1 6 1-1.5 1.5-2 3.5-2 5 2.5 0 4.5-1.5 6-3 1.5 1.5 3.5 3 6 3 0-1.5-.5-3.5-2-5 0 0 2.5.5 6-1-.5-1.5-3.5-3-5-3 1.5-1 4-4 4-6-2.5 0-5.5 1.5-7 3 0-2.5-.5-5-2-7-1.5 2-2 4.5-2 7-1.5-1.5-4.5-3-7-3 0 2 2.5 5 4 6"/></svg>Drogas y estupefacientes</span><span aria-hidden="true" class="faq-sign">+</span></button></h3>
+              <div id="a-drogas" role="region" aria-labelledby="q-drogas" hidden class="acc__panel"><p><strong>Drogas y estupefacientes:</strong> sustancias psicoactivas, marihuana, CBD, THC y precursores químicos ilegales.</p></div>
+            </div>
+          
+            <div id="electronicos" class="faq-item">
+              <h3 class="acc__h"><button type="button" class="faq-btn acc__btn" id="q-electronicos" aria-expanded="false" aria-controls="a-electronicos"><span class="acc__title"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 17h.01"/> <path d="M10 7v6"/> <path d="M14 7h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2"/> <path d="M22 11v2"/> <path d="M6 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/></svg>Electrónicos y baterías peligrosas</span><span aria-hidden="true" class="faq-sign">+</span></button></h3>
+              <div id="a-electronicos" role="region" aria-labelledby="q-electronicos" hidden class="acc__panel"><p><strong>Electrónicos y baterías peligrosas:</strong> drones de cualquier tamaño, patinetas eléctricas o scooters, y baterías de litio que excedan los 100 Wh.</p></div>
+            </div>
+          
+            <div id="celulares" class="faq-item">
+              <h3 class="acc__h"><button type="button" class="faq-btn acc__btn" id="q-celulares" aria-expanded="false" aria-controls="a-celulares"><span class="acc__title"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/> <path d="M12 18h.01"/></svg>Celulares y ropa</span><span aria-hidden="true" class="faq-sign">+</span></button></h3>
+              <div id="a-celulares" role="region" aria-labelledby="q-celulares" hidden class="acc__panel"><p><strong>Celulares y ropa:</strong> celulares que no cumplan con la regulación colombiana vigente y ropa usada.</p></div>
+            </div>
+          
+            <div id="quimicos" class="faq-item">
+              <h3 class="acc__h"><button type="button" class="faq-btn acc__btn" id="q-quimicos" aria-expanded="false" aria-controls="a-quimicos"><span class="acc__title"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"/> <path d="M8.5 2h7"/> <path d="M7 16h10"/></svg>Químicos y materiales peligrosos</span><span aria-hidden="true" class="faq-sign">+</span></button></h3>
+              <div id="a-quimicos" role="region" aria-labelledby="q-quimicos" hidden class="acc__panel"><p><strong>Químicos y materiales peligrosos:</strong> gases comprimidos, cilindros, aerosoles, químicos corrosivos, materiales radiactivos y encendedores.</p></div>
+            </div>
+          
+            <div id="alimentos" class="faq-item">
+              <h3 class="acc__h"><button type="button" class="faq-btn acc__btn" id="q-alimentos" aria-expanded="false" aria-controls="a-alimentos"><span class="acc__title"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"/> <path d="M10 2c1 .5 2 2 2 5"/></svg>Alimentos y perecederos</span><span aria-hidden="true" class="faq-sign">+</span></button></h3>
+              <div id="a-alimentos" role="region" aria-labelledby="q-alimentos" hidden class="acc__panel"><p><strong>Alimentos y perecederos:</strong> alimentos que requieran refrigeración o que no cuenten con registro sanitario.</p></div>
+            </div>
+          
+            <div id="plantas" class="faq-item">
+              <h3 class="acc__h"><button type="button" class="faq-btn acc__btn" id="q-plantas" aria-expanded="false" aria-controls="a-plantas"><span class="acc__title"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 20h10"/> <path d="M10 20c5.5-2.5.8-6.4 3-10"/> <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/> <path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg>Plantas y animales</span><span aria-hidden="true" class="faq-sign">+</span></button></h3>
+              <div id="a-plantas" role="region" aria-labelledby="q-plantas" hidden class="acc__panel"><p><strong>Plantas y animales:</strong> plantas vivas, semillas, animales vivos o muertos, y artículos de piel.</p></div>
+            </div>
+          
+            <div id="medicamentos" class="faq-item">
+              <h3 class="acc__h"><button type="button" class="faq-btn acc__btn" id="q-medicamentos" aria-expanded="false" aria-controls="a-medicamentos"><span class="acc__title"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/> <path d="m8.5 8.5 7 7"/></svg>Medicamentos</span><span aria-hidden="true" class="faq-sign">+</span></button></h3>
+              <div id="a-medicamentos" role="region" aria-labelledby="q-medicamentos" hidden class="acc__panel"><p><strong>Medicamentos:</strong> fármacos sin receta médica o que no estén en su empaque original con aprobación del INVIMA.</p></div>
+            </div>
+          
+            <div id="sensible" class="faq-item">
+              <h3 class="acc__h"><button type="button" class="faq-btn acc__btn" id="q-sensible" aria-expanded="false" aria-controls="a-sensible"><span class="acc__title"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M17 12H3a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h14"/> <path d="M18 8c0-2.5-2-2.5-2-5"/> <path d="M21 16a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/> <path d="M22 8c0-2.5-2-2.5-2-5"/> <path d="M7 12v4"/></svg>Material sensible</span><span aria-hidden="true" class="faq-sign">+</span></button></h3>
+              <div id="a-sensible" role="region" aria-labelledby="q-sensible" hidden class="acc__panel"><p><strong>Material sensible:</strong> material pornográfico, tabaco, cigarrillos y cigarrillos electrónicos.</p></div>
+            </div>
+          
         </div>
       </div>
     </div>
   </section>
-  <section id="celulares" aria-labelledby="cel-h" style="background:#fff;border-top:1px solid var(--border-subtle);padding:clamp(48px,7vw,80px) var(--space-5)">
-    <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:var(--space-4)">
-      <h2 id="cel-h" style="margin:0;font:700 clamp(24px,3vw,32px)/1.2 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">Celulares</h2>
-      <p style="margin:0;font:400 16px/1.6 var(--font-sans);color:var(--fg-1);max-width:62ch">[Regla confirmada: cantidad permitida por envío y por año, requisitos de homologación y documentos.]</p>
-    </div>
-  </section>
-  <section style="background:var(--navy-800);padding:clamp(48px,7vw,80px) var(--space-5)">
-    <div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-5)">
-      <h2 style="margin:0;font:700 clamp(26px,3.6vw,40px)/1.15 var(--font-display);color:#fff">¿Tienes dudas con un producto?</h2>
-      <a class="h207c06" href="https://wa.me/?text=Quiero%20confirmar%20si%20puedo%20enviar%20este%20producto" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;height:52px;padding:0 26px;border-radius:var(--radius-md);background:#fff;color:var(--tb-navy);font:600 16px/1 var(--font-sans)">Consultar un producto</a>
+
+  <section class="section section--alt" aria-labelledby="limites-h">
+    <div class="container">
+      <div class="section__head">
+        <h2 id="limites-h" class="h2">Límites de cantidad y valor</h2>
+      </div>
+      <div class="limits">
+        <div class="limit"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/> <path d="M12 22V12"/> <path d="m3.3 7 7.703 4.734a2 2 0 0 0 1.994 0L20.7 7"/> <path d="m7.5 4.27 9 5.15"/></svg><div><h3>Límite de unidades</h3><p>No se pueden enviar más de 6 unidades del mismo artículo en un envío comercial o de carácter no personal.</p></div></div>
+        <div class="limit"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/> <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/> <path d="M7 21h10"/> <path d="M12 3v18"/> <path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg><div><h3>Tope de valor</h3><p>Los envíos urgentes por tráfico postal tienen un valor máximo permitido de USD 2.000 y un peso de hasta 50 kg. Los envíos con exención de IVA (Ley 2155 de 2021) aplican hasta USD 200.</p></div></div>
+      </div>
+      <div class="note">
+        <p>Esta lista es informativa y puede cambiar según la normativa vigente. Si tienes dudas sobre un artículo, escríbenos antes de comprar.</p>
+        <a class="btn btn--whatsapp" href="https://wa.me/?text=Hola%2C%20quiero%20confirmar%20si%20puedo%20enviar%20este%20art%C3%ADculo%3A%20" target="_blank" rel="noopener"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Consultar por WhatsApp</a>
+      </div>
     </div>
   </section>
 </main>
-<footer style="background:var(--navy-800);color:var(--navy-100);padding:var(--space-16) var(--space-5) var(--space-8)">
-  <div style="max-width:var(--container-max);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-12)">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--space-10) var(--space-8)">
-      <div style="display:flex;flex-direction:column;gap:var(--space-4);grid-column:span 1">
-        <img src="assets/img/logo-horizontal-reversed.svg" alt="TerraBox Cargo" width="160" height="36" style="height:36px;width:auto;align-self:flex-start">
-        <p style="margin:0;font:400 14px/1.5 var(--font-sans);color:var(--navy-100);max-width:260px;text-wrap:pretty">Casillero en Miami y envíos de Estados Unidos a Colombia.</p>
+<footer class="ftr">
+  <div class="ftr__inner">
+    <div class="ftr__grid">
+      <div class="ftr__brand">
+        <img src="assets/img/logo-horizontal-reversed.svg" alt="TerraBox Cargo" width="190" height="32">
+        <p>Compra en Estados Unidos y recíbelo en Colombia en 5 a 7 días hábiles, con seguro incluido.</p>
+        <div class="ftr__social">
+          <a href="#" data-social="instagram" hidden aria-label="Instagram de TerraBox (se abre en una pestaña nueva)" target="_blank" rel="noopener"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/> <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/> <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+          <a href="#" data-social="facebook" hidden aria-label="Facebook de TerraBox (se abre en una pestaña nueva)" target="_blank" rel="noopener"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        </div>
       </div>
-      <nav aria-label="Envíos" style="display:flex;flex-direction:column;gap:2px"><h2 style="margin:0 0 var(--space-2);font:600 11px/1 var(--font-sans);letter-spacing:var(--ls-overline);text-transform:uppercase;color:var(--tb-cyan)">Envíos</h2><a class="h5215a6" href="envios-colombia.html" style="display:flex;align-items:center;min-height:36px;font:400 14px/1.3 var(--font-sans);color:#fff">Envíos a Colombia</a><a class="h5215a6" href="tarifas.html" style="display:flex;align-items:center;min-height:36px;font:400 14px/1.3 var(--font-sans);color:#fff">Tarifas y calculadora</a><a class="h5215a6" href="aduana-impuestos.html" style="display:flex;align-items:center;min-height:36px;font:400 14px/1.3 var(--font-sans);color:#fff">Aduana e impuestos</a><a class="h5215a6" href="productos-restringidos.html" style="display:flex;align-items:center;min-height:36px;font:400 14px/1.3 var(--font-sans);color:#fff">Productos restringidos</a><a class="h5215a6" href="tiendas.html" style="display:flex;align-items:center;min-height:36px;font:400 14px/1.3 var(--font-sans);color:#fff">Tiendas</a></nav><nav aria-label="Servicios" style="display:flex;flex-direction:column;gap:2px"><h2 style="margin:0 0 var(--space-2);font:600 11px/1 var(--font-sans);letter-spacing:var(--ls-overline);text-transform:uppercase;color:var(--tb-cyan)">Servicios</h2><a class="h5215a6" href="casillero-virtual.html" style="display:flex;align-items:center;min-height:36px;font:400 14px/1.3 var(--font-sans);color:#fff">Casillero virtual</a><a class="h5215a6" href="consolidacion.html" style="display:flex;align-items:center;min-height:36px;font:400 14px/1.3 var(--font-sans);color:#fff">Consolidación</a><a class="h5215a6" href="compramos-por-ti.html" style="display:flex;align-items:center;min-height:36px;font:400 14px/1.3 var(--font-sans);color:#fff">Compramos por ti</a><a class="h5215a6" href="carga.html" style="display:flex;align-items:center;min-height:36px;font:400 14px/1.3 var(--font-sans);color:#fff">Carga aérea y marítima</a></nav><nav aria-label="Negocios" style="display:flex;flex-direction:column;gap:2px"><h2 style="margin:0 0 var(--space-2);font:600 11px/1 var(--font-sans);letter-spacing:var(--ls-overline);text-transform:uppercase;color:var(--tb-cyan)">Negocios</h2><a class="h5215a6" href="revendedores.html" style="display:flex;align-items:center;min-height:36px;font:400 14px/1.3 var(--font-sans);color:#fff">Revendedores</a><a class="h5215a6" href="empresas.html" style="display:flex;align-items:center;min-height:36px;font:400 14px/1.3 var(--font-sans);color:#fff">Empresas</a><a class="h5215a6" href="solicitar-tarifa.html" style="display:flex;align-items:center;min-height:36px;font:400 14px/1.3 var(--font-sans);color:#fff">Solicitar tarifa</a></nav><nav aria-label="TerraBox" style="display:flex;flex-direction:column;gap:2px"><h2 style="margin:0 0 var(--space-2);font:600 11px/1 var(--font-sans);letter-spacing:var(--ls-overline);text-transform:uppercase;color:var(--tb-cyan)">TerraBox</h2><a class="h5215a6" href="nosotros.html" style="display:flex;align-items:center;min-height:36px;font:400 14px/1.3 var(--font-sans);color:#fff">Nosotros</a><a class="h5215a6" href="ayuda.html" style="display:flex;align-items:center;min-height:36px;font:400 14px/1.3 var(--font-sans);color:#fff">Preguntas frecuentes</a><a class="h5215a6" href="reclamos-seguro.html" style="display:flex;align-items:center;min-height:36px;font:400 14px/1.3 var(--font-sans);color:#fff">Reclamos y seguro</a><a class="h5215a6" href="contacto.html" style="display:flex;align-items:center;min-height:36px;font:400 14px/1.3 var(--font-sans);color:#fff">Contacto</a><a class="h5215a6" href="rastreo.html" style="display:flex;align-items:center;min-height:36px;font:400 14px/1.3 var(--font-sans);color:#fff">Rastrear</a></nav>
-      <div style="display:flex;flex-direction:column;gap:var(--space-2)">
-        <h2 style="margin:0 0 var(--space-2);font:600 11px/1 var(--font-sans);letter-spacing:var(--ls-overline);text-transform:uppercase;color:var(--tb-cyan)">Contacto</h2>
-        <address style="font-style:normal;font:400 14px/1.6 var(--font-sans);color:#fff">Bodega en Miami<br>[Dirección completa], Miami, FL [código postal]</address>
-        <p style="margin:0;font:400 14px/1.5 var(--font-sans);color:var(--navy-100)">Lunes a viernes, [horario] (hora de Miami, ET)</p>
-        <a class="hed1dfc" href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20Productos%20restringidos" target="_blank" rel="noopener" style="display:flex;align-items:center;min-height:36px;font:600 14px/1.3 var(--font-sans);color:#fff">WhatsApp</a>
-        <p style="margin:0;font:400 14px/1.5 var(--font-sans);color:#fff">Teléfono: [teléfono]<br>Email: [email]</p>
+      <nav class="ftr__col" aria-label="Navegación"><h2 class="ftr__title">Navegación</h2><a href="index.html">Inicio</a><a href="casillero-virtual.html">¿Cómo funciona?</a><a href="tarifas.html">Tarifas</a><a href="tarifas.html#calculadora">Calculadora</a><a href="productos-restringidos.html">Artículos prohibidos</a><a href="contacto.html">Contacto</a></nav><nav class="ftr__col" aria-label="Servicios"><h2 class="ftr__title">Servicios</h2><a href="consolidacion.html">Consolidación</a><a href="compramos-por-ti.html">Compramos por ti</a><a href="carga.html">Carga aérea y marítima</a><a href="negocios.html">Negocios</a><a href="revendedores.html">Revendedores</a><a href="empresas.html">Empresas</a></nav><nav class="ftr__col" aria-label="Ayuda"><h2 class="ftr__title">Ayuda</h2><a href="rastreo.html">Rastrear envío</a><a href="ayuda.html">Preguntas frecuentes</a><a href="aduana-impuestos.html">Aduana e impuestos</a><a href="reclamos-seguro.html">Reclamos y seguro</a><a href="tiendas.html">Tiendas recomendadas</a><a href="nosotros.html">Nosotros</a></nav>
+      <div class="ftr__col">
+        <h2 class="ftr__title">Contacto</h2>
+        <a href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20Art%C3%ADculos%20prohibidos" target="_blank" rel="noopener" class="ftr__wa"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>WhatsApp</a>
+        <p><span class="ftr__label">Email</span><a data-tb="email" href="contacto.html">[email]</a></p>
+        <p><span class="ftr__label">Horario</span><span data-tb="hours">[horario de atención]</span></p>
       </div>
     </div>
-    <div style="border-top:1px solid var(--navy-600);padding-top:var(--space-6);display:flex;flex-wrap:wrap;gap:var(--space-4) var(--space-6);align-items:center;justify-content:space-between">
-      <div style="display:flex;flex-wrap:wrap;gap:var(--space-2) var(--space-5)">
-        <a href="legal-terminos.html" style="font:400 13px/1 var(--font-sans);color:#fff;min-height:32px;display:flex;align-items:center">Términos</a>
-        <a href="legal-datos.html" style="font:400 13px/1 var(--font-sans);color:#fff;min-height:32px;display:flex;align-items:center">Tratamiento de datos</a>
-        <a href="legal-cookies.html" style="font:400 13px/1 var(--font-sans);color:#fff;min-height:32px;display:flex;align-items:center">Cookies</a>
-        <button type="button" id="cookie-reopen" style="border:0;background:transparent;padding:0;font:400 13px/1 var(--font-sans);color:#fff;min-height:32px;cursor:pointer;text-decoration:underline">Preferencias de cookies</button>
+    <div class="ftr__bottom">
+      <div class="ftr__legal">
+        <a href="legal-terminos.html">Términos y condiciones</a>
+        <a href="legal-datos.html">Tratamiento de datos</a>
+        <a href="legal-cookies.html">Cookies</a>
+        <button type="button" id="cookie-reopen">Preferencias de cookies</button>
       </div>
-      <div style="display:flex;flex-wrap:wrap;gap:var(--space-4);align-items:center">
-        <label style="display:flex;align-items:center;gap:8px;font:400 13px/1 var(--font-sans);color:var(--navy-100)">País
-          <select aria-label="País" style="height:32px;padding:0 8px;border-radius:var(--radius-md);border:1px solid var(--navy-400);background:var(--navy-800);color:#fff;font:400 13px var(--font-sans)"><option>Colombia</option></select>
-        </label>
-        <span style="font:400 13px/1 var(--font-sans);color:var(--navy-100)">© <span id="year">2026</span> TerraBox Cargo</span>
-      </div>
+      <span>© <span id="year">2026</span> TerraBox Cargo</span>
     </div>
   </div>
 </footer>
-<div id="cookie-banner" role="region" aria-label="Aviso de cookies" hidden style="position:fixed;left:16px;right:16px;bottom:16px;z-index:250;max-width:560px;margin:0 auto;background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-xl);box-shadow:var(--shadow-3);padding:var(--space-5);flex-direction:column;gap:var(--space-4)">
-  <p style="margin:0;font:400 14px/1.5 var(--font-sans);color:var(--fg-1)">Usamos cookies necesarias para que el sitio funcione. Con tu permiso, usamos también cookies de medición. <a href="legal-cookies.html">Ver política de cookies</a></p>
-  <div id="cookie-cfg" hidden style="flex-direction:column;gap:var(--space-2)">
-    <label style="display:flex;gap:10px;align-items:center;font:500 14px/1.3 var(--font-sans)"><input type="checkbox" checked disabled style="width:18px;height:18px;accent-color:var(--tb-navy)">Necesarias (siempre activas)</label>
-    <label style="display:flex;gap:10px;align-items:center;font:500 14px/1.3 var(--font-sans);cursor:pointer"><input type="checkbox" id="cookie-analytics" style="width:18px;height:18px;accent-color:var(--tb-navy)">Medición y análisis</label>
+<div id="cookie-banner" class="cookie" role="region" aria-label="Aviso de cookies" hidden>
+  <p>Usamos cookies necesarias para que el sitio funcione. Con tu permiso, usamos también cookies de medición. <a href="legal-cookies.html">Ver política de cookies</a></p>
+  <div id="cookie-cfg" class="cookie__cfg" hidden>
+    <label><input type="checkbox" checked disabled>Necesarias (siempre activas)</label>
+    <label><input type="checkbox" id="cookie-analytics">Medición y análisis</label>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:var(--space-2)">
+  <div class="cookie__actions">
     <button type="button" class="tb-btn tb-btn--outline tb-btn--md tb-btn--full" data-cookie="reject">Rechazar</button>
     <button type="button" class="tb-btn tb-btn--outline tb-btn--md tb-btn--full" data-cookie="configure">Configurar</button>
     <button type="button" class="tb-btn tb-btn--outline tb-btn--md tb-btn--full" data-cookie="accept">Aceptar</button>
   </div>
 </div>
 <script src="assets/js/config.js"></script>
+<script src="assets/js/calculator.js"></script>
 <script src="assets/js/site.js"></script>
-<script src="assets/js/pages/productos-restringidos.js"></script>
 </body>
 </html>

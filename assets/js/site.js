@@ -322,7 +322,7 @@
       try {
         if (!navigator.onLine) throw new Error('offline');
         const body = { ...v }; if (P.omitPasswords) fields.filter(f => f.type === 'password').forEach(f => delete body[f.name]);
-        const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ form: P.formId, ...body }) });
+        const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ form: P.formId, ...body }) });
         if (!r.ok) throw new Error('http');
         const j = await r.json().catch(() => ({}));
         done(); $('.lf-ref', host).textContent = j.reference || j.id || '—'; showPanel('success');
@@ -341,7 +341,50 @@
     $('.lf-back', host).addEventListener('click', () => showPanel(null));
   }
 
+  // ---------------------------------------------------------------- config-driven content
+  // Links, contact details and prices marked in the HTML are filled from config.js.
+  function applyConfig() {
+    const urls = TB.urls || {};
+    $$('[data-tb-url]').forEach(a => { const u = urls[a.dataset.tbUrl]; if (u) a.href = u; });
+    if (TB.email) $$('[data-tb="email"]').forEach(a => { a.textContent = TB.email; a.href = 'mailto:' + TB.email; });
+    if (TB.hours) $$('[data-tb="hours"]').forEach(el => { el.textContent = TB.hours; });
+    $$('[data-social]').forEach(a => { const u = (TB.social || {})[a.dataset.social]; if (u) { a.href = u; a.hidden = false; } });
+    const P = TB.pricing;
+    if (P) {
+      const fill = (key, val) => $$('[data-price="' + key + '"]').forEach(el => { el.textContent = val; });
+      P.tiers.forEach((t, i) => fill('tier' + i, 'US$' + t.price));
+      fill('extra', 'US$' + P.extraPerLb);
+      fill('taxFree', 'US$' + P.taxFreeUpTo);
+      fill('loss', 'US$' + P.lossCoverage);
+      fill('days', P.deliveryDays);
+    }
+  }
+
+  // "Rastrea tu envío" forms: behaviour lives in TB.track (config.js).
+  function initTrack() {
+    $$('form.track').forEach(form => form.addEventListener('submit', e => {
+      e.preventDefault();
+      const input = $('input', form), msg = $('.track__msg', form), g = input.value.trim().toUpperCase();
+      if (!g) { msg.textContent = 'Escribe tu número de guía.'; input.setAttribute('aria-invalid', 'true'); input.focus(); return; }
+      msg.textContent = ''; input.removeAttribute('aria-invalid');
+      TB.track(g);
+    }));
+  }
+
+  // Elements with .reveal fade in once they scroll into view (skipped with reduced motion).
+  function initReveal() {
+    const els = $$('.reveal');
+    if (!els.length) return;
+    if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) { els.forEach(el => el.classList.add('is-in')); return; }
+    const io = new IntersectionObserver(entries => entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } }), { rootMargin: '0px 0px -10% 0px' });
+    els.forEach(el => io.observe(el));
+  }
+
   // ---------------------------------------------------------------- boot
+  document.documentElement.classList.add('js');
+  applyConfig();
+  initTrack();
+  initReveal();
   patchWhatsApp();
   initHeader();
   initCookies();
