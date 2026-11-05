@@ -48,7 +48,7 @@ python _src/build.py
 ```
 
 The build writes every `*.html` page in this folder and `assets/css/interactions.css`. The shared header, footer and FAQ
-markup is defined in `_src/build.py`; the price block and calculator are shared partials in `_src/partials/`; the prohibited-items
+markup is defined in `_src/build.py`; the price table (`precios`) and the box calculator (`caja`) are shared partials in `_src/partials/`; the prohibited-items
 list (used on the home and the Artículos prohibidos page) is `_src/data/prohibidos.json`; icons are inline Lucide SVGs (`_src/icons.py`,
 used as `<i data-icon="plane"></i>` in sources).
 
@@ -67,8 +67,10 @@ index.html, tarifas.html, …   the 25 pages (index.html is the homepage, 404.ht
 assets/css/tokens.css         design tokens (colours, type, spacing)
 assets/css/site.css           components: buttons, fields, header, forms
 assets/css/interactions.css   generated hover styles
-assets/css/redesign.css       redesign v1: header, footer, home, Tarifas, Prohibidos, Contacto
-assets/js/calculator.js       shipping calculator (rates from config.js)
+assets/css/v2.css             redesign v2 system: header, footer, home, Tarifas, Prohibidos, Contacto (see docs/rediseno-v2-brief.md)
+assets/js/calculator.js       shipping price math TB.quote (rates from config.js)
+assets/js/caja.js             "Arma tu caja" live box calculator (_src/partials/caja.html)
+assets/js/motion.js           entrance motion for .rv elements
 assets/js/config.js           business settings (see above)
 assets/js/site.js             header menus, cookie banner, FAQ, lead forms
 assets/js/pages/*.js          page-specific behaviour (calculator, tracking, login, …)

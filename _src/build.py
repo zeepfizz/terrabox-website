@@ -270,19 +270,24 @@ def ds_button(p, children):
 # ---------------------------------------------------------------- shared site chrome
 
 # (id, label, link). Ingresar / Registrarse live in the header actions; their URLs come from TB.urls in config.js.
+# On the home page "Cómo funciona" and "Contacto" jump to its sections (#ruta, #contacto).
 NAV = [
-    ('inicio', 'Inicio', 'Inicio.dc.html'),
-    ('como', '¿Cómo funciona?', 'Casillero-Virtual.dc.html'),
+    ('como', 'Cómo funciona', 'Inicio.dc.html#ruta'),
     ('tarifas', 'Tarifas', 'Tarifas.dc.html'),
-    ('calculadora', 'Calculadora', 'Tarifas.dc.html#calculadora'),
-    ('prohibidos', 'Artículos prohibidos', 'Productos-Restringidos.dc.html'),
+    ('prohibidos', 'Prohibidos', 'Productos-Restringidos.dc.html'),
+    ('rastreo', 'Rastrear', 'Rastreo.dc.html'),
     ('contacto', 'Contacto', 'Contacto.dc.html'),
 ]
-NAV_MORE = [('Rastrear envío', 'Rastreo'), ('Preguntas frecuentes', 'Ayuda'), ('Consolidación', 'Consolidacion'),
+NAV_HOME = {'como': '#ruta', 'contacto': '#contacto'}
+NAV_MORE = [('Casillero virtual', 'Casillero-Virtual'), ('Preguntas frecuentes', 'Ayuda'), ('Consolidación', 'Consolidacion'),
             ('Compramos por ti', 'Compramos-Por-Ti'), ('Negocios y revendedores', 'Negocios'), ('Carga aérea y marítima', 'Carga')]
 
 ARROW = '<i data-icon="arrow-right" class="btn__arrow"></i>'
 WA_ICON = '<i data-icon="message-circle"></i>'
+
+
+def nav_href(gid, href, active):
+    return NAV_HOME.get(gid, href) if active == 'inicio' else href
 
 
 def site_header(p, ctx, page):
@@ -292,28 +297,28 @@ def site_header(p, ctx, page):
     sticky_href = p.get('stickyHref') or 'Registro.dc.html'
     sticky_label = p.get('stickyLabel') or 'Regístrate gratis'
 
-    desk = ''.join(
-        f'<a class="hdr__link{" is-current" if gid == active else ""}" href="{href}"'
-        f'{" aria-current=\"page\"" if gid == active else ""}>{esc(label)}</a>' for gid, label, href in NAV)
-    mob = ''.join(f'<a class="mnav__link" href="{href}">{esc(label)}</a>' for gid, label, href in NAV)
+    def cur(gid):
+        return ' is-current" aria-current="page' if gid == active else ''
+    desk = ''.join(f'<a class="hdr__link{cur(gid)}" href="{nav_href(gid, href, active)}">{esc(label)}</a>' for gid, label, href in NAV)
+    mob = ''.join(f'<a class="mnav__link{cur(gid)}" href="{nav_href(gid, href, active)}">{esc(label)}</a>' for gid, label, href in NAV)
     more = ''.join(f'<a class="mnav__sublink" href="{h}.dc.html">{esc(t)}</a>' for t, h in NAV_MORE)
+    reg = ' data-tb-url="register"' if sticky_href == 'Registro.dc.html' else ''
     sticky_bar = '' if not sticky else (
-        f'<div id="sticky-bar" class="sticky-bar" hidden><a class="btn btn--primary" href="{esc(sticky_href)}"'
-        f'{" data-tb-url=\"register\"" if sticky_href == "Registro.dc.html" else ""}>{esc(sticky_label)}</a>'
-        f'<a class="btn btn--outline" href="{wa_href}" target="_blank" rel="noopener">WhatsApp</a></div>')
-    return HEADER_TPL.format(desk=desk, mob=mob, more=more, wa=wa_href, sticky_bar=sticky_bar, arrow=ARROW, wa_icon=WA_ICON)
+        f'<div id="sticky-bar" class="sticky-bar" hidden><a class="btn btn--primary" href="{esc(sticky_href)}"{reg}>{esc(sticky_label)}</a>'
+        f'<a class="btn btn--wa" href="{wa_href}" target="_blank" rel="noopener">{WA_ICON}WhatsApp</a></div>')
+    return HEADER_TPL.format(desk=desk, mob=mob, more=more, wa=wa_href, sticky_bar=sticky_bar, wa_icon=WA_ICON)
 
 
-HEADER_TPL = '''<a href="#main" class="skip-link">Saltar al contenido</a>
+HEADER_TPL = """<a href="#main" class="skip-link">Saltar al contenido</a>
 <header id="site-header" class="hdr">
   <div class="hdr__bar">
-    <a class="hdr__logo" href="Inicio.dc.html" aria-label="TerraBox Cargo, inicio"><img src="assets/img/logo-horizontal.svg" alt="TerraBox Cargo" width="178" height="30"></a>
+    <a class="hdr__logo" href="Inicio.dc.html"><img src="assets/img/logo-horizontal.svg" alt="TerraBox Cargo, inicio" width="178" height="30"></a>
     <nav class="hdr__nav" aria-label="Principal">{desk}</nav>
     <div class="hdr__actions">
-      <a class="btn btn--outline btn--sm" href="Ingresar.dc.html" data-tb-url="login">Ingresar</a>
-      <a class="btn btn--primary btn--sm" href="Registro.dc.html" data-tb-url="register">Registrarse {arrow}</a>
+      <a class="hdr__link" href="Ingresar.dc.html" data-tb-url="login">Ingresar</a>
+      <a class="btn btn--primary btn--compact" href="Registro.dc.html" data-tb-url="register">Registrarse</a>
     </div>
-    <button type="button" id="menu-btn" class="hdr__menu" aria-expanded="false" aria-controls="menu-movil"><i data-icon="menu"></i>Menú</button>
+    <button type="button" id="menu-btn" class="hdr__menu" aria-expanded="false" aria-controls="menu-movil"><i data-icon="menu"></i><span>Menú</span></button>
   </div>
 </header>
 <div id="menu-movil" class="mnav" role="dialog" aria-modal="true" aria-label="Menú" hidden>
@@ -321,67 +326,73 @@ HEADER_TPL = '''<a href="#main" class="skip-link">Saltar al contenido</a>
     <img src="assets/img/logo-horizontal.svg" alt="TerraBox Cargo" width="166" height="28">
     <button type="button" id="menu-close" class="mnav__close" aria-label="Cerrar menú"><i data-icon="x"></i></button>
   </div>
-  <nav class="mnav__list" aria-label="Principal">{mob}
+  <nav class="mnav__list" aria-label="Principal (móvil)">{mob}
     <div class="mnav__group">
-      <button type="button" class="m-group-btn mnav__link" aria-expanded="false" aria-controls="m-mas">Más servicios y ayuda<span aria-hidden="true" class="m-sign">+</span></button>
+      <button type="button" class="m-group-btn mnav__more" aria-expanded="false" aria-controls="m-mas">Más servicios y ayuda<span aria-hidden="true" class="m-sign">+</span></button>
       <div id="m-mas" class="mnav__sub" hidden>{more}</div>
     </div>
   </nav>
   <div class="mnav__actions">
-    <a class="btn btn--outline" href="Ingresar.dc.html" data-tb-url="login">Ingresar</a>
+    <a class="btn btn--tone" href="Ingresar.dc.html" data-tb-url="login">Ingresar</a>
     <a class="btn btn--primary" href="Registro.dc.html" data-tb-url="register">Registrarse</a>
-    <a class="btn btn--whatsapp mnav__wa" href="{wa}" target="_blank" rel="noopener">{wa_icon}Escribir por WhatsApp</a>
+    <a class="btn btn--wa mnav__wa" href="{wa}" target="_blank" rel="noopener">{wa_icon}Escribir por WhatsApp</a>
   </div>
 </div>
-<a href="{wa}" target="_blank" rel="noopener" id="float-wa" class="float-wa" aria-label="Escribir por WhatsApp (se abre en una pestaña nueva)">{wa_icon}<span>WhatsApp</span></a>
-{sticky_bar}'''
+{sticky_bar}"""
 
 FOOTER_COLS = [
-    ('Navegación', [('Inicio', 'Inicio'), ('¿Cómo funciona?', 'Casillero-Virtual'), ('Tarifas', 'Tarifas'),
-                    ('Calculadora', 'Tarifas.dc.html#calculadora'), ('Artículos prohibidos', 'Productos-Restringidos'), ('Contacto', 'Contacto')]),
+    ('Envíos', [('Casillero virtual', 'Casillero-Virtual'), ('Envíos a Colombia', 'Envios-Colombia'), ('Tarifas', 'Tarifas'),
+                ('Calculadora', 'Tarifas.dc.html#calculadora'), ('Artículos prohibidos', 'Productos-Restringidos'), ('Rastrear envío', 'Rastreo')]),
     ('Servicios', [('Consolidación', 'Consolidacion'), ('Compramos por ti', 'Compramos-Por-Ti'), ('Carga aérea y marítima', 'Carga'),
                    ('Negocios', 'Negocios'), ('Revendedores', 'Revendedores'), ('Empresas', 'Empresas')]),
-    ('Ayuda', [('Rastrear envío', 'Rastreo'), ('Preguntas frecuentes', 'Ayuda'), ('Aduana e impuestos', 'Aduana-Impuestos'),
-               ('Reclamos y seguro', 'Reclamos-Seguro'), ('Tiendas recomendadas', 'Tiendas'), ('Nosotros', 'Nosotros')]),
+    ('Ayuda', [('Preguntas frecuentes', 'Ayuda'), ('Aduana e impuestos', 'Aduana-Impuestos'), ('Reclamos y seguro', 'Reclamos-Seguro'),
+               ('Tiendas recomendadas', 'Tiendas'), ('Nosotros', 'Nosotros'), ('Contacto', 'Contacto')]),
 ]
+
+
+def photo_credits():
+    """One short credit line from assets/img/photos/credits.json (unique photographers, in file order)."""
+    try:
+        data = json.loads((ROOT / 'assets' / 'img' / 'photos' / 'credits.json').read_text(encoding='utf-8'))
+    except FileNotFoundError:
+        return ''
+    names = list(dict.fromkeys(d['by'] for d in data))
+    return 'Fotografías: Unsplash (' + ', '.join(esc(n) for n in names) + ').'
 
 
 def site_footer(p, ctx, page):
     wa_href = wa('Hola, vengo de la página ' + (p.get('waPage') or 'de inicio'))
     cols = ''.join(
-        f'<nav class="ftr__col" aria-label="{esc(t)}"><h2 class="ftr__title">{esc(t)}</h2>'
-        + ''.join(f'<a href="{h if ".dc.html" in h else h + ".dc.html"}">{esc(l)}</a>' for l, h in links)
-        + '</nav>' for t, links in FOOTER_COLS)
-    return FOOTER_TPL.format(cols=cols, wa=wa_href, wa_icon=WA_ICON)
+        f'<nav class="ftr__col" aria-labelledby="ftr-{i}"><h2 class="ftr__title" id="ftr-{i}">{esc(t)}</h2><ul>'
+        + ''.join(f'<li><a href="{h if ".dc.html" in h else h + ".dc.html"}">{esc(l)}</a></li>' for l, h in links)
+        + '</ul></nav>' for i, (t, links) in enumerate(FOOTER_COLS))
+    return FOOTER_TPL.format(cols=cols, wa=wa_href, wa_icon=WA_ICON, credits=photo_credits())
 
 
-FOOTER_TPL = '''<footer class="ftr">
+FOOTER_TPL = """<footer class="ftr">
   <div class="ftr__inner">
-    <div class="ftr__grid">
-      <div class="ftr__brand">
-        <img src="assets/img/logo-horizontal-reversed.svg" alt="TerraBox Cargo" width="190" height="32">
-        <p>Compra en Estados Unidos y recíbelo en Colombia en 5 a 7 días hábiles, con seguro incluido.</p>
-        <div class="ftr__social">
+    <div class="ftr__top">
+      <div class="ftr__contact">
+        <p class="ftr__claim">Compra en Estados Unidos y recíbelo en Colombia en 5 a 7 días hábiles, con seguro incluido.</p>
+        <a href="{wa}" target="_blank" rel="noopener" class="btn btn--wa">{wa_icon}Escribir por WhatsApp</a>
+        <p><a data-tb="email" href="Contacto.dc.html">[email]</a><br><span data-tb="hours">[horario de atención]</span></p>
+        <p class="ftr__social">
           <a href="#" data-social="instagram" hidden aria-label="Instagram de TerraBox (se abre en una pestaña nueva)" target="_blank" rel="noopener"><i data-icon="instagram"></i></a>
           <a href="#" data-social="facebook" hidden aria-label="Facebook de TerraBox (se abre en una pestaña nueva)" target="_blank" rel="noopener"><i data-icon="facebook"></i></a>
-        </div>
+        </p>
       </div>
       {cols}
-      <div class="ftr__col">
-        <h2 class="ftr__title">Contacto</h2>
-        <a href="{wa}" target="_blank" rel="noopener" class="ftr__wa">{wa_icon}WhatsApp</a>
-        <p><span class="ftr__label">Email</span><a data-tb="email" href="Contacto.dc.html">[email]</a></p>
-        <p><span class="ftr__label">Horario</span><span data-tb="hours">[horario de atención]</span></p>
-      </div>
     </div>
+    <a class="ftr__mark" href="Inicio.dc.html"><img src="assets/img/logo-horizontal-reversed.svg" alt="TerraBox Cargo, inicio" width="583" height="98" loading="lazy"></a>
     <div class="ftr__bottom">
-      <div class="ftr__legal">
+      <p class="ftr__legal">
         <a href="Legal-Terminos.dc.html">Términos y condiciones</a>
         <a href="Legal-Datos.dc.html">Tratamiento de datos</a>
         <a href="Legal-Cookies.dc.html">Cookies</a>
         <button type="button" id="cookie-reopen">Preferencias de cookies</button>
-      </div>
-      <span>© <span id="year">2026</span> TerraBox Cargo</span>
+      </p>
+      <p>© <span id="year">2026</span> TerraBox Cargo</p>
+      <p class="ftr__credits">{credits}</p>
     </div>
   </div>
 </footer>
@@ -392,33 +403,27 @@ FOOTER_TPL = '''<footer class="ftr">
     <label><input type="checkbox" id="cookie-analytics">Medición y análisis</label>
   </div>
   <div class="cookie__actions">
-    <button type="button" class="tb-btn tb-btn--outline tb-btn--md tb-btn--full" data-cookie="reject">Rechazar</button>
-    <button type="button" class="tb-btn tb-btn--outline tb-btn--md tb-btn--full" data-cookie="configure">Configurar</button>
-    <button type="button" class="tb-btn tb-btn--outline tb-btn--md tb-btn--full" data-cookie="accept">Aceptar</button>
+    <button type="button" class="btn btn--tone" data-cookie="reject">Rechazar</button>
+    <button type="button" class="btn btn--tone" data-cookie="configure">Configurar</button>
+    <button type="button" class="btn btn--tone" data-cookie="accept">Aceptar</button>
   </div>
-</div>'''
+</div>
+<a href="{wa}" target="_blank" rel="noopener" id="float-wa" class="float-wa" aria-label="Escribir por WhatsApp (se abre en una pestaña nueva)">{wa_icon}</a>"""
 
 
 def faq(p, ctx, page):
+    """Accordion (styled by .acc in v2.css; opened and closed by site.js through .faq/.faq-btn/.faq-sign)."""
     items = p.get('items') or []
     rows = []
     for i in items:
-        link = (f'<a href="{esc(i["href"])}" style="font:600 14px/1.4 var(--font-sans);align-self:flex-start;min-height:32px;display:flex;'
-                f'align-items:center">{esc(i.get("linkLabel") or "Ver más")}</a>') if i.get('href') else ''
+        link = (f'<a class="link-arrow" href="{esc(i["href"])}">{esc(i.get("linkLabel") or "Ver más")} {ARROW}</a>') if i.get('href') else ''
         rows.append(
-            f'<div id="{esc(i["id"])}" class="faq-item" data-search="{esc(i["q"] + " " + i["a"])}" style="border-bottom:1px solid var(--border-default)">'
-            f'<h3 style="margin:0"><button type="button" class="faq-btn" id="q-{esc(i["id"])}" aria-expanded="false" aria-controls="a-{esc(i["id"])}" '
-            f'style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);min-height:60px;'
-            f'padding:var(--space-4) 0;border:0;background:transparent;text-align:left;cursor:pointer;font:600 17px/1.35 var(--font-sans);'
-            f'color:var(--navy-800)" style-hover="color:var(--tb-navy)"><span>{esc(i["q"])}</span><span aria-hidden="true" class="faq-sign" '
-            f'style="flex-shrink:0;width:28px;height:28px;border-radius:var(--radius-md);background:var(--navy-50);display:flex;'
-            f'align-items:center;justify-content:center;font:500 18px/1 var(--font-sans);color:var(--tb-navy)">+</span></button></h3>'
-            f'<div id="a-{esc(i["id"])}" role="region" aria-labelledby="q-{esc(i["id"])}" hidden style="padding:0 var(--space-10) '
-            f'var(--space-5) 0;flex-direction:column;gap:var(--space-2)"><p style="margin:0;font:400 15px/1.6 var(--font-sans);'
-            f'color:var(--fg-2);max-width:68ch;text-wrap:pretty">{esc(i["a"])}</p>{link}</div></div>')
+            f'<div id="{esc(i["id"])}" class="faq-item acc__item" data-search="{esc(i["q"] + " " + i["a"])}">'
+            f'<h3 class="acc__h"><button type="button" class="faq-btn acc__btn" id="q-{esc(i["id"])}" aria-expanded="false" aria-controls="a-{esc(i["id"])}">'
+            f'<span>{esc(i["q"])}</span><span aria-hidden="true" class="faq-sign acc__sign">+</span></button></h3>'
+            f'<div id="a-{esc(i["id"])}" role="region" aria-labelledby="q-{esc(i["id"])}" hidden class="acc__panel"><p>{esc(i["a"])}</p>{link}</div></div>')
     single = ' data-single' if p.get('single') else ''
-    return (f'<div class="faq"{single} style="display:flex;flex-direction:column;border-top:1px solid var(--border-default)">'
-            + ''.join(rows) + '</div>')
+    return f'<div class="faq acc"{single}>' + ''.join(rows) + '</div>'
 
 
 def legal_page(p, ctx, page):
@@ -493,17 +498,19 @@ PAGE_TPL = '''<!DOCTYPE html>
 <link rel="icon" type="image/svg+xml" href="assets/img/logo-symbol.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&amp;display=swap">
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/site.css">
 <link rel="stylesheet" href="assets/css/interactions.css">
-<link rel="stylesheet" href="assets/css/redesign.css">
+<link rel="stylesheet" href="assets/css/v2.css">
+<link rel="stylesheet" href="assets/css/v2-pages.css">
 {head_extra}</head>
 <body>
 {body}
 <script src="assets/js/config.js"></script>
 <script src="assets/js/calculator.js"></script>
 <script src="assets/js/site.js"></script>
+<script src="assets/js/motion.js"></script>
 {scripts}</body>
 </html>
 '''

@@ -2,61 +2,69 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
 <title>Preguntas frecuentes | TerraBox</title>
 <meta name="description" content="Respuestas sobre precios, tiempos, aduana, productos, casillero, pagos, reclamos y rastreo de envíos de Estados Unidos a Colombia.">
-<link rel="stylesheet" href="_ds/terrabox-cargo-design-system-cccd872f-d644-4349-8450-b88a6dd7b8b5/styles.css">
-<script src="_ds/terrabox-cargo-design-system-cccd872f-d644-4349-8450-b88a6dd7b8b5/_ds_bundle.js"></script>
-<script src="site.js"></script>
 </helmet>
-<dc-import name="Site-Header" active="ayuda" wa-page="Preguntas frecuentes" hint-size="100%,68px"></dc-import>
-<main id="main" tabindex="-1" style="outline:none">
-  <section aria-labelledby="h1" style="padding:clamp(32px,5vw,56px) var(--space-5) var(--space-6)">
-    <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:var(--space-5)">
-      <h1 id="h1" style="margin:0;font:700 clamp(32px,4.6vw,48px)/1.08 var(--font-display);letter-spacing:var(--ls-display);color:var(--text-heading)">Preguntas frecuentes</h1>
-      <x-import component-from-global-scope="TerraboxCargoDesignSystem_cccd87.Input" label="Busca tu pregunta" type="search" placeholder="Por ejemplo: impuestos, celulares, cuánto tarda" id="faq-search" size="lg" hint-size="100%,72px"></x-import>
-      <span id="faq-count" role="status" aria-live="polite" style="font:400 13px/1.4 var(--font-sans);color:var(--fg-3)"></span>
+<dc-import name="Site-Header" active="ayuda" wa-page="Preguntas frecuentes"></dc-import>
+<main id="main" tabindex="-1">
+  <section class="phero" aria-labelledby="h1">
+    <div class="wrap phero__grid">
+      <nav class="phero__crumb" aria-label="Ruta de navegación"><a href="Inicio.dc.html">Inicio</a> / <span aria-current="page">Preguntas frecuentes</span></nav>
+      <h1 id="h1" class="display">Preguntas frecuentes.</h1>
+      <div class="phero__main">
+      <p class="statement">Precios, tiempos, aduana, productos, casillero, pagos, reclamos y rastreo, en respuestas cortas.</p>
+      <div class="psearch" role="search">
+        <x-import component-from-global-scope="TerraboxCargoDesignSystem_cccd87.Input" label="Busca tu pregunta" type="search" placeholder="Por ejemplo: impuestos, celulares, cuánto tarda" id="faq-search" size="lg"></x-import>
+        <p id="faq-count" class="psearch__status" role="status" aria-live="polite"></p>
+      </div>
+      <nav aria-label="Categorías">
+        <ul class="index">
+          <sc-for list="{{ cats }}" as="c"><li><a href="{{ c.href }}">{{ c.t }}</a></li></sc-for>
+        </ul>
+      </nav>
+      </div>
+      <figure class="phero__aside phero__photo phero__photo--desk"><img src="assets/img/photos/entrega-caja-800.webp" srcset="assets/img/photos/entrega-caja-800.webp 800w, assets/img/photos/entrega-caja.webp 1600w" sizes="(min-width:1024px) 34vw, 100vw" width="800" height="1000" alt="Una persona entrega una caja de cartón" decoding="async"></figure>
     </div>
   </section>
-  <nav aria-label="Categorías" class="sticky-desktop" style="position:static;top:68px;z-index:20;background:var(--surface-page);border-bottom:1px solid var(--border-subtle)">
-    <div style="max-width:880px;margin:0 auto;padding:var(--space-2) var(--space-5);display:flex;gap:var(--space-2);overflow-x:auto">
-      <sc-for list="{{ cats }}" as="c" hint-placeholder-count="8">
-        <a href="{{ c.href }}" style="flex-shrink:0;display:flex;align-items:center;min-height:40px;padding:0 14px;border:1px solid var(--border-default);border-radius:var(--radius-pill);background:#fff;font:500 14px/1 var(--font-sans);color:var(--navy-800);white-space:nowrap" style-hover="background:var(--navy-50);text-decoration:none">{{ c.t }}</a>
+
+  <section class="section" aria-label="Preguntas">
+    <div class="wrap faq-groups">
+      <sc-for list="{{ groups }}" as="g">
+        <div id="{{ g.id }}" class="faq-group aside">
+          <div class="aside__head"><h2 class="subhead rv">{{ g.t }}</h2></div>
+          <dc-import name="Faq" items="{{ g.items }}"></dc-import>
+        </div>
       </sc-for>
-    </div>
-  </nav>
-  <section aria-label="Preguntas" style="padding:var(--space-8) var(--space-5) clamp(56px,8vw,88px)">
-    <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:var(--space-10)">
-      <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
-        
-          <div id="{{ g.id }}" class="faq-group" style="display:flex;flex-direction:column;gap:var(--space-4)">
-            <h2 style="margin:0;font:700 24px/1.2 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">{{ g.t }}</h2>
-            <dc-import name="Faq" items="{{ g.items }}" hint-size="100%,180px"></dc-import>
-          </div>
-      </sc-for>
-      <div id="faq-none" hidden>
-        <div style="padding:var(--space-8);background:#fff;border:1px dashed var(--border-strong);border-radius:var(--radius-lg);display:flex;flex-direction:column;gap:var(--space-3);align-items:flex-start">
-          <h2 style="margin:0;font:700 20px/1.3 var(--font-display);color:var(--navy-800)">No encontramos esa pregunta</h2>
-          <p style="margin:0;font:400 15px/1.55 var(--font-sans);color:var(--fg-2)">Escríbenos y te respondemos por WhatsApp.</p>
-          <a id="faq-waq" href="{{ waQ }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:var(--radius-md);background:var(--action-primary);color:#fff;font:600 15px/1 var(--font-sans)" style-hover="background:var(--action-primary-hover);color:#fff;text-decoration:none">Preguntar por WhatsApp</a>
+      <div id="faq-none" class="aside" hidden>
+        <div class="aside__head">
+          <h2 class="subhead">No encontramos esa pregunta</h2>
+        </div>
+        <div class="aside__body">
+          <p class="statement">Escríbenos y te respondemos por WhatsApp.</p>
+          <a id="faq-waq" class="btn btn--wa" href="{{ waQ }}" target="_blank" rel="noopener"><i data-icon="message-circle"></i>Preguntar por WhatsApp</a>
         </div>
       </div>
-      <div style="padding:var(--space-8);background:var(--navy-50);border-radius:var(--radius-lg);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:var(--space-4)">
-        <h2 style="margin:0;font:700 22px/1.25 var(--font-display);color:var(--text-heading)">¿No encontraste tu respuesta?</h2>
-        <div style="display:flex;flex-wrap:wrap;gap:var(--space-3)">
-          <a href="{{ waHref }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;height:48px;padding:0 20px;border-radius:var(--radius-md);background:var(--action-primary);color:#fff;font:600 15px/1 var(--font-sans)" style-hover="background:var(--action-primary-hover);color:#fff;text-decoration:none">Escribir por WhatsApp</a>
-          <a href="Contacto.dc.html" style="display:inline-flex;align-items:center;height:48px;padding:0 20px;border-radius:var(--radius-md);background:#fff;border:1px solid var(--border-strong);color:var(--tb-navy);font:600 15px/1 var(--font-sans)" style-hover="background:var(--navy-50);text-decoration:none">Ver contacto</a>
-        </div>
+    </div>
+  </section>
+
+  <section class="section section--tone" aria-labelledby="mas-h">
+    <div class="wrap closing">
+      <div class="closing__text">
+        <h2 id="mas-h" class="heading rv">¿No encontraste tu respuesta?</h2>
+        <p class="statement rv">Una persona del equipo te responde por WhatsApp en horario de atención.</p>
+      </div>
+      <div class="actions rv">
+        <a class="btn btn--wa" href="{{ waHref }}" target="_blank" rel="noopener"><i data-icon="message-circle"></i>Escribir por WhatsApp</a>
+        <a class="link-arrow" href="Contacto.dc.html">Ver contacto <i data-icon="arrow-right" class="btn__arrow"></i></a>
       </div>
     </div>
   </section>
 </main>
-<dc-import name="Site-Footer" wa-page="Preguntas frecuentes" hint-size="100%,480px"></dc-import>
+<dc-import name="Site-Footer" wa-page="Preguntas frecuentes"></dc-import>
 </x-dc>
 <script type="application/json" data-page>
 {
@@ -76,7 +84,7 @@
      "id": "cargos-ocultos",
      "q": "¿Hay cargos adicionales?",
      "a": "Tu cotización muestra flete, impuestos y seguro por separado antes de pagar. Almacenamiento después de [X] días: US$[X].",
-     "href": "Tarifas.dc.html#incluye",
+     "href": "Tarifas.dc.html#precios",
      "linkLabel": "Ver qué incluye"
     }
    ]
@@ -217,7 +225,7 @@
      "id": "cargos-ocultos",
      "q": "¿Hay cargos adicionales?",
      "a": "Tu cotización muestra flete, impuestos y seguro por separado antes de pagar. Almacenamiento después de [X] días: US$[X].",
-     "href": "Tarifas.dc.html#incluye",
+     "href": "Tarifas.dc.html#precios",
      "linkLabel": "Ver qué incluye"
     }
    ]

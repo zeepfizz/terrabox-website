@@ -6,202 +6,152 @@
 <body>
 <x-dc>
 <helmet>
-<title>Compra en EE.&nbsp;UU. y recíbelo en Colombia | TerraBox Cargo</title>
+<title>Tu casillero en Miami: compra en EE.&nbsp;UU. y recíbelo en Colombia | TerraBox Cargo</title>
 <meta name="description" content="Casillero en Miami y envíos a Colombia en 5 a 7 días hábiles. Desde US$25 con seguro y transporte nacional incluidos. Calcula tu envío.">
 </helmet>
 <dc-import name="Site-Header" active="inicio" wa-page="de inicio" sticky-cta="{{ true }}"></dc-import>
 <main id="main" tabindex="-1">
 
-  <!-- 2. Hero + rastreo -->
+  <!-- 1. Hero: the claim, the price and a box arriving at a door; tracking in the same field -->
   <section class="hero" aria-labelledby="hero-h">
-    <div class="container">
-      <div class="hero__grid">
-        <div class="hero__copy">
-          <span class="eyebrow">Casillero en Miami · Envíos a Colombia</span>
-          <h1 id="hero-h" class="h1">Compra en EE.&nbsp;UU. y recíbelo en Colombia en 5 a 7 días hábiles</h1>
-          <p class="hero__sub">Desde <strong data-price="tier0">US$25</strong>, <strong>seguro incluido</strong>. Tu dirección en Miami, transporte nacional a ciudades principales y atención personalizada por WhatsApp.</p>
-          <div class="hero__ctas">
-            <a class="btn btn--primary btn--lg" href="Registro.dc.html" data-tb-url="register">Regístrate gratis <i data-icon="arrow-right" class="btn__arrow"></i></a>
-            <a class="btn btn--outline btn--lg" href="#calculadora">Calcula tu envío</a>
-          </div>
-        </div>
-        <div class="hero__media">
-          <div class="hero__photo">
-            <img src="https://images.unsplash.com/photo-1758523670564-d1d6a734dc0b?auto=format&amp;fit=crop&amp;w=900&amp;h=765&amp;q=70" srcset="https://images.unsplash.com/photo-1758523670564-d1d6a734dc0b?auto=format&amp;fit=crop&amp;w=600&amp;h=510&amp;q=70 600w, https://images.unsplash.com/photo-1758523670564-d1d6a734dc0b?auto=format&amp;fit=crop&amp;w=900&amp;h=765&amp;q=70 900w, https://images.unsplash.com/photo-1758523670564-d1d6a734dc0b?auto=format&amp;fit=crop&amp;w=1200&amp;h=1020&amp;q=70 1200w" sizes="(min-width:960px) 560px, 100vw" width="900" height="765" alt="Pareja recibiendo una caja en la puerta de su casa" fetchpriority="high">
-          </div>
-          <div class="hero__badge"><i data-icon="shield-check"></i><span>Seguro incluido<br><span class="small">en cada envío</span></span></div>
-        </div>
+    <div class="hero__copy">
+      <h1 id="hero-h" class="display">Tu casillero en Miami.</h1>
+      <p class="statement">Compra en tiendas de Estados Unidos y recíbelo en tu casa en Colombia en 5 a 7 días hábiles.</p>
+      <p class="hero__price">Desde <span data-price="tier0">US$25</span>, con seguro incluido.</p>
+      <div class="actions">
+        <a class="btn btn--accent" href="Registro.dc.html" data-tb-url="register">Regístrate gratis <i data-icon="arrow-right" class="btn__arrow"></i></a>
+        <a class="link-arrow" href="#caja">Calcula tu envío <i data-icon="arrow-down" class="btn__arrow btn__arrow--down"></i></a>
       </div>
+    </div>
+    <figure class="hero__photo">
+      <img src="assets/img/photos/entrega-puerta.webp" srcset="assets/img/photos/entrega-puerta-800.webp 800w, assets/img/photos/entrega-puerta.webp 1600w" sizes="(min-width:1024px) 42vw, 100vw" width="1600" height="900" alt="Una pareja recibe una caja en la puerta de su casa" fetchpriority="high">
+    </figure>
+    <form class="track hero__track" role="search" aria-labelledby="track-h" novalidate>
+      <h2 id="track-h" class="track__title">¿Ya enviaste? Rastrea tu guía</h2>
+      <div class="track__row">
+        <label class="track__field"><span class="sr-only">Número de guía</span><input class="track__input" name="guia" type="text" autocomplete="off" placeholder="Número de guía, ej. TBX-0000-0000"></label>
+        <button type="submit" class="btn btn--accent">Rastrear <i data-icon="search"></i></button>
+      </div>
+      <p class="track__msg" role="alert"></p>
+    </form>
+  </section>
 
-      <form class="track" role="search" aria-labelledby="track-h" novalidate>
-        <h2 id="track-h" class="track__title"><i data-icon="package"></i>Rastrea tu envío</h2>
-        <div class="track__row">
-          <label><span class="sr-only">Número de guía</span><input class="track__input" name="guia" type="text" autocomplete="off" placeholder="Número de guía, ej. TBX-0000-0000"></label>
-          <button type="submit" class="btn btn--navy">Rastrear <i data-icon="search"></i></button>
-        </div>
-        <p class="track__msg" role="alert"></p>
-        <p class="track__hint small">Te respondemos por WhatsApp con el estado de tu envío.</p>
-      </form>
+  <!-- 2. The live thing: the customer's box -->
+  <section id="caja" class="section" aria-labelledby="caja-h">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="caja-h" class="heading rv">Arma tu caja y mira el precio.</h2>
+        <p class="statement rv">Escribe cuánto pesa y cuánto vale. El precio incluye seguro y transporte nacional.</p>
+      </div>
+      <dc-import name="Include" file="caja"></dc-import>
     </div>
   </section>
 
-  <!-- 3. Franja de confianza -->
-  <section class="trust" aria-label="Por qué TerraBox">
-    <ul class="trust__list">
-      <sc-for list="{{ trust }}" as="t">
-        <li class="trust__item"><i data-icon="{{ t.icon }}"></i><span>{{ t.t }}<small>{{ t.d }}</small></span></li>
-      </sc-for>
-    </ul>
-  </section>
-
-  <!-- 4. Cómo funciona -->
-  <section id="como-funciona" class="section" aria-labelledby="como-h">
-    <div class="container">
-      <div class="section__head section__head--center">
-        <span class="eyebrow">Paso a paso</span>
-        <h2 id="como-h" class="h2">¿Cómo funciona?</h2>
-        <p class="lead">Del carrito de compras en Estados Unidos a la puerta de tu casa en Colombia, en cinco pasos.</p>
+  <!-- 3. The route, told as five places -->
+  <section id="ruta" class="section section--tone" aria-labelledby="ruta-h">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="ruta-h" class="heading rv">De la tienda a tu puerta.</h2>
       </div>
-      <ol class="timeline">
-        <sc-for list="{{ steps }}" as="s">
-          <li class="step reveal">
-            <div class="step__media">
-              <img src="https://images.unsplash.com/{{ s.img }}?auto=format&fit=crop&w=480&h=300&q=65" width="480" height="300" alt="{{ s.alt }}" loading="lazy" decoding="async">
-              <i data-icon="{{ s.icon }}" class="step__icon"></i>
-            </div>
-            <div class="step__body">
-              <span class="step__n">PASO {{ s.n }}</span>
-              <h3>{{ s.t }}</h3>
-              <p>{{ s.d }}</p>
-            </div>
+      <ol class="route">
+        <sc-for list="{{ route }}" as="r">
+          <li class="route__stop rv">
+            <img src="assets/img/photos/{{ r.img }}-800.webp" width="{{ r.w }}" height="{{ r.h }}" alt="{{ r.alt }}" loading="lazy" decoding="async">
+            <h3>{{ r.t }}</h3>
+            <p>{{ r.d }}</p>
           </li>
         </sc-for>
       </ol>
     </div>
   </section>
 
-  <!-- 5. Ventajas -->
-  <section class="section section--alt" aria-labelledby="ventajas-h">
-    <div class="container">
-      <div class="split">
-        <div class="photo-card reveal">
-          <img src="https://images.unsplash.com/photo-1586528116022-aeda1613c63d?auto=format&amp;fit=crop&amp;w=800&amp;h=900&amp;q=65" width="800" height="900" alt="Equipo trabajando en una bodega de paquetes" loading="lazy" decoding="async">
-          <div class="photo-card__body">
-            <span class="eyebrow">Bodega en Miami</span>
-            <h3>Recibimos y revisamos cada paquete antes de enviarlo</h3>
-            <p>Te avisamos cuando llega tu compra y te acompañamos por WhatsApp hasta la entrega.</p>
+  <!-- 4. Prices -->
+  <section id="precios" class="section field" aria-labelledby="precios-h">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="precios-h" class="heading rv">Lo que pagas.</h2>
+      </div>
+      <dc-import name="Include" file="precios" link-href="Tarifas.dc.html" link-label="Ver todas las tarifas"></dc-import>
+    </div>
+  </section>
+
+  <!-- 5. The Miami address as a shipping label -->
+  <section id="direccion" class="section section--tone" aria-labelledby="dir-h">
+    <div class="wrap split">
+      <div class="split__text">
+        <h2 id="dir-h" class="heading rv">Tu dirección en Miami.</h2>
+        <p class="statement rv">Al registrarte recibes una dirección en nuestra bodega con tu número de casillero. La escribes al pagar en cualquier tienda y nosotros hacemos el resto.</p>
+        <div class="label rv" role="group" aria-label="Ejemplo de tu dirección en Miami">
+          <div class="label__top"><img src="assets/img/logo-horizontal.svg" alt="TerraBox Cargo" width="148" height="25" loading="lazy"><span>Miami, FL</span></div>
+          <div class="label__lines">
+            <p class="label__name">Full name: <strong>Tu nombre TBX-0000</strong></p>
+            <p>Address: <strong>[Dirección de la bodega]</strong></p>
+            <p>City: <strong>Miami</strong> · State: <strong>FL</strong> · ZIP: <strong>[código postal]</strong></p>
           </div>
+          <svg class="label__code" viewBox="0 0 220 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 0h4v40H0zM7 0h2v40H7zM12 0h6v40h-6zM21 0h2v40h-2zM26 0h3v40h-3zM32 0h2v40h-2zM37 0h6v40h-6zM46 0h2v40h-2zM51 0h4v40h-4zM58 0h2v40h-2zM63 0h3v40h-3zM69 0h6v40h-6zM78 0h2v40h-2zM83 0h4v40h-4zM90 0h2v40h-2zM95 0h6v40h-6zM104 0h3v40h-3zM110 0h2v40h-2zM115 0h4v40h-4zM122 0h2v40h-2zM127 0h6v40h-6zM136 0h2v40h-2zM141 0h3v40h-3zM147 0h2v40h-2zM152 0h6v40h-6zM161 0h4v40h-4zM168 0h2v40h-2zM173 0h3v40h-3zM179 0h6v40h-6zM188 0h2v40h-2zM193 0h4v40h-4zM200 0h2v40h-2zM205 0h6v40h-6zM214 0h2v40h-2zM218 0h2v40h-2z" fill="currentColor"/></svg>
         </div>
-        <div>
-          <div class="section__head">
-            <span class="eyebrow">Ventajas</span>
-            <h2 id="ventajas-h" class="h2">Todo incluido, sin sorpresas</h2>
-          </div>
-          <div class="features">
-            <sc-for list="{{ features }}" as="f">
-              <div class="feature reveal"><i data-icon="{{ f.icon }}"></i><div><h3>{{ f.t }}</h3><p>{{ f.d }}</p></div></div>
-            </sc-for>
-          </div>
+        <div class="actions rv">
+          <a class="btn btn--primary" href="Registro.dc.html" data-tb-url="register">Regístrate gratis <i data-icon="arrow-right" class="btn__arrow"></i></a>
         </div>
       </div>
+      <figure class="split__photo rv">
+        <img src="assets/img/photos/caja-carton-800.webp" srcset="assets/img/photos/caja-carton-800.webp 800w, assets/img/photos/caja-carton.webp 1600w" sizes="(min-width:1024px) 40vw, 100vw" width="800" height="1200" alt="Una caja de cartón cerrada con cinta" loading="lazy" decoding="async">
+      </figure>
     </div>
   </section>
 
-  <!-- 6. Tarifas -->
-  <section id="tarifas" class="section" aria-labelledby="tarifas-h">
-    <div class="container">
-      <div class="section__head">
-        <span class="eyebrow">Precios Colombia</span>
-        <h2 id="tarifas-h" class="h2">Tarifas claras por libra</h2>
-      </div>
-      <dc-import name="Include" file="precios"></dc-import>
-      <div class="cta-row">
-        <a class="btn btn--primary" href="#calculadora">Calcula tu envío <i data-icon="arrow-right" class="btn__arrow"></i></a>
-        <a class="link-arrow" href="Tarifas.dc.html">Ver tarifas completas <i data-icon="arrow-right"></i></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 7. Calculadora -->
-  <section id="calculadora" class="section section--alt" aria-labelledby="calc-h">
-    <div class="container">
-      <div class="section__head section__head--center">
-        <span class="eyebrow">Calculadora</span>
-        <h2 id="calc-h" class="h2">Calcula tu envío en segundos</h2>
-        <p class="lead">Escribe el peso y el valor declarado de tu caja.</p>
-      </div>
-      <dc-import name="Include" file="calculadora"></dc-import>
-    </div>
-  </section>
-
-  <!-- 8. Artículos prohibidos -->
+  <!-- 6. What cannot travel -->
   <section id="prohibidos" class="section" aria-labelledby="ban-h">
-    <div class="container">
-      <div class="section__head">
-        <span class="eyebrow">Antes de comprar</span>
-        <h2 id="ban-h" class="h2">Artículos prohibidos para Colombia</h2>
-        <p class="lead">El envío de paquetes y mercancías por courier o tráfico postal a Colombia tiene prohibiciones estrictas según la DIAN y las principales empresas de transporte.</p>
+    <div class="wrap">
+      <div class="head">
+        <h2 id="ban-h" class="heading rv">Lo que no puede viajar.</h2>
+        <p class="statement rv">El envío de paquetes y mercancías por courier o tráfico postal a Colombia tiene prohibiciones estrictas según la DIAN y las principales empresas de transporte.</p>
       </div>
-      <ul class="ban-grid" role="list">
+      <ul class="tlist tlist--2">
         <sc-for list="{{ bans }}" as="b">
-          <li class="ban reveal"><i data-icon="{{ b.icon }}"></i><h3>{{ b.t }}</h3><p>{{ b.d }}</p></li>
+          <li class="rv"><strong>{{ b.t }}:</strong> {{ b.d }}</li>
         </sc-for>
       </ul>
-      <div class="cta-row">
-        <a class="btn btn--outline" href="Productos-Restringidos.dc.html">Ver la lista completa y los límites <i data-icon="arrow-right" class="btn__arrow"></i></a>
-      </div>
+      <p class="after rv"><a class="link-arrow" href="Productos-Restringidos.dc.html">Ver los límites y la lista completa <i data-icon="arrow-right" class="btn__arrow"></i></a></p>
     </div>
   </section>
 
-  <!-- 9. Contacto -->
-  <section id="contacto" class="section section--alt" aria-labelledby="contacto-h">
-    <div class="container">
-      <div class="contact-grid">
-        <div>
-          <div class="section__head">
-            <span class="eyebrow">Contacto</span>
-            <h2 id="contacto-h" class="h2">¿Tienes dudas? Hablemos</h2>
-            <p class="lead">Una persona del equipo te responde. Por WhatsApp es más rápido.</p>
-          </div>
-          <div class="contact-cards">
-            <a class="ccard ccard--wa" href="{{ waHref }}" target="_blank" rel="noopener"><i data-icon="message-circle"></i><div><strong>WhatsApp</strong><span>Escríbenos y te respondemos en horario de atención.</span></div></a>
-            <div class="ccard"><i data-icon="mail"></i><div><strong>Email</strong><span><a data-tb="email" href="Contacto.dc.html">[email]</a></span></div></div>
-            <div class="ccard"><i data-icon="clock"></i><div><strong>Horario</strong><span data-tb="hours">[horario de atención]</span></div></div>
-          </div>
+  <!-- 7. A real person answers -->
+  <section id="contacto" class="section section--tone" aria-labelledby="contacto-h">
+    <div class="wrap contact">
+      <div class="contact__text">
+        <h2 id="contacto-h" class="heading rv">Habla con una persona.</h2>
+        <p class="statement rv">Te respondemos por WhatsApp en horario de atención.</p>
+        <div class="actions rv">
+          <a class="btn btn--wa btn--big" href="{{ waHref }}" target="_blank" rel="noopener"><i data-icon="message-circle"></i>Escribir por WhatsApp</a>
         </div>
-        <div class="form-card">
-          <h3>Escríbenos</h3>
-          <dc-import name="Lead-Form" form-id="home" endpoint="contacto" aria-label="Formulario de contacto" fields="{{ fields }}" submit-label="Enviar mensaje" success-title="Recibimos tu mensaje" success-body="Te respondemos lo antes posible." wa-intro="Hola, les escribo desde la página de inicio:"></dc-import>
-        </div>
+        <dl class="contact__data rv">
+          <div><dt>Email</dt><dd><a data-tb="email" href="Contacto.dc.html">[email]</a></dd></div>
+          <div><dt>Horario</dt><dd data-tb="hours">[horario de atención]</dd></div>
+        </dl>
+        <figure class="contact__photo rv">
+          <img src="assets/img/photos/entrega-caja-800.webp" width="800" height="1000" alt="Una persona entrega una caja de cartón" loading="lazy" decoding="async">
+        </figure>
+      </div>
+      <div class="contact__form rv">
+        <h3>O escríbenos aquí</h3>
+        <dc-import name="Lead-Form" form-id="home" endpoint="contacto" aria-label="Formulario de contacto" fields="{{ fields }}" submit-label="Enviar mensaje" success-title="Recibimos tu mensaje" success-body="Te respondemos lo antes posible." wa-intro="Hola, les escribo desde la página de inicio:"></dc-import>
       </div>
     </div>
   </section>
 </main>
 <dc-import name="Site-Footer" wa-page="de inicio"></dc-import>
 </x-dc>
+<script src="assets/js/caja.js"></script>
 <script type="application/json" data-page>
 {
  "waHref": {"$wa": "Hola, vengo de la página de inicio"},
- "trust": [
-  {"icon": "clock", "t": "5 a 7 días hábiles", "d": "de Miami a tu puerta"},
-  {"icon": "shield-check", "t": "Seguro incluido", "d": "en todas las tarifas"},
-  {"icon": "truck", "t": "Envío a ciudades principales", "d": "transporte nacional incluido"},
-  {"icon": "message-circle", "t": "Atención personalizada", "d": "por WhatsApp"}
- ],
- "steps": [
-  {"n": "01", "icon": "user-plus", "img": "photo-1563013544-824ae1b704d3", "alt": "Persona registrándose en un portátil", "t": "Regístrate", "d": "Regístrate y recibe tu dirección en Miami."},
-  {"n": "02", "icon": "shopping-cart", "img": "photo-1758874573126-cf93a36261e8", "alt": "Hombre comprando en línea desde su celular", "t": "Compra", "d": "Compra en tus tiendas favoritas de EE. UU."},
-  {"n": "03", "icon": "warehouse", "img": "photo-1553413077-190dd305871c", "alt": "Estanterías con paquetes en una bodega", "t": "Recibimos", "d": "Recibimos y revisamos tu paquete en bodega."},
-  {"n": "04", "icon": "plane", "img": "photo-1775449053619-89b5265f611a", "alt": "Avión de carga en la pista", "t": "Enviamos", "d": "Lo enviamos a Colombia (aduana incluida en el proceso)."},
-  {"n": "05", "icon": "house", "img": "photo-1614018453562-77f6180ce036", "alt": "Caja entregada en la puerta de una casa", "t": "Lo recibes", "d": "Lo recibes en tu puerta en 5 a 7 días hábiles."}
- ],
- "features": [
-  {"icon": "shield-check", "t": "Seguro incluido", "d": "Todas las tarifas incluyen seguro para tu caja."},
-  {"icon": "truck", "t": "Transporte nacional incluido", "d": "Entrega a ciudades principales sin costo adicional."},
-  {"icon": "badge-percent", "t": "Sin impuestos hasta US$200", "d": "Cero pago de impuestos con declarado por caja hasta US$200."},
-  {"icon": "tag", "t": "Precio claro por libra", "d": "US$25 de 1 a 4 libras, US$30 de 5 a 10 y US$3 por libra adicional."},
-  {"icon": "package", "t": "Hasta 6 productos iguales", "d": "Envía hasta 6 productos iguales por caja."},
-  {"icon": "message-circle", "t": "Atención personalizada", "d": "Te acompañamos por WhatsApp de la compra a la entrega."}
+ "route": [
+  {"img": "compra-portatil", "w": 800, "h": 533, "alt": "Una persona compra en línea desde su portátil con una tarjeta en la mano", "t": "Te registras", "d": "Regístrate y recibe tu dirección en Miami."},
+  {"img": "compra-celular", "w": 800, "h": 450, "alt": "Un hombre paga una compra en línea desde su celular", "t": "Compras", "d": "Compra en tus tiendas favoritas de EE. UU."},
+  {"img": "bodega-equipo", "w": 800, "h": 533, "alt": "Personas caminando por un pasillo de una bodega de paquetes", "t": "Lo recibimos en Miami", "d": "Recibimos y revisamos tu paquete en bodega."},
+  {"img": "avion-carga", "w": 800, "h": 533, "alt": "Un avión de carga en la pista", "t": "Vuela a Colombia", "d": "Lo enviamos a Colombia (aduana incluida en el proceso)."},
+  {"img": "caja-puerta", "w": 800, "h": 533, "alt": "Una caja de cartón junto a la puerta de una casa", "t": "Llega a tu puerta", "d": "Lo recibes en tu puerta en 5 a 7 días hábiles."}
  ],
  "bans": {"$data": "prohibidos"},
  "fields": [

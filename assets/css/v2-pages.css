@@ -1,0 +1,33 @@
+/* Inner-page fixes after the v2 audits (owned by the inner-page migration). Loaded after v2.css. */
+
+/* inner-page hero: the h1 across the grid, text left, a photo or a key figure in the right columns */
+.phero__grid{display:grid;grid-template-columns:minmax(0,1fr);column-gap:var(--gap)}
+.phero__aside{margin-top:clamp(40px,6vw,56px)}
+.phero__photo img{display:block;width:100%;aspect-ratio:4 / 3;object-fit:cover}
+.phero__fact{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.phero__num{font-size:var(--fs-display);font-weight:600;letter-spacing:-.045em;line-height:.92;color:var(--accent);font-variant-numeric:tabular-nums;white-space:nowrap}
+.phero__aside .label{max-width:520px}
+@media (min-width:1024px){
+  .phero__grid{grid-template-columns:repeat(12,minmax(0,1fr));align-items:start}
+  .phero__grid > *{grid-column:1 / -1}
+  .phero__grid > .phero__main{grid-column:1 / span 7}
+  .phero__grid > .phero__aside{grid-column:9 / -1;grid-row:3 / span 2;margin-top:clamp(24px,3vw,40px)}
+  .phero__grid > .phero__photo img{aspect-ratio:4 / 5;max-height:560px}
+}
+
+/* data reads in full ink; tables at 17px */
+.ptable--light th span,.plist span,.plans dt{color:var(--ink)}
+.field .plist span{color:#fff}
+.dtable,.dtable th,.dtable td{font-size:17px}
+@media (max-width:599.98px){.dtable,.dtable th,.dtable td{font-size:17px}}
+
+/* compact sequence (Tiendas): body text under a small heading */
+.seq--tight p{font-size:var(--fs-body);line-height:1.55}
+.seq--tight li{display:block}
+
+/* founder photo still to come: a small placeholder */
+.ph--sm{max-width:240px;aspect-ratio:4 / 5}
+.phero__aside .phero__num{font-size:clamp(56px,7.5vw,120px)}
+
+/* Ayuda: on phones the search comes first; the hero photo shows from tablet width up. */
+@media (max-width:767.98px){.phero__photo--desk{display:none}}

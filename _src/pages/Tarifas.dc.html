@@ -11,64 +11,56 @@
 </helmet>
 <dc-import name="Site-Header" active="tarifas" wa-page="Tarifas" sticky-cta="{{ true }}" sticky-label="Calcula tu envío" sticky-href="#calculadora"></dc-import>
 <main id="main" tabindex="-1">
-  <section class="page-hero" aria-labelledby="h1">
-    <div class="container">
-      <nav class="crumbs" aria-label="Ruta de navegación"><a href="Inicio.dc.html">Inicio</a> / <span aria-current="page">Tarifas</span></nav>
-      <span class="eyebrow">Precios Colombia</span>
-      <h1 id="h1" class="h1">Tarifas de envío a Colombia</h1>
-      <p class="lead">Precio por libra, con seguro y transporte nacional a ciudades principales incluidos. Entrega en 5 a 7 días hábiles.</p>
+  <section class="phero" aria-labelledby="h1">
+    <div class="wrap phero__grid">
+      <nav class="phero__crumb" aria-label="Ruta de navegación"><a href="Inicio.dc.html">Inicio</a> / <span aria-current="page">Tarifas</span></nav>
+      <h1 id="h1" class="display">Tarifas de envío.</h1>
+      <div class="phero__main">
+      <p class="statement">Precio por caja según el peso, con seguro y transporte nacional a ciudades principales incluidos. Entrega en 5 a 7 días hábiles.</p>
+      <div class="actions"><a class="btn btn--accent" href="Registro.dc.html" data-tb-url="register">Regístrate gratis <i data-icon="arrow-right" class="btn__arrow"></i></a></div>
+      </div>
+      <div class="phero__aside phero__fact"><p class="phero__num" data-price="tier0">US$25</p><p class="statement">desde, por caja de 1 a 4 libras, con seguro incluido.</p></div>
     </div>
   </section>
 
-  <section class="section" style="padding-top:clamp(24px,4vw,40px)" aria-label="Precios y condiciones">
-    <div class="container">
-      <dc-import name="Include" file="precios"></dc-import>
-      <div class="cta-row">
-        <a class="btn btn--primary" href="#calculadora">Calcula tu envío <i data-icon="arrow-right" class="btn__arrow"></i></a>
-        <a class="link-arrow" href="Productos-Restringidos.dc.html">Revisa los artículos prohibidos <i data-icon="arrow-right"></i></a>
+  <section id="calculadora" class="section" aria-labelledby="caja-h">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="caja-h" class="heading rv">Arma tu caja y mira el precio.</h2>
+        <p class="statement rv">Escribe cuánto pesa y cuánto vale. El precio incluye seguro y transporte nacional.</p>
       </div>
+      <dc-import name="Include" file="caja"></dc-import>
     </div>
   </section>
 
-  <section id="calculadora" class="section section--alt" aria-labelledby="calc-h">
-    <div class="container">
-      <div class="section__head section__head--center">
-        <span class="eyebrow">Calculadora</span>
-        <h2 id="calc-h" class="h2">Calcula tu envío</h2>
-        <p class="lead">Escribe el peso y el valor declarado de tu caja.</p>
+  <section id="precios" class="section field" aria-labelledby="precios-h">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="precios-h" class="heading rv">Lo que pagas.</h2>
       </div>
-      <dc-import name="Include" file="calculadora"></dc-import>
+      <dc-import name="Include" file="precios" link-href="Productos-Restringidos.dc.html" link-label="Revisa los artículos prohibidos"></dc-import>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="ejemplos-h">
-    <div class="container">
-      <div class="section__head">
-        <span class="eyebrow">Ejemplos</span>
-        <h2 id="ejemplos-h" class="h2">Así se calcula</h2>
-      </div>
-      <div class="prices">
-        <sc-for list="{{ examples }}" as="e">
-          <div class="price"><span class="price__label">{{ e.t }}</span><p class="price__weight">{{ e.w }}</p><span class="price__amount">{{ e.p }}</span><span class="price__note">{{ e.d }}</span></div>
-        </sc-for>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" style="padding-top:0" aria-label="Regístrate">
-    <div class="container">
-      <div class="cta-band">
-        <div><h2>Tu dirección en Miami está a un minuto</h2><p>Regístrate gratis y empieza a comprar en tus tiendas favoritas de EE.&nbsp;UU.</p></div>
-        <div class="cta-band__actions">
-          <a class="btn btn--white btn--lg" href="Registro.dc.html" data-tb-url="register">Regístrate gratis <i data-icon="arrow-right" class="btn__arrow"></i></a>
-          <a class="btn btn--ghost-light btn--lg" href="{{ waHref }}" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+  <section class="section" aria-labelledby="cta-h">
+    <div class="wrap split">
+      <div class="split__text">
+        <h2 id="cta-h" class="heading rv">Regístrate en un minuto.</h2>
+        <p class="statement rv">Recibe gratis tu dirección en Miami y empieza a comprar en tus tiendas favoritas de EE.&nbsp;UU.</p>
+        <div class="actions rv">
+          <a class="btn btn--primary" href="Registro.dc.html" data-tb-url="register">Regístrate gratis <i data-icon="arrow-right" class="btn__arrow"></i></a>
+          <a class="link-arrow" href="{{ waHref }}" target="_blank" rel="noopener">Escribir por WhatsApp <i data-icon="arrow-right" class="btn__arrow"></i></a>
         </div>
       </div>
+      <figure class="split__photo rv">
+        <img src="assets/img/photos/medellin-800.webp" srcset="assets/img/photos/medellin-800.webp 800w, assets/img/photos/medellin.webp 1400w" sizes="(min-width:1024px) 40vw, 100vw" width="800" height="1200" alt="Edificios de Medellín al pie de las montañas" loading="lazy" decoding="async">
+      </figure>
     </div>
   </section>
 </main>
 <dc-import name="Site-Footer" wa-page="Tarifas"></dc-import>
 </x-dc>
+<script src="assets/js/caja.js"></script>
 <script type="application/json" data-page>
 {
  "waHref": {"$wa": "Hola, vengo de la página Tarifas"},

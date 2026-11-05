@@ -15,23 +15,24 @@
 <link rel="icon" type="image/svg+xml" href="assets/img/logo-symbol.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&amp;display=swap">
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/site.css">
 <link rel="stylesheet" href="assets/css/interactions.css">
-<link rel="stylesheet" href="assets/css/redesign.css">
+<link rel="stylesheet" href="assets/css/v2.css">
+<link rel="stylesheet" href="assets/css/v2-pages.css">
 </head>
 <body>
 <a href="#main" class="skip-link">Saltar al contenido</a>
 <header id="site-header" class="hdr">
   <div class="hdr__bar">
-    <a class="hdr__logo" href="index.html" aria-label="TerraBox Cargo, inicio"><img src="assets/img/logo-horizontal.svg" alt="TerraBox Cargo" width="178" height="30"></a>
-    <nav class="hdr__nav" aria-label="Principal"><a class="hdr__link" href="index.html">Inicio</a><a class="hdr__link" href="casillero-virtual.html">¿Cómo funciona?</a><a class="hdr__link" href="tarifas.html">Tarifas</a><a class="hdr__link" href="tarifas.html#calculadora">Calculadora</a><a class="hdr__link" href="productos-restringidos.html">Artículos prohibidos</a><a class="hdr__link" href="contacto.html">Contacto</a></nav>
+    <a class="hdr__logo" href="index.html"><img src="assets/img/logo-horizontal.svg" alt="TerraBox Cargo, inicio" width="178" height="30"></a>
+    <nav class="hdr__nav" aria-label="Principal"><a class="hdr__link" href="index.html#ruta">Cómo funciona</a><a class="hdr__link" href="tarifas.html">Tarifas</a><a class="hdr__link" href="productos-restringidos.html">Prohibidos</a><a class="hdr__link" href="rastreo.html">Rastrear</a><a class="hdr__link" href="contacto.html">Contacto</a></nav>
     <div class="hdr__actions">
-      <a class="btn btn--outline btn--sm" href="ingresar.html" data-tb-url="login">Ingresar</a>
-      <a class="btn btn--primary btn--sm" href="registro.html" data-tb-url="register">Registrarse <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a>
+      <a class="hdr__link" href="ingresar.html" data-tb-url="login">Ingresar</a>
+      <a class="btn btn--primary btn--compact" href="registro.html" data-tb-url="register">Registrarse</a>
     </div>
-    <button type="button" id="menu-btn" class="hdr__menu" aria-expanded="false" aria-controls="menu-movil"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="4" x2="20" y1="12" y2="12"/> <line x1="4" x2="20" y1="6" y2="6"/> <line x1="4" x2="20" y1="18" y2="18"/></svg>Menú</button>
+    <button type="button" id="menu-btn" class="hdr__menu" aria-expanded="false" aria-controls="menu-movil"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="4" x2="20" y1="12" y2="12"/> <line x1="4" x2="20" y1="6" y2="6"/> <line x1="4" x2="20" y1="18" y2="18"/></svg><span>Menú</span></button>
   </div>
 </header>
 <div id="menu-movil" class="mnav" role="dialog" aria-modal="true" aria-label="Menú" hidden>
@@ -39,144 +40,169 @@
     <img src="assets/img/logo-horizontal.svg" alt="TerraBox Cargo" width="166" height="28">
     <button type="button" id="menu-close" class="mnav__close" aria-label="Cerrar menú"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/> <path d="m6 6 12 12"/></svg></button>
   </div>
-  <nav class="mnav__list" aria-label="Principal"><a class="mnav__link" href="index.html">Inicio</a><a class="mnav__link" href="casillero-virtual.html">¿Cómo funciona?</a><a class="mnav__link" href="tarifas.html">Tarifas</a><a class="mnav__link" href="tarifas.html#calculadora">Calculadora</a><a class="mnav__link" href="productos-restringidos.html">Artículos prohibidos</a><a class="mnav__link" href="contacto.html">Contacto</a>
+  <nav class="mnav__list" aria-label="Principal (móvil)"><a class="mnav__link" href="index.html#ruta">Cómo funciona</a><a class="mnav__link" href="tarifas.html">Tarifas</a><a class="mnav__link" href="productos-restringidos.html">Prohibidos</a><a class="mnav__link" href="rastreo.html">Rastrear</a><a class="mnav__link" href="contacto.html">Contacto</a>
     <div class="mnav__group">
-      <button type="button" class="m-group-btn mnav__link" aria-expanded="false" aria-controls="m-mas">Más servicios y ayuda<span aria-hidden="true" class="m-sign">+</span></button>
-      <div id="m-mas" class="mnav__sub" hidden><a class="mnav__sublink" href="rastreo.html">Rastrear envío</a><a class="mnav__sublink" href="ayuda.html">Preguntas frecuentes</a><a class="mnav__sublink" href="consolidacion.html">Consolidación</a><a class="mnav__sublink" href="compramos-por-ti.html">Compramos por ti</a><a class="mnav__sublink" href="negocios.html">Negocios y revendedores</a><a class="mnav__sublink" href="carga.html">Carga aérea y marítima</a></div>
+      <button type="button" class="m-group-btn mnav__more" aria-expanded="false" aria-controls="m-mas">Más servicios y ayuda<span aria-hidden="true" class="m-sign">+</span></button>
+      <div id="m-mas" class="mnav__sub" hidden><a class="mnav__sublink" href="casillero-virtual.html">Casillero virtual</a><a class="mnav__sublink" href="ayuda.html">Preguntas frecuentes</a><a class="mnav__sublink" href="consolidacion.html">Consolidación</a><a class="mnav__sublink" href="compramos-por-ti.html">Compramos por ti</a><a class="mnav__sublink" href="negocios.html">Negocios y revendedores</a><a class="mnav__sublink" href="carga.html">Carga aérea y marítima</a></div>
     </div>
   </nav>
   <div class="mnav__actions">
-    <a class="btn btn--outline" href="ingresar.html" data-tb-url="login">Ingresar</a>
+    <a class="btn btn--tone" href="ingresar.html" data-tb-url="login">Ingresar</a>
     <a class="btn btn--primary" href="registro.html" data-tb-url="register">Registrarse</a>
-    <a class="btn btn--whatsapp mnav__wa" href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20Negocios" target="_blank" rel="noopener"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Escribir por WhatsApp</a>
+    <a class="btn btn--wa mnav__wa" href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20Negocios" target="_blank" rel="noopener"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Escribir por WhatsApp</a>
   </div>
 </div>
-<a href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20Negocios" target="_blank" rel="noopener" id="float-wa" class="float-wa" aria-label="Escribir por WhatsApp (se abre en una pestaña nueva)"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg><span>WhatsApp</span></a>
-<div id="sticky-bar" class="sticky-bar" hidden><a class="btn btn--primary" href="solicitar-tarifa.html">Solicitar tarifa</a><a class="btn btn--outline" href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20Negocios" target="_blank" rel="noopener">WhatsApp</a></div>
-<main id="main" tabindex="-1" style="outline:none">
-  <section aria-labelledby="h1" style="background:var(--navy-800);padding:clamp(40px,7vw,88px) var(--space-5)">
-    <div style="max-width:var(--container-max);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-6)">
-      <nav aria-label="Ruta de navegación" style="font:400 13px/1.4 var(--font-sans);color:var(--navy-200)"><a href="index.html" style="color:var(--navy-100)">Inicio</a> / <span aria-current="page">Negocios</span></nav>
-      <span style="font:600 11px/1 var(--font-sans);letter-spacing:var(--ls-overline);text-transform:uppercase;color:var(--tb-cyan)">Negocios</span>
-      <h1 id="h1" style="margin:0;font:700 clamp(34px,5.4vw,56px)/1.06 var(--font-display);letter-spacing:var(--ls-display);color:#fff;max-width:20ch;text-wrap:balance">Importa para vender, con tu costo bajo control</h1>
-      <div style="display:flex;flex-wrap:wrap;gap:var(--space-3)">
-        <a class="h207c06" href="solicitar-tarifa.html" style="flex:1 1 200px;max-width:260px;display:flex;align-items:center;justify-content:center;height:52px;border-radius:var(--radius-md);background:#fff;color:var(--tb-navy);font:600 16px/1 var(--font-sans)">Solicitar tarifa</a>
-        <a class="h042062" href="#planes" style="flex:1 1 200px;max-width:260px;display:flex;align-items:center;justify-content:center;height:52px;border-radius:var(--radius-md);border:1px solid var(--navy-300);color:#fff;font:600 16px/1 var(--font-sans)">Comparar planes</a>
+<div id="sticky-bar" class="sticky-bar" hidden><a class="btn btn--primary" href="solicitar-tarifa.html">Solicitar tarifa</a><a class="btn btn--wa" href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20Negocios" target="_blank" rel="noopener"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>WhatsApp</a></div>
+<main id="main" tabindex="-1">
+  <section class="phero" aria-labelledby="h1">
+    <div class="wrap phero__grid">
+      <nav class="phero__crumb" aria-label="Ruta de navegación"><a href="index.html">Inicio</a> / <span aria-current="page">Negocios</span></nav>
+      <h1 id="h1" class="display">Importa para vender.</h1>
+      <div class="phero__main">
+      <p class="statement">Con tu costo bajo control: consolidación, inspección, despachos fijos y un asesor asignado. Tu tarifa, por escrito.</p>
+      <div class="actions">
+        <a class="btn btn--accent" href="solicitar-tarifa.html">Solicitar tarifa <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a>
+        <a class="link-arrow" href="#planes">Comparar planes <svg class="icon btn__arrow btn__arrow--down" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14"/> <path d="m19 12-7 7-7-7"/></svg></a>
+      </div>
+      </div>
+      <figure class="phero__aside phero__photo"><img src="assets/img/photos/bodega-equipo-800.webp" srcset="assets/img/photos/bodega-equipo-800.webp 800w, assets/img/photos/bodega-equipo.webp 1400w" sizes="(min-width:1024px) 34vw, 100vw" width="800" height="533" alt="Personas caminando por un pasillo de una bodega de paquetes" decoding="async"></figure>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="quien-h">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="quien-h" class="heading rv">¿Cómo vendes?</h2>
+        <p class="statement rv">Elige el camino que se parece a tu negocio.</p>
+      </div>
+      <div class="cols2">
+        <div class="rv">
+          <h3>Revendedores</h3>
+          <p>Vendes en Mercado Libre, Instagram, TikTok o tu tienda online y compras a varios proveedores en Estados Unidos.</p>
+          <a class="link-arrow" href="revendedores.html">Ver Revendedores <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+        <div class="rv">
+          <h3>Empresas e importadores</h3>
+          <p>Mueves cajas o estibas con regularidad y necesitas almacenamiento, documentos y despachos programados.</p>
+          <a class="link-arrow" href="empresas.html">Ver Empresas <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
       </div>
     </div>
   </section>
-  <section aria-labelledby="quien-h" style="padding:clamp(56px,8vw,88px) var(--space-5)">
-    <div style="max-width:var(--container-max);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-8)">
-      <h2 id="quien-h" style="margin:0;font:700 clamp(26px,3.4vw,36px)/1.15 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">¿Cómo vendes?</h2>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:var(--space-5)">
-        <a class="hff7b07" href="revendedores.html" style="display:flex;flex-direction:column;gap:var(--space-3);padding:var(--space-8);background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-1);color:var(--fg-1)">
-          <h3 style="margin:0;font:700 24px/1.2 var(--font-display);color:var(--navy-800)">Revendedores</h3>
-          <p style="margin:0;font:400 16px/1.55 var(--font-sans);color:var(--fg-2)">Vendes en Mercado Libre, Instagram, TikTok o tu tienda online y compras a varios proveedores en Estados Unidos.</p>
-          <span style="margin-top:auto;font:600 15px/1 var(--font-sans);color:var(--tb-navy)">Ver Revendedores →</span>
-        </a>
-        <a class="hff7b07" href="empresas.html" style="display:flex;flex-direction:column;gap:var(--space-3);padding:var(--space-8);background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-1);color:var(--fg-1)">
-          <h3 style="margin:0;font:700 24px/1.2 var(--font-display);color:var(--navy-800)">Empresas e importadores</h3>
-          <p style="margin:0;font:400 16px/1.55 var(--font-sans);color:var(--fg-2)">Mueves cajas o estibas con regularidad y necesitas almacenamiento, documentos y despachos programados.</p>
-          <span style="margin-top:auto;font:600 15px/1 var(--font-sans);color:var(--tb-navy)">Ver Empresas →</span>
-        </a>
+
+  <section id="planes" class="section section--tone" aria-labelledby="planes-h">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="planes-h" class="heading rv">Pagas según lo que mueves.</h2>
+        <p class="statement rv">Del casillero personal a la tarifa negociada para empresas.</p>
       </div>
+      <ul class="plans">
+        
+          <li class="rv" aria-labelledby="plan-personal">
+            <div class="plans__a">
+              <h3 id="plan-personal">Personal</h3>
+              
+              <dl>
+                <div><dt>Volumen mensual</dt><dd>Hasta [X] lb</dd></div>
+                <div><dt>Tarifa</dt><dd>Desde US$25</dd></div>
+              </dl>
+            </div>
+            <div class="plans__b">
+              <ul>
+                <li>Casillero gratis en Miami</li><li>Foto de cada paquete</li><li>Consolidación</li>
+              </ul>
+              <a class="btn btn--tone" href="registro.html">Abrir casillero gratis <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a>
+            </div>
+          </li>
+        
+          <li class="rv" aria-labelledby="plan-revendedor">
+            <div class="plans__a">
+              <h3 id="plan-revendedor">Revendedor</h3>
+              <p class="plans__rec">Recomendado para revendedores.</p>
+              <dl>
+                <div><dt>Volumen mensual</dt><dd>[X]–[Y] lb</dd></div>
+                <div><dt>Tarifa</dt><dd>US$[X] por libra</dd></div>
+              </dl>
+            </div>
+            <div class="plans__b">
+              <ul>
+                <li>Todo lo del plan Personal</li><li>Inspección y fotos de mercancía</li><li>Retiro de facturas y reempaque</li><li>Despachos fijos [días]</li><li>Asesor asignado por WhatsApp</li>
+              </ul>
+              <a class="btn btn--primary" href="solicitar-tarifa.html?tipo=revendedor">Solicitar tarifa de revendedor <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a>
+            </div>
+          </li>
+        
+          <li class="rv" aria-labelledby="plan-empresa">
+            <div class="plans__a">
+              <h3 id="plan-empresa">Empresa</h3>
+              
+              <dl>
+                <div><dt>Volumen mensual</dt><dd>Más de [Y] lb</dd></div>
+                <div><dt>Tarifa</dt><dd>Tarifa negociada</dd></div>
+              </dl>
+            </div>
+            <div class="plans__b">
+              <ul>
+                <li>Todo lo del plan Revendedor</li><li>Carga aérea y marítima</li><li>Almacenamiento [condiciones]</li><li>Asesor dedicado</li>
+              </ul>
+              <a class="btn btn--tone" href="solicitar-tarifa.html?tipo=empresa">Solicitar tarifa de empresa <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a>
+            </div>
+          </li>
+        
+      </ul>
     </div>
   </section>
-  <section id="planes" aria-labelledby="planes-h" style="background:#fff;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);padding:clamp(56px,8vw,88px) var(--space-5)">
-    <div style="max-width:var(--container-max);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-8)">
-      <h2 id="planes-h" style="margin:0;font:700 clamp(26px,3.4vw,36px)/1.15 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">Tres planes según tu volumen</h2>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:var(--space-5);align-items:stretch">
-        
-          <article aria-labelledby="plan-personal" style="position:relative;display:flex;flex-direction:column;gap:var(--space-4);padding:var(--space-6);background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-1)">
-            
-            <h3 id="plan-personal" style="margin:0;font:700 22px/1.2 var(--font-display);color:var(--navy-800)">Personal</h3>
-            <dl style="margin:0;display:flex;flex-direction:column;gap:var(--space-2)">
-              <div><dt style="font:400 13px/1.3 var(--font-sans);color:var(--fg-3)">Volumen mensual</dt><dd style="margin:0;font:500 16px/1.4 var(--font-mono);color:var(--fg-1)">Hasta [X] lb</dd></div>
-              <div><dt style="font:400 13px/1.3 var(--font-sans);color:var(--fg-3)">Tarifa</dt><dd style="margin:0;font:500 16px/1.4 var(--font-mono);color:var(--fg-1)">Desde US$25</dd></div>
-            </dl>
-            <ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px;font:400 15px/1.5 var(--font-sans);color:var(--fg-1)">
-              <li>Casillero gratis en Miami</li><li>Foto de cada paquete</li><li>Consolidación</li>
-            </ul>
-            <a class="hcc8a71" href="registro.html" style="margin-top:auto;display:flex;align-items:center;justify-content:center;height:48px;border-radius:var(--radius-md);background:#fff;color:var(--tb-navy);border:1px solid var(--border-strong);font:600 15px/1 var(--font-sans)">Abrir casillero gratis</a>
-          </article>
-        
-          <article aria-labelledby="plan-revendedor" style="position:relative;display:flex;flex-direction:column;gap:var(--space-4);padding:var(--space-6);background:#fff;border:2px solid var(--tb-navy);border-radius:var(--radius-lg);box-shadow:var(--shadow-1)">
-            <span style="align-self:flex-start;font:600 12px/1 var(--font-sans);padding:6px 10px;border-radius:var(--radius-sm);background:var(--tb-navy);color:#fff">Recomendado para revendedores</span>
-            <h3 id="plan-revendedor" style="margin:0;font:700 22px/1.2 var(--font-display);color:var(--navy-800)">Revendedor</h3>
-            <dl style="margin:0;display:flex;flex-direction:column;gap:var(--space-2)">
-              <div><dt style="font:400 13px/1.3 var(--font-sans);color:var(--fg-3)">Volumen mensual</dt><dd style="margin:0;font:500 16px/1.4 var(--font-mono);color:var(--fg-1)">[X]–[Y] lb</dd></div>
-              <div><dt style="font:400 13px/1.3 var(--font-sans);color:var(--fg-3)">Tarifa</dt><dd style="margin:0;font:500 16px/1.4 var(--font-mono);color:var(--fg-1)">US$[X] por libra</dd></div>
-            </dl>
-            <ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px;font:400 15px/1.5 var(--font-sans);color:var(--fg-1)">
-              <li>Todo lo del plan Personal</li><li>Inspección y fotos de mercancía</li><li>Retiro de facturas y reempaque</li><li>Despachos fijos [días]</li><li>Asesor asignado por WhatsApp</li>
-            </ul>
-            <a class="hcc8a71" href="solicitar-tarifa.html?tipo=revendedor" style="margin-top:auto;display:flex;align-items:center;justify-content:center;height:48px;border-radius:var(--radius-md);background:var(--action-primary);color:#fff;border:1px solid var(--border-strong);font:600 15px/1 var(--font-sans)">Solicitar tarifa de revendedor</a>
-          </article>
-        
-          <article aria-labelledby="plan-empresa" style="position:relative;display:flex;flex-direction:column;gap:var(--space-4);padding:var(--space-6);background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-1)">
-            
-            <h3 id="plan-empresa" style="margin:0;font:700 22px/1.2 var(--font-display);color:var(--navy-800)">Empresa</h3>
-            <dl style="margin:0;display:flex;flex-direction:column;gap:var(--space-2)">
-              <div><dt style="font:400 13px/1.3 var(--font-sans);color:var(--fg-3)">Volumen mensual</dt><dd style="margin:0;font:500 16px/1.4 var(--font-mono);color:var(--fg-1)">Más de [Y] lb</dd></div>
-              <div><dt style="font:400 13px/1.3 var(--font-sans);color:var(--fg-3)">Tarifa</dt><dd style="margin:0;font:500 16px/1.4 var(--font-mono);color:var(--fg-1)">Tarifa negociada</dd></div>
-            </dl>
-            <ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px;font:400 15px/1.5 var(--font-sans);color:var(--fg-1)">
-              <li>Todo lo del plan Revendedor</li><li>Carga aérea y marítima</li><li>Almacenamiento [condiciones]</li><li>Asesor dedicado</li>
-            </ul>
-            <a class="hcc8a71" href="solicitar-tarifa.html?tipo=empresa" style="margin-top:auto;display:flex;align-items:center;justify-content:center;height:48px;border-radius:var(--radius-md);background:#fff;color:var(--tb-navy);border:1px solid var(--border-strong);font:600 15px/1 var(--font-sans)">Solicitar tarifa de empresa</a>
-          </article>
-        
+
+  <section class="section" aria-labelledby="proc-h">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="proc-h" class="heading rv">Abrir una cuenta de negocio.</h2>
       </div>
-    </div>
-  </section>
-  <section aria-labelledby="proc-h" style="padding:clamp(56px,8vw,88px) var(--space-5)">
-    <div style="max-width:var(--container-max);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-8)">
-      <h2 id="proc-h" style="margin:0;font:700 clamp(26px,3.4vw,36px)/1.15 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">Abrir una cuenta de negocio</h2>
-      <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:var(--space-5)">
-        <li style="padding-top:var(--space-4);border-top:2px solid var(--tb-navy);display:flex;flex-direction:column;gap:var(--space-2)"><span style="font:500 13px/1 var(--font-mono);color:var(--tb-blue)">01</span><h3 style="margin:0;font:600 18px/1.3 var(--font-display);color:var(--navy-800)">Solicitas tu tarifa</h3><p style="margin:0;font:400 15px/1.55 var(--font-sans);color:var(--fg-2)">Nos cuentas qué vendes, tu volumen y tu frecuencia de compra.</p></li>
-        <li style="padding-top:var(--space-4);border-top:2px solid var(--tb-navy);display:flex;flex-direction:column;gap:var(--space-2)"><span style="font:500 13px/1 var(--font-mono);color:var(--tb-blue)">02</span><h3 style="margin:0;font:600 18px/1.3 var(--font-display);color:var(--navy-800)">Recibes la tarifa por escrito</h3><p style="margin:0;font:400 15px/1.55 var(--font-sans);color:var(--fg-2)">Un asesor te responde en [24] horas hábiles.</p></li>
-        <li style="padding-top:var(--space-4);border-top:2px solid var(--tb-navy);display:flex;flex-direction:column;gap:var(--space-2)"><span style="font:500 13px/1 var(--font-mono);color:var(--tb-blue)">03</span><h3 style="margin:0;font:600 18px/1.3 var(--font-display);color:var(--navy-800)">Empiezas a enviar</h3><p style="margin:0;font:400 15px/1.55 var(--font-sans);color:var(--fg-2)">Tu cuenta queda marcada con tu plan desde el primer despacho.</p></li>
+      <ol class="seq">
+        <li class="rv"><h3>Solicitas tu tarifa</h3><p>Nos cuentas qué vendes, tu volumen y tu frecuencia de compra.</p></li>
+        <li class="rv"><h3>Recibes la tarifa por escrito</h3><p>Un asesor te responde en [24] horas hábiles.</p></li>
+        <li class="rv"><h3>Empiezas a enviar</h3><p>Tu cuenta queda marcada con tu plan desde el primer despacho.</p></li>
       </ol>
     </div>
   </section>
-  <section style="background:var(--navy-800);padding:clamp(56px,8vw,88px) var(--space-5)">
-    <div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-5)">
-      <h2 style="margin:0;font:700 clamp(28px,4vw,44px)/1.1 var(--font-display);color:#fff">Recibe tu tarifa por escrito</h2>
-      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-3);width:100%">
-        <a class="h207c06" href="solicitar-tarifa.html" style="flex:1 1 220px;max-width:280px;display:flex;align-items:center;justify-content:center;height:52px;border-radius:var(--radius-md);background:#fff;color:var(--tb-navy);font:600 16px/1 var(--font-sans)">Solicitar tarifa</a>
-        <a class="h042062" href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20Negocios" target="_blank" rel="noopener" style="flex:1 1 220px;max-width:280px;display:flex;align-items:center;justify-content:center;height:52px;border-radius:var(--radius-md);border:1px solid var(--navy-300);color:#fff;font:600 16px/1 var(--font-sans)">Hablar con un asesor</a>
+
+  <section class="section field" aria-labelledby="cta-h">
+    <div class="wrap closing">
+      <div class="closing__text">
+        <h2 id="cta-h" class="heading rv">Recibe tu tarifa por escrito.</h2>
+        <p class="rv"><a class="link-arrow" href="tarifas.html">¿Un envío puntual? Ver tarifas por libra <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a></p>
       </div>
-      <a href="tarifas.html" style="font:500 14px/1.4 var(--font-sans);color:var(--tb-cyan)">¿Un envío puntual? Ver tarifas por libra</a>
+      <div class="actions rv">
+        <a class="btn btn--accent" href="solicitar-tarifa.html">Solicitar tarifa <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a>
+        <a class="link-arrow" href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20Negocios" target="_blank" rel="noopener">Hablar con un asesor <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
     </div>
   </section>
 </main>
 <footer class="ftr">
   <div class="ftr__inner">
-    <div class="ftr__grid">
-      <div class="ftr__brand">
-        <img src="assets/img/logo-horizontal-reversed.svg" alt="TerraBox Cargo" width="190" height="32">
-        <p>Compra en Estados Unidos y recíbelo en Colombia en 5 a 7 días hábiles, con seguro incluido.</p>
-        <div class="ftr__social">
+    <div class="ftr__top">
+      <div class="ftr__contact">
+        <p class="ftr__claim">Compra en Estados Unidos y recíbelo en Colombia en 5 a 7 días hábiles, con seguro incluido.</p>
+        <a href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20Negocios" target="_blank" rel="noopener" class="btn btn--wa"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Escribir por WhatsApp</a>
+        <p><a data-tb="email" href="contacto.html">[email]</a><br><span data-tb="hours">[horario de atención]</span></p>
+        <p class="ftr__social">
           <a href="#" data-social="instagram" hidden aria-label="Instagram de TerraBox (se abre en una pestaña nueva)" target="_blank" rel="noopener"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/> <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/> <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
           <a href="#" data-social="facebook" hidden aria-label="Facebook de TerraBox (se abre en una pestaña nueva)" target="_blank" rel="noopener"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-        </div>
+        </p>
       </div>
-      <nav class="ftr__col" aria-label="Navegación"><h2 class="ftr__title">Navegación</h2><a href="index.html">Inicio</a><a href="casillero-virtual.html">¿Cómo funciona?</a><a href="tarifas.html">Tarifas</a><a href="tarifas.html#calculadora">Calculadora</a><a href="productos-restringidos.html">Artículos prohibidos</a><a href="contacto.html">Contacto</a></nav><nav class="ftr__col" aria-label="Servicios"><h2 class="ftr__title">Servicios</h2><a href="consolidacion.html">Consolidación</a><a href="compramos-por-ti.html">Compramos por ti</a><a href="carga.html">Carga aérea y marítima</a><a href="negocios.html">Negocios</a><a href="revendedores.html">Revendedores</a><a href="empresas.html">Empresas</a></nav><nav class="ftr__col" aria-label="Ayuda"><h2 class="ftr__title">Ayuda</h2><a href="rastreo.html">Rastrear envío</a><a href="ayuda.html">Preguntas frecuentes</a><a href="aduana-impuestos.html">Aduana e impuestos</a><a href="reclamos-seguro.html">Reclamos y seguro</a><a href="tiendas.html">Tiendas recomendadas</a><a href="nosotros.html">Nosotros</a></nav>
-      <div class="ftr__col">
-        <h2 class="ftr__title">Contacto</h2>
-        <a href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20Negocios" target="_blank" rel="noopener" class="ftr__wa"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>WhatsApp</a>
-        <p><span class="ftr__label">Email</span><a data-tb="email" href="contacto.html">[email]</a></p>
-        <p><span class="ftr__label">Horario</span><span data-tb="hours">[horario de atención]</span></p>
-      </div>
+      <nav class="ftr__col" aria-labelledby="ftr-0"><h2 class="ftr__title" id="ftr-0">Envíos</h2><ul><li><a href="casillero-virtual.html">Casillero virtual</a></li><li><a href="envios-colombia.html">Envíos a Colombia</a></li><li><a href="tarifas.html">Tarifas</a></li><li><a href="tarifas.html#calculadora">Calculadora</a></li><li><a href="productos-restringidos.html">Artículos prohibidos</a></li><li><a href="rastreo.html">Rastrear envío</a></li></ul></nav><nav class="ftr__col" aria-labelledby="ftr-1"><h2 class="ftr__title" id="ftr-1">Servicios</h2><ul><li><a href="consolidacion.html">Consolidación</a></li><li><a href="compramos-por-ti.html">Compramos por ti</a></li><li><a href="carga.html">Carga aérea y marítima</a></li><li><a href="negocios.html">Negocios</a></li><li><a href="revendedores.html">Revendedores</a></li><li><a href="empresas.html">Empresas</a></li></ul></nav><nav class="ftr__col" aria-labelledby="ftr-2"><h2 class="ftr__title" id="ftr-2">Ayuda</h2><ul><li><a href="ayuda.html">Preguntas frecuentes</a></li><li><a href="aduana-impuestos.html">Aduana e impuestos</a></li><li><a href="reclamos-seguro.html">Reclamos y seguro</a></li><li><a href="tiendas.html">Tiendas recomendadas</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="contacto.html">Contacto</a></li></ul></nav>
     </div>
+    <a class="ftr__mark" href="index.html"><img src="assets/img/logo-horizontal-reversed.svg" alt="TerraBox Cargo, inicio" width="583" height="98" loading="lazy"></a>
     <div class="ftr__bottom">
-      <div class="ftr__legal">
+      <p class="ftr__legal">
         <a href="legal-terminos.html">Términos y condiciones</a>
         <a href="legal-datos.html">Tratamiento de datos</a>
         <a href="legal-cookies.html">Cookies</a>
         <button type="button" id="cookie-reopen">Preferencias de cookies</button>
-      </div>
-      <span>© <span id="year">2026</span> TerraBox Cargo</span>
+      </p>
+      <p>© <span id="year">2026</span> TerraBox Cargo</p>
+      <p class="ftr__credits">Fotografías: Unsplash (Vitaly Gariev, rupixen, Ruchindra Gunasekara, Adrian Sulyok, Peaky_82, MealPro, Antonio Cuellar, Andrés Gómez, Michael Schmid, Brandable Box, RoseBox).</p>
     </div>
   </div>
 </footer>
@@ -187,13 +213,15 @@
     <label><input type="checkbox" id="cookie-analytics">Medición y análisis</label>
   </div>
   <div class="cookie__actions">
-    <button type="button" class="tb-btn tb-btn--outline tb-btn--md tb-btn--full" data-cookie="reject">Rechazar</button>
-    <button type="button" class="tb-btn tb-btn--outline tb-btn--md tb-btn--full" data-cookie="configure">Configurar</button>
-    <button type="button" class="tb-btn tb-btn--outline tb-btn--md tb-btn--full" data-cookie="accept">Aceptar</button>
+    <button type="button" class="btn btn--tone" data-cookie="reject">Rechazar</button>
+    <button type="button" class="btn btn--tone" data-cookie="configure">Configurar</button>
+    <button type="button" class="btn btn--tone" data-cookie="accept">Aceptar</button>
   </div>
 </div>
+<a href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20Negocios" target="_blank" rel="noopener" id="float-wa" class="float-wa" aria-label="Escribir por WhatsApp (se abre en una pestaña nueva)"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></a>
 <script src="assets/js/config.js"></script>
 <script src="assets/js/calculator.js"></script>
 <script src="assets/js/site.js"></script>
+<script src="assets/js/motion.js"></script>
 </body>
 </html>

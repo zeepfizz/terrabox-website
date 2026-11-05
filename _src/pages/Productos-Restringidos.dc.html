@@ -11,46 +11,54 @@
 </helmet>
 <dc-import name="Site-Header" active="prohibidos" wa-page="Artículos prohibidos"></dc-import>
 <main id="main" tabindex="-1">
-  <section class="page-hero" aria-labelledby="h1">
-    <div class="container">
-      <nav class="crumbs" aria-label="Ruta de navegación"><a href="Inicio.dc.html">Inicio</a> / <span aria-current="page">Artículos prohibidos</span></nav>
-      <span class="eyebrow">Antes de comprar</span>
-      <h1 id="h1" class="h1">Artículos prohibidos Colombia</h1>
-      <p class="lead">El envío de paquetes y mercancías por courier o tráfico postal a Colombia tiene prohibiciones estrictas según la DIAN y las principales empresas de transporte.</p>
+  <section class="phero" aria-labelledby="h1">
+    <div class="wrap">
+      <nav class="phero__crumb" aria-label="Ruta de navegación"><a href="Inicio.dc.html">Inicio</a> / <span aria-current="page">Artículos prohibidos</span></nav>
+      <h1 id="h1" class="display">Artículos prohibidos.</h1>
+      <p class="statement">El envío de paquetes y mercancías por courier o tráfico postal a Colombia tiene prohibiciones estrictas según la DIAN y las principales empresas de transporte.</p>
     </div>
   </section>
 
-  <section class="section" style="padding-top:clamp(24px,4vw,40px)" aria-labelledby="sust-h">
-    <div class="container">
-      <div class="section__head">
-        <h2 id="sust-h" class="h2">Artículos y sustancias prohibidas</h2>
+  <section class="section" aria-labelledby="sust-h">
+    <div class="wrap aside">
+      <div class="aside__head">
+        <h2 id="sust-h" class="heading rv">Lo que no puede viajar.</h2>
+        <p class="rv">Abre cada categoría para ver qué incluye.</p>
+        <figure class="aside__photo rv">
+          <img src="assets/img/photos/entrega-caja-800.webp" width="800" height="1000" alt="Una persona entrega una caja de cartón" loading="lazy" decoding="async">
+        </figure>
       </div>
-      <div class="acc">
-        <div class="faq">
-          <sc-for list="{{ bans }}" as="b">
-            <div id="{{ b.id }}" class="faq-item">
-              <h3 class="acc__h"><button type="button" class="faq-btn acc__btn" id="q-{{ b.id }}" aria-expanded="false" aria-controls="a-{{ b.id }}"><span class="acc__title"><i data-icon="{{ b.icon }}"></i>{{ b.t }}</span><span aria-hidden="true" class="faq-sign">+</span></button></h3>
-              <div id="a-{{ b.id }}" role="region" aria-labelledby="q-{{ b.id }}" hidden class="acc__panel"><p><strong>{{ b.t }}:</strong> {{ b.d }}</p></div>
-            </div>
-          </sc-for>
+      <div class="faq acc acc--lg rv">
+        <sc-for list="{{ bans }}" as="b">
+          <div id="{{ b.id }}" class="faq-item acc__item">
+            <h3 class="acc__h"><button type="button" class="faq-btn acc__btn" id="q-{{ b.id }}" aria-expanded="false" aria-controls="a-{{ b.id }}"><span>{{ b.t }}</span><span aria-hidden="true" class="faq-sign acc__sign">+</span></button></h3>
+            <div id="a-{{ b.id }}" role="region" aria-labelledby="q-{{ b.id }}" hidden class="acc__panel"><p><strong>{{ b.t }}:</strong> {{ b.d }}</p></div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tone" aria-labelledby="limites-h">
+    <div class="wrap split">
+      <div class="split__text">
+        <h2 id="limites-h" class="heading rv">Límites de cantidad y valor.</h2>
+        <div class="tblock rv">
+          <h3>Límite de unidades</h3>
+          <p>No se pueden enviar más de 6 unidades del mismo artículo en un envío comercial o de carácter no personal.</p>
+        </div>
+        <div class="tblock rv">
+          <h3>Tope de valor</h3>
+          <p>Los envíos urgentes por tráfico postal tienen un valor máximo permitido de USD 2.000 y un peso de hasta 50 kg. Los envíos con exención de IVA (Ley 2155 de 2021) aplican hasta USD 200.</p>
+        </div>
+        <p class="rv">Esta lista es informativa y puede cambiar según la normativa vigente. Si tienes dudas sobre un artículo, escríbenos antes de comprar.</p>
+        <div class="actions rv">
+          <a class="btn btn--wa" href="{{ waCheck }}" target="_blank" rel="noopener"><i data-icon="message-circle"></i>Consultar por WhatsApp</a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="section section--alt" aria-labelledby="limites-h">
-    <div class="container">
-      <div class="section__head">
-        <h2 id="limites-h" class="h2">Límites de cantidad y valor</h2>
-      </div>
-      <div class="limits">
-        <div class="limit"><i data-icon="package"></i><div><h3>Límite de unidades</h3><p>No se pueden enviar más de 6 unidades del mismo artículo en un envío comercial o de carácter no personal.</p></div></div>
-        <div class="limit"><i data-icon="scale"></i><div><h3>Tope de valor</h3><p>Los envíos urgentes por tráfico postal tienen un valor máximo permitido de USD 2.000 y un peso de hasta 50 kg. Los envíos con exención de IVA (Ley 2155 de 2021) aplican hasta USD 200.</p></div></div>
-      </div>
-      <div class="note">
-        <p>Esta lista es informativa y puede cambiar según la normativa vigente. Si tienes dudas sobre un artículo, escríbenos antes de comprar.</p>
-        <a class="btn btn--whatsapp" href="{{ waCheck }}" target="_blank" rel="noopener"><i data-icon="message-circle"></i>Consultar por WhatsApp</a>
-      </div>
+      <figure class="split__photo rv">
+        <img src="assets/img/photos/bodega-estantes-800.webp" srcset="assets/img/photos/bodega-estantes-800.webp 800w, assets/img/photos/bodega-estantes.webp 1400w" sizes="(min-width:1024px) 40vw, 100vw" width="800" height="1067" alt="Estanterías altas con paquetes en una bodega" loading="lazy" decoding="async">
+      </figure>
     </div>
   </section>
 </main>

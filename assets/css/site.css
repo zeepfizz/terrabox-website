@@ -9,10 +9,6 @@ main:focus{outline:none}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:0s!important;animation-duration:0s!important;scroll-behavior:auto!important}}
 @keyframes tbpulse{0%,100%{opacity:1}50%{opacity:.45}}
 
-/* Responsive switches (the prototype switched at 1024px) */
-@media (max-width:1023.98px){.desktop-only{display:none!important}}
-@media (min-width:1024px){.mobile-only{display:none!important}.sticky-desktop{position:sticky!important}}
-
 /* Header */
 #site-header.is-hidden{transform:translateY(-100%)}
 #menu-movil:not([hidden]){display:flex!important}
@@ -33,12 +29,8 @@ main:focus{outline:none}
 .tb-btn--full{width:100%}
 .tb-btn--primary{background:var(--action-primary);color:#fff}
 .tb-btn--primary:hover:not(:disabled){background:var(--action-primary-hover)}
-.tb-btn--secondary{background:var(--action-secondary);color:#fff}
-.tb-btn--secondary:hover:not(:disabled){background:var(--action-secondary-hover)}
 .tb-btn--outline{background:#fff;color:var(--tb-navy);border-color:var(--border-strong)}
 .tb-btn--outline:hover:not(:disabled){background:var(--navy-50)}
-.tb-btn--ghost{background:transparent;color:var(--tb-navy)}
-.tb-btn--ghost:hover:not(:disabled){background:var(--navy-50)}
 
 /* Fields (DS Input / Select) */
 .tb-field{display:flex;flex-direction:column;gap:6px;min-width:0}
@@ -70,12 +62,6 @@ textarea.lf-control{height:auto;padding:10px 12px;font-size:15px;line-height:1.5
 .lf-chip:has(input:checked){border-color:var(--tb-navy);background:var(--navy-50)}
 .lf-chip input{width:16px;height:16px;accent-color:var(--tb-navy);margin:0}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-
-.lf-wa-summary:hover{background:var(--action-primary-hover)!important;color:#fff;text-decoration:none}
-
-/* Tarifas unit toggle */
-.seg-btn{background:#fff;color:var(--tb-navy)}
-.seg-btn[aria-pressed="true"]{background:var(--tb-navy);color:#fff}
 
 /* Toast (DS Toast) */
 .tb-toast{display:flex;gap:12px;align-items:flex-start;width:360px;max-width:100%;padding:12px 14px;background:var(--navy-800);color:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-3)}
