@@ -27,10 +27,8 @@
       el('t-steps').innerHTML = stages.map((label, i) => {
         const ev = (d.events || [])[i] || {}; const done = i <= cur, now = i === cur;
         const state = now ? '(estado actual)' : done ? '(completado)' : '';
-        return '<li' + (now ? ' aria-current="step"' : '') + ' style="display:grid;grid-template-columns:24px 1fr;gap:var(--space-4);padding-bottom:var(--space-5)">' +
-          '<span aria-hidden="true" style="width:20px;height:20px;border-radius:10px;margin-top:2px;background:' + (done ? 'var(--tb-navy)' : '#fff') + ';border:2px solid ' + (done ? 'var(--tb-navy)' : 'var(--border-strong)') + '"></span>' +
-          '<div><div style="font:' + (now ? '700 16px/1.4 var(--font-sans)' : '500 15px/1.4 var(--font-sans)') + ';color:' + (done ? 'var(--navy-800)' : 'var(--fg-3)') + '">' + esc(label) +
-          ' <span style="font:500 13px var(--font-sans);color:var(--fg-3)">' + state + '</span></div><div style="font:400 13px/1.4 var(--font-mono);color:var(--fg-3)">' + esc(ev.date || '') + '</div></div></li>';
+        return '<li class="' + (now ? 'is-done is-now' : done ? 'is-done' : '') + '"' + (now ? ' aria-current="step"' : '') + '><span>' + esc(label) +
+          (state ? ' <span class="tsteps__state">' + state + '</span>' : '') + '<span class="tsteps__date">' + esc(ev.date || '') + '</span></span></li>';
       }).join('');
       const partner = el('t-partner'); partner.hidden = !d.partnerUrl; if (d.partnerUrl) partner.href = d.partnerUrl;
     }

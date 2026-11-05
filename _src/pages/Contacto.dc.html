@@ -2,41 +2,42 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<title>Contacto | TerraBox</title>
+<title>Contacto | TerraBox Cargo</title>
 <meta name="description" content="Escríbenos por WhatsApp o por email. Te ayudamos con tu casillero, tus envíos a Colombia y tus dudas antes de comprar.">
-<link rel="stylesheet" href="_ds/terrabox-cargo-design-system-cccd872f-d644-4349-8450-b88a6dd7b8b5/styles.css">
-<script src="_ds/terrabox-cargo-design-system-cccd872f-d644-4349-8450-b88a6dd7b8b5/_ds_bundle.js"></script>
-<script src="site.js"></script>
 </helmet>
 <dc-import name="Site-Header" active="contacto" wa-page="Contacto"></dc-import>
 <main id="main" tabindex="-1">
-  <section class="page-hero" aria-labelledby="h1">
-    <div class="container">
-      <nav class="crumbs" aria-label="Ruta de navegación"><a href="Inicio.dc.html">Inicio</a> / <span aria-current="page">Contacto</span></nav>
-      <span class="eyebrow">Contacto</span>
-      <h1 id="h1" class="h1">Habla con nuestro equipo</h1>
-      <p class="lead">Una persona del equipo te responde. Por WhatsApp es más rápido.</p>
+  <section class="phero" aria-labelledby="h1">
+    <div class="wrap">
+      <nav class="phero__crumb" aria-label="Ruta de navegación"><a href="Inicio.dc.html">Inicio</a> / <span aria-current="page">Contacto</span></nav>
+      <h1 id="h1" class="display">Habla con una persona.</h1>
+      <p class="statement">Una persona del equipo te responde. Por WhatsApp es más rápido.</p>
+      <div class="actions">
+        <a class="btn btn--wa btn--big" href="{{ waHref }}" target="_blank" rel="noopener"><i data-icon="message-circle"></i>Escribir por WhatsApp</a>
+      </div>
     </div>
   </section>
-  <section class="section" style="padding-top:clamp(24px,4vw,40px)" aria-labelledby="form-h">
-    <div class="container">
-      <div class="contact-grid">
-        <div class="contact-cards">
-          <a class="ccard ccard--wa" href="{{ waHref }}" target="_blank" rel="noopener"><i data-icon="message-circle"></i><div><strong>WhatsApp</strong><span>La forma más rápida. Te respondemos en horario de atención.</span></div></a>
-          <div class="ccard"><i data-icon="mail"></i><div><strong>Email</strong><span><a data-tb="email" href="#form-h">[email]</a></span></div></div>
-          <div class="ccard"><i data-icon="clock"></i><div><strong>Horario de atención</strong><span data-tb="hours">[horario de atención]</span></div></div>
-          <p class="small">¿Buscas una tarifa para tu negocio? <a href="Solicitar-Tarifa.dc.html">Solicitar tarifa</a></p>
-        </div>
-        <div class="form-card">
-          <h2 id="form-h" class="form-card__h">Escríbenos</h2>
-          <dc-import name="Lead-Form" form-id="con" endpoint="contacto" aria-label="Formulario de contacto" fields="{{ fields }}" redirect-on="{{ redirectOn }}" submit-label="Enviar mensaje" success-title="Recibimos tu mensaje" success-body="Te respondemos lo antes posible." wa-intro="Hola, les escribo desde la página de contacto:"></dc-import>
-        </div>
+
+  <section class="section" aria-labelledby="form-h">
+    <div class="wrap contact">
+      <div class="contact__text">
+        <h2 id="form-h" class="heading rv">Escríbenos.</h2>
+        <p class="statement rv">Déjanos tu mensaje y te respondemos por email o por WhatsApp en horario de atención.</p>
+        <dl class="contact__data rv">
+          <div><dt>Email</dt><dd><a data-tb="email" href="#form-h">[email]</a></dd></div>
+          <div><dt>Horario de atención</dt><dd data-tb="hours">[horario de atención]</dd></div>
+          <div><dt>Negocios</dt><dd>¿Buscas una tarifa para tu negocio? <a href="Solicitar-Tarifa.dc.html">Solicitar tarifa</a></dd></div>
+        </dl>
+        <figure class="contact__photo rv">
+          <img src="assets/img/photos/miami-costa-800.webp" srcset="assets/img/photos/miami-costa-800.webp 800w, assets/img/photos/miami-costa.webp 1400w" sizes="(min-width:1024px) 38vw, 100vw" width="800" height="533" alt="Vista aérea de la costa de Miami Beach" loading="lazy" decoding="async">
+        </figure>
+      </div>
+      <div class="contact__form rv">
+        <dc-import name="Lead-Form" form-id="con" endpoint="contacto" aria-label="Formulario de contacto" fields="{{ fields }}" redirect-on="{{ redirectOn }}" submit-label="Enviar mensaje" success-title="Recibimos tu mensaje" success-body="Te respondemos lo antes posible." wa-intro="Hola, les escribo desde la página de contacto:"></dc-import>
       </div>
     </div>
   </section>
@@ -45,65 +46,15 @@
 </x-dc>
 <script type="application/json" data-page>
 {
- "waHref": {
-  "$wa": "Hola, vengo de la página Contacto"
- },
- "redirectOn": {
-  "field": "tema",
-  "value": "Negocios: tarifas para revendedores o empresas",
-  "href": "Solicitar-Tarifa.dc.html"
- },
+ "waHref": {"$wa": "Hola, vengo de la página Contacto"},
+ "redirectOn": {"field": "tema", "value": "Negocios: tarifas para revendedores o empresas", "href": "Solicitar-Tarifa.dc.html"},
  "fields": [
-  {
-   "name": "nombre",
-   "label": "Nombre",
-   "required": true,
-   "autocomplete": "name"
-  },
-  {
-   "name": "email",
-   "label": "Email",
-   "type": "email",
-   "required": true,
-   "autocomplete": "email"
-  },
-  {
-   "name": "whatsapp",
-   "label": "WhatsApp",
-   "type": "tel",
-   "autocomplete": "tel",
-   "hint": "Opcional"
-  },
-  {
-   "name": "tema",
-   "label": "Tema",
-   "type": "select",
-   "required": true,
-   "options": [
-    "Mi casillero",
-    "Un envío en curso",
-    "Tarifas",
-    "Aduana e impuestos",
-    "Reclamos",
-    "Negocios: tarifas para revendedores o empresas",
-    "Otro"
-   ]
-  },
-  {
-   "name": "mensaje",
-   "label": "Mensaje",
-   "type": "textarea",
-   "required": true
-  },
-  {
-   "name": "consent",
-   "short": "Tratamiento de datos",
-   "label": "Acepto el tratamiento de mis datos personales.",
-   "type": "check",
-   "required": true,
-   "linkHref": "Legal-Datos.dc.html",
-   "linkLabel": "Ver política"
-  }
+  {"name": "nombre", "label": "Nombre", "required": true, "autocomplete": "name"},
+  {"name": "email", "label": "Email", "type": "email", "required": true, "autocomplete": "email"},
+  {"name": "whatsapp", "label": "WhatsApp", "type": "tel", "autocomplete": "tel", "hint": "Opcional"},
+  {"name": "tema", "label": "Tema", "type": "select", "required": true, "options": ["Mi casillero", "Un envío en curso", "Tarifas", "Aduana e impuestos", "Reclamos", "Negocios: tarifas para revendedores o empresas", "Otro"]},
+  {"name": "mensaje", "label": "Mensaje", "type": "textarea", "required": true},
+  {"name": "consent", "short": "Tratamiento de datos", "label": "Acepto el tratamiento de mis datos personales.", "type": "check", "required": true, "linkHref": "Legal-Datos.dc.html", "linkLabel": "Ver política"}
  ]
 }
 </script>

@@ -21,9 +21,8 @@
     const lines = [['Nombre (Full name)', a.name + ' ' + a.locker], ['Dirección (Address line 1)', a.line1], ['Línea 2 (Address line 2)', a.locker], ['Ciudad, estado, código postal', a.city], ['Teléfono', a.phone]];
     el('reg-locker').textContent = a.locker;
     el('reg-lines').innerHTML = lines.map(([k, val], i) =>
-      '<div style="display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);padding:10px 14px;border-bottom:1px solid var(--border-subtle)">' +
-      '<div style="min-width:0"><dt style="font:400 12px/1.3 var(--font-sans);color:var(--fg-3)">' + esc(k) + '</dt><dd style="margin:0;font:500 15px/1.4 var(--font-mono);color:var(--fg-1);overflow-wrap:anywhere">' + esc(val) + '</dd></div>' +
-      '<button type="button" class="tb-btn tb-btn--outline" data-line="' + i + '" aria-label="Copiar ' + esc(k) + '" style="flex-shrink:0;min-width:44px;height:44px;padding:0 12px;font-size:13px">Copiar</button></div>').join('');
+      '<div class="addr__row"><div><dt>' + esc(k) + '</dt><dd>' + esc(val) + '</dd></div>' +
+      '<button type="button" class="btn" data-line="' + i + '" aria-label="Copiar ' + esc(k) + '">Copiar</button></div>').join('');
     el('reg-lines').onclick = ev => { const b = ev.target.closest('[data-line]'); if (b) TB.copy(lines[+b.dataset.line][1], 'Dirección copiada'); };
     el('reg-copy-all').onclick = () => TB.copy(lines.map(l => l[1]).join('\n'), 'Dirección copiada');
     el('reg-form').hidden = true; el('reg-done').hidden = false; el('reg-done').focus();

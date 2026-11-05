@@ -1,0 +1,50 @@
+<!-- "Arma tu caja": the live box calculator. Math: TB.quote (assets/js/calculator.js). Drawing and live text: assets/js/caja.js.
+     Without JS it shows the 7 lb / US$150 example (medium box) and the static price list. -->
+      <form class="caja" novalidate aria-label="Calculadora de envío">
+        <div class="caja__in">
+          <label class="caja__field rv">
+            <span class="caja__label">Peso de tu caja</span>
+            <span class="caja__control"><input name="peso" type="text" inputmode="decimal" autocomplete="off" value="7" aria-describedby="caja-peso-h"><span class="caja__affix">lb</span></span>
+            <span class="caja__hint" id="caja-peso-h">Redondeamos a la libra siguiente.</span>
+          </label>
+          <label class="caja__field rv">
+            <span class="caja__label">Valor declarado</span>
+            <span class="caja__control"><span class="caja__affix caja__affix--pre">US$</span><input name="valor" type="text" inputmode="decimal" autocomplete="off" value="150" aria-describedby="caja-valor-h"></span>
+            <span class="caja__hint" id="caja-valor-h">Hasta US$200 por caja: cero pago de impuestos.</span>
+          </label>
+        </div>
+        <ul class="caja__list rv" aria-label="Precios por caja">
+          <li><span>1 a 4 libras</span><span data-price="tier0">US$25</span></li>
+          <li><span>5 a 10 libras</span><span data-price="tier1">US$30</span></li>
+          <li><span>Cada libra adicional</span><span data-price="extra">US$3</span></li>
+        </ul>
+        <div class="caja__stage rv" data-size="m">
+<svg class="caja__svg" viewBox="0 0 414 439" width="414" height="439" role="img" aria-labelledby="caja-svg-t">
+<title id="caja-svg-t">Tu caja TerraBox</title>
+<g class="caja__box">
+<polygon fill="#4dd1f3" points="228.5,12.0 401.7,112.0 185.2,237.0 12.0,137.0"/>
+<polygon fill="#228ecf" points="12.0,327.0 185.2,427.0 185.2,237.0 12.0,137.0"/>
+<polygon fill="#15369c" points="401.7,302.0 185.2,427.0 185.2,237.0 401.7,112.0"/>
+<polygon fill="#4dd1f3" points="12.0,293.0 185.2,393.0 185.2,379.0 12.0,279.0"/>
+<polygon fill="#4dd1f3" points="12.0,265.0 185.2,365.0 185.2,351.0 12.0,251.0"/>
+<polygon fill="#4dd1f3" points="12.0,237.0 185.2,337.0 185.2,323.0 12.0,223.0"/>
+<polygon fill="#ffffff" fill-opacity=".5" points="301.3,54.0 329.0,70.0 112.5,195.0 84.7,179.0"/>
+<polygon fill="#ffffff" fill-opacity=".35" points="84.7,179.0 112.5,195.0 112.5,251.0 84.7,235.0"/>
+<g transform="matrix(0.8660 -0.5 0 1 214.6 250.0)">
+<rect width="182" height="118" fill="#ffffff"/>
+<text class="caja__l-price" x="16" y="58" data-caja="l-price">US$30</text>
+<text class="caja__l-lb" x="16" y="88" data-caja="l-lb">7 lb</text>
+<text class="caja__l-tax" x="16" y="110" data-caja="l-tax">Cero impuestos</text>
+</g></g></svg>
+        </div>
+        <div class="caja__out rv">
+          <div class="caja__live" aria-live="polite" aria-atomic="true">
+            <p class="caja__price" data-caja="price">US$30</p>
+            <p data-caja="billed">Peso cobrado: 7 lb</p>
+            <p class="caja__tax" data-caja="tax">Cero pago de impuestos.</p>
+          </div>
+          <p>Incluye seguro y transporte nacional a ciudades principales</p>
+          <a class="btn btn--primary" href="Registro.dc.html" data-tb-url="register">Regístrate gratis <i data-icon="arrow-right" class="btn__arrow"></i></a>
+          <p class="small">Valor de referencia. El precio final se confirma al recibir el paquete en bodega.</p>
+        </div>
+      </form>

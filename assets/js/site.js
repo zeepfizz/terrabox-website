@@ -94,9 +94,11 @@
       const y = window.scrollY; const menuOpen = panel && !panel.hidden;
       header.classList.toggle('is-hidden', !isDesktop() && y > 120 && y > lastY && !menuOpen);
       lastY = y;
-      const sticky = !!stickyBar && !isDesktop() && y > 480 && !kbOpen();
+      const cookie = $('#cookie-banner'); const cookieOpen = !!cookie && !cookie.hidden;
+      const sticky = !!stickyBar && !isDesktop() && y > 480 && !kbOpen() && !cookieOpen;
       if (stickyBar) stickyBar.hidden = !sticky;
-      if (floatWa) floatWa.hidden = sticky || menuOpen;
+      // The floating button appears only after the first screen, so it never covers the opening content.
+      if (floatWa) floatWa.hidden = sticky || menuOpen || cookieOpen || y < 600;
     }
     window.addEventListener('scroll', updateFloating, { passive: true });
     window.addEventListener('resize', updateFloating);
@@ -110,7 +112,7 @@
     const cfg = $('#cookie-cfg'), analytics = $('#cookie-analytics'), cfgBtn = $('[data-cookie="configure"]', banner);
     let consent = null; try { consent = localStorage.getItem('tb_cookie_consent'); } catch (e) {}
     const setCfg = on => { cfg.hidden = !on; cfgBtn.textContent = on ? 'Guardar selección' : 'Configurar'; };
-    const save = v => { try { localStorage.setItem('tb_cookie_consent', v); } catch (e) {} consent = v; banner.hidden = true; setCfg(false); };
+    const save = v => { try { localStorage.setItem('tb_cookie_consent', v); } catch (e) {} consent = v; banner.hidden = true; setCfg(false); window.dispatchEvent(new Event('scroll')); };
     banner.hidden = !!consent;
     $('[data-cookie="accept"]', banner).addEventListener('click', () => save('all'));
     $('[data-cookie="reject"]', banner).addEventListener('click', () => save('necessary'));
@@ -186,7 +188,7 @@
           '<input id="' + id + '" name="' + esc(f.name) + '" type="' + type + '"' + (im ? ' inputmode="' + im + '"' : '') +
           ' autocomplete="' + esc(f.autocomplete || 'off') + '" placeholder="' + esc(f.placeholder || '') + '"' +
           (f.required ? ' aria-required="true"' : '') + ' aria-describedby="' + d + '"></span>' + hint + '</label>';
-        if (t === 'password') inner += '<button type="button" class="lf-pw" aria-pressed="false" style="align-self:flex-start;min-height:32px;border:0;background:transparent;padding:0;font:600 13px/1 var(--font-sans);color:var(--blue-600);cursor:pointer">Mostrar contraseña</button>';
+        if (t === 'password') inner += '<button type="button" class="lf-pw textbtn" aria-pressed="false" style="align-self:flex-start">Mostrar contraseña</button>';
       } else if (t === 'select') {
         inner = '<label for="' + id + '" class="tb-label">' + label + '</label><select id="' + id + '" name="' + esc(f.name) + '" class="lf-control" aria-describedby="' + d + '" autocomplete="' + esc(f.autocomplete || 'off') + '"><option value="">Elige una opción</option>' +
           (f.options || []).map(o => '<option value="' + esc(o) + '">' + esc(o) + '</option>').join('') + '</select>' + hint;
@@ -194,36 +196,35 @@
         inner = '<label for="' + id + '" class="tb-label">' + label + '</label><textarea id="' + id + '" name="' + esc(f.name) + '" rows="5" class="lf-control" aria-describedby="' + d + '" placeholder="' + esc(f.placeholder || '') + '"></textarea>' + hint;
       } else if (t === 'multi' || t === 'radio') {
         const radio = t === 'radio';
-        inner = '<fieldset id="' + id + '"' + (radio ? '' : ' aria-describedby="' + d + '"') + ' style="margin:0;padding:0;border:0;display:flex;flex-direction:column;gap:var(--space-2)"><legend style="font:600 13px/1.25 var(--font-sans);color:var(--fg-1);margin-bottom:var(--space-2);padding:0">' + label + '</legend><div style="display:flex;flex-wrap:wrap;gap:var(--space-2)">' +
+        inner = '<fieldset id="' + id + '"' + (radio ? '' : ' aria-describedby="' + d + '"') + ' style="margin:0;padding:0;border:0;display:flex;flex-direction:column;gap:var(--space-2)"><legend class="lf-legend">' + label + '</legend><div style="display:flex;flex-wrap:wrap;gap:var(--space-2)">' +
           (f.options || []).map(o => '<label class="lf-chip' + (radio ? ' lf-chip--radio' : '') + '"><input type="' + (radio ? 'radio' : 'checkbox') + '" name="' + (radio ? id : esc(f.name)) + '" value="' + esc(o) + '">' + esc(o) + '</label>').join('') +
           '</div>' + hint + '</fieldset>';
       } else if (t === 'check') {
-        inner = '<label style="display:flex;gap:10px;align-items:flex-start;min-height:44px;font:500 14px/1.45 var(--font-sans);color:var(--fg-1);cursor:pointer"><input id="' + id + '" type="checkbox" aria-describedby="' + d + '" style="width:18px;height:18px;margin:2px 0 0;flex-shrink:0;accent-color:var(--tb-navy)"><span>' + esc(f.label) +
+        inner = '<label class="lf-check"><input id="' + id + '" type="checkbox" aria-describedby="' + d + '"><span>' + esc(f.label) +
           (f.linkHref ? ' <a href="' + esc(f.linkHref) + '" target="_blank" rel="noopener">' + esc(f.linkLabel) + ' (se abre en una pestaña nueva)</a>' : '') + '</span></label>' + hint;
       } else if (t === 'file') {
-        inner = '<label for="' + id + '" class="tb-label">' + label + '</label><input id="' + id + '" type="file" accept="' + esc(f.accept || '') + '" aria-describedby="' + d + '" style="font:400 14px var(--font-sans);min-height:44px">' + hint;
+        inner = '<label for="' + id + '" class="tb-label">' + label + '</label><input id="' + id + '" type="file" accept="' + esc(f.accept || '') + '" aria-describedby="' + d + '" class="lf-file">' + hint;
       }
       return '<div class="lf-row" data-name="' + esc(f.name) + '" style="grid-column:' + span + ';display:flex;flex-direction:column;gap:6px;min-width:0">' + inner + '</div>';
     }
 
     host.innerHTML =
       '<form novalidate aria-label="' + esc(P.ariaLabel || 'Formulario') + '" style="display:flex;flex-direction:column;gap:var(--space-5)">' +
-      '<div class="lf-summary" tabindex="-1" role="alert" hidden style="padding:var(--space-4) var(--space-5);background:var(--status-danger-bg);border:1px solid var(--red-500);border-radius:var(--radius-md);outline:none"><h3 style="margin:0 0 var(--space-2);font:600 15px/1.4 var(--font-sans);color:#a82b2b"></h3><ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px"></ul></div>' +
-      '<div class="lf-fail" role="alert" hidden style="padding:var(--space-4) var(--space-5);background:var(--status-danger-bg);border-radius:var(--radius-md);font:500 14px/1.5 var(--font-sans);color:#a82b2b"></div>' +
+      '<div class="lf-summary" tabindex="-1" role="alert" hidden><h3></h3><ul></ul></div>' +
+      '<div class="lf-fail" role="alert" hidden></div>' +
       '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:var(--space-5) var(--space-4)">' + fields.map(fieldHtml).join('') + '</div>' +
       '<div style="display:flex;flex-wrap:wrap;gap:var(--space-2)"><div style="flex:0 1 auto;min-width:min(100%,240px)"><button type="submit" class="tb-btn tb-btn--primary tb-btn--lg tb-btn--full">' + esc(P.submitLabel || 'Enviar') + '</button></div></div>' +
       '</form>' +
-      '<div class="lf-success" tabindex="-1" role="status" hidden style="padding:var(--space-8);background:var(--status-success-bg);border-radius:var(--radius-lg);flex-direction:column;gap:var(--space-3);outline:none">' +
-      '<h3 style="margin:0;font:700 22px/1.25 var(--font-display);color:var(--navy-800)">' + esc(P.successTitle || 'Recibimos tu solicitud') + '</h3>' +
-      '<p style="margin:0;font:400 15px/1.6 var(--font-sans);color:var(--fg-1)">' + esc(P.successBody || '') + '</p>' +
-      '<p style="margin:0;font:500 15px/1.4 var(--font-mono);color:var(--navy-800)">Referencia: <span class="lf-ref"></span></p>' +
-      '<a href="' + esc(TB.wa(P.waIntro || 'Hola')) + '" target="_blank" rel="noopener" style="align-self:flex-start;display:inline-flex;align-items:center;height:44px;padding:0 18px;border-radius:var(--radius-md);background:#fff;border:1px solid var(--border-strong);color:var(--tb-navy);font:600 14px/1 var(--font-sans)">Escribir por WhatsApp</a></div>' +
-      '<div class="lf-offline" tabindex="-1" role="alert" hidden style="padding:var(--space-8);background:#fff;border:1px solid var(--amber-500);border-radius:var(--radius-lg);flex-direction:column;gap:var(--space-3);outline:none">' +
-      '<span style="align-self:flex-start;font:600 12px/1 var(--font-sans);padding:5px 8px;border-radius:var(--radius-sm);background:var(--status-warning-bg);color:#99600a">Formulario sin conexión</span>' +
-      '<h3 style="margin:0;font:700 20px/1.3 var(--font-display);color:var(--navy-800)">Tus datos están completos, pero este formulario aún no envía solicitudes</h3>' +
-      '<p style="margin:0;font:400 15px/1.6 var(--font-sans);color:var(--fg-2)">No hemos recibido nada todavía. Mientras conectamos el sistema, envía la misma información por WhatsApp y te respondemos desde allí.</p>' +
-      '<div style="display:flex;flex-wrap:wrap;gap:var(--space-3)"><a class="lf-wa-summary" href="#" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;height:48px;padding:0 20px;border-radius:var(--radius-md);background:var(--action-primary);color:#fff;font:600 15px/1 var(--font-sans)">Enviar por WhatsApp</a>' +
-      '<button type="button" class="lf-back tb-btn tb-btn--outline tb-btn--lg">Volver al formulario</button></div></div>';
+      '<div class="lf-success" tabindex="-1" role="status" hidden>' +
+      '<h3>' + esc(P.successTitle || 'Recibimos tu solicitud') + '</h3>' +
+      '<p>' + esc(P.successBody || '') + '</p>' +
+      '<p>Referencia: <span class="lf-ref"></span></p>' +
+      '<div class="actions"><a class="btn btn--accent" href="' + esc(TB.wa(P.waIntro || 'Hola')) + '" target="_blank" rel="noopener">Escribir por WhatsApp</a></div></div>' +
+      '<div class="lf-offline" tabindex="-1" role="alert" hidden>' +
+      '<h3>Tus datos están completos, pero este formulario aún no envía solicitudes</h3>' +
+      '<p>No hemos recibido nada todavía. Mientras conectamos el sistema, envía la misma información por WhatsApp y te respondemos desde allí.</p>' +
+      '<div class="actions"><a class="lf-wa-summary btn btn--wa" href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a>' +
+      '<button type="button" class="lf-back textbtn">Volver al formulario</button></div></div>';
 
     const form = $('form', host), summary = $('.lf-summary', host), fail = $('.lf-fail', host), submitBtn = $('button[type="submit"]', form);
     const panels = { success: $('.lf-success', host), offline: $('.lf-offline', host) };
@@ -307,7 +308,7 @@
       const bad = fields.filter(f => errs[f.name]);
       if (bad.length) {
         $('h3', summary).textContent = 'Revisa ' + (bad.length === 1 ? '1 campo' : bad.length + ' campos') + ' antes de enviar';
-        $('ul', summary).innerHTML = bad.map(f => '<li><a href="#' + idOf(f) + '" data-go="' + idOf(f) + '" style="font:500 14px/1.4 var(--font-sans);color:#a82b2b;text-decoration:underline">' + esc((f.short || f.label.replace(/[.:]$/, '')) + ': ' + errs[f.name]) + '</a></li>').join('');
+        $('ul', summary).innerHTML = bad.map(f => '<li><a href="#' + idOf(f) + '" data-go="' + idOf(f) + '">' + esc((f.short || f.label.replace(/[.:]$/, '')) + ': ' + errs[f.name]) + '</a></li>').join('');
         summary.hidden = false; summary.focus();
         return;
       }

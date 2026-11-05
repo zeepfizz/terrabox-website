@@ -2,40 +2,51 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
 <title>Solicitar tarifa para negocios | TerraBox</title>
 <meta name="description" content="Cuéntanos qué vendes o importas y recibe tu tarifa por escrito en [24] horas hábiles.">
-<link rel="stylesheet" href="_ds/terrabox-cargo-design-system-cccd872f-d644-4349-8450-b88a6dd7b8b5/styles.css">
-<script src="_ds/terrabox-cargo-design-system-cccd872f-d644-4349-8450-b88a6dd7b8b5/_ds_bundle.js"></script>
-<script src="site.js"></script>
 </helmet>
-<dc-import name="Site-Header" active="negocios" wa-page="Solicitar tarifa" hide-wa="{{ true }}" hint-size="100%,68px"></dc-import>
-<main id="main" tabindex="-1" style="outline:none">
-  <section aria-labelledby="h1" style="padding:clamp(32px,5vw,56px) var(--space-5) clamp(56px,8vw,88px)">
-    <div style="max-width:var(--container-max);margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:var(--space-10);align-items:start">
-      <div style="display:flex;flex-direction:column;gap:var(--space-5)">
-        <nav aria-label="Ruta de navegación" style="font:400 13px/1.4 var(--font-sans);color:var(--fg-3)"><a href="Inicio.dc.html">Inicio</a> / <a href="Negocios.dc.html">Negocios</a> / <span aria-current="page">Solicitar tarifa</span></nav>
-        <h1 id="h1" style="margin:0;font:700 clamp(32px,4.6vw,48px)/1.08 var(--font-display);letter-spacing:var(--ls-display);color:var(--text-heading);text-wrap:balance">{{ title }}</h1>
-        <p style="margin:0;font:400 17px/1.6 var(--font-sans);color:var(--fg-2)">Un asesor te responde en [24] horas hábiles con una propuesta por escrito.</p>
-        <ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px;font:400 15px/1.5 var(--font-sans);color:var(--fg-1)"><li>Sin compromiso</li><li>Tarifa según tu volumen real</li><li>Asesor asignado desde el primer contacto</li></ul>
-        <a href="{{ waHref }}" target="_blank" rel="noopener" style="align-self:flex-start;font:600 15px/1 var(--font-sans);min-height:44px;display:flex;align-items:center">Prefiero escribir por WhatsApp</a>
+<dc-import name="Site-Header" active="negocios" wa-page="Solicitar tarifa"></dc-import>
+<main id="main" tabindex="-1">
+  <section class="phero phero--compact" aria-labelledby="h1">
+    <div class="wrap phero__grid">
+      <nav class="phero__crumb" aria-label="Ruta de navegación"><a href="Inicio.dc.html">Inicio</a> / <a href="Negocios.dc.html">Negocios</a> / <span aria-current="page">Solicitar tarifa</span></nav>
+      <h1 id="h1" class="display">{{ title }}</h1>
+      <div class="phero__main">
+      <p class="statement">Un asesor te responde en [24] horas hábiles con una propuesta por escrito.</p>
       </div>
-      <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-1);padding:clamp(20px,3vw,32px)">
-        <dc-import name="Lead-Form" form-id="sol" endpoint="solicitud" aria-label="Solicitar tarifa" fields="{{ fields }}" initial="{{ initial }}" submit-label="Enviar solicitud" success-title="Recibimos tu solicitud" success-body="Te escribimos en [24] horas hábiles. Tu asesor será [nombre del asesor, si está asignado]." wa-intro="Hola, quiero solicitar una tarifa de negocios:" hint-size="100%,900px"></dc-import>
+      <div class="phero__aside phero__fact"><p class="phero__num">[24] h</p><p class="statement">para recibir tu tarifa por escrito.</p></div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="neg-h">
+    <div class="wrap contact">
+      <div class="contact__text">
+        <h2 id="neg-h" class="heading">Cuéntanos de tu negocio.</h2>
+        <ul class="clist clist--lg">
+          <li>Sin compromiso</li>
+          <li>Tarifa según tu volumen real</li>
+          <li>Asesor asignado desde el primer contacto</li>
+        </ul>
+        <a class="link-arrow" href="{{ waHref }}" target="_blank" rel="noopener">Prefiero escribir por WhatsApp <i data-icon="arrow-right" class="btn__arrow"></i></a>
+        <figure class="contact__photo">
+          <img src="assets/img/photos/bodega-equipo-800.webp" srcset="assets/img/photos/bodega-equipo-800.webp 800w, assets/img/photos/bodega-equipo.webp 1400w" sizes="(min-width:1024px) 38vw, 100vw" width="800" height="533" alt="Personas caminando por un pasillo de una bodega de paquetes" loading="lazy" decoding="async">
+        </figure>
+      </div>
+      <div class="contact__form">
+        <dc-import name="Lead-Form" form-id="sol" endpoint="solicitud" aria-label="Solicitar tarifa" fields="{{ fields }}" initial="{{ initial }}" submit-label="Enviar solicitud" success-title="Recibimos tu solicitud" success-body="Te escribimos en [24] horas hábiles. Tu asesor será [nombre del asesor, si está asignado]." wa-intro="Hola, quiero solicitar una tarifa de negocios:"></dc-import>
       </div>
     </div>
   </section>
 </main>
-<dc-import name="Site-Footer" wa-page="Solicitar tarifa" hint-size="100%,480px"></dc-import>
+<dc-import name="Site-Footer" wa-page="Solicitar tarifa"></dc-import>
 </x-dc>
 <script type="application/json" data-page>
 {
- "title": "Solicitar tarifa para tu negocio",
+ "title": "Tarifa para tu negocio.",
  "waHref": {
   "$wa": "Hola, quiero solicitar una tarifa para mi negocio"
  },

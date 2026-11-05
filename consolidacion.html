@@ -15,23 +15,24 @@
 <link rel="icon" type="image/svg+xml" href="assets/img/logo-symbol.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&amp;display=swap">
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/site.css">
 <link rel="stylesheet" href="assets/css/interactions.css">
-<link rel="stylesheet" href="assets/css/redesign.css">
+<link rel="stylesheet" href="assets/css/v2.css">
+<link rel="stylesheet" href="assets/css/v2-pages.css">
 </head>
 <body>
 <a href="#main" class="skip-link">Saltar al contenido</a>
 <header id="site-header" class="hdr">
   <div class="hdr__bar">
-    <a class="hdr__logo" href="index.html" aria-label="TerraBox Cargo, inicio"><img src="assets/img/logo-horizontal.svg" alt="TerraBox Cargo" width="178" height="30"></a>
-    <nav class="hdr__nav" aria-label="Principal"><a class="hdr__link" href="index.html">Inicio</a><a class="hdr__link" href="casillero-virtual.html">¿Cómo funciona?</a><a class="hdr__link" href="tarifas.html">Tarifas</a><a class="hdr__link" href="tarifas.html#calculadora">Calculadora</a><a class="hdr__link" href="productos-restringidos.html">Artículos prohibidos</a><a class="hdr__link" href="contacto.html">Contacto</a></nav>
+    <a class="hdr__logo" href="index.html"><img src="assets/img/logo-horizontal.svg" alt="TerraBox Cargo, inicio" width="178" height="30"></a>
+    <nav class="hdr__nav" aria-label="Principal"><a class="hdr__link" href="index.html#ruta">Cómo funciona</a><a class="hdr__link" href="tarifas.html">Tarifas</a><a class="hdr__link" href="productos-restringidos.html">Prohibidos</a><a class="hdr__link" href="rastreo.html">Rastrear</a><a class="hdr__link" href="contacto.html">Contacto</a></nav>
     <div class="hdr__actions">
-      <a class="btn btn--outline btn--sm" href="ingresar.html" data-tb-url="login">Ingresar</a>
-      <a class="btn btn--primary btn--sm" href="registro.html" data-tb-url="register">Registrarse <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a>
+      <a class="hdr__link" href="ingresar.html" data-tb-url="login">Ingresar</a>
+      <a class="btn btn--primary btn--compact" href="registro.html" data-tb-url="register">Registrarse</a>
     </div>
-    <button type="button" id="menu-btn" class="hdr__menu" aria-expanded="false" aria-controls="menu-movil"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="4" x2="20" y1="12" y2="12"/> <line x1="4" x2="20" y1="6" y2="6"/> <line x1="4" x2="20" y1="18" y2="18"/></svg>Menú</button>
+    <button type="button" id="menu-btn" class="hdr__menu" aria-expanded="false" aria-controls="menu-movil"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="4" x2="20" y1="12" y2="12"/> <line x1="4" x2="20" y1="6" y2="6"/> <line x1="4" x2="20" y1="18" y2="18"/></svg><span>Menú</span></button>
   </div>
 </header>
 <div id="menu-movil" class="mnav" role="dialog" aria-modal="true" aria-label="Menú" hidden>
@@ -39,121 +40,131 @@
     <img src="assets/img/logo-horizontal.svg" alt="TerraBox Cargo" width="166" height="28">
     <button type="button" id="menu-close" class="mnav__close" aria-label="Cerrar menú"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/> <path d="m6 6 12 12"/></svg></button>
   </div>
-  <nav class="mnav__list" aria-label="Principal"><a class="mnav__link" href="index.html">Inicio</a><a class="mnav__link" href="casillero-virtual.html">¿Cómo funciona?</a><a class="mnav__link" href="tarifas.html">Tarifas</a><a class="mnav__link" href="tarifas.html#calculadora">Calculadora</a><a class="mnav__link" href="productos-restringidos.html">Artículos prohibidos</a><a class="mnav__link" href="contacto.html">Contacto</a>
+  <nav class="mnav__list" aria-label="Principal (móvil)"><a class="mnav__link" href="index.html#ruta">Cómo funciona</a><a class="mnav__link" href="tarifas.html">Tarifas</a><a class="mnav__link" href="productos-restringidos.html">Prohibidos</a><a class="mnav__link" href="rastreo.html">Rastrear</a><a class="mnav__link" href="contacto.html">Contacto</a>
     <div class="mnav__group">
-      <button type="button" class="m-group-btn mnav__link" aria-expanded="false" aria-controls="m-mas">Más servicios y ayuda<span aria-hidden="true" class="m-sign">+</span></button>
-      <div id="m-mas" class="mnav__sub" hidden><a class="mnav__sublink" href="rastreo.html">Rastrear envío</a><a class="mnav__sublink" href="ayuda.html">Preguntas frecuentes</a><a class="mnav__sublink" href="consolidacion.html">Consolidación</a><a class="mnav__sublink" href="compramos-por-ti.html">Compramos por ti</a><a class="mnav__sublink" href="negocios.html">Negocios y revendedores</a><a class="mnav__sublink" href="carga.html">Carga aérea y marítima</a></div>
+      <button type="button" class="m-group-btn mnav__more" aria-expanded="false" aria-controls="m-mas">Más servicios y ayuda<span aria-hidden="true" class="m-sign">+</span></button>
+      <div id="m-mas" class="mnav__sub" hidden><a class="mnav__sublink" href="casillero-virtual.html">Casillero virtual</a><a class="mnav__sublink" href="ayuda.html">Preguntas frecuentes</a><a class="mnav__sublink" href="consolidacion.html">Consolidación</a><a class="mnav__sublink" href="compramos-por-ti.html">Compramos por ti</a><a class="mnav__sublink" href="negocios.html">Negocios y revendedores</a><a class="mnav__sublink" href="carga.html">Carga aérea y marítima</a></div>
     </div>
   </nav>
   <div class="mnav__actions">
-    <a class="btn btn--outline" href="ingresar.html" data-tb-url="login">Ingresar</a>
+    <a class="btn btn--tone" href="ingresar.html" data-tb-url="login">Ingresar</a>
     <a class="btn btn--primary" href="registro.html" data-tb-url="register">Registrarse</a>
-    <a class="btn btn--whatsapp mnav__wa" href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20Consolidaci%C3%B3n" target="_blank" rel="noopener"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Escribir por WhatsApp</a>
+    <a class="btn btn--wa mnav__wa" href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20Consolidaci%C3%B3n" target="_blank" rel="noopener"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Escribir por WhatsApp</a>
   </div>
 </div>
-<a href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20Consolidaci%C3%B3n" target="_blank" rel="noopener" id="float-wa" class="float-wa" aria-label="Escribir por WhatsApp (se abre en una pestaña nueva)"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg><span>WhatsApp</span></a>
-<div id="sticky-bar" class="sticky-bar" hidden><a class="btn btn--primary" href="registro.html" data-tb-url="register">Regístrate gratis</a><a class="btn btn--outline" href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20Consolidaci%C3%B3n" target="_blank" rel="noopener">WhatsApp</a></div>
-<main id="main" tabindex="-1" style="outline:none">
-  <section aria-labelledby="h1" style="background:var(--navy-800);padding:clamp(40px,7vw,88px) var(--space-5)">
-    <div style="max-width:var(--container-max);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-6)">
-      <nav aria-label="Ruta de navegación" style="font:400 13px/1.4 var(--font-sans);color:var(--navy-200)"><a href="index.html" style="color:var(--navy-100)">Inicio</a> / <span>Servicios</span> / <span aria-current="page">Consolidación y reempaque</span></nav>
-      <h1 id="h1" style="margin:0;font:700 clamp(34px,5.4vw,56px)/1.06 var(--font-display);letter-spacing:var(--ls-display);color:#fff;text-wrap:balance">Varias compras, un solo envío</h1>
-      <p style="margin:0;font:400 18px/1.55 var(--font-sans);color:var(--navy-100);max-width:58ch">Recibimos tus paquetes de distintas tiendas, los agrupamos en una sola caja y te cobramos un solo flete.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:var(--space-3)">
-        <a class="h207c06" href="registro.html" style="flex:1 1 200px;max-width:260px;display:flex;align-items:center;justify-content:center;height:52px;border-radius:var(--radius-md);background:#fff;color:var(--tb-navy);font:600 16px/1 var(--font-sans)">Abrir casillero gratis</a>
-        <a class="h042062" href="tarifas.html#calculadora" style="flex:1 1 200px;max-width:260px;display:flex;align-items:center;justify-content:center;height:52px;border-radius:var(--radius-md);border:1px solid var(--navy-300);color:#fff;font:600 16px/1 var(--font-sans)">Calcular mi envío</a>
+<div id="sticky-bar" class="sticky-bar" hidden><a class="btn btn--primary" href="registro.html" data-tb-url="register">Regístrate gratis</a><a class="btn btn--wa" href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20Consolidaci%C3%B3n" target="_blank" rel="noopener"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>WhatsApp</a></div>
+<main id="main" tabindex="-1">
+  <section class="phero" aria-labelledby="h1">
+    <div class="wrap phero__grid">
+      <nav class="phero__crumb" aria-label="Ruta de navegación"><a href="index.html">Inicio</a> / <span>Servicios</span> / <span aria-current="page">Consolidación y reempaque</span></nav>
+      <h1 id="h1" class="display">Un solo envío.</h1>
+      <div class="phero__main">
+      <p class="statement">Recibimos tus paquetes de distintas tiendas, los agrupamos en una sola caja y te cobramos un solo flete.</p>
+      <div class="actions">
+        <a class="btn btn--accent" href="registro.html" data-tb-url="register">Abrir casillero gratis <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a>
+        <a class="link-arrow" href="tarifas.html#calculadora">Calcular mi envío <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a>
       </div>
+      </div>
+      <figure class="phero__aside phero__photo"><img src="assets/img/photos/caja-carton-800.webp" srcset="assets/img/photos/caja-carton-800.webp 800w, assets/img/photos/caja-carton.webp 1600w" sizes="(min-width:1024px) 34vw, 100vw" width="800" height="1200" alt="Una caja de cartón cerrada con cinta" decoding="async"></figure>
     </div>
   </section>
-  <section aria-labelledby="como-h" style="padding:clamp(56px,8vw,88px) var(--space-5)">
-    <div style="max-width:var(--container-max);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-8)">
-      <h2 id="como-h" style="margin:0;font:700 clamp(26px,3.4vw,36px)/1.15 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">Así consolidas desde tu cuenta</h2>
-      <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:var(--space-5)">
+
+  <section class="section" aria-labelledby="como-h">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="como-h" class="heading rv">Así consolidas.</h2>
+        <p class="statement rv">Todo se hace desde tu cuenta.</p>
+      </div>
+      <ol class="seq">
         
-          <li style="padding-top:var(--space-4);border-top:2px solid var(--tb-navy);display:flex;flex-direction:column;gap:var(--space-2)"><span style="font:500 13px/1 var(--font-mono);color:var(--tb-blue)">01</span><h3 style="margin:0;font:600 18px/1.3 var(--font-display);color:var(--navy-800)">Llegan tus paquetes</h3><p style="margin:0;font:400 15px/1.55 var(--font-sans);color:var(--fg-2)">Cada uno aparece en tu cuenta con foto, peso y medidas.</p></li>
+          <li class="rv"><h3>Llegan tus paquetes</h3><p>Cada uno aparece en tu cuenta con foto, peso y medidas.</p></li>
         
-          <li style="padding-top:var(--space-4);border-top:2px solid var(--tb-navy);display:flex;flex-direction:column;gap:var(--space-2)"><span style="font:500 13px/1 var(--font-mono);color:var(--tb-blue)">02</span><h3 style="margin:0;font:600 18px/1.3 var(--font-display);color:var(--navy-800)">Eliges cuáles agrupar</h3><p style="margin:0;font:400 15px/1.55 var(--font-sans);color:var(--fg-2)">Seleccionas los paquetes y las opciones de reempaque.</p></li>
+          <li class="rv"><h3>Eliges cuáles agrupar</h3><p>Seleccionas los paquetes y las opciones de reempaque.</p></li>
         
-          <li style="padding-top:var(--space-4);border-top:2px solid var(--tb-navy);display:flex;flex-direction:column;gap:var(--space-2)"><span style="font:500 13px/1 var(--font-mono);color:var(--tb-blue)">03</span><h3 style="margin:0;font:600 18px/1.3 var(--font-display);color:var(--navy-800)">Te enviamos la cotización</h3><p style="margin:0;font:400 15px/1.55 var(--font-sans);color:var(--fg-2)">La apruebas, pagas en línea y despachamos en el siguiente día de salida.</p></li>
+          <li class="rv"><h3>Te enviamos la cotización</h3><p>La apruebas, pagas en línea y despachamos en el siguiente día de salida.</p></li>
         
       </ol>
     </div>
   </section>
-  <section aria-labelledby="comp-h" style="background:#fff;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);padding:clamp(56px,8vw,88px) var(--space-5)">
-    <div style="max-width:var(--container-max);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-6)">
-      <h2 id="comp-h" style="margin:0;font:700 clamp(26px,3.4vw,36px)/1.15 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">3 paquetes por separado o consolidados</h2>
-      <div style="overflow-x:auto;border:1px solid var(--border-subtle);border-radius:var(--radius-lg)">
-        <table style="width:100%;min-width:520px;border-collapse:collapse;font:400 15px/1.45 var(--font-sans)">
-          <thead><tr style="background:var(--surface-sunken);text-align:left"><th scope="col" style="padding:14px 18px;font:600 13px var(--font-sans);color:var(--fg-2)">Concepto</th><th scope="col" style="padding:14px 18px;font:600 13px var(--font-sans);color:var(--fg-2)">Por separado</th><th scope="col" style="padding:14px 18px;font:600 13px var(--font-sans);color:var(--fg-2)">Consolidados</th></tr></thead>
+
+  <section class="section section--tone" aria-labelledby="comp-h">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="comp-h" class="heading rv">Separados o consolidados.</h2>
+        <p class="statement rv">El mismo pedido enviado en paquetes sueltos o en una sola caja.</p>
+      </div>
+      <div class="dtable-wrap rv">
+        <table class="dtable">
+          <caption class="sr-only">Tres paquetes por separado o consolidados</caption>
+          <thead><tr><th scope="col">Concepto</th><th scope="col">Por separado</th><th scope="col">Consolidados</th></tr></thead>
           <tbody>
-            <tr style="border-top:1px solid var(--border-subtle)"><th scope="row" style="padding:14px 18px;text-align:left;font-weight:600">Peso cobrado</th><td style="padding:14px 18px;font-family:var(--font-mono)">[X] lb</td><td style="padding:14px 18px;font-family:var(--font-mono)">[X] lb</td></tr>
-            <tr style="border-top:1px solid var(--border-subtle)"><th scope="row" style="padding:14px 18px;text-align:left;font-weight:600">Cargos mínimos</th><td style="padding:14px 18px;font-family:var(--font-mono)">3 × US$[X]</td><td style="padding:14px 18px;font-family:var(--font-mono)">1 × US$[X]</td></tr>
-            <tr style="border-top:1px solid var(--border-subtle)"><th scope="row" style="padding:14px 18px;text-align:left;font-weight:600">Consolidación</th><td style="padding:14px 18px;font-family:var(--font-mono)">—</td><td style="padding:14px 18px;font-family:var(--font-mono)">[Gratis o US$X]</td></tr>
-            <tr style="border-top:1px solid var(--border-subtle);background:var(--navy-50)"><th scope="row" style="padding:14px 18px;text-align:left;font-weight:700;color:var(--navy-800)">Total</th><td style="padding:14px 18px;font:600 15px var(--font-mono)">US$[X]</td><td style="padding:14px 18px;font:600 15px var(--font-mono)">US$[X]</td></tr>
+            <tr><th scope="row">Peso cobrado</th><td>[X] lb</td><td>[X] lb</td></tr>
+            <tr><th scope="row">Cargos mínimos</th><td>3 × US$[X]</td><td>1 × US$[X]</td></tr>
+            <tr><th scope="row">Consolidación</th><td>—</td><td>[Gratis o US$X]</td></tr>
+            <tr class="is-total"><th scope="row">Total</th><td>US$[X]</td><td>US$[X]</td></tr>
           </tbody>
         </table>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:var(--space-4)">
-        <div role="img" aria-label="Foto antes de consolidar (pendiente)" style="aspect-ratio:4/3;border:1px dashed var(--border-strong);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;font:500 13px var(--font-mono);color:var(--fg-3)">Foto real: antes · pendiente</div>
-        <div role="img" aria-label="Foto después de consolidar (pendiente)" style="aspect-ratio:4/3;border:1px dashed var(--border-strong);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;font:500 13px var(--font-mono);color:var(--fg-3)">Foto real: después · pendiente</div>
+      <p class="after note rv">[Fotos reales de antes y después de consolidar, pendientes.]</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="opt-h">
+    <div class="wrap aside">
+      <div class="aside__head">
+        <h2 id="opt-h" class="heading rv">Opciones de reempaque.</h2>
+        <p class="rv">Las eliges al consolidar, paquete por paquete.</p>
+      </div>
+      <div class="aside__body">
+        <ul class="plist rv">
+          
+            <li><div><strong>Retiro de cajas originales</strong><br><span>Quitamos cajas vacías para reducir el peso volumétrico.</span></div><span class="plist__v">[Gratis o US$X]</span></li>
+          
+            <li><div><strong>Reempaque reforzado</strong><br><span>Para artículos frágiles o de valor.</span></div><span class="plist__v">US$[X]</span></li>
+          
+            <li><div><strong>Retiro de facturas</strong><br><span>Útil si envías un regalo o mercancía para vender.</span></div><span class="plist__v">[Condición]</span></li>
+          
+        </ul>
       </div>
     </div>
   </section>
-  <section aria-labelledby="opt-h" style="padding:clamp(56px,8vw,88px) var(--space-5)">
-    <div style="max-width:var(--container-max);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-6)">
-      <h2 id="opt-h" style="margin:0;font:700 clamp(26px,3.4vw,36px)/1.15 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">Opciones de reempaque</h2>
-      <dl style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:var(--space-4)">
-        
-          <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-2)"><dt style="font:600 16px/1.35 var(--font-sans);color:var(--navy-800)">Retiro de cajas originales</dt><dd style="margin:0;font:400 14px/1.5 var(--font-sans);color:var(--fg-2)">Quitamos cajas vacías para reducir el peso volumétrico.</dd><dd style="margin:0;font:500 14px var(--font-mono);color:var(--fg-1)">[Gratis o US$X]</dd></div>
-        
-          <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-2)"><dt style="font:600 16px/1.35 var(--font-sans);color:var(--navy-800)">Reempaque reforzado</dt><dd style="margin:0;font:400 14px/1.5 var(--font-sans);color:var(--fg-2)">Para artículos frágiles o de valor.</dd><dd style="margin:0;font:500 14px var(--font-mono);color:var(--fg-1)">US$[X]</dd></div>
-        
-          <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-2)"><dt style="font:600 16px/1.35 var(--font-sans);color:var(--navy-800)">Retiro de facturas</dt><dd style="margin:0;font:400 14px/1.5 var(--font-sans);color:var(--fg-2)">Útil si envías un regalo o mercancía para vender.</dd><dd style="margin:0;font:500 14px var(--font-mono);color:var(--fg-1)">[Condición]</dd></div>
-        
-      </dl>
+
+  <section class="section section--tone" aria-labelledby="faq-h">
+    <div class="wrap aside">
+      <div class="aside__head">
+        <h2 id="faq-h" class="heading rv">Límites, espera e impuestos.</h2>
+        <p class="rv">¿No puedes pagar en la tienda? <a href="compramos-por-ti.html">Compramos por ti</a>. ¿Importas para vender? <a href="revendedores.html">Ver servicios para revendedores</a>.</p>
+        <div class="actions rv"><a class="btn btn--primary" href="registro.html" data-tb-url="register">Abrir casillero gratis <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a></div>
+      </div>
+      <div class="faq acc"><div id="cuantos" class="faq-item acc__item" data-search="¿Cuántos paquetes puedo consolidar? [Límite confirmado de paquetes o peso por consolidación]."><h3 class="acc__h"><button type="button" class="faq-btn acc__btn" id="q-cuantos" aria-expanded="false" aria-controls="a-cuantos"><span>¿Cuántos paquetes puedo consolidar?</span><span aria-hidden="true" class="faq-sign acc__sign">+</span></button></h3><div id="a-cuantos" role="region" aria-labelledby="q-cuantos" hidden class="acc__panel"><p>[Límite confirmado de paquetes o peso por consolidación].</p><a class="link-arrow" href="tarifas.html">Ver tarifas <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a></div></div><div id="espera" class="faq-item acc__item" data-search="¿Cuánto tiempo esperan mis paquetes? [X] días sin costo mientras llegan tus otras compras."><h3 class="acc__h"><button type="button" class="faq-btn acc__btn" id="q-espera" aria-expanded="false" aria-controls="a-espera"><span>¿Cuánto tiempo esperan mis paquetes?</span><span aria-hidden="true" class="faq-sign acc__sign">+</span></button></h3><div id="a-espera" role="region" aria-labelledby="q-espera" hidden class="acc__panel"><p>[X] días sin costo mientras llegan tus otras compras.</p><a class="link-arrow" href="casillero-virtual.html#almacenamiento">Ver almacenamiento <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a></div></div><div id="impuestos-consolidar" class="faq-item acc__item" data-search="¿Consolidar cambia los impuestos? [Respuesta confirmada por el agente de aduanas]."><h3 class="acc__h"><button type="button" class="faq-btn acc__btn" id="q-impuestos-consolidar" aria-expanded="false" aria-controls="a-impuestos-consolidar"><span>¿Consolidar cambia los impuestos?</span><span aria-hidden="true" class="faq-sign acc__sign">+</span></button></h3><div id="a-impuestos-consolidar" role="region" aria-labelledby="q-impuestos-consolidar" hidden class="acc__panel"><p>[Respuesta confirmada por el agente de aduanas].</p><a class="link-arrow" href="aduana-impuestos.html">Ver guía de impuestos <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a></div></div></div>
     </div>
   </section>
-  <section aria-labelledby="faq-h" style="background:#fff;border-top:1px solid var(--border-subtle);padding:clamp(56px,8vw,88px) var(--space-5)">
-    <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:var(--space-6)">
-      <h2 id="faq-h" style="margin:0;font:700 clamp(26px,3.4vw,36px)/1.15 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">Preguntas sobre consolidación</h2>
-      <div class="faq" style="display:flex;flex-direction:column;border-top:1px solid var(--border-default)"><div id="cuantos" class="faq-item" data-search="¿Cuántos paquetes puedo consolidar? [Límite confirmado de paquetes o peso por consolidación]." style="border-bottom:1px solid var(--border-default)"><h3 style="margin:0"><button type="button" class="h7fb569 faq-btn" id="q-cuantos" aria-expanded="false" aria-controls="a-cuantos" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);min-height:60px;padding:var(--space-4) 0;border:0;background:transparent;text-align:left;cursor:pointer;font:600 17px/1.35 var(--font-sans);color:var(--navy-800)"><span>¿Cuántos paquetes puedo consolidar?</span><span aria-hidden="true" class="faq-sign" style="flex-shrink:0;width:28px;height:28px;border-radius:var(--radius-md);background:var(--navy-50);display:flex;align-items:center;justify-content:center;font:500 18px/1 var(--font-sans);color:var(--tb-navy)">+</span></button></h3><div id="a-cuantos" role="region" aria-labelledby="q-cuantos" hidden style="padding:0 var(--space-10) var(--space-5) 0;flex-direction:column;gap:var(--space-2)"><p style="margin:0;font:400 15px/1.6 var(--font-sans);color:var(--fg-2);max-width:68ch;text-wrap:pretty">[Límite confirmado de paquetes o peso por consolidación].</p><a href="tarifas.html" style="font:600 14px/1.4 var(--font-sans);align-self:flex-start;min-height:32px;display:flex;align-items:center">Ver tarifas</a></div></div><div id="espera" class="faq-item" data-search="¿Cuánto tiempo esperan mis paquetes? [X] días sin costo mientras llegan tus otras compras." style="border-bottom:1px solid var(--border-default)"><h3 style="margin:0"><button type="button" class="h7fb569 faq-btn" id="q-espera" aria-expanded="false" aria-controls="a-espera" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);min-height:60px;padding:var(--space-4) 0;border:0;background:transparent;text-align:left;cursor:pointer;font:600 17px/1.35 var(--font-sans);color:var(--navy-800)"><span>¿Cuánto tiempo esperan mis paquetes?</span><span aria-hidden="true" class="faq-sign" style="flex-shrink:0;width:28px;height:28px;border-radius:var(--radius-md);background:var(--navy-50);display:flex;align-items:center;justify-content:center;font:500 18px/1 var(--font-sans);color:var(--tb-navy)">+</span></button></h3><div id="a-espera" role="region" aria-labelledby="q-espera" hidden style="padding:0 var(--space-10) var(--space-5) 0;flex-direction:column;gap:var(--space-2)"><p style="margin:0;font:400 15px/1.6 var(--font-sans);color:var(--fg-2);max-width:68ch;text-wrap:pretty">[X] días sin costo mientras llegan tus otras compras.</p><a href="casillero-virtual.html#almacenamiento" style="font:600 14px/1.4 var(--font-sans);align-self:flex-start;min-height:32px;display:flex;align-items:center">Ver almacenamiento</a></div></div><div id="impuestos-consolidar" class="faq-item" data-search="¿Consolidar cambia los impuestos? [Respuesta confirmada por el agente de aduanas]." style="border-bottom:1px solid var(--border-default)"><h3 style="margin:0"><button type="button" class="h7fb569 faq-btn" id="q-impuestos-consolidar" aria-expanded="false" aria-controls="a-impuestos-consolidar" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);min-height:60px;padding:var(--space-4) 0;border:0;background:transparent;text-align:left;cursor:pointer;font:600 17px/1.35 var(--font-sans);color:var(--navy-800)"><span>¿Consolidar cambia los impuestos?</span><span aria-hidden="true" class="faq-sign" style="flex-shrink:0;width:28px;height:28px;border-radius:var(--radius-md);background:var(--navy-50);display:flex;align-items:center;justify-content:center;font:500 18px/1 var(--font-sans);color:var(--tb-navy)">+</span></button></h3><div id="a-impuestos-consolidar" role="region" aria-labelledby="q-impuestos-consolidar" hidden style="padding:0 var(--space-10) var(--space-5) 0;flex-direction:column;gap:var(--space-2)"><p style="margin:0;font:400 15px/1.6 var(--font-sans);color:var(--fg-2);max-width:68ch;text-wrap:pretty">[Respuesta confirmada por el agente de aduanas].</p><a href="aduana-impuestos.html" style="font:600 14px/1.4 var(--font-sans);align-self:flex-start;min-height:32px;display:flex;align-items:center">Ver guía de impuestos</a></div></div></div>
-      <p style="margin:0;font:400 15px/1.6 var(--font-sans);color:var(--fg-2)">¿No puedes pagar en la tienda? <a href="compramos-por-ti.html">Compramos por ti</a>. ¿Importas para vender? <a href="revendedores.html">Ver servicios para revendedores</a>.</p>
-    </div>
-  </section>
-  <section style="background:var(--navy-800);padding:clamp(56px,8vw,88px) var(--space-5)">
-    <div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-5)">
-      <h2 style="margin:0;font:700 clamp(28px,4vw,44px)/1.1 var(--font-display);color:#fff">Empieza a juntar tus compras</h2>
-      <a class="h207c06" href="registro.html" style="display:flex;align-items:center;justify-content:center;height:52px;padding:0 26px;border-radius:var(--radius-md);background:#fff;color:var(--tb-navy);font:600 16px/1 var(--font-sans)">Abrir casillero gratis</a>
-    </div>
-  </section>
+
 </main>
 <footer class="ftr">
   <div class="ftr__inner">
-    <div class="ftr__grid">
-      <div class="ftr__brand">
-        <img src="assets/img/logo-horizontal-reversed.svg" alt="TerraBox Cargo" width="190" height="32">
-        <p>Compra en Estados Unidos y recíbelo en Colombia en 5 a 7 días hábiles, con seguro incluido.</p>
-        <div class="ftr__social">
+    <div class="ftr__top">
+      <div class="ftr__contact">
+        <p class="ftr__claim">Compra en Estados Unidos y recíbelo en Colombia en 5 a 7 días hábiles, con seguro incluido.</p>
+        <a href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20Consolidaci%C3%B3n" target="_blank" rel="noopener" class="btn btn--wa"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Escribir por WhatsApp</a>
+        <p><a data-tb="email" href="contacto.html">[email]</a><br><span data-tb="hours">[horario de atención]</span></p>
+        <p class="ftr__social">
           <a href="#" data-social="instagram" hidden aria-label="Instagram de TerraBox (se abre en una pestaña nueva)" target="_blank" rel="noopener"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/> <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/> <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
           <a href="#" data-social="facebook" hidden aria-label="Facebook de TerraBox (se abre en una pestaña nueva)" target="_blank" rel="noopener"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-        </div>
+        </p>
       </div>
-      <nav class="ftr__col" aria-label="Navegación"><h2 class="ftr__title">Navegación</h2><a href="index.html">Inicio</a><a href="casillero-virtual.html">¿Cómo funciona?</a><a href="tarifas.html">Tarifas</a><a href="tarifas.html#calculadora">Calculadora</a><a href="productos-restringidos.html">Artículos prohibidos</a><a href="contacto.html">Contacto</a></nav><nav class="ftr__col" aria-label="Servicios"><h2 class="ftr__title">Servicios</h2><a href="consolidacion.html">Consolidación</a><a href="compramos-por-ti.html">Compramos por ti</a><a href="carga.html">Carga aérea y marítima</a><a href="negocios.html">Negocios</a><a href="revendedores.html">Revendedores</a><a href="empresas.html">Empresas</a></nav><nav class="ftr__col" aria-label="Ayuda"><h2 class="ftr__title">Ayuda</h2><a href="rastreo.html">Rastrear envío</a><a href="ayuda.html">Preguntas frecuentes</a><a href="aduana-impuestos.html">Aduana e impuestos</a><a href="reclamos-seguro.html">Reclamos y seguro</a><a href="tiendas.html">Tiendas recomendadas</a><a href="nosotros.html">Nosotros</a></nav>
-      <div class="ftr__col">
-        <h2 class="ftr__title">Contacto</h2>
-        <a href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20Consolidaci%C3%B3n" target="_blank" rel="noopener" class="ftr__wa"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>WhatsApp</a>
-        <p><span class="ftr__label">Email</span><a data-tb="email" href="contacto.html">[email]</a></p>
-        <p><span class="ftr__label">Horario</span><span data-tb="hours">[horario de atención]</span></p>
-      </div>
+      <nav class="ftr__col" aria-labelledby="ftr-0"><h2 class="ftr__title" id="ftr-0">Envíos</h2><ul><li><a href="casillero-virtual.html">Casillero virtual</a></li><li><a href="envios-colombia.html">Envíos a Colombia</a></li><li><a href="tarifas.html">Tarifas</a></li><li><a href="tarifas.html#calculadora">Calculadora</a></li><li><a href="productos-restringidos.html">Artículos prohibidos</a></li><li><a href="rastreo.html">Rastrear envío</a></li></ul></nav><nav class="ftr__col" aria-labelledby="ftr-1"><h2 class="ftr__title" id="ftr-1">Servicios</h2><ul><li><a href="consolidacion.html">Consolidación</a></li><li><a href="compramos-por-ti.html">Compramos por ti</a></li><li><a href="carga.html">Carga aérea y marítima</a></li><li><a href="negocios.html">Negocios</a></li><li><a href="revendedores.html">Revendedores</a></li><li><a href="empresas.html">Empresas</a></li></ul></nav><nav class="ftr__col" aria-labelledby="ftr-2"><h2 class="ftr__title" id="ftr-2">Ayuda</h2><ul><li><a href="ayuda.html">Preguntas frecuentes</a></li><li><a href="aduana-impuestos.html">Aduana e impuestos</a></li><li><a href="reclamos-seguro.html">Reclamos y seguro</a></li><li><a href="tiendas.html">Tiendas recomendadas</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="contacto.html">Contacto</a></li></ul></nav>
     </div>
+    <a class="ftr__mark" href="index.html"><img src="assets/img/logo-horizontal-reversed.svg" alt="TerraBox Cargo, inicio" width="583" height="98" loading="lazy"></a>
     <div class="ftr__bottom">
-      <div class="ftr__legal">
+      <p class="ftr__legal">
         <a href="legal-terminos.html">Términos y condiciones</a>
         <a href="legal-datos.html">Tratamiento de datos</a>
         <a href="legal-cookies.html">Cookies</a>
         <button type="button" id="cookie-reopen">Preferencias de cookies</button>
-      </div>
-      <span>© <span id="year">2026</span> TerraBox Cargo</span>
+      </p>
+      <p>© <span id="year">2026</span> TerraBox Cargo</p>
+      <p class="ftr__credits">Fotografías: Unsplash (Vitaly Gariev, rupixen, Ruchindra Gunasekara, Adrian Sulyok, Peaky_82, MealPro, Antonio Cuellar, Andrés Gómez, Michael Schmid, Brandable Box, RoseBox).</p>
     </div>
   </div>
 </footer>
@@ -164,13 +175,15 @@
     <label><input type="checkbox" id="cookie-analytics">Medición y análisis</label>
   </div>
   <div class="cookie__actions">
-    <button type="button" class="tb-btn tb-btn--outline tb-btn--md tb-btn--full" data-cookie="reject">Rechazar</button>
-    <button type="button" class="tb-btn tb-btn--outline tb-btn--md tb-btn--full" data-cookie="configure">Configurar</button>
-    <button type="button" class="tb-btn tb-btn--outline tb-btn--md tb-btn--full" data-cookie="accept">Aceptar</button>
+    <button type="button" class="btn btn--tone" data-cookie="reject">Rechazar</button>
+    <button type="button" class="btn btn--tone" data-cookie="configure">Configurar</button>
+    <button type="button" class="btn btn--tone" data-cookie="accept">Aceptar</button>
   </div>
 </div>
+<a href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20Consolidaci%C3%B3n" target="_blank" rel="noopener" id="float-wa" class="float-wa" aria-label="Escribir por WhatsApp (se abre en una pestaña nueva)"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></a>
 <script src="assets/js/config.js"></script>
 <script src="assets/js/calculator.js"></script>
 <script src="assets/js/site.js"></script>
+<script src="assets/js/motion.js"></script>
 </body>
 </html>

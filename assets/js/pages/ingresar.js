@@ -20,7 +20,7 @@
   function loading(on) { submit.disabled = on; submit.textContent = on ? 'Procesando…' : (mode === 'login' ? 'Ingresar' : 'Enviar enlace'); }
   function setMode(m) {
     mode = m; say('');
-    document.getElementById('h1').textContent = m === 'login' ? 'Ingresar' : 'Recuperar contraseña';
+    document.getElementById('h1').textContent = m === 'login' ? 'Ingresar.' : 'Recuperar contraseña.';
     el('login-pw-wrap').hidden = m !== 'login';
     el('login-forgot-note').hidden = el('login-to-login').hidden = m !== 'forgot';
     fieldErr(pw, ''); loading(false);
@@ -40,7 +40,7 @@
     const eErr = !email.value.trim() ? 'Escribe tu email.' : (!TB.emailOk(email.value) ? 'Escribe un email válido, por ejemplo nombre@correo.com' : '');
     const pErr = mode === 'login' && !pw.value ? 'Escribe tu contraseña.' : '';
     fieldErr(email, eErr); fieldErr(pw, pErr); say('');
-    if (eErr || pErr) return;
+    if (eErr || pErr) { (eErr ? email : pw).focus(); return; }
     const url = TB.endpoints && TB.endpoints.login; loading(true);
     if (!url) { setTimeout(() => say('El portal de clientes aún no está conectado a este sitio, así que no podemos verificar tu cuenta aquí. Escríbenos por WhatsApp para consultar tus paquetes.', 'warn'), 400); return; }
     try {

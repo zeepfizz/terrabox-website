@@ -15,23 +15,24 @@
 <link rel="icon" type="image/svg+xml" href="assets/img/logo-symbol.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&amp;display=swap">
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/site.css">
 <link rel="stylesheet" href="assets/css/interactions.css">
-<link rel="stylesheet" href="assets/css/redesign.css">
+<link rel="stylesheet" href="assets/css/v2.css">
+<link rel="stylesheet" href="assets/css/v2-pages.css">
 </head>
 <body>
 <a href="#main" class="skip-link">Saltar al contenido</a>
 <header id="site-header" class="hdr">
   <div class="hdr__bar">
-    <a class="hdr__logo" href="index.html" aria-label="TerraBox Cargo, inicio"><img src="assets/img/logo-horizontal.svg" alt="TerraBox Cargo" width="178" height="30"></a>
-    <nav class="hdr__nav" aria-label="Principal"><a class="hdr__link" href="index.html">Inicio</a><a class="hdr__link is-current" href="casillero-virtual.html" aria-current="page">¿Cómo funciona?</a><a class="hdr__link" href="tarifas.html">Tarifas</a><a class="hdr__link" href="tarifas.html#calculadora">Calculadora</a><a class="hdr__link" href="productos-restringidos.html">Artículos prohibidos</a><a class="hdr__link" href="contacto.html">Contacto</a></nav>
+    <a class="hdr__logo" href="index.html"><img src="assets/img/logo-horizontal.svg" alt="TerraBox Cargo, inicio" width="178" height="30"></a>
+    <nav class="hdr__nav" aria-label="Principal"><a class="hdr__link is-current" aria-current="page" href="index.html#ruta">Cómo funciona</a><a class="hdr__link" href="tarifas.html">Tarifas</a><a class="hdr__link" href="productos-restringidos.html">Prohibidos</a><a class="hdr__link" href="rastreo.html">Rastrear</a><a class="hdr__link" href="contacto.html">Contacto</a></nav>
     <div class="hdr__actions">
-      <a class="btn btn--outline btn--sm" href="ingresar.html" data-tb-url="login">Ingresar</a>
-      <a class="btn btn--primary btn--sm" href="registro.html" data-tb-url="register">Registrarse <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a>
+      <a class="hdr__link" href="ingresar.html" data-tb-url="login">Ingresar</a>
+      <a class="btn btn--primary btn--compact" href="registro.html" data-tb-url="register">Registrarse</a>
     </div>
-    <button type="button" id="menu-btn" class="hdr__menu" aria-expanded="false" aria-controls="menu-movil"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="4" x2="20" y1="12" y2="12"/> <line x1="4" x2="20" y1="6" y2="6"/> <line x1="4" x2="20" y1="18" y2="18"/></svg>Menú</button>
+    <button type="button" id="menu-btn" class="hdr__menu" aria-expanded="false" aria-controls="menu-movil"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="4" x2="20" y1="12" y2="12"/> <line x1="4" x2="20" y1="6" y2="6"/> <line x1="4" x2="20" y1="18" y2="18"/></svg><span>Menú</span></button>
   </div>
 </header>
 <div id="menu-movil" class="mnav" role="dialog" aria-modal="true" aria-label="Menú" hidden>
@@ -39,134 +40,172 @@
     <img src="assets/img/logo-horizontal.svg" alt="TerraBox Cargo" width="166" height="28">
     <button type="button" id="menu-close" class="mnav__close" aria-label="Cerrar menú"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/> <path d="m6 6 12 12"/></svg></button>
   </div>
-  <nav class="mnav__list" aria-label="Principal"><a class="mnav__link" href="index.html">Inicio</a><a class="mnav__link" href="casillero-virtual.html">¿Cómo funciona?</a><a class="mnav__link" href="tarifas.html">Tarifas</a><a class="mnav__link" href="tarifas.html#calculadora">Calculadora</a><a class="mnav__link" href="productos-restringidos.html">Artículos prohibidos</a><a class="mnav__link" href="contacto.html">Contacto</a>
+  <nav class="mnav__list" aria-label="Principal (móvil)"><a class="mnav__link is-current" aria-current="page" href="index.html#ruta">Cómo funciona</a><a class="mnav__link" href="tarifas.html">Tarifas</a><a class="mnav__link" href="productos-restringidos.html">Prohibidos</a><a class="mnav__link" href="rastreo.html">Rastrear</a><a class="mnav__link" href="contacto.html">Contacto</a>
     <div class="mnav__group">
-      <button type="button" class="m-group-btn mnav__link" aria-expanded="false" aria-controls="m-mas">Más servicios y ayuda<span aria-hidden="true" class="m-sign">+</span></button>
-      <div id="m-mas" class="mnav__sub" hidden><a class="mnav__sublink" href="rastreo.html">Rastrear envío</a><a class="mnav__sublink" href="ayuda.html">Preguntas frecuentes</a><a class="mnav__sublink" href="consolidacion.html">Consolidación</a><a class="mnav__sublink" href="compramos-por-ti.html">Compramos por ti</a><a class="mnav__sublink" href="negocios.html">Negocios y revendedores</a><a class="mnav__sublink" href="carga.html">Carga aérea y marítima</a></div>
+      <button type="button" class="m-group-btn mnav__more" aria-expanded="false" aria-controls="m-mas">Más servicios y ayuda<span aria-hidden="true" class="m-sign">+</span></button>
+      <div id="m-mas" class="mnav__sub" hidden><a class="mnav__sublink" href="casillero-virtual.html">Casillero virtual</a><a class="mnav__sublink" href="ayuda.html">Preguntas frecuentes</a><a class="mnav__sublink" href="consolidacion.html">Consolidación</a><a class="mnav__sublink" href="compramos-por-ti.html">Compramos por ti</a><a class="mnav__sublink" href="negocios.html">Negocios y revendedores</a><a class="mnav__sublink" href="carga.html">Carga aérea y marítima</a></div>
     </div>
   </nav>
   <div class="mnav__actions">
-    <a class="btn btn--outline" href="ingresar.html" data-tb-url="login">Ingresar</a>
+    <a class="btn btn--tone" href="ingresar.html" data-tb-url="login">Ingresar</a>
     <a class="btn btn--primary" href="registro.html" data-tb-url="register">Registrarse</a>
-    <a class="btn btn--whatsapp mnav__wa" href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20C%C3%B3mo%20funciona" target="_blank" rel="noopener"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Escribir por WhatsApp</a>
+    <a class="btn btn--wa mnav__wa" href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20C%C3%B3mo%20funciona" target="_blank" rel="noopener"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Escribir por WhatsApp</a>
   </div>
 </div>
-<a href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20C%C3%B3mo%20funciona" target="_blank" rel="noopener" id="float-wa" class="float-wa" aria-label="Escribir por WhatsApp (se abre en una pestaña nueva)"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg><span>WhatsApp</span></a>
-<div id="sticky-bar" class="sticky-bar" hidden><a class="btn btn--primary" href="registro.html" data-tb-url="register">Regístrate gratis</a><a class="btn btn--outline" href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20C%C3%B3mo%20funciona" target="_blank" rel="noopener">WhatsApp</a></div>
-<main id="main" tabindex="-1" style="outline:none">
-  <section aria-labelledby="h1" style="background:var(--navy-800);padding:clamp(40px,7vw,88px) var(--space-5)">
-    <div style="max-width:var(--container-max);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-6)">
-      <nav aria-label="Ruta de navegación" style="font:400 13px/1.4 var(--font-sans);color:var(--navy-200)"><a href="index.html" style="color:var(--navy-100)">Inicio</a> / <span aria-current="page">Cómo funciona</span></nav>
-      <h1 id="h1" style="margin:0;font:700 clamp(34px,5.4vw,56px)/1.06 var(--font-display);letter-spacing:var(--ls-display);color:#fff;max-width:18ch;text-wrap:balance">Tu dirección en Miami, gratis y al instante</h1>
-      <p style="margin:0;font:400 18px/1.55 var(--font-sans);color:var(--navy-100);max-width:58ch">Compras en cualquier tienda de Estados Unidos, recibimos tus paquetes, los fotografiamos y te los llevamos a Colombia.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:var(--space-3)">
-        <a class="h207c06" href="registro.html" style="flex:1 1 200px;max-width:260px;display:flex;align-items:center;justify-content:center;height:52px;border-radius:var(--radius-md);background:#fff;color:var(--tb-navy);font:600 16px/1 var(--font-sans)">Abrir casillero gratis</a>
-        <a class="h042062" href="tarifas.html#calculadora" style="flex:1 1 200px;max-width:260px;display:flex;align-items:center;justify-content:center;height:52px;border-radius:var(--radius-md);border:1px solid var(--navy-300);color:#fff;font:600 16px/1 var(--font-sans)">Calcular mi envío</a>
+<div id="sticky-bar" class="sticky-bar" hidden><a class="btn btn--primary" href="registro.html" data-tb-url="register">Regístrate gratis</a><a class="btn btn--wa" href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20C%C3%B3mo%20funciona" target="_blank" rel="noopener"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>WhatsApp</a></div>
+<main id="main" tabindex="-1">
+  <section class="phero" aria-labelledby="h1">
+    <div class="wrap phero__grid">
+      <nav class="phero__crumb" aria-label="Ruta de navegación"><a href="index.html">Inicio</a> / <span aria-current="page">Cómo funciona</span></nav>
+      <h1 id="h1" class="display">Así funciona tu casillero.</h1>
+      <div class="phero__main">
+      <p class="statement">Tu dirección en Miami, gratis y al instante. Compras en cualquier tienda de Estados Unidos y te lo llevamos a Colombia.</p>
+      <div class="actions">
+        <a class="btn btn--accent" href="registro.html" data-tb-url="register">Abrir casillero gratis <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a>
+        <a class="link-arrow" href="tarifas.html#calculadora">Calcular mi envío <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a>
       </div>
+      </div>
+      <div class="phero__aside"><div class="label" role="group" aria-label="Ejemplo de tu dirección en Miami">
+          <div class="label__top"><img src="assets/img/logo-horizontal.svg" alt="TerraBox Cargo" width="148" height="25"><span>Miami, FL</span></div>
+          <div class="label__lines">
+            <p class="label__name">Full name: <strong>Tu nombre TBX-0000</strong></p>
+            <p>Address: <strong>[Dirección de la bodega]</strong></p>
+            <p>City: <strong>Miami</strong> · State: <strong>FL</strong> · ZIP: <strong>[código postal]</strong></p>
+          </div>
+        </div></div>
     </div>
   </section>
-  <section aria-labelledby="pasos-h" style="padding:clamp(56px,8vw,88px) var(--space-5)">
-    <div style="max-width:var(--container-max);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-10)">
-      <h2 id="pasos-h" style="margin:0;font:700 clamp(26px,3.4vw,36px)/1.15 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">Cuatro pasos, de la tienda a tu puerta</h2>
-      <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:var(--space-5)">
+
+  <section class="section" aria-labelledby="pasos-h">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="pasos-h" class="heading rv">Compras allá, lo recibes aquí.</h2>
+        <p class="statement rv">Recibimos tus paquetes, los fotografiamos y te los llevamos a Colombia.</p>
+      </div>
+      <ol class="route route--4">
         
-          <li style="background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-3)">
-            <span style="font:600 28px/1 var(--font-mono);color:var(--tb-blue)">01</span>
-            <h3 style="margin:0;font:700 19px/1.25 var(--font-display);color:var(--navy-800)">Abre</h3>
-            <p style="margin:0;font:400 15px/1.55 var(--font-sans);color:var(--fg-2)">Te registras gratis y recibes tu dirección en Miami.</p>
+          <li class="route__stop rv">
+            <img src="assets/img/photos/compra-portatil-800.webp" width="800" height="533" alt="Una persona compra en línea desde su portátil con una tarjeta en la mano" loading="lazy" decoding="async">
+            <h3>Abre</h3>
+            <p>Te registras gratis y recibes tu dirección en Miami.</p>
           </li>
         
-          <li style="background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-3)">
-            <span style="font:600 28px/1 var(--font-mono);color:var(--tb-blue)">02</span>
-            <h3 style="margin:0;font:700 19px/1.25 var(--font-display);color:var(--navy-800)">Compra</h3>
-            <p style="margin:0;font:400 15px/1.55 var(--font-sans);color:var(--fg-2)">Usas tu dirección TerraBox al pagar en cualquier tienda de Estados Unidos.</p>
+          <li class="route__stop rv">
+            <img src="assets/img/photos/compra-celular-800.webp" width="800" height="450" alt="Un hombre paga una compra en línea desde su celular" loading="lazy" decoding="async">
+            <h3>Compra</h3>
+            <p>Usas tu dirección TerraBox al pagar en cualquier tienda de Estados Unidos.</p>
           </li>
         
-          <li style="background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-3)">
-            <span style="font:600 28px/1 var(--font-mono);color:var(--tb-blue)">03</span>
-            <h3 style="margin:0;font:700 19px/1.25 var(--font-display);color:var(--navy-800)">Recibimos y consolidamos</h3>
-            <p style="margin:0;font:400 15px/1.55 var(--font-sans);color:var(--fg-2)">Fotografiamos cada paquete, lo agrupamos con tus otras compras y te enviamos la cotización.</p>
+          <li class="route__stop rv">
+            <img src="assets/img/photos/bodega-equipo-800.webp" width="800" height="533" alt="Personas caminando por un pasillo de una bodega de paquetes" loading="lazy" decoding="async">
+            <h3>Recibimos y consolidamos</h3>
+            <p>Fotografiamos cada paquete, lo agrupamos con tus otras compras y te enviamos la cotización.</p>
           </li>
         
-          <li style="background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-3)">
-            <span style="font:600 28px/1 var(--font-mono);color:var(--tb-blue)">04</span>
-            <h3 style="margin:0;font:700 19px/1.25 var(--font-display);color:var(--navy-800)">Recíbelo</h3>
-            <p style="margin:0;font:400 15px/1.55 var(--font-sans);color:var(--fg-2)">Apruebas, pagas en línea y sigues tu envío hasta tu puerta.</p>
+          <li class="route__stop rv">
+            <img src="assets/img/photos/caja-puerta-800.webp" width="800" height="533" alt="Una caja de cartón junto a la puerta de una casa" loading="lazy" decoding="async">
+            <h3>Recíbelo</h3>
+            <p>Apruebas, pagas en línea y sigues tu envío hasta tu puerta.</p>
           </li>
         
       </ol>
     </div>
   </section>
-  <section aria-labelledby="cuenta-h" style="background:#fff;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);padding:clamp(56px,8vw,88px) var(--space-5)">
-    <div style="max-width:var(--container-max);margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:var(--space-10);align-items:center">
-      <div style="display:flex;flex-direction:column;gap:var(--space-4)">
-        <h2 id="cuenta-h" style="margin:0;font:700 clamp(26px,3.4vw,36px)/1.15 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">Ves cada paquete antes de despacharlo</h2>
-        <ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:10px;font:400 16px/1.55 var(--font-sans);color:var(--fg-1)"><li>Foto del paquete al recibirlo en la bodega</li><li>Peso y medidas reales</li><li>Cotización con flete e impuestos por separado</li><li>Número de guía para seguir tu envío</li></ul>
+
+  <section class="section section--tone" aria-labelledby="cuenta-h">
+    <div class="wrap split">
+      <div class="split__text">
+        <h2 id="cuenta-h" class="heading rv">Ves cada paquete.</h2>
+        <p class="statement rv">Antes de despacharlo, lo ves en tu cuenta.</p>
+        <ul class="clist clist--lg">
+          <li class="rv">Foto del paquete al recibirlo en la bodega</li>
+          <li class="rv">Peso y medidas reales</li>
+          <li class="rv">Cotización con flete e impuestos por separado</li>
+          <li class="rv">Número de guía para seguir tu envío</li>
+        </ul>
+        <p class="note rv">Ejemplo en tu cuenta: Recibido en Miami · TBX-[número]-0001 · 2,10 lb · 14 × 10 × 6 in · Amazon. [Foto real del paquete, pendiente.]</p>
       </div>
-      <div role="img" aria-label="Ejemplo de paquete en tu cuenta" style="background:var(--surface-page);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-2);padding:var(--space-5);display:grid;grid-template-columns:minmax(0,120px) 1fr;gap:var(--space-5);align-items:center">
-        <div style="aspect-ratio:1;border:1px dashed var(--border-strong);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;text-align:center;padding:8px;font:500 11px/1.3 var(--font-mono);color:var(--fg-3)">Foto real del paquete · pendiente</div>
-        <div style="display:flex;flex-direction:column;gap:6px">
-          <span style="align-self:flex-start;font:600 12px/1 var(--font-sans);padding:5px 8px;border-radius:var(--radius-sm);background:var(--status-info-bg);color:var(--blue-700)">Recibido en Miami</span>
-          <span style="font:600 14px/1.3 var(--font-mono);color:var(--navy-800)">TBX-[número]-0001</span>
-          <span style="font:400 13px/1.5 var(--font-mono);color:var(--fg-2)">2,10 lb · 14 × 10 × 6 in<br>Amazon · ejemplo</span>
+      <figure class="split__photo rv"><img src="assets/img/photos/bodega-equipo-800.webp" srcset="assets/img/photos/bodega-equipo-800.webp 800w, assets/img/photos/bodega-equipo.webp 1400w" sizes="(min-width:1024px) 40vw, 100vw" width="800" height="533" alt="Personas caminando por un pasillo de una bodega de paquetes" loading="lazy" decoding="async"></figure>
+        </div>
+  </section>
+
+  <section id="incluye" class="section" aria-labelledby="inc-h">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="inc-h" class="heading rv">Qué es gratis y qué se paga.</h2>
+        <p class="statement rv">US$25 de 1 a 4 libras, US$30 de 5 a 10 libras y US$3 por libra adicional, con seguro y transporte nacional incluidos.</p>
+      </div>
+      <div class="cols2">
+        <div class="rv">
+          <h3>Gratis</h3>
+          <ul>
+            <li>Abrir y mantener tu casillero</li>
+            <li>Almacenamiento por [X] días</li>
+            <li>Foto de cada paquete</li>
+            <li>Consolidación [condición]</li>
+          </ul>
+        </div>
+        <div class="rv">
+          <h3>Se paga</h3>
+          <ul>
+            <li>Flete y entrega, por caja según el peso, con seguro incluido. <a href="tarifas.html">Ver tarifas</a></li>
+            <li>Impuestos, cuando aplican. <a href="aduana-impuestos.html">Ver guía</a></li>
+            <li>Seguro opcional, adicional a la cobertura incluida</li>
+            <li>Almacenamiento después de [X] días: US$[X] por [periodo]</li>
+          </ul>
         </div>
       </div>
+      <p class="after rv"><a class="link-arrow" href="tarifas.html#calculadora">Calcula tu envío <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a></p>
     </div>
   </section>
-  <section aria-labelledby="inc-h" style="padding:clamp(56px,8vw,88px) var(--space-5)">
-    <div style="max-width:var(--container-max);margin:0 auto;display:flex;flex-direction:column;gap:var(--space-8)">
-      <h2 id="inc-h" style="margin:0;font:700 clamp(26px,3.4vw,36px)/1.15 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">Qué es gratis y qué se paga</h2>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:var(--space-5)">
-        <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6)"><h3 style="margin:0 0 var(--space-4);font:600 18px/1.3 var(--font-display);color:var(--navy-800)">Gratis</h3><ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:10px;font:400 15px/1.5 var(--font-sans)"><li>Abrir y mantener tu casillero</li><li>Almacenamiento por [X] días</li><li>Foto de cada paquete</li><li>Consolidación [condición]</li></ul></div>
-        <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--space-6)"><h3 style="margin:0 0 var(--space-4);font:600 18px/1.3 var(--font-display);color:var(--navy-800)">Se paga</h3><ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:10px;font:400 15px/1.5 var(--font-sans)"><li>Flete y entrega, por libra. <a href="tarifas.html">Ver tarifas</a></li><li>Impuestos, cuando aplican. <a href="aduana-impuestos.html">Ver guía</a></li><li>Seguro opcional</li><li>Almacenamiento después de [X] días: US$[X] por [periodo]</li></ul></div>
+
+  <section class="section section--tone" aria-labelledby="faq-h">
+    <div class="wrap aside">
+      <div class="aside__head">
+        <h2 id="faq-h" class="heading rv">Dirección y bodega.</h2>
+        <p class="rv">Abre cada pregunta para ver la respuesta.</p>
       </div>
-      <p style="margin:0;font:400 15px/1.6 var(--font-sans);color:var(--fg-2);max-width:68ch">US$25 de 1 a 4 libras, US$30 de 5 a 10 libras y US$3 por libra adicional, con seguro y transporte nacional incluidos. <a href="tarifas.html#calculadora">Calcula tu envío</a></p>
+      <div class="faq acc"><div id="formato-direccion" class="faq-item acc__item" data-search="¿Cómo escribo la dirección en la tienda? Tu nombre con tu número de casillero TBX, la dirección de la bodega, Miami, FL y el código postal."><h3 class="acc__h"><button type="button" class="faq-btn acc__btn" id="q-formato-direccion" aria-expanded="false" aria-controls="a-formato-direccion"><span>¿Cómo escribo la dirección en la tienda?</span><span aria-hidden="true" class="faq-sign acc__sign">+</span></button></h3><div id="a-formato-direccion" role="region" aria-labelledby="q-formato-direccion" hidden class="acc__panel"><p>Tu nombre con tu número de casillero TBX, la dirección de la bodega, Miami, FL y el código postal.</p><a class="link-arrow" href="tiendas.html">Ver el paso a paso <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a></div></div><div id="almacenamiento" class="faq-item acc__item" data-search="¿Cuánto tiempo guardan mis paquetes? [X] días sin costo desde que llegan a la bodega. Después cobramos US$[X] por [periodo]."><h3 class="acc__h"><button type="button" class="faq-btn acc__btn" id="q-almacenamiento" aria-expanded="false" aria-controls="a-almacenamiento"><span>¿Cuánto tiempo guardan mis paquetes?</span><span aria-hidden="true" class="faq-sign acc__sign">+</span></button></h3><div id="a-almacenamiento" role="region" aria-labelledby="q-almacenamiento" hidden class="acc__panel"><p>[X] días sin costo desde que llegan a la bodega. Después cobramos US$[X] por [periodo].</p><a class="link-arrow" href="#incluye">Ver qué incluye la tarifa <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a></div></div><div id="varias-tiendas" class="faq-item acc__item" data-search="¿Puedo comprar en varias tiendas? Sí. Recibimos todos tus paquetes y los consolidamos en un solo envío."><h3 class="acc__h"><button type="button" class="faq-btn acc__btn" id="q-varias-tiendas" aria-expanded="false" aria-controls="a-varias-tiendas"><span>¿Puedo comprar en varias tiendas?</span><span aria-hidden="true" class="faq-sign acc__sign">+</span></button></h3><div id="a-varias-tiendas" role="region" aria-labelledby="q-varias-tiendas" hidden class="acc__panel"><p>Sí. Recibimos todos tus paquetes y los consolidamos en un solo envío.</p><a class="link-arrow" href="consolidacion.html">Ver consolidación <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a></div></div><div id="prealerta" class="faq-item acc__item" data-search="¿Qué es prealertar? Es avisarnos en tu cuenta qué compraste y subir la factura, para identificar el paquete cuando llega."><h3 class="acc__h"><button type="button" class="faq-btn acc__btn" id="q-prealerta" aria-expanded="false" aria-controls="a-prealerta"><span>¿Qué es prealertar?</span><span aria-hidden="true" class="faq-sign acc__sign">+</span></button></h3><div id="a-prealerta" role="region" aria-labelledby="q-prealerta" hidden class="acc__panel"><p>Es avisarnos en tu cuenta qué compraste y subir la factura, para identificar el paquete cuando llega.</p><a class="link-arrow" href="ayuda.html">Ver más preguntas <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a></div></div></div>
     </div>
   </section>
-  <section aria-labelledby="faq-h" style="background:#fff;border-top:1px solid var(--border-subtle);padding:clamp(56px,8vw,88px) var(--space-5)">
-    <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:var(--space-6)">
-      <h2 id="faq-h" style="margin:0;font:700 clamp(26px,3.4vw,36px)/1.15 var(--font-display);letter-spacing:var(--ls-heading);color:var(--text-heading)">Preguntas sobre el casillero</h2>
-      <div class="faq" style="display:flex;flex-direction:column;border-top:1px solid var(--border-default)"><div id="formato-direccion" class="faq-item" data-search="¿Cómo escribo la dirección en la tienda? Tu nombre con tu número de casillero TBX, la dirección de la bodega, Miami, FL y el código postal." style="border-bottom:1px solid var(--border-default)"><h3 style="margin:0"><button type="button" class="h7fb569 faq-btn" id="q-formato-direccion" aria-expanded="false" aria-controls="a-formato-direccion" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);min-height:60px;padding:var(--space-4) 0;border:0;background:transparent;text-align:left;cursor:pointer;font:600 17px/1.35 var(--font-sans);color:var(--navy-800)"><span>¿Cómo escribo la dirección en la tienda?</span><span aria-hidden="true" class="faq-sign" style="flex-shrink:0;width:28px;height:28px;border-radius:var(--radius-md);background:var(--navy-50);display:flex;align-items:center;justify-content:center;font:500 18px/1 var(--font-sans);color:var(--tb-navy)">+</span></button></h3><div id="a-formato-direccion" role="region" aria-labelledby="q-formato-direccion" hidden style="padding:0 var(--space-10) var(--space-5) 0;flex-direction:column;gap:var(--space-2)"><p style="margin:0;font:400 15px/1.6 var(--font-sans);color:var(--fg-2);max-width:68ch;text-wrap:pretty">Tu nombre con tu número de casillero TBX, la dirección de la bodega, Miami, FL y el código postal.</p><a href="tiendas.html" style="font:600 14px/1.4 var(--font-sans);align-self:flex-start;min-height:32px;display:flex;align-items:center">Ver el paso a paso</a></div></div><div id="almacenamiento" class="faq-item" data-search="¿Cuánto tiempo guardan mis paquetes? [X] días sin costo desde que llegan a la bodega. Después cobramos US$[X] por [periodo]." style="border-bottom:1px solid var(--border-default)"><h3 style="margin:0"><button type="button" class="h7fb569 faq-btn" id="q-almacenamiento" aria-expanded="false" aria-controls="a-almacenamiento" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);min-height:60px;padding:var(--space-4) 0;border:0;background:transparent;text-align:left;cursor:pointer;font:600 17px/1.35 var(--font-sans);color:var(--navy-800)"><span>¿Cuánto tiempo guardan mis paquetes?</span><span aria-hidden="true" class="faq-sign" style="flex-shrink:0;width:28px;height:28px;border-radius:var(--radius-md);background:var(--navy-50);display:flex;align-items:center;justify-content:center;font:500 18px/1 var(--font-sans);color:var(--tb-navy)">+</span></button></h3><div id="a-almacenamiento" role="region" aria-labelledby="q-almacenamiento" hidden style="padding:0 var(--space-10) var(--space-5) 0;flex-direction:column;gap:var(--space-2)"><p style="margin:0;font:400 15px/1.6 var(--font-sans);color:var(--fg-2);max-width:68ch;text-wrap:pretty">[X] días sin costo desde que llegan a la bodega. Después cobramos US$[X] por [periodo].</p><a href="tarifas.html#incluye" style="font:600 14px/1.4 var(--font-sans);align-self:flex-start;min-height:32px;display:flex;align-items:center">Ver qué incluye la tarifa</a></div></div><div id="varias-tiendas" class="faq-item" data-search="¿Puedo comprar en varias tiendas? Sí. Recibimos todos tus paquetes y los consolidamos en un solo envío." style="border-bottom:1px solid var(--border-default)"><h3 style="margin:0"><button type="button" class="h7fb569 faq-btn" id="q-varias-tiendas" aria-expanded="false" aria-controls="a-varias-tiendas" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);min-height:60px;padding:var(--space-4) 0;border:0;background:transparent;text-align:left;cursor:pointer;font:600 17px/1.35 var(--font-sans);color:var(--navy-800)"><span>¿Puedo comprar en varias tiendas?</span><span aria-hidden="true" class="faq-sign" style="flex-shrink:0;width:28px;height:28px;border-radius:var(--radius-md);background:var(--navy-50);display:flex;align-items:center;justify-content:center;font:500 18px/1 var(--font-sans);color:var(--tb-navy)">+</span></button></h3><div id="a-varias-tiendas" role="region" aria-labelledby="q-varias-tiendas" hidden style="padding:0 var(--space-10) var(--space-5) 0;flex-direction:column;gap:var(--space-2)"><p style="margin:0;font:400 15px/1.6 var(--font-sans);color:var(--fg-2);max-width:68ch;text-wrap:pretty">Sí. Recibimos todos tus paquetes y los consolidamos en un solo envío.</p><a href="consolidacion.html" style="font:600 14px/1.4 var(--font-sans);align-self:flex-start;min-height:32px;display:flex;align-items:center">Ver consolidación</a></div></div><div id="prealerta" class="faq-item" data-search="¿Qué es prealertar? Es avisarnos en tu cuenta qué compraste y subir la factura, para identificar el paquete cuando llega." style="border-bottom:1px solid var(--border-default)"><h3 style="margin:0"><button type="button" class="h7fb569 faq-btn" id="q-prealerta" aria-expanded="false" aria-controls="a-prealerta" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);min-height:60px;padding:var(--space-4) 0;border:0;background:transparent;text-align:left;cursor:pointer;font:600 17px/1.35 var(--font-sans);color:var(--navy-800)"><span>¿Qué es prealertar?</span><span aria-hidden="true" class="faq-sign" style="flex-shrink:0;width:28px;height:28px;border-radius:var(--radius-md);background:var(--navy-50);display:flex;align-items:center;justify-content:center;font:500 18px/1 var(--font-sans);color:var(--tb-navy)">+</span></button></h3><div id="a-prealerta" role="region" aria-labelledby="q-prealerta" hidden style="padding:0 var(--space-10) var(--space-5) 0;flex-direction:column;gap:var(--space-2)"><p style="margin:0;font:400 15px/1.6 var(--font-sans);color:var(--fg-2);max-width:68ch;text-wrap:pretty">Es avisarnos en tu cuenta qué compraste y subir la factura, para identificar el paquete cuando llega.</p><a href="ayuda.html" style="font:600 14px/1.4 var(--font-sans);align-self:flex-start;min-height:32px;display:flex;align-items:center">Ver más preguntas</a></div></div></div>
-    </div>
-  </section>
-  <section style="background:var(--navy-800);padding:clamp(56px,8vw,88px) var(--space-5)">
-    <div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-5)">
-      <h2 style="margin:0;font:700 clamp(28px,4vw,44px)/1.1 var(--font-display);color:#fff">Abre tu casillero</h2>
-      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-3);width:100%">
-        <a class="h207c06" href="registro.html" style="flex:1 1 220px;max-width:280px;display:flex;align-items:center;justify-content:center;height:52px;border-radius:var(--radius-md);background:#fff;color:var(--tb-navy);font:600 16px/1 var(--font-sans)">Abrir casillero gratis</a>
-        <a class="h042062" href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20C%C3%B3mo%20funciona" target="_blank" rel="noopener" style="flex:1 1 220px;max-width:280px;display:flex;align-items:center;justify-content:center;height:52px;border-radius:var(--radius-md);border:1px solid var(--navy-300);color:#fff;font:600 16px/1 var(--font-sans)">Escribir por WhatsApp</a>
+
+  <section class="section field" aria-labelledby="cta-h">
+    <div class="wrap closing">
+      <div class="closing__text">
+        <h2 id="cta-h" class="heading rv">Abre tu casillero.</h2>
+        <p class="rv"><a class="link-arrow" href="negocios.html">¿Importas para vender? Ver planes para negocios <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a></p>
       </div>
-      <a href="negocios.html" style="font:500 14px/1.4 var(--font-sans);color:var(--tb-cyan)">¿Importas para vender? Ver soluciones para negocios</a>
+      <div class="actions rv">
+        <a class="btn btn--accent" href="registro.html" data-tb-url="register">Abrir casillero gratis <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a>
+        <a class="link-arrow" href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20C%C3%B3mo%20funciona" target="_blank" rel="noopener">Escribir por WhatsApp <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
     </div>
   </section>
 </main>
 <footer class="ftr">
   <div class="ftr__inner">
-    <div class="ftr__grid">
-      <div class="ftr__brand">
-        <img src="assets/img/logo-horizontal-reversed.svg" alt="TerraBox Cargo" width="190" height="32">
-        <p>Compra en Estados Unidos y recíbelo en Colombia en 5 a 7 días hábiles, con seguro incluido.</p>
-        <div class="ftr__social">
+    <div class="ftr__top">
+      <div class="ftr__contact">
+        <p class="ftr__claim">Compra en Estados Unidos y recíbelo en Colombia en 5 a 7 días hábiles, con seguro incluido.</p>
+        <a href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20C%C3%B3mo%20funciona" target="_blank" rel="noopener" class="btn btn--wa"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Escribir por WhatsApp</a>
+        <p><a data-tb="email" href="contacto.html">[email]</a><br><span data-tb="hours">[horario de atención]</span></p>
+        <p class="ftr__social">
           <a href="#" data-social="instagram" hidden aria-label="Instagram de TerraBox (se abre en una pestaña nueva)" target="_blank" rel="noopener"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/> <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/> <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
           <a href="#" data-social="facebook" hidden aria-label="Facebook de TerraBox (se abre en una pestaña nueva)" target="_blank" rel="noopener"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-        </div>
+        </p>
       </div>
-      <nav class="ftr__col" aria-label="Navegación"><h2 class="ftr__title">Navegación</h2><a href="index.html">Inicio</a><a href="casillero-virtual.html">¿Cómo funciona?</a><a href="tarifas.html">Tarifas</a><a href="tarifas.html#calculadora">Calculadora</a><a href="productos-restringidos.html">Artículos prohibidos</a><a href="contacto.html">Contacto</a></nav><nav class="ftr__col" aria-label="Servicios"><h2 class="ftr__title">Servicios</h2><a href="consolidacion.html">Consolidación</a><a href="compramos-por-ti.html">Compramos por ti</a><a href="carga.html">Carga aérea y marítima</a><a href="negocios.html">Negocios</a><a href="revendedores.html">Revendedores</a><a href="empresas.html">Empresas</a></nav><nav class="ftr__col" aria-label="Ayuda"><h2 class="ftr__title">Ayuda</h2><a href="rastreo.html">Rastrear envío</a><a href="ayuda.html">Preguntas frecuentes</a><a href="aduana-impuestos.html">Aduana e impuestos</a><a href="reclamos-seguro.html">Reclamos y seguro</a><a href="tiendas.html">Tiendas recomendadas</a><a href="nosotros.html">Nosotros</a></nav>
-      <div class="ftr__col">
-        <h2 class="ftr__title">Contacto</h2>
-        <a href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20C%C3%B3mo%20funciona" target="_blank" rel="noopener" class="ftr__wa"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>WhatsApp</a>
-        <p><span class="ftr__label">Email</span><a data-tb="email" href="contacto.html">[email]</a></p>
-        <p><span class="ftr__label">Horario</span><span data-tb="hours">[horario de atención]</span></p>
-      </div>
+      <nav class="ftr__col" aria-labelledby="ftr-0"><h2 class="ftr__title" id="ftr-0">Envíos</h2><ul><li><a href="casillero-virtual.html">Casillero virtual</a></li><li><a href="envios-colombia.html">Envíos a Colombia</a></li><li><a href="tarifas.html">Tarifas</a></li><li><a href="tarifas.html#calculadora">Calculadora</a></li><li><a href="productos-restringidos.html">Artículos prohibidos</a></li><li><a href="rastreo.html">Rastrear envío</a></li></ul></nav><nav class="ftr__col" aria-labelledby="ftr-1"><h2 class="ftr__title" id="ftr-1">Servicios</h2><ul><li><a href="consolidacion.html">Consolidación</a></li><li><a href="compramos-por-ti.html">Compramos por ti</a></li><li><a href="carga.html">Carga aérea y marítima</a></li><li><a href="negocios.html">Negocios</a></li><li><a href="revendedores.html">Revendedores</a></li><li><a href="empresas.html">Empresas</a></li></ul></nav><nav class="ftr__col" aria-labelledby="ftr-2"><h2 class="ftr__title" id="ftr-2">Ayuda</h2><ul><li><a href="ayuda.html">Preguntas frecuentes</a></li><li><a href="aduana-impuestos.html">Aduana e impuestos</a></li><li><a href="reclamos-seguro.html">Reclamos y seguro</a></li><li><a href="tiendas.html">Tiendas recomendadas</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="contacto.html">Contacto</a></li></ul></nav>
     </div>
+    <a class="ftr__mark" href="index.html"><img src="assets/img/logo-horizontal-reversed.svg" alt="TerraBox Cargo, inicio" width="583" height="98" loading="lazy"></a>
     <div class="ftr__bottom">
-      <div class="ftr__legal">
+      <p class="ftr__legal">
         <a href="legal-terminos.html">Términos y condiciones</a>
         <a href="legal-datos.html">Tratamiento de datos</a>
         <a href="legal-cookies.html">Cookies</a>
         <button type="button" id="cookie-reopen">Preferencias de cookies</button>
-      </div>
-      <span>© <span id="year">2026</span> TerraBox Cargo</span>
+      </p>
+      <p>© <span id="year">2026</span> TerraBox Cargo</p>
+      <p class="ftr__credits">Fotografías: Unsplash (Vitaly Gariev, rupixen, Ruchindra Gunasekara, Adrian Sulyok, Peaky_82, MealPro, Antonio Cuellar, Andrés Gómez, Michael Schmid, Brandable Box, RoseBox).</p>
     </div>
   </div>
 </footer>
@@ -177,13 +216,15 @@
     <label><input type="checkbox" id="cookie-analytics">Medición y análisis</label>
   </div>
   <div class="cookie__actions">
-    <button type="button" class="tb-btn tb-btn--outline tb-btn--md tb-btn--full" data-cookie="reject">Rechazar</button>
-    <button type="button" class="tb-btn tb-btn--outline tb-btn--md tb-btn--full" data-cookie="configure">Configurar</button>
-    <button type="button" class="tb-btn tb-btn--outline tb-btn--md tb-btn--full" data-cookie="accept">Aceptar</button>
+    <button type="button" class="btn btn--tone" data-cookie="reject">Rechazar</button>
+    <button type="button" class="btn btn--tone" data-cookie="configure">Configurar</button>
+    <button type="button" class="btn btn--tone" data-cookie="accept">Aceptar</button>
   </div>
 </div>
+<a href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20C%C3%B3mo%20funciona" target="_blank" rel="noopener" id="float-wa" class="float-wa" aria-label="Escribir por WhatsApp (se abre en una pestaña nueva)"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></a>
 <script src="assets/js/config.js"></script>
 <script src="assets/js/calculator.js"></script>
 <script src="assets/js/site.js"></script>
+<script src="assets/js/motion.js"></script>
 </body>
 </html>
