@@ -60,6 +60,19 @@ python -m http.server 8000
 
 then open http://localhost:8000.
 
+## The 3D homepage
+
+`index.html` runs a WebGL scene (three.js, vendored in `assets/vendor/three.module.min.js`, MIT licence) behind the page:
+
+- `assets/js/home3d.js` builds everything in code (no model files): the TerraBox box with its live price label, the route
+  (Miami sign, store, warehouse, plane, customs gate, door), the three price boxes and the "cannot travel" ring.
+  Scrolling moves the box and the camera between the states listed in `S` and along `routeState()`.
+- The calculator fields resize the 3D box and rewrite its label; prices still come from `TB.quote` and `config.js`.
+- `assets/css/home3d.css` lays the text out beside the scene on desktop and under a window onto it on phones.
+- Without WebGL the same content shows on plain navy with the drawn SVG box. With "reduce motion" the scene jumps
+  between states instead of animating.
+- The other 24 pages keep the v2 design.
+
 ## Structure
 
 ```

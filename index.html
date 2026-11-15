@@ -21,8 +21,9 @@
 <link rel="stylesheet" href="assets/css/interactions.css">
 <link rel="stylesheet" href="assets/css/v2.css">
 <link rel="stylesheet" href="assets/css/v2-pages.css">
+<link rel="stylesheet" href="assets/css/home3d.css">
 </head>
-<body>
+<body class="home3d">
 <a href="#main" class="skip-link">Saltar al contenido</a>
 <header id="site-header" class="hdr">
   <div class="hdr__bar">
@@ -53,11 +54,12 @@
   </div>
 </div>
 <div id="sticky-bar" class="sticky-bar" hidden><a class="btn btn--primary" href="registro.html" data-tb-url="register">Regístrate gratis</a><a class="btn btn--wa" href="https://wa.me/?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20de%20inicio" target="_blank" rel="noopener"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>WhatsApp</a></div>
+<canvas id="scene3d" aria-hidden="true"></canvas>
 <main id="main" tabindex="-1">
 
-  <!-- 1. Hero: the claim, the price and a box arriving at a door; tracking in the same field -->
-  <section class="hero" aria-labelledby="hero-h">
-    <div class="hero__copy">
+  <!-- 1. Hero: the claim and the price; the customer's box turns beside it -->
+  <section class="s3 s3--hero" data-scene="hero" aria-labelledby="hero-h">
+    <div class="s3__body"><div class="wrap"><div class="s3__col">
       <h1 id="hero-h" class="display">Tu casillero en Miami.</h1>
       <p class="statement">Compra en tiendas de Estados Unidos y recíbelo en tu casa en Colombia en 5 a 7 días hábiles.</p>
       <p class="hero__price">Desde <span data-price="tier0">US$25</span>, con seguro incluido.</p>
@@ -65,27 +67,22 @@
         <a class="btn btn--accent" href="registro.html" data-tb-url="register">Regístrate gratis <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a>
         <a class="link-arrow" href="#caja">Calcula tu envío <svg class="icon btn__arrow btn__arrow--down" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14"/> <path d="m19 12-7 7-7-7"/></svg></a>
       </div>
-    </div>
-    <figure class="hero__photo">
-      <img src="assets/img/photos/entrega-puerta.webp" srcset="assets/img/photos/entrega-puerta-800.webp 800w, assets/img/photos/entrega-puerta.webp 1600w" sizes="(min-width:1024px) 42vw, 100vw" width="1600" height="900" alt="Una pareja recibe una caja en la puerta de su casa" fetchpriority="high">
-    </figure>
-    <form class="track hero__track" role="search" aria-labelledby="track-h" novalidate>
-      <h2 id="track-h" class="track__title">¿Ya enviaste? Rastrea tu guía</h2>
-      <div class="track__row">
-        <label class="track__field"><span class="sr-only">Número de guía</span><input class="track__input" name="guia" type="text" autocomplete="off" placeholder="Número de guía, ej. TBX-0000-0000"></label>
-        <button type="submit" class="btn btn--accent">Rastrear <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8"/> <path d="m21 21-4.3-4.3"/></svg></button>
-      </div>
-      <p class="track__msg" role="alert"></p>
-    </form>
+      <form class="track" role="search" aria-labelledby="track-h" novalidate>
+        <h2 id="track-h" class="track__title">¿Ya enviaste? Rastrea tu guía</h2>
+        <div class="track__row">
+          <label class="track__field"><span class="sr-only">Número de guía</span><input class="track__input" name="guia" type="text" autocomplete="off" placeholder="Número de guía, ej. TBX-0000-0000"></label>
+          <button type="submit" class="btn btn--accent">Rastrear <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8"/> <path d="m21 21-4.3-4.3"/></svg></button>
+        </div>
+        <p class="track__msg" role="alert"></p>
+      </form>
+    </div></div></div>
   </section>
 
-  <!-- 2. The live thing: the customer's box -->
-  <section id="caja" class="section" aria-labelledby="caja-h">
-    <div class="wrap">
-      <div class="head">
-        <h2 id="caja-h" class="heading rv">Arma tu caja y mira el precio.</h2>
-        <p class="statement rv">Escribe cuánto pesa y cuánto vale. El precio incluye seguro y transporte nacional.</p>
-      </div>
+  <!-- 2. The live thing: the customer's box, in 3D -->
+  <section id="caja" class="s3" data-scene="caja" aria-labelledby="caja-h">
+    <div class="s3__body"><div class="wrap"><div class="s3__col">
+      <h2 id="caja-h" class="heading">Arma tu caja y mira el precio.</h2>
+      <p class="statement">Escribe cuánto pesa y cuánto vale. La caja crece con el peso y su etiqueta te dice el precio.</p>
             <form class="caja" novalidate aria-label="Calculadora de envío">
         <div class="caja__in">
           <label class="caja__field rv">
@@ -135,57 +132,38 @@
         </div>
       </form>
 
-    </div>
+    </div></div></div>
   </section>
 
-  <!-- 3. The route, told as five places -->
-  <section id="ruta" class="section section--tone" aria-labelledby="ruta-h">
-    <div class="wrap">
-      <div class="head">
-        <h2 id="ruta-h" class="heading rv">De la tienda a tu puerta.</h2>
-      </div>
-      <ol class="route">
-        
-          <li class="route__stop rv">
-            <img src="assets/img/photos/compra-portatil-800.webp" width="800" height="533" alt="Una persona compra en línea desde su portátil con una tarjeta en la mano" loading="lazy" decoding="async">
-            <h3>Te registras</h3>
-            <p>Regístrate y recibe tu dirección en Miami.</p>
-          </li>
-        
-          <li class="route__stop rv">
-            <img src="assets/img/photos/compra-celular-800.webp" width="800" height="450" alt="Un hombre paga una compra en línea desde su celular" loading="lazy" decoding="async">
-            <h3>Compras</h3>
-            <p>Compra en tus tiendas favoritas de EE. UU.</p>
-          </li>
-        
-          <li class="route__stop rv">
-            <img src="assets/img/photos/bodega-equipo-800.webp" width="800" height="533" alt="Personas caminando por un pasillo de una bodega de paquetes" loading="lazy" decoding="async">
-            <h3>Lo recibimos en Miami</h3>
-            <p>Recibimos y revisamos tu paquete en bodega.</p>
-          </li>
-        
-          <li class="route__stop rv">
-            <img src="assets/img/photos/avion-carga-800.webp" width="800" height="533" alt="Un avión de carga en la pista" loading="lazy" decoding="async">
-            <h3>Vuela a Colombia</h3>
-            <p>Lo enviamos a Colombia (aduana incluida en el proceso).</p>
-          </li>
-        
-          <li class="route__stop rv">
-            <img src="assets/img/photos/caja-puerta-800.webp" width="800" height="533" alt="Una caja de cartón junto a la puerta de una casa" loading="lazy" decoding="async">
-            <h3>Llega a tu puerta</h3>
-            <p>Lo recibes en tu puerta en 5 a 7 días hábiles.</p>
-          </li>
-        
-      </ol>
+  <!-- 3. The route: the box travels it as you scroll -->
+  <section id="ruta" class="ruta" aria-labelledby="ruta-h">
+    <div class="ruta__pin">
+      <div class="s3__body"><div class="wrap"><div class="s3__col">
+        <h2 id="ruta-h" class="heading">De la tienda a tu puerta.</h2>
+        <ol class="ruta__steps">
+          
+            <li class="ruta__step"><h3>Te registras</h3><p class="statement">Regístrate y recibe tu dirección en Miami.</p></li>
+          
+            <li class="ruta__step"><h3>Compras</h3><p class="statement">Compra en tus tiendas favoritas de EE. UU.</p></li>
+          
+            <li class="ruta__step"><h3>Lo recibimos en Miami</h3><p class="statement">Recibimos y revisamos tu paquete en bodega.</p></li>
+          
+            <li class="ruta__step"><h3>Vuela a Colombia</h3><p class="statement">Lo enviamos a Colombia (aduana incluida en el proceso).</p></li>
+          
+            <li class="ruta__step"><h3>Llega a tu puerta</h3><p class="statement">Lo recibes en tu puerta en 5 a 7 días hábiles.</p></li>
+          
+        </ol>
+        <ul class="ruta__nav" aria-hidden="true">
+          <li>Registro</li><li>Compra</li><li>Miami</li><li>Vuelo</li><li>Tu puerta</li>
+        </ul>
+      </div></div></div>
     </div>
   </section>
 
   <!-- 4. Prices -->
-  <section id="precios" class="section field" aria-labelledby="precios-h">
-    <div class="wrap">
-      <div class="head">
-        <h2 id="precios-h" class="heading rv">Lo que pagas.</h2>
-      </div>
+  <section id="precios" class="s3" data-scene="precios" aria-labelledby="precios-h">
+    <div class="s3__body"><div class="wrap"><div class="s3__col">
+      <h2 id="precios-h" class="heading">Lo que pagas.</h2>
             <div class="precios">
         <div class="precios__main">
           <table class="ptable rv">
@@ -211,70 +189,71 @@
         </div>
       </div>
 
-    </div>
+    </div></div></div>
   </section>
 
-  <!-- 5. The Miami address as a shipping label -->
-  <section id="direccion" class="section section--tone" aria-labelledby="dir-h">
-    <div class="wrap split">
-      <div class="split__text">
-        <h2 id="dir-h" class="heading rv">Tu dirección en Miami.</h2>
-        <p class="statement rv">Al registrarte recibes una dirección en nuestra bodega con tu número de casillero. La escribes al pagar en cualquier tienda y nosotros hacemos el resto.</p>
-        <div class="label rv" role="group" aria-label="Ejemplo de tu dirección en Miami">
-          <div class="label__top"><img src="assets/img/logo-horizontal.svg" alt="TerraBox Cargo" width="148" height="25" loading="lazy"><span>Miami, FL</span></div>
-          <div class="label__lines">
-            <p class="label__name">Full name: <strong>Tu nombre TBX-0000</strong></p>
-            <p>Address: <strong>[Dirección de la bodega]</strong></p>
-            <p>City: <strong>Miami</strong> · State: <strong>FL</strong> · ZIP: <strong>[código postal]</strong></p>
-          </div>
-          <svg class="label__code" viewBox="0 0 220 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 0h4v40H0zM7 0h2v40H7zM12 0h6v40h-6zM21 0h2v40h-2zM26 0h3v40h-3zM32 0h2v40h-2zM37 0h6v40h-6zM46 0h2v40h-2zM51 0h4v40h-4zM58 0h2v40h-2zM63 0h3v40h-3zM69 0h6v40h-6zM78 0h2v40h-2zM83 0h4v40h-4zM90 0h2v40h-2zM95 0h6v40h-6zM104 0h3v40h-3zM110 0h2v40h-2zM115 0h4v40h-4zM122 0h2v40h-2zM127 0h6v40h-6zM136 0h2v40h-2zM141 0h3v40h-3zM147 0h2v40h-2zM152 0h6v40h-6zM161 0h4v40h-4zM168 0h2v40h-2zM173 0h3v40h-3zM179 0h6v40h-6zM188 0h2v40h-2zM193 0h4v40h-4zM200 0h2v40h-2zM205 0h6v40h-6zM214 0h2v40h-2zM218 0h2v40h-2z" fill="currentColor"/></svg>
-        </div>
-        <div class="actions rv">
-          <a class="btn btn--primary" href="registro.html" data-tb-url="register">Regístrate gratis <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a>
-        </div>
+  <!-- 5. The Miami address, printed on the box -->
+  <section id="direccion" class="s3 s3--right" data-scene="direccion" aria-labelledby="dir-h">
+    <div class="s3__body"><div class="wrap"><div class="s3__col">
+      <h2 id="dir-h" class="heading">Tu dirección en Miami.</h2>
+      <p class="statement">Al registrarte recibes una dirección en nuestra bodega con tu número de casillero. La escribes al pagar en cualquier tienda y nosotros hacemos el resto.</p>
+      <dl class="addr3">
+        <div><dt>Full name</dt><dd>Tu nombre TBX-0000</dd></div>
+        <div><dt>Address</dt><dd>[Dirección de la bodega]</dd></div>
+        <div><dt>City, State, ZIP</dt><dd>Miami, FL [código postal]</dd></div>
+      </dl>
+      <div class="actions">
+        <a class="btn btn--accent" href="registro.html" data-tb-url="register">Regístrate gratis <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a>
       </div>
-      <figure class="split__photo rv">
-        <img src="assets/img/photos/caja-carton-800.webp" srcset="assets/img/photos/caja-carton-800.webp 800w, assets/img/photos/caja-carton.webp 1600w" sizes="(min-width:1024px) 40vw, 100vw" width="800" height="1200" alt="Una caja de cartón cerrada con cinta" loading="lazy" decoding="async">
-      </figure>
-    </div>
+    </div></div></div>
   </section>
 
   <!-- 6. What cannot travel -->
-  <section id="prohibidos" class="section" aria-labelledby="ban-h">
-    <div class="wrap">
-      <div class="head">
-        <h2 id="ban-h" class="heading rv">Lo que no puede viajar.</h2>
-        <p class="statement rv">El envío de paquetes y mercancías por courier o tráfico postal a Colombia tiene prohibiciones estrictas según la DIAN y las principales empresas de transporte.</p>
-      </div>
+  <section id="prohibidos" class="s3" data-scene="prohibidos" aria-labelledby="ban-h">
+    <div class="s3__body"><div class="wrap"><div class="s3__col s3__col--wide">
+      <h2 id="ban-h" class="heading">Lo que no puede viajar.</h2>
+      <p class="statement">El envío de paquetes y mercancías por courier o tráfico postal a Colombia tiene prohibiciones estrictas según la DIAN y las principales empresas de transporte.</p>
       <ul class="tlist tlist--2">
         
-          <li class="rv"><strong>Armas y explosivos:</strong> armas de fuego, municiones, réplicas, juguetes bélicos, granadas y material explosivo.</li>
+          <li><strong>Armas y explosivos:</strong> armas de fuego, municiones, réplicas, juguetes bélicos, granadas y material explosivo.</li>
         
-          <li class="rv"><strong>Dinero y valores:</strong> efectivo, monedas, joyas, metales preciosos, títulos al portador, tarjetas de crédito o débito.</li>
+          <li><strong>Dinero y valores:</strong> efectivo, monedas, joyas, metales preciosos, títulos al portador, tarjetas de crédito o débito.</li>
         
-          <li class="rv"><strong>Drogas y estupefacientes:</strong> sustancias psicoactivas, marihuana, CBD, THC y precursores químicos ilegales.</li>
+          <li><strong>Drogas y estupefacientes:</strong> sustancias psicoactivas, marihuana, CBD, THC y precursores químicos ilegales.</li>
         
-          <li class="rv"><strong>Electrónicos y baterías peligrosas:</strong> drones de cualquier tamaño, patinetas eléctricas o scooters, y baterías de litio que excedan los 100 Wh.</li>
+          <li><strong>Electrónicos y baterías peligrosas:</strong> drones de cualquier tamaño, patinetas eléctricas o scooters, y baterías de litio que excedan los 100 Wh.</li>
         
-          <li class="rv"><strong>Celulares y ropa:</strong> celulares que no cumplan con la regulación colombiana vigente y ropa usada.</li>
+          <li><strong>Celulares y ropa:</strong> celulares que no cumplan con la regulación colombiana vigente y ropa usada.</li>
         
-          <li class="rv"><strong>Químicos y materiales peligrosos:</strong> gases comprimidos, cilindros, aerosoles, químicos corrosivos, materiales radiactivos y encendedores.</li>
+          <li><strong>Químicos y materiales peligrosos:</strong> gases comprimidos, cilindros, aerosoles, químicos corrosivos, materiales radiactivos y encendedores.</li>
         
-          <li class="rv"><strong>Alimentos y perecederos:</strong> alimentos que requieran refrigeración o que no cuenten con registro sanitario.</li>
+          <li><strong>Alimentos y perecederos:</strong> alimentos que requieran refrigeración o que no cuenten con registro sanitario.</li>
         
-          <li class="rv"><strong>Plantas y animales:</strong> plantas vivas, semillas, animales vivos o muertos, y artículos de piel.</li>
+          <li><strong>Plantas y animales:</strong> plantas vivas, semillas, animales vivos o muertos, y artículos de piel.</li>
         
-          <li class="rv"><strong>Medicamentos:</strong> fármacos sin receta médica o que no estén en su empaque original con aprobación del INVIMA.</li>
+          <li><strong>Medicamentos:</strong> fármacos sin receta médica o que no estén en su empaque original con aprobación del INVIMA.</li>
         
-          <li class="rv"><strong>Material sensible:</strong> material pornográfico, tabaco, cigarrillos y cigarrillos electrónicos.</li>
+          <li><strong>Material sensible:</strong> material pornográfico, tabaco, cigarrillos y cigarrillos electrónicos.</li>
         
       </ul>
-      <p class="after rv"><a class="link-arrow" href="productos-restringidos.html">Ver los límites y la lista completa <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a></p>
-    </div>
+      <p class="after"><a class="link-arrow" href="productos-restringidos.html">Ver los límites y la lista completa <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a></p>
+    </div></div></div>
   </section>
 
-  <!-- 7. A real person answers -->
-  <section id="contacto" class="section section--tone" aria-labelledby="contacto-h">
+  <!-- 7. The arrival -->
+  <section class="s3 s3--cierre" data-scene="cierre" aria-labelledby="cierre-h">
+    <div class="s3__body"><div class="wrap"><div class="s3__col">
+      <h2 id="cierre-h" class="display">En tu puerta.</h2>
+      <p class="statement">De 5 a 7 días hábiles después de salir de Miami, con seguro y transporte nacional incluidos.</p>
+      <div class="actions">
+        <a class="btn btn--accent" href="registro.html" data-tb-url="register">Regístrate gratis <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a>
+        <a class="link-arrow" href="tarifas.html">Ver tarifas <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
+    </div></div></div>
+  </section>
+
+  <!-- 8. A real person answers -->
+  <section id="contacto" class="s3c" aria-labelledby="contacto-h">
     <div class="wrap contact">
       <div class="contact__text">
         <h2 id="contacto-h" class="heading rv">Habla con una persona.</h2>
@@ -286,9 +265,6 @@
           <div><dt>Email</dt><dd><a data-tb="email" href="contacto.html">[email]</a></dd></div>
           <div><dt>Horario</dt><dd data-tb="hours">[horario de atención]</dd></div>
         </dl>
-        <figure class="contact__photo rv">
-          <img src="assets/img/photos/entrega-caja-800.webp" width="800" height="1000" alt="Una persona entrega una caja de cartón" loading="lazy" decoding="async">
-        </figure>
       </div>
       <div class="contact__form rv">
         <h3>O escríbenos aquí</h3>
@@ -342,5 +318,6 @@
 <script src="assets/js/site.js"></script>
 <script src="assets/js/motion.js"></script>
 <script src="assets/js/caja.js"></script>
+<script type="module" src="assets/js/home3d.js"></script>
 </body>
 </html>

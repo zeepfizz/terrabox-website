@@ -505,7 +505,7 @@ PAGE_TPL = '''<!DOCTYPE html>
 <link rel="stylesheet" href="assets/css/v2.css">
 <link rel="stylesheet" href="assets/css/v2-pages.css">
 {head_extra}</head>
-<body>
+<body{body_class}>
 {body}
 <script src="assets/js/config.js"></script>
 <script src="assets/js/calculator.js"></script>
@@ -522,6 +522,8 @@ def build_page(path):
     helmet = src[src.index('<helmet>'):src.index('</helmet>')]
     title = re.search(r'<title>(.*?)</title>', helmet).group(1)
     desc_m = re.search(r'<meta name="description" content="([^"]*)"', helmet)
+    bc = re.search(r'<meta name="body-class" content="([^"]*)"', helmet)
+    body_class = f' class="{bc.group(1)}"' if bc else ''
     styles = ''.join(m.group(0) + '\n' for m in re.finditer(r'<style>.*?</style>', helmet, re.S))
     body_tpl = src[src.index('</helmet>') + len('</helmet>'):src.index('</x-dc>')]
     tail = src[src.index('</x-dc>') + len('</x-dc>'):]
@@ -532,13 +534,14 @@ def build_page(path):
         raise ValueError(f'{name}: still has the prototype script; convert it to a data-page JSON block')
     tail = re.sub(r'<script type="application/json" data-page>.*?</script>', '', tail, flags=re.S)
     scripts = ''.join(m.group(0) + '\n' for m in re.finditer(r'<script\b[^>]*>.*?</script>', tail, re.S))
+    styles += ''.join(m.group(0) + '\n' for m in re.finditer(r'<link rel="stylesheet"[^>]*>', helmet))
     head_extra = styles + ''.join(m.group(0) + '\n' for m in re.finditer(r'<script type="application/ld\+json">.*?</script>', helmet, re.S))
     if ctx.get('faqLd'):
         head_extra += '<script type="application/ld+json">' + json.dumps(faq_ld(ctx['faqLd']), ensure_ascii=False) + '</script>\n'
 
     body = render(body_tpl, ctx, name).strip()
     out = PAGE_TPL.format(title=esc(html.unescape(title)), desc=esc(html.unescape(desc_m.group(1))) if desc_m else '',
-                          site=SITE_NAME, head_extra=head_extra, body=body, scripts=scripts)
+                          site=SITE_NAME, body_class=body_class, head_extra=head_extra, body=body, scripts=scripts)
     out = inline_icons(hover_classes(rewrite_links(out)))
     leftover = re.findall(r'\{\{.*?\}\}|<sc-|<dc-import|<x-import|style-hover', out)
     if leftover:

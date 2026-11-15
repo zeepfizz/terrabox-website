@@ -1,0 +1,130 @@
+/* TerraBox 3D home. The WebGL canvas (#scene3d, assets/js/home3d.js) sits fixed behind the page; sections are
+   transparent and leave one side of the screen free for the scene. Without WebGL (.gl missing on <html>) the page
+   is the same content on plain navy. Loads after v2.css. */
+
+.home3d{background:var(--field-deep);color:#fff}
+.home3d main{position:relative;z-index:1}
+#scene3d{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:none;opacity:0;transition:opacity .8s ease}
+.gl #scene3d{display:block}
+#scene3d.is-ready{opacity:1}
+
+/* header on the dark page */
+.home3d .hdr{background:var(--field-deep)}
+.home3d .hdr__logo img{content:url(../img/logo-horizontal-reversed.svg)}
+.home3d .hdr__link{color:#fff}
+.home3d .hdr__link:hover,.home3d .hdr__link.is-current{color:#fff}
+.home3d .hdr .btn--primary{background:var(--accent);color:var(--ink)}
+.home3d .hdr .btn--primary:hover{background:#fff;color:var(--ink)}
+.home3d .hdr__menu{background:var(--field);color:#fff}
+.home3d .hdr__menu:hover{background:#1d44b8}
+.home3d :focus-visible{outline-color:var(--accent)}
+.home3d .link-arrow{color:#fff}
+.home3d .link-arrow:hover{color:var(--accent)}
+.home3d :where(p,dd,li) > a:where(:not(.btn):not(.link-arrow)){color:var(--accent)}
+.home3d :where(p,dd,li) > a:where(:not(.btn):not(.link-arrow)):hover{color:#fff}
+
+/* ------------------------------------------------ scene sections */
+.s3{position:relative;min-height:100vh;display:flex;align-items:center;padding-block:clamp(96px,14vh,168px)}
+.s3__body{width:100%}
+.s3__col{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(20px,2.4vw,32px);width:min(100%,44%)}
+.s3__col--wide{width:min(100%,58%)}
+.s3--right .s3__col{margin-left:auto}
+.s3 .statement{max-width:30ch}
+.s3 .display{font-size:clamp(56px,7.4vw,136px)}
+.s3 .heading{max-width:13ch}
+.s3--hero{min-height:calc(100vh - var(--hdr-h));padding-block:clamp(40px,6vh,80px)}
+.hero__price{font-size:var(--fs-statement);font-weight:600;line-height:1.2;color:var(--accent)}
+.s3--hero .track{margin-top:clamp(16px,3vh,40px);width:100%;max-width:560px}
+
+/* calculator on the dark page: fields and result in one column, the 3D box beside them */
+.home3d .caja{width:100%;grid-template-columns:minmax(0,1fr);grid-template-areas:"in" "out" "list";gap:32px}
+.home3d .caja__in{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.home3d .caja__control{border-color:#fff}
+.home3d .caja__control:focus-within{outline-color:var(--accent)}
+.home3d .caja__hint,.home3d .caja__out .small{color:var(--on-field-soft)}
+.home3d .caja__price{font-size:clamp(64px,7vw,112px);letter-spacing:-.04em}
+.home3d .caja__tax{color:var(--accent)}
+.home3d .caja__tax.is-warn{color:#ffd08a}
+.home3d .caja__out .btn{background:var(--accent);color:var(--ink)}
+.home3d .caja__out .btn:hover{background:#fff}
+.home3d .caja__list{display:none}
+.gl .home3d .caja__stage{display:none}
+html:not(.gl) .home3d .caja{grid-template-areas:"in" "stage" "out"}
+
+/* the route: pinned while the box travels */
+.ruta{position:relative}
+.ruta__steps{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:40px;width:100%}
+.ruta__step{display:flex;flex-direction:column;gap:12px}
+.ruta__step h3{font-size:var(--fs-statement);color:var(--accent)}
+.ruta__nav{display:none}
+.gl .ruta{height:520vh}
+.gl .ruta__pin{position:sticky;top:0;height:100vh;display:flex;align-items:center}
+.gl .ruta__pin .s3__body{padding-top:var(--hdr-h)}
+/* the text stands on a solid navy panel; the route passes in the window beside it */
+.gl .ruta__pin::before{content:"";position:absolute;inset:0 auto 0 0;width:46vw;background:var(--field-deep)}
+.gl .ruta__pin .s3__body{position:relative}
+.gl .ruta__steps{display:grid;gap:0}
+.gl .ruta__step{grid-area:1 / 1;opacity:0;transform:translateY(20px);transition:opacity .35s ease,transform .45s var(--ease);pointer-events:none}
+.gl .ruta__step.is-on{opacity:1;transform:none;pointer-events:auto}
+.gl .ruta__step h3{font-size:clamp(40px,4.6vw,76px);font-weight:600;letter-spacing:-.03em;line-height:1;color:#fff}
+.gl .ruta .heading{font-size:var(--fs-statement);font-weight:600;letter-spacing:-.015em;color:var(--accent);max-width:none}
+.gl .ruta__nav{list-style:none;padding:0;margin:clamp(16px,3vh,40px) 0 0;display:flex;flex-wrap:wrap;gap:8px 28px;font-weight:600;color:var(--on-field-soft)}
+.gl .ruta__nav li{position:relative;padding-top:14px;transition:color .3s ease}
+.gl .ruta__nav li::before{content:"";position:absolute;left:0;top:0;width:100%;height:4px;background:var(--field);transition:background-color .3s ease}
+.gl .ruta__nav li.is-done::before{background:var(--on-field-soft)}
+.gl .ruta__nav li.is-on{color:#fff}
+.gl .ruta__nav li.is-on::before{background:var(--accent)}
+
+/* prices and conditions */
+.home3d .precios{display:flex;flex-direction:column;gap:clamp(32px,4vw,56px);width:100%}
+.home3d .ptable td{font-size:clamp(56px,6.4vw,120px)}
+.home3d .precios__cond{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.home3d .precios__cond h3{font-size:var(--fs-body);letter-spacing:0}
+.home3d .clist{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:minmax(0,1fr);gap:8px;color:var(--on-field-soft)}
+
+/* address lines */
+.addr3{display:flex;flex-direction:column;gap:14px;margin:0;width:100%}
+.addr3 dt{font-size:var(--fs-small);color:var(--on-field-soft)}
+.addr3 dd{margin:0;font-size:var(--fs-statement);font-weight:600;line-height:1.2;font-variant-numeric:tabular-nums}
+
+.home3d .tlist{color:#fff}
+.home3d .tlist--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.home3d .tlist strong{color:var(--accent)}
+.s3 .after{margin-top:0}
+
+/* contact: opaque again, the scene ends above it */
+.s3c{position:relative;background:var(--field);padding-block:var(--sy)}
+.s3c .contact{grid-template-columns:repeat(2,minmax(0,1fr))}
+.s3c .contact__text,.s3c .contact__form{grid-column:auto;grid-row:auto;margin:0}
+.s3c .contact__data dd,.s3c .tb-label,.s3c .lead-form label,.s3c .lead-form legend{color:#fff}
+.s3c .tb-hint{color:var(--on-field-soft)}
+.s3c .tb-hint.is-error{color:#ffd2cc}
+.s3c .lead-form button[type="submit"]{background:var(--accent);color:var(--ink)}
+.home3d .ftr{position:relative;z-index:1}
+
+/* ------------------------------------------------ phones and small tablets: the scene shows in a window above each text block */
+@media (max-width:899.98px){
+  .s3{display:block;min-height:0;padding:0}
+  .gl .s3::before{content:"";display:block;height:44svh}
+  .gl .s3--hero::before{height:36svh}
+  .s3__body{background:var(--field-deep);padding-block:40px 72px}
+  .s3__col,.s3__col--wide{width:100%}
+  .s3 .heading{max-width:none}
+  .s3 .display{font-size:clamp(52px,14vw,96px)}
+  .home3d .tlist--2,.home3d .clist{grid-template-columns:minmax(0,1fr)}
+  .home3d .ptable td{font-size:clamp(48px,15vw,96px)}
+  .gl .ruta{height:460svh}
+  .gl .ruta__pin{height:100svh;align-items:flex-end}
+  .gl .ruta__pin::before{display:none}
+  .gl .ruta__pin .s3__body{padding-top:28px;padding-bottom:40px;min-height:50svh}
+  .gl .ruta__step h3{font-size:clamp(34px,9vw,56px)}
+  .gl .ruta__nav{gap:8px 16px;font-size:var(--fs-small)}
+  .s3c .contact{grid-template-columns:minmax(0,1fr)}
+  html:not(.gl) .s3__body{padding-block:56px}
+}
+@media (max-width:479.98px){.home3d .caja__in{grid-template-columns:minmax(0,1fr)}}
+
+@media (prefers-reduced-motion:reduce){
+  #scene3d{transition:none}
+  .gl .ruta__step{transition:none;transform:none}
+}
