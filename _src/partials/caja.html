@@ -1,22 +1,32 @@
 <!-- "Arma tu caja": the live box calculator. Math: TB.quote (assets/js/calculator.js). Drawing and live text: assets/js/caja.js.
-     Without JS it shows the 7 lb / US$150 example (medium box) and the static price list. -->
+     Destination and type options are filled from TB.pricing.destinations (config.js).
+     Without JS it shows the 7 lb / US$150 Colombia courier example (medium box) and the static price list. -->
       <form class="caja" novalidate aria-label="Calculadora de envío">
         <div class="caja__in">
+          <label class="caja__field rv">
+            <span class="caja__label">Destino</span>
+            <span class="caja__control caja__control--select"><select name="destino" aria-describedby="caja-destino-h"><option value="CO">Colombia</option></select></span>
+            <span class="caja__hint" id="caja-destino-h" data-caja="mode">Envío aéreo.</span>
+          </label>
+          <label class="caja__field rv">
+            <span class="caja__label">Tipo de envío</span>
+            <span class="caja__control caja__control--select"><select name="tipo" aria-describedby="caja-tipo-h"><option value="courier">Courier</option></select></span>
+            <span class="caja__hint" id="caja-tipo-h" data-caja="type-hint">Compras para uso personal.</span>
+          </label>
           <label class="caja__field rv">
             <span class="caja__label">Peso de tu caja</span>
             <span class="caja__control"><input name="peso" type="text" inputmode="decimal" autocomplete="off" value="7" aria-describedby="caja-peso-h"><span class="caja__affix">lb</span></span>
             <span class="caja__hint" id="caja-peso-h">Redondeamos a la libra siguiente.</span>
           </label>
-          <label class="caja__field rv">
+          <label class="caja__field rv" data-caja="valor-field">
             <span class="caja__label">Valor declarado</span>
             <span class="caja__control"><span class="caja__affix caja__affix--pre">US$</span><input name="valor" type="text" inputmode="decimal" autocomplete="off" value="150" aria-describedby="caja-valor-h"></span>
-            <span class="caja__hint" id="caja-valor-h">Hasta US$200 por caja: cero pago de impuestos.</span>
+            <span class="caja__hint" id="caja-valor-h" data-caja="valor-hint">Hasta US$200 por caja: cero pago de impuestos.</span>
           </label>
         </div>
-        <ul class="caja__list rv" aria-label="Precios por caja">
-          <li><span>1 a 4 libras</span><span data-price="tier0">US$25</span></li>
-          <li><span>5 a 10 libras</span><span data-price="tier1">US$30</span></li>
-          <li><span>Cada libra adicional</span><span data-price="extra">US$3</span></li>
+        <ul class="caja__list rv" aria-label="Precios de esta tarifa" data-caja="list">
+          <li><span>Hasta 10 libras</span><span>US$30</span></li>
+          <li><span>Cada libra adicional</span><span>US$3</span></li>
         </ul>
         <div class="caja__stage rv" data-size="m">
 <svg class="caja__svg" viewBox="0 0 414 439" width="414" height="439" role="img" aria-labelledby="caja-svg-t">
@@ -43,7 +53,7 @@
             <p data-caja="billed">Peso cobrado: 7 lb</p>
             <p class="caja__tax" data-caja="tax">Cero pago de impuestos.</p>
           </div>
-          <p>Incluye seguro y transporte nacional a ciudades principales</p>
+          <p data-caja="includes">Incluye seguro y transporte nacional a ciudades principales.</p>
           <a class="btn btn--primary" href="Registro.dc.html" data-tb-url="register">Regístrate gratis <i data-icon="arrow-right" class="btn__arrow"></i></a>
           <p class="small">Valor de referencia. El precio final se confirma al recibir el paquete en bodega.</p>
         </div>

@@ -34,7 +34,7 @@ Contact data, links and prices live in one file, **`assets/js/config.js`**:
 | `email`, `hours` | Shown in the footer and contact sections. |
 | `social` | Instagram / Facebook profile URLs. The footer icons appear once set. |
 | `urls.login`, `urls.register` | Where **Ingresar** and **Registrarse** point (today the site's own pages; later `app.terraboxcargo.com`). |
-| `pricing` | Official Colombia prices: tiers (US$25 for 1–4 lb, US$30 for 5–10 lb), US$3 per extra pound, `roundUp` (4,2 lb is charged as 5 lb), tax-free limit (US$200). The calculator and price cards use these values. |
+| `pricing` | Public prices from the owner's onboarding sheet, per destination (`destinations`): Colombia air Courier US$3/lb with a US$30 minimum, Comercial US$5.50/lb with a US$55 minimum, phone US$80 per shipment; México by land US$4.50/lb with a US$45 minimum plus US$10 insurance, phone US$150; Ecuador US$70 per shipment up to 8 lb. Also `roundUp` (4,2 lb is charged as 5 lb) and the Colombia tax-free limit (US$200). The calculator and every `data-price` element use these values. |
 | `track(guia)` | What "Rastrea tu envío" does. Until there is a tracking system it opens WhatsApp with the guide number. |
 | `endpoints` | URLs that receive the forms as JSON (`registro`, `solicitud`, `contacto`, `compra`, `reclamo`), tracking (`rastreo`) and login (`login`). A Formspree form URL works for `contacto`. Until set, forms validate and then offer to send the same details by WhatsApp. |
 

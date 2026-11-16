@@ -1,61 +1,85 @@
-// Shipping price calculator for Colombia. Rates come from TB.pricing in config.js.
+// Shipping price math. Rates come from TB.pricing.destinations in config.js.
 (function () {
   'use strict';
 
-  // quote(weightLb, declaredUsd) -> { ok, billedLb, price, taxFree, error }
-  function quote(weightLb, declaredUsd) {
-    const P = window.TB.pricing;
+  const P = () => window.TB.pricing;
+
+  // rate(dest, type) -> { dest, type, d, r } with defaults (Colombia, its first type).
+  function rate(dest, type) {
+    const all = P().destinations;
+    const dk = all[dest] ? dest : P().defaultDest;
+    const d = all[dk];
+    const tk = d.types[type] ? type : Object.keys(d.types)[0];
+    return { dest: dk, type: tk, d, r: d.types[tk] };
+  }
+
+  // quote(weightLb, declaredUsd, dest, type)
+  //   -> { ok, billedLb, price, freight, insurance, minApplied, fixed, taxFree, error }
+  // taxFree is null when the destination has no tax-free rule or no value was given.
+  function quote(weightLb, declaredUsd, dest, type) {
+    const C = P(), { d, r } = rate(dest, type);
     const w = Number(weightLb), v = Number(declaredUsd);
     if (!(w > 0)) return { ok: false, error: 'Escribe un peso mayor que 0.' };
-    let billed = Math.max(P.minLb, w);
-    if (P.roundUp) billed = Math.ceil(billed - 1e-9);
-    let price;
-    const tier = P.tiers.find(t => billed <= t.upToLb);
-    if (tier) price = tier.price;
-    else {
-      const last = P.tiers[P.tiers.length - 1];
-      price = last.price + (billed - last.upToLb) * P.extraPerLb;
+    let billed = Math.max(C.minLb, w);
+    if (C.roundUp) billed = Math.ceil(billed - 1e-9);
+    if (r.maxLb && billed > r.maxLb) {
+      return { ok: false, error: 'Esta tarifa es hasta ' + r.maxLb + ' lb. Para más peso escríbenos por WhatsApp.' };
     }
+    let freight, minApplied = false;
+    if (r.fixed != null) freight = r.fixed;
+    else {
+      freight = billed * r.perLb;
+      if (r.min && freight < r.min) { freight = r.min; minApplied = true; }
+    }
+    const insurance = d.insurance || 0;
+    const round = n => Math.round(n * 100) / 100;
     const hasValue = declaredUsd !== '' && declaredUsd != null && v >= 0;
-    return { ok: true, billedLb: billed, price: Math.round(price * 100) / 100, taxFree: hasValue ? v <= P.taxFreeUpTo : null };
+    return {
+      ok: true, billedLb: billed, freight: round(freight), insurance, minApplied, fixed: r.fixed != null,
+      price: round(freight + insurance),
+      taxFree: d.taxFree && hasValue ? v <= C.taxFreeUpTo : null
+    };
   }
 
-  const num = s => parseFloat(String(s == null ? '' : s).replace(/\s/g, '').replace(',', '.'));
   const money = n => 'US$' + (Number.isInteger(n) ? n : n.toFixed(2).replace('.', ','));
-  const lb = n => (Number.isInteger(n) ? n : n.toFixed(1).replace('.', ',')) + ' lb';
 
-  // Wires every <form class="calc"> on the page.
-  function initCalculators() {
-    document.querySelectorAll('form.calc').forEach(form => {
-      const wIn = form.querySelector('[name="peso"]'), vIn = form.querySelector('[name="valor"]');
-      const out = form.querySelector('.calc__result');
-      const price = out.querySelector('.calc__price'), detail = out.querySelector('.calc__detail'), tax = out.querySelector('.calc__tax');
-      const P = window.TB.pricing;
-      function update() {
-        const raw = wIn.value.trim();
-        out.classList.remove('is-error', 'is-ready');
-        if (!raw) { price.textContent = '—'; detail.textContent = 'Escribe el peso para ver tu precio.'; tax.hidden = true; return; }
-        const q = quote(num(raw), vIn.value.trim() === '' ? '' : num(vIn.value));
-        if (!q.ok) { out.classList.add('is-error'); price.textContent = '—'; detail.textContent = q.error; tax.hidden = true; return; }
-        out.classList.add('is-ready');
-        price.textContent = money(q.price);
-        detail.textContent = 'Peso cobrado: ' + lb(q.billedLb) + (P.roundUp && q.billedLb !== num(raw) && num(raw) >= P.minLb ? ' (redondeamos a la libra siguiente)' : '');
-        tax.hidden = q.taxFree === null;
-        if (q.taxFree !== null) {
-          tax.classList.toggle('is-warn', !q.taxFree);
-          tax.textContent = q.taxFree ? 'Cero pago de impuestos.' : 'Paga impuestos adicionales (arancel e IVA).';
-        }
-      }
-      form.addEventListener('input', update);
-      form.addEventListener('submit', e => { e.preventDefault(); update(); out.focus(); });
-      const p = new URLSearchParams(location.search);
-      if (p.get('peso') && !wIn.value) wIn.value = p.get('peso');
-      if (p.get('valor') && !vIn.value) vIn.value = p.get('valor');
-      update();
-    });
+  // Pounds a per-pound rate covers with its minimum (US$30 at US$3/lb -> 10 lb).
+  const minLbCovered = r => (r.perLb && r.min ? Math.floor(r.min / r.perLb + 1e-9) : 0);
+
+  // Short price lines for one rate, e.g. [['Hasta 10 libras', 'US$30'], ['Cada libra adicional', 'US$3']].
+  function rateLines(dest, type) {
+    const { d, r } = rate(dest, type), lines = [];
+    if (r.fixed != null) lines.push([r.maxLb ? 'Por envío, hasta ' + r.maxLb + ' libras' : 'Por envío', money(r.fixed)]);
+    else {
+      const n = minLbCovered(r);
+      if (n > 1) lines.push(['Hasta ' + n + ' libras', money(r.min)]);
+      lines.push([n > 1 ? 'Cada libra adicional' : 'Por libra', money(r.perLb)]);
+    }
+    if (d.insurance) lines.push(['Seguro por envío', money(d.insurance)]);
+    return lines;
   }
 
+  // Value for a data-price key: "CO.courier.min", "CO.courier.perLb", "EC.courier.fixed", "MX.insurance",
+  // "CO.courier.minLb" (pounds covered by the minimum, as a number), "from" (cheapest public starting price).
+  function priceFor(key) {
+    const C = P();
+    if (key === 'from') {
+      const r = rate(C.defaultDest).r;
+      return money(r.fixed != null ? r.fixed : r.min || r.perLb);
+    }
+    const [dk, a, b] = key.split('.');
+    const d = C.destinations[dk];
+    if (!d) return null;
+    if (!b) return d[a] != null ? money(d[a]) : null;
+    const r = d.types[a];
+    if (!r) return null;
+    if (b === 'minLb') return String(minLbCovered(r));
+    return r[b] != null ? money(r[b]) : null;
+  }
+
+  window.TB.rate = rate;
   window.TB.quote = quote;
   window.TB.money = money;
-  document.addEventListener('DOMContentLoaded', initCalculators);
+  window.TB.rateLines = rateLines;
+  window.TB.priceFor = priceFor;
 })();

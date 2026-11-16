@@ -234,9 +234,14 @@ function start() {
   const END_X = 140;
   add(house(END_X + 0.2, -1.9));
 
-  // price boxes (the three official prices)
+  // price boxes (the public Colombia prices from config.js: courier minimum, extra pound, phone)
   const PX = 104;
-  const priceBoxes = [['US$25', '1 a 4 libras', 0.74, -2.2], ['US$30', '5 a 10 libras', 1, -0.1], ['+US$3', 'cada libra adicional', 1.24, 2.5]].map(([a, b, s, dx]) => {
+  const CO = TB.pricing.destinations.CO.types;
+  const priceBoxes = [
+    [TB.money(CO.courier.min), 'hasta ' + Math.floor(CO.courier.min / CO.courier.perLb) + ' libras', 0.74, -2.2],
+    ['+' + TB.money(CO.courier.perLb), 'cada libra adicional', 1, -0.1],
+    [TB.money(CO.celular.fixed), 'un celular por envío', 1.24, 2.5]
+  ].map(([a, b, s, dx]) => {
     const bx = makeBox((g, w, h) => {
       drawWordmark(g, w * 0.06, h * 0.2, h * 0.13);
       g.fillStyle = hex(C.deep); g.fillRect(w * 0.06, h * 0.27, w * 0.88, h * 0.018);
@@ -319,11 +324,11 @@ function start() {
     if (!form || !TB.quote) return;
     const num = s => parseFloat(String(s == null ? '' : s).replace(/\s/g, '').replace(',', '.'));
     const raw = form.querySelector('[name="peso"]').value.trim(), val = form.querySelector('[name="valor"]').value.trim();
-    const q = raw ? TB.quote(num(raw), val === '' ? '' : num(val)) : { ok: false };
+    const dest = (form.querySelector('[name="destino"]') || {}).value, tipo = (form.querySelector('[name="tipo"]') || {}).value;
+    const q = raw ? TB.quote(num(raw), val === '' ? '' : num(val), dest, tipo) : { ok: false };
     if (!q.ok) { label.price = 'US$—'; label.lb = ''; label.tax = ''; calcScale = 1; }
     else {
-      const tiers = TB.pricing.tiers, last = tiers[tiers.length - 1].upToLb;
-      calcScale = q.billedLb <= tiers[0].upToLb ? 0.78 : q.billedLb <= last ? 1 : Math.min(1.42, 1.16 + (q.billedLb - last) * 0.012);
+      calcScale = q.billedLb <= 4 ? 0.78 : q.billedLb <= 10 ? 1 : Math.min(1.42, 1.16 + (q.billedLb - 10) * 0.012);
       label.price = TB.money(q.price);
       label.lb = (Number.isInteger(q.billedLb) ? q.billedLb : q.billedLb.toFixed(1).replace('.', ',')) + ' lb';
       label.tax = q.taxFree === null ? '' : (q.taxFree ? 'Cero impuestos' : 'Paga impuestos');
@@ -331,7 +336,7 @@ function start() {
     }
     hero.front.redraw();
   }
-  if (form) { form.addEventListener('input', readCalc); form.addEventListener('keydown', () => setTimeout(readCalc, 0)); }
+  if (form) { form.addEventListener('input', readCalc); form.addEventListener('change', readCalc); form.addEventListener('keydown', () => setTimeout(readCalc, 0)); }
   readCalc();
   if (document.fonts && document.fonts.load) {
     Promise.all([document.fonts.load('700 40px "Instrument Sans"'), document.fonts.load('500 40px "Instrument Sans"'), document.fonts.load('600 40px "Instrument Sans"')])

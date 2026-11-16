@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tarifas de envío a Colombia y calculadora | TerraBox Cargo</title>
-<meta name="description" content="Precios de envío de Miami a Colombia: US$25 de 1 a 4 libras, US$30 de 5 a 10 libras y US$3 por libra adicional. Seguro y transporte nacional incluidos.">
+<meta name="description" content="Precios de envío desde Miami: Colombia desde US$30 hasta 10 libras y US$3 por libra adicional, con seguro incluido. También México y Ecuador.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CO">
 <meta property="og:site_name" content="TerraBox Cargo">
 <meta property="og:title" content="Tarifas de envío a Colombia y calculadora | TerraBox Cargo">
-<meta property="og:description" content="Precios de envío de Miami a Colombia: US$25 de 1 a 4 libras, US$30 de 5 a 10 libras y US$3 por libra adicional. Seguro y transporte nacional incluidos.">
+<meta property="og:description" content="Precios de envío desde Miami: Colombia desde US$30 hasta 10 libras y US$3 por libra adicional, con seguro incluido. También México y Ecuador.">
 <meta name="theme-color" content="#15369c">
 <script>document.documentElement.classList.add('js')</script>
 <link rel="icon" type="image/svg+xml" href="assets/img/logo-symbol.svg">
@@ -62,7 +62,7 @@
       <p class="statement">Precio por caja según el peso, con seguro y transporte nacional a ciudades principales incluidos. Entrega en 5 a 7 días hábiles.</p>
       <div class="actions"><a class="btn btn--accent" href="registro.html" data-tb-url="register">Regístrate gratis <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a></div>
       </div>
-      <div class="phero__aside phero__fact"><p class="phero__num" data-price="tier0">US$25</p><p class="statement">desde, por caja de 1 a 4 libras, con seguro incluido.</p></div>
+      <div class="phero__aside phero__fact"><p class="phero__num" data-price="from">US$30</p><p class="statement">desde, por caja de hasta 10 libras a Colombia, con seguro incluido.</p></div>
     </div>
   </section>
 
@@ -75,20 +75,29 @@
             <form class="caja" novalidate aria-label="Calculadora de envío">
         <div class="caja__in">
           <label class="caja__field rv">
+            <span class="caja__label">Destino</span>
+            <span class="caja__control caja__control--select"><select name="destino" aria-describedby="caja-destino-h"><option value="CO">Colombia</option></select></span>
+            <span class="caja__hint" id="caja-destino-h" data-caja="mode">Envío aéreo.</span>
+          </label>
+          <label class="caja__field rv">
+            <span class="caja__label">Tipo de envío</span>
+            <span class="caja__control caja__control--select"><select name="tipo" aria-describedby="caja-tipo-h"><option value="courier">Courier</option></select></span>
+            <span class="caja__hint" id="caja-tipo-h" data-caja="type-hint">Compras para uso personal.</span>
+          </label>
+          <label class="caja__field rv">
             <span class="caja__label">Peso de tu caja</span>
             <span class="caja__control"><input name="peso" type="text" inputmode="decimal" autocomplete="off" value="7" aria-describedby="caja-peso-h"><span class="caja__affix">lb</span></span>
             <span class="caja__hint" id="caja-peso-h">Redondeamos a la libra siguiente.</span>
           </label>
-          <label class="caja__field rv">
+          <label class="caja__field rv" data-caja="valor-field">
             <span class="caja__label">Valor declarado</span>
             <span class="caja__control"><span class="caja__affix caja__affix--pre">US$</span><input name="valor" type="text" inputmode="decimal" autocomplete="off" value="150" aria-describedby="caja-valor-h"></span>
-            <span class="caja__hint" id="caja-valor-h">Hasta US$200 por caja: cero pago de impuestos.</span>
+            <span class="caja__hint" id="caja-valor-h" data-caja="valor-hint">Hasta US$200 por caja: cero pago de impuestos.</span>
           </label>
         </div>
-        <ul class="caja__list rv" aria-label="Precios por caja">
-          <li><span>1 a 4 libras</span><span data-price="tier0">US$25</span></li>
-          <li><span>5 a 10 libras</span><span data-price="tier1">US$30</span></li>
-          <li><span>Cada libra adicional</span><span data-price="extra">US$3</span></li>
+        <ul class="caja__list rv" aria-label="Precios de esta tarifa" data-caja="list">
+          <li><span>Hasta 10 libras</span><span>US$30</span></li>
+          <li><span>Cada libra adicional</span><span>US$3</span></li>
         </ul>
         <div class="caja__stage rv" data-size="m">
 <svg class="caja__svg" viewBox="0 0 414 439" width="414" height="439" role="img" aria-labelledby="caja-svg-t">
@@ -115,7 +124,7 @@
             <p data-caja="billed">Peso cobrado: 7 lb</p>
             <p class="caja__tax" data-caja="tax">Cero pago de impuestos.</p>
           </div>
-          <p>Incluye seguro y transporte nacional a ciudades principales</p>
+          <p data-caja="includes">Incluye seguro y transporte nacional a ciudades principales.</p>
           <a class="btn btn--primary" href="registro.html" data-tb-url="register">Regístrate gratis <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a>
           <p class="small">Valor de referencia. El precio final se confirma al recibir el paquete en bodega.</p>
         </div>
@@ -132,11 +141,13 @@
             <div class="precios">
         <div class="precios__main">
           <table class="ptable rv">
-            <caption class="sr-only">Precio por caja según el peso</caption>
+            <caption class="sr-only">Precios de envío aéreo a Colombia</caption>
             <tbody>
-              <tr><th scope="row">1 a 4 libras</th><td data-price="tier0">US$25</td></tr>
-              <tr><th scope="row">5 a 10 libras</th><td data-price="tier1">US$30</td></tr>
-              <tr><th scope="row">Cada libra adicional</th><td data-price="extra">US$3</td></tr>
+              <tr><th scope="row">Courier, hasta <span data-price="CO.courier.minLb">10</span> libras</th><td data-price="CO.courier.min">US$30</td></tr>
+              <tr><th scope="row">Courier, cada libra adicional</th><td data-price="CO.courier.perLb">US$3</td></tr>
+              <tr><th scope="row">Comercial, hasta <span data-price="CO.comercial.minLb">10</span> libras</th><td data-price="CO.comercial.min">US$55</td></tr>
+              <tr><th scope="row">Comercial, cada libra adicional</th><td data-price="CO.comercial.perLb">US$5,50</td></tr>
+              <tr><th scope="row">Celular, por envío</th><td data-price="CO.celular.fixed">US$80</td></tr>
             </tbody>
           </table>
           <p class="statement rv">Incluye seguro y transporte nacional a ciudades principales.</p>
@@ -147,13 +158,33 @@
             <li>Se responde por US$100 en caso de pérdida de caja.</li>
             <li>Declarado por caja hasta US$200: cero pago de impuestos.</li>
             <li>Declarado superior a US$200: paga impuestos adicionales (arancel e IVA).</li>
-            <li>Hasta 6 productos iguales por caja.</li>
+            <li>Hasta 6 productos iguales por caja; un celular por envío.</li>
             <li>Tiempo de entrega: 5 a 7 días hábiles.</li>
           </ul>
           <a class="link-arrow" href="productos-restringidos.html">Revisa los artículos prohibidos <svg class="icon btn__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></svg></a>
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <section id="otros-destinos" class="section" aria-labelledby="otros-h">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="otros-h" class="heading rv">México y Ecuador.</h2>
+        <p class="statement rv">También enviamos desde Miami a México por tierra y a Ecuador por avión. Usa la calculadora de arriba y elige el destino.</p>
+      </div>
+      <table class="ptable ptable--light rv">
+        <caption class="sr-only">Precios de envío a México y Ecuador (US$)</caption>
+        <tbody>
+          <tr><th scope="row">México, paquete: hasta <span data-price="MX.base.minLb">10</span> libras</th><td data-price="MX.base.min">US$45</td></tr>
+          <tr><th scope="row">México, paquete: cada libra adicional</th><td data-price="MX.base.perLb">US$4,50</td></tr>
+          <tr><th scope="row">México, celular por envío</th><td data-price="MX.celular.fixed">US$150</td></tr>
+          <tr><th scope="row">México, seguro en cada envío</th><td data-price="MX.insurance">US$10</td></tr>
+          <tr><th scope="row">Ecuador, por envío hasta 8 libras</th><td data-price="EC.courier.fixed">US$70</td></tr>
+        </tbody>
+      </table>
+      <p class="after rv">A México cobramos el peso real o el volumétrico (largo × ancho × alto en pulgadas ÷ 166), el que sea mayor.</p>
     </div>
   </section>
 

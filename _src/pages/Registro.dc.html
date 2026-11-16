@@ -16,7 +16,7 @@
       <nav class="phero__crumb" aria-label="Ruta de navegación"><a href="Inicio.dc.html">Inicio</a> / <span aria-current="page">Registro</span></nav>
       <h1 id="h1" class="display">Abre tu casillero.</h1>
       <div class="phero__main">
-      <p class="statement">Es gratis y recibes tu dirección en Miami al instante. No pedimos tu dirección en Colombia ni tu documento hasta tu primer despacho.</p>
+      <p class="statement">Es gratis y recibes tu dirección en Miami al instante. Tu documento te lo pedimos solo en tu primer despacho.</p>
       </div>
       <figure class="phero__aside phero__photo"><img src="assets/img/photos/entrega-puerta-800.webp" srcset="assets/img/photos/entrega-puerta-800.webp 800w, assets/img/photos/entrega-puerta.webp 1600w" sizes="(min-width:1024px) 34vw, 100vw" width="800" height="450" alt="Una pareja recibe una caja en la puerta de su casa" decoding="async"></figure>
     </div>
@@ -61,12 +61,14 @@
   {"name": "nombre", "label": "Nombre completo", "required": true, "autocomplete": "name", "full": true},
   {"name": "email", "label": "Email", "type": "email", "required": true, "autocomplete": "email"},
   {"name": "whatsapp", "label": "WhatsApp", "type": "tel", "required": true, "autocomplete": "tel", "hint": "Te enviamos tu dirección también por aquí."},
-  {"name": "ciudad", "label": "Ciudad de entrega", "type": "select", "required": true, "options": "@cities", "autocomplete": "address-level2"},
+  {"name": "pais", "label": "País", "type": "select", "required": true, "options": "@countries", "autocomplete": "country-name"},
+  {"name": "ciudad", "label": "Ciudad", "required": true, "autocomplete": "address-level2", "placeholder": "Por ejemplo: Medellín"},
+  {"name": "direccion", "label": "Dirección", "required": true, "autocomplete": "street-address", "full": true, "placeholder": "Calle, número, apartamento o barrio", "hint": "A esta dirección llevamos tus paquetes."},
   {"name": "password", "label": "Contraseña", "type": "password", "required": true, "autocomplete": "new-password", "hint": "Al menos 8 caracteres y un número."},
   {"name": "uso", "label": "¿Para qué usarás tu casillero?", "type": "radio", "required": true, "options": ["Para mí", "Para mi negocio"]},
   {"name": "consent", "short": "Tratamiento de datos", "label": "Acepto el tratamiento de mis datos personales.", "type": "check", "required": true, "linkHref": "Legal-Datos.dc.html", "linkLabel": "Ver política"}
  ],
- "initial": {"whatsapp": "+57 "}
+ "initial": {"whatsapp": "+57 ", "pais": "Colombia"}
 }
 </script>
 <script src="assets/js/pages/registro.js"></script>

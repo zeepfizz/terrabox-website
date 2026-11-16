@@ -7,7 +7,7 @@
 <x-dc>
 <helmet>
 <title>Tarifas de envío a Colombia y calculadora | TerraBox Cargo</title>
-<meta name="description" content="Precios de envío de Miami a Colombia: US$25 de 1 a 4 libras, US$30 de 5 a 10 libras y US$3 por libra adicional. Seguro y transporte nacional incluidos.">
+<meta name="description" content="Precios de envío desde Miami: Colombia desde US$30 hasta 10 libras y US$3 por libra adicional, con seguro incluido. También México y Ecuador.">
 </helmet>
 <dc-import name="Site-Header" active="tarifas" wa-page="Tarifas" sticky-cta="{{ true }}" sticky-label="Calcula tu envío" sticky-href="#calculadora"></dc-import>
 <main id="main" tabindex="-1">
@@ -19,7 +19,7 @@
       <p class="statement">Precio por caja según el peso, con seguro y transporte nacional a ciudades principales incluidos. Entrega en 5 a 7 días hábiles.</p>
       <div class="actions"><a class="btn btn--accent" href="Registro.dc.html" data-tb-url="register">Regístrate gratis <i data-icon="arrow-right" class="btn__arrow"></i></a></div>
       </div>
-      <div class="phero__aside phero__fact"><p class="phero__num" data-price="tier0">US$25</p><p class="statement">desde, por caja de 1 a 4 libras, con seguro incluido.</p></div>
+      <div class="phero__aside phero__fact"><p class="phero__num" data-price="from">US$30</p><p class="statement">desde, por caja de hasta 10 libras a Colombia, con seguro incluido.</p></div>
     </div>
   </section>
 
@@ -39,6 +39,26 @@
         <h2 id="precios-h" class="heading rv">Lo que pagas.</h2>
       </div>
       <dc-import name="Include" file="precios" link-href="Productos-Restringidos.dc.html" link-label="Revisa los artículos prohibidos"></dc-import>
+    </div>
+  </section>
+
+  <section id="otros-destinos" class="section" aria-labelledby="otros-h">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="otros-h" class="heading rv">México y Ecuador.</h2>
+        <p class="statement rv">También enviamos desde Miami a México por tierra y a Ecuador por avión. Usa la calculadora de arriba y elige el destino.</p>
+      </div>
+      <table class="ptable ptable--light rv">
+        <caption class="sr-only">Precios de envío a México y Ecuador (US$)</caption>
+        <tbody>
+          <tr><th scope="row">México, paquete: hasta <span data-price="MX.base.minLb">10</span> libras</th><td data-price="MX.base.min">US$45</td></tr>
+          <tr><th scope="row">México, paquete: cada libra adicional</th><td data-price="MX.base.perLb">US$4,50</td></tr>
+          <tr><th scope="row">México, celular por envío</th><td data-price="MX.celular.fixed">US$150</td></tr>
+          <tr><th scope="row">México, seguro en cada envío</th><td data-price="MX.insurance">US$10</td></tr>
+          <tr><th scope="row">Ecuador, por envío hasta 8 libras</th><td data-price="EC.courier.fixed">US$70</td></tr>
+        </tbody>
+      </table>
+      <p class="after rv">A México cobramos el peso real o el volumétrico (largo × ancho × alto en pulgadas ÷ 166), el que sea mayor.</p>
     </div>
   </section>
 
@@ -65,9 +85,9 @@
 {
  "waHref": {"$wa": "Hola, vengo de la página Tarifas"},
  "examples": [
-  {"t": "Unos tenis", "w": "3 libras", "p": "US$25", "d": "Rango de 1 a 4 libras."},
-  {"t": "Ropa de temporada", "w": "8 libras", "p": "US$30", "d": "Rango de 5 a 10 libras."},
-  {"t": "Varias compras", "w": "12 libras", "p": "US$36", "d": "US$30 + 2 libras adicionales × US$3."}
+  {"t": "Unos tenis", "w": "3 libras", "p": "US$30", "d": "Cobro mínimo courier (hasta 10 libras)."},
+  {"t": "Ropa de temporada", "w": "8 libras", "p": "US$30", "d": "Cobro mínimo courier (hasta 10 libras)."},
+  {"t": "Varias compras", "w": "12 libras", "p": "US$36", "d": "12 libras × US$3."}
  ]
 }
 </script>

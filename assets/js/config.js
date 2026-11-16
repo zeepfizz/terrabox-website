@@ -10,19 +10,42 @@ window.TB = window.TB || {
   // Ingresar / Registrarse buttons. Later (TerraBox OS, F3): 'https://app.terraboxcargo.com/...'
   urls: { login: 'ingresar.html', register: 'registro.html' },
 
-  // Official Colombia prices (US$). Used by the calculator and the price cards.
+  // Public prices (US$) from the owner's onboarding sheet (Tarifas + Cargos, valid 1 Jan to 31 Dec 2026).
+  // Used by the calculator and every price on the site (data-price="CO.courier.min" etc.).
+  // perLb + min: weight × perLb, never less than min. fixed: one price per shipment (maxLb = heaviest allowed).
+  // Negotiated client rates (e.g. AER-COL-CL-1) are not published.
   pricing: {
-    tiers: [
-      { upToLb: 4, price: 25 },  // 1 a 4 libras
-      { upToLb: 10, price: 30 }  // 5 a 10 libras
-    ],
-    extraPerLb: 3,       // each pound above the last tier
     minLb: 1,
-    roundUp: true,       // 4,2 lb is charged as 5 lb. Pending confirmation with the owner.
-    taxFreeUpTo: 200,    // declared value per box with no import taxes
-    lossCoverage: 100,   // paid per box in case of loss
+    roundUp: true,       // 4,2 lb is charged as 5 lb
+    volDivisor: 166,     // volumetric weight = L × A × H (in) / 166; the larger of real and volumetric is charged
+    taxFreeUpTo: 200,    // Colombia: declared value per box with no import taxes
+    lossCoverage: 100,   // Colombia: paid per box in case of loss
     maxSameItems: 6,
-    deliveryDays: '5 a 7'
+    deliveryDays: '5 a 7',
+    defaultDest: 'CO',
+    destinations: {
+      CO: {
+        name: 'Colombia', mode: 'Aérea', taxFree: true,
+        types: {
+          courier:   { label: 'Courier', hint: 'Compras para uso personal.', perLb: 3, min: 30 },          // AER-COL-01
+          comercial: { label: 'Comercial', hint: 'Mercancía para vender o para tu negocio.', perLb: 5.5, min: 55 }, // AER-COL-02
+          celular:   { label: 'Celular', hint: 'Un celular por envío.', fixed: 80 }                        // AER-COL-03
+        }
+      },
+      MX: {
+        name: 'México', mode: 'Terrestre', insurance: 10,  // "Seguro México Base": US$10 on every shipment
+        types: {
+          base:    { label: 'Paquete', hint: 'Cobramos el peso real o el volumétrico, el que sea mayor.', perLb: 4.5, min: 45 }, // GRD-MEX-01
+          celular: { label: 'Celular', hint: 'Un celular por envío.', fixed: 150 }                                              // GRD-MEX-02
+        }
+      },
+      EC: {
+        name: 'Ecuador', mode: 'Aérea',
+        types: {
+          courier: { label: 'Courier', hint: 'Precio por envío hasta 8 libras.', fixed: 70, maxLb: 8 }  // AER-ECU-01
+        }
+      }
+    }
   },
 
   // Form, tracking and login endpoints (URLs that accept JSON POST, e.g. a Formspree form URL).
@@ -36,6 +59,8 @@ window.TB = window.TB || {
   },
 
   cities: ['Bogotá', 'Medellín', 'Cali', 'Barranquilla', 'Cartagena', 'Bucaramanga', 'Pereira', 'Manizales', 'Santa Marta', 'Cúcuta', 'Ibagué', 'Villavicencio', 'Pasto', 'Montería', 'Neiva', 'Armenia', 'Popayán', 'Valledupar', 'Tunja', 'Otro municipio'],
+  // Countries offered in the sign-up form (Latin America).
+  countries: ['Argentina', 'Belice', 'Bolivia', 'Brasil', 'Chile', 'Colombia', 'Costa Rica', 'Cuba', 'Ecuador', 'El Salvador', 'Guatemala', 'Guyana', 'Haití', 'Honduras', 'México', 'Nicaragua', 'Panamá', 'Paraguay', 'Perú', 'Puerto Rico', 'República Dominicana', 'Surinam', 'Uruguay', 'Venezuela'],
   wa(text) { return 'https://wa.me/' + (this.waNumber || '') + '?text=' + encodeURIComponent(text || ''); },
   emailOk(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test((v || '').trim()); },
   phoneOk(v) { const d = (v || '').replace(/[^\d]/g, ''); return d.length >= 10 && d.length <= 13; },
