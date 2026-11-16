@@ -6,13 +6,15 @@
 
   if (city || peso) {
     el('reg-quote').hidden = false;
-    el('reg-quote-text').textContent = 'US$[X] a ' + (city || '[ciudad]') + (peso ? ' · ' + peso + ' ' + (p.get('unidad') || 'lb') : '');
+    const q = peso && TB.quote ? TB.quote(parseFloat(peso.replace(',', '.')), '', p.get('destino'), p.get('tipo')) : null;
+    const dest = TB.rate ? TB.rate(p.get('destino')).d.name : '';
+    el('reg-quote-text').textContent = (q && q.ok ? TB.money(q.price) : 'Tu envío') + ' a ' + (city || dest) + (peso ? ' · ' + peso + ' ' + (p.get('unidad') || 'lb') : '');
     el('reg-quote-back').href = 'tarifas.html' + location.search + '#calculadora';
   }
 
   const host = document.querySelector('.lead-form');
   const cfg = JSON.parse(host.dataset.config);
-  cfg.initial = { ciudad: city || '', whatsapp: '+57 ', uso: p.get('tipo') ? 'Para mi negocio' : '', cotizacion: location.search };
+  cfg.initial = { pais: 'Colombia', ciudad: city || '', whatsapp: '+57 ', uso: p.get('tipo') ? 'Para mi negocio' : '', cotizacion: location.search };
   host.dataset.config = JSON.stringify(cfg);
 
   host.addEventListener('leadform:success', e => {

@@ -1,13 +1,15 @@
-<!-- Official Colombia prices and conditions as a typographic table, for a navy field (.field). Amounts are refreshed from TB.pricing (data-price).
+<!-- Public Colombia prices (TB.pricing.destinations.CO) and conditions as a typographic table, for a navy field (.field). Amounts are refreshed from TB.pricing (data-price).
      Props: link-href, link-label (the link under the conditions). -->
       <div class="precios">
         <div class="precios__main">
           <table class="ptable rv">
-            <caption class="sr-only">Precio por caja según el peso</caption>
+            <caption class="sr-only">Precios de envío aéreo a Colombia</caption>
             <tbody>
-              <tr><th scope="row">1 a 4 libras</th><td data-price="tier0">US$25</td></tr>
-              <tr><th scope="row">5 a 10 libras</th><td data-price="tier1">US$30</td></tr>
-              <tr><th scope="row">Cada libra adicional</th><td data-price="extra">US$3</td></tr>
+              <tr><th scope="row">Courier, hasta <span data-price="CO.courier.minLb">10</span> libras</th><td data-price="CO.courier.min">US$30</td></tr>
+              <tr><th scope="row">Courier, cada libra adicional</th><td data-price="CO.courier.perLb">US$3</td></tr>
+              <tr><th scope="row">Comercial, hasta <span data-price="CO.comercial.minLb">10</span> libras</th><td data-price="CO.comercial.min">US$55</td></tr>
+              <tr><th scope="row">Comercial, cada libra adicional</th><td data-price="CO.comercial.perLb">US$5,50</td></tr>
+              <tr><th scope="row">Celular, por envío</th><td data-price="CO.celular.fixed">US$80</td></tr>
             </tbody>
           </table>
           <p class="statement rv">Incluye seguro y transporte nacional a ciudades principales.</p>
@@ -18,7 +20,7 @@
             <li>Se responde por US$100 en caso de pérdida de caja.</li>
             <li>Declarado por caja hasta US$200: cero pago de impuestos.</li>
             <li>Declarado superior a US$200: paga impuestos adicionales (arancel e IVA).</li>
-            <li>Hasta 6 productos iguales por caja.</li>
+            <li>Hasta 6 productos iguales por caja; un celular por envío.</li>
             <li>Tiempo de entrega: 5 a 7 días hábiles.</li>
           </ul>
           <a class="link-arrow" href="{{ linkHref }}">{{ linkLabel }} <i data-icon="arrow-right" class="btn__arrow"></i></a>

@@ -7,7 +7,7 @@
 <x-dc>
 <helmet>
 <title>Envíos de USA a Colombia en 5 a 7 días | TerraBox</title>
-<meta name="description" content="Envíos desde Estados Unidos a Colombia con entrega a domicilio, consolidación y seguimiento. Desde US$25.">
+<meta name="description" content="Envíos desde Estados Unidos a Colombia con entrega a domicilio, consolidación y seguimiento. Desde US$30.">
 </helmet>
 <dc-import name="Site-Header" active="envios" wa-page="Envíos a Colombia" sticky-cta="{{ true }}" sticky-label="Calcular mi envío" sticky-href="Tarifas.dc.html#calculadora"></dc-import>
 <main id="main" tabindex="-1">
@@ -30,11 +30,11 @@
   <section class="section" aria-labelledby="tarifas-h">
     <div class="wrap">
       <div class="head">
-        <h2 id="tarifas-h" class="heading rv">Desde US$25, con entrega a domicilio.</h2>
+        <h2 id="tarifas-h" class="heading rv">Desde US$30, con entrega a domicilio.</h2>
         <p class="statement rv">Incluye seguro y transporte nacional a ciudades principales. Tiempo de entrega: 5 a 7 días hábiles.</p>
       </div>
       <table class="ptable ptable--light rv">
-        <caption class="sr-only">Precio por caja (US$), igual para todo el país</caption>
+        <caption class="sr-only">Precio de envío courier (US$), igual para todo el país</caption>
         <tbody>
           <sc-for list="{{ weights }}" as="w">
             <tr><th scope="row">{{ w.w }}</th><td data-price="{{ w.dp }}">{{ w.p }}</td></tr>
@@ -115,11 +115,13 @@
 {
  "mainCities": ["Bogotá", "Medellín", "Cali", "Barranquilla"],
  "weights": [
-  {"w": "1 a 4 libras", "p": "US$25", "dp": "tier0"},
-  {"w": "5 a 10 libras", "p": "US$30", "dp": "tier1"},
+  {"w": "Hasta 10 libras", "p": "US$30", "dp": "CO.courier.min"},
   {"w": "12 libras", "p": "US$36", "dp": null},
   {"w": "20 libras", "p": "US$60", "dp": null},
-  {"w": "Cada libra adicional", "p": "US$3", "dp": "extra"}
+  {"w": "Cada libra adicional", "p": "US$3", "dp": "CO.courier.perLb"},
+  {"w": "Comercial, hasta 10 libras", "p": "US$55", "dp": "CO.comercial.min"},
+  {"w": "Comercial, cada libra adicional", "p": "US$5,50", "dp": "CO.comercial.perLb"},
+  {"w": "Celular, por envío", "p": "US$80", "dp": "CO.celular.fixed"}
  ],
  "tiers": [
   {"d": "Bogotá, Medellín, Cali, Barranquilla", "t": "5 a 7 días hábiles"},

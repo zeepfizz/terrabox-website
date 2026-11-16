@@ -153,7 +153,7 @@
   function LeadForm(host) {
     const P = JSON.parse(host.dataset.config || '{}');
     const fid = P.formId || 'f';
-    const fields = (P.fields || []).map(f => ({ ...f, options: f.options === '@cities' ? (TB.cities || []) : f.options }));
+    const fields = (P.fields || []).map(f => ({ ...f, options: f.options === '@cities' ? (TB.cities || []) : f.options === '@countries' ? (TB.countries || []) : f.options }));
     const v = { ...(P.initial || {}) };
     fields.forEach(f => { if (v[f.name] === undefined || v[f.name] === '') v[f.name] = f.type === 'multi' ? [] : f.type === 'check' ? false : (v[f.name] !== undefined ? v[f.name] : (f.default || '')); });
     const touched = {}, errs = {};
@@ -353,8 +353,7 @@
     const P = TB.pricing;
     if (P) {
       const fill = (key, val) => $$('[data-price="' + key + '"]').forEach(el => { el.textContent = val; });
-      P.tiers.forEach((t, i) => fill('tier' + i, 'US$' + t.price));
-      fill('extra', 'US$' + P.extraPerLb);
+      $$('[data-price*="."],[data-price="from"]').forEach(el => { const val = TB.priceFor && TB.priceFor(el.dataset.price); if (val) el.textContent = val; });
       fill('taxFree', 'US$' + P.taxFreeUpTo);
       fill('loss', 'US$' + P.lossCoverage);
       fill('days', P.deliveryDays);
