@@ -1,12 +1,19 @@
 // TerraBox site config — the one file to edit for contact data, links and prices.
-// Values set to '' / null are business data not yet supplied.
+// _src/build.py also reads the one-line text values below (waNumber, email, …) so the built pages carry them.
+// A value set to null is not published: the element that shows it is left out of the page.
 window.TB = window.TB || {
-  // WhatsApp business number in international format without "+" (e.g. 13055551234). NOT SUPPLIED.
-  waNumber: '',
-  // Contact details shown in the footer and contact sections. NOT SUPPLIED.
-  email: '',
-  hours: '', // e.g. 'Lunes a viernes, 9:00 a. m. a 6:00 p. m. (hora de Colombia)'
-  social: { instagram: '', facebook: '' }, // full profile URLs; icons appear once set
+  // Confirmed by the owner (data sheet, 23 Nov 2026).
+  waNumber: '17863271803',              // wa.me/17863271803
+  waDisplay: '+1 (786) 327-1803',       // also the phone written on the store checkout (Tiendas)
+  email: 'infoterraboxcargo@gmail.com',
+  hours: null,                          // not published
+  warehouseAddress: null,               // not published: each customer gets it when signing up
+  lockerExample: 'TB-300',              // locker number format TB-000
+  advisorName: 'Maria Jacome',          // commercial advisor (Solicitar tarifa)
+  advisorReplyHours: 24,
+  legalDate: 'noviembre de 2026',
+  legalName: 'TerraBox Cargo LLC',
+  social: { instagram: null, facebook: null }, // full profile URLs; the icons appear only when set
   // Ingresar / Registrarse buttons. Later (TerraBox OS, F3): 'https://app.terraboxcargo.com/...'
   urls: { login: 'ingresar.html', register: 'registro.html' },
 
@@ -27,16 +34,13 @@ window.TB = window.TB || {
       CO: {
         name: 'Colombia', mode: 'Aérea', taxFree: true,
         types: {
-          courier:   { label: 'Courier', hint: 'Compras para uso personal.', perLb: 3, min: 30 },          // AER-COL-01
-          comercial: { label: 'Comercial', hint: 'Mercancía para vender o para tu negocio.', perLb: 5.5, min: 55 }, // AER-COL-02
-          celular:   { label: 'Celular', hint: 'Un celular por envío.', fixed: 80 }                        // AER-COL-03
+          courier: { label: 'Courier', hint: 'Hasta 6 productos iguales por caja, sin fin de venta.', perLb: 3, min: 30 } // AER-COL-01
         }
       },
       MX: {
         name: 'México', mode: 'Terrestre', insurance: 10,  // "Seguro México Base": US$10 on every shipment
         types: {
-          base:    { label: 'Paquete', hint: 'Cobramos el peso real o el volumétrico, el que sea mayor.', perLb: 4.5, min: 45 }, // GRD-MEX-01
-          celular: { label: 'Celular', hint: 'Un celular por envío.', fixed: 150 }                                              // GRD-MEX-02
+          base: { label: 'Paquete', hint: 'Cobramos el peso real o el volumétrico, el que sea mayor.', perLb: 4.5, min: 45 } // GRD-MEX-01
         }
       },
       EC: {
@@ -50,7 +54,7 @@ window.TB = window.TB || {
 
   // Form, tracking and login endpoints (URLs that accept JSON POST, e.g. a Formspree form URL).
   // NOT SUPPLIED: forms validate, then offer to send the same details by WhatsApp.
-  endpoints: { registro: null, solicitud: null, contacto: null, compra: null, reclamo: null, rastreo: null, login: null },
+  endpoints: { registro: null, solicitud: null, contacto: null, compra: null, rastreo: null, login: null },
 
   // What the "Rastrea tu envío" buttons do. Until there is a tracking system, open WhatsApp with the guide number.
   track(guia) {

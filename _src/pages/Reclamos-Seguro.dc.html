@@ -6,96 +6,48 @@
 <body>
 <x-dc>
 <helmet>
-<title>¿Qué pasa si mi paquete llega dañado? Reclamos y seguro | TerraBox</title>
-<meta name="description" content="Cobertura incluida y seguro opcional, cómo documentamos tus paquetes y cómo abrir un reclamo con TerraBox.">
+<title>Seguro incluido en tu envío | TerraBox Cargo</title>
+<meta name="description" content="Todas las tarifas de TerraBox incluyen seguro: cubre la pérdida total de la caja, hasta US$100 por caja.">
 </helmet>
-<dc-import name="Site-Header" active="ayuda" wa-page="Reclamos y seguro"></dc-import>
+<dc-import name="Site-Header" active="ayuda" wa-page="Seguro"></dc-import>
 <main id="main" tabindex="-1">
   <section class="phero" aria-labelledby="h1">
     <div class="wrap phero__grid">
-      <nav class="phero__crumb" aria-label="Ruta de navegación"><a href="Inicio.dc.html">Inicio</a> / <a href="Ayuda.dc.html">Ayuda</a> / <span aria-current="page">Reclamos y seguro</span></nav>
-      <h1 id="h1" class="display">Reclamos y seguro.</h1>
+      <nav class="phero__crumb" aria-label="Ruta de navegación"><a href="Inicio.dc.html">Inicio</a> / <a href="Ayuda.dc.html">Ayuda</a> / <span aria-current="page">Seguro</span></nav>
+      <h1 id="h1" class="display">Seguro incluido.</h1>
       <div class="phero__main">
-      <p class="statement">¿Qué pasa si tu paquete llega dañado? Lo documentamos con fotos al recibirlo y gestionamos tu reclamo en [X] días hábiles.</p>
-      <div class="actions">
-        <a class="btn btn--accent" href="#reclamo">Abrir un reclamo <i data-icon="arrow-down" class="btn__arrow btn__arrow--down"></i></a>
-        <a class="link-arrow" href="{{ waHref }}" target="_blank" rel="noopener">Escribir por WhatsApp <i data-icon="arrow-right" class="btn__arrow"></i></a>
+      <p class="statement">La tarifa incluye seguro. No tienes que contratar nada aparte.</p>
       </div>
-      </div>
-      <div class="phero__aside phero__fact"><p class="phero__num">US$100</p><p class="statement">por caja en caso de pérdida, con el seguro incluido.</p></div>
+      <div class="phero__aside phero__fact"><p class="phero__num">US$100</p><p class="statement">por caja en caso de pérdida total.</p></div>
     </div>
   </section>
 
   <section class="section" aria-labelledby="cob-h">
-    <div class="wrap">
-      <div class="head">
-        <h2 id="cob-h" class="heading rv">Qué cubre cada opción.</h2>
-        <p class="statement rv">Todo envío lleva seguro incluido. Si quieres más cobertura, puedes sumar el seguro opcional.</p>
-      </div>
-      <div class="dtable-wrap rv">
-        <table class="dtable">
-          <caption class="sr-only">Cobertura incluida y seguro opcional</caption>
-          <thead><tr><th scope="col"><span class="sr-only">Concepto</span></th><th scope="col">Cobertura incluida</th><th scope="col">Seguro opcional</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">Costo</th><td>Sin costo: va incluida en la tarifa</td><td>[X] % del valor declarado</td></tr>
-            <tr><th scope="row">Límite</th><td>US$100 por caja en caso de pérdida</td><td>Hasta US$[X]</td></tr>
-            <tr><th scope="row">Cubre</th><td>[Condiciones]</td><td>[Condiciones]</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--tone" aria-labelledby="pasos-h">
-    <div class="wrap">
-      <div class="head">
-        <h2 id="pasos-h" class="heading rv">Cómo funciona un reclamo.</h2>
-      </div>
-      <ol class="seq">
-        <sc-for list="{{ steps }}" as="s">
-          <li class="rv"><h3>{{ s.t }}</h3><p>{{ s.d }}</p></li>
-        </sc-for>
-      </ol>
-    </div>
-  </section>
-
-  <section id="reclamo" class="section" aria-labelledby="form-h">
-    <div class="wrap contact">
-      <div class="contact__text">
-        <h2 id="form-h" class="heading rv">Abrir un reclamo.</h2>
-        <p class="statement rv">¿Tienes cuenta? <a href="Ingresar.dc.html" data-tb-url="login">Ingresa</a> y abre el reclamo con el envío ya seleccionado.</p>
-        <p class="rv">¿Prefieres hablar con alguien?</p>
+    <div class="wrap split">
+      <div class="split__text">
+        <h2 id="cob-h" class="heading rv">Qué cubre.</h2>
+        <ul class="clist clist--lg">
+          <li class="rv">La tarifa incluye seguro.</li>
+          <li class="rv">Cubre la pérdida total de la caja, hasta US$100 por caja.</li>
+          <li class="rv">No hay seguro adicional.</li>
+          <li class="rv">Si crees que tu caja se perdió, escríbenos por WhatsApp o correo con tu número de casillero y tu número de guía.</li>
+        </ul>
         <div class="actions rv">
           <a class="btn btn--wa" href="{{ waHref }}" target="_blank" rel="noopener"><i data-icon="message-circle"></i>Escribir por WhatsApp</a>
+          <a class="link-arrow" href="mailto:{{ cfg.email }}">{{ cfg.email }} <i data-icon="arrow-right" class="btn__arrow"></i></a>
         </div>
-        <figure class="contact__photo rv">
-          <img src="assets/img/photos/entrega-caja-800.webp" width="800" height="1000" alt="Una persona entrega una caja de cartón" loading="lazy" decoding="async">
-        </figure>
       </div>
-      <div class="contact__form rv">
-        <dc-import name="Lead-Form" form-id="rec" endpoint="reclamo" aria-label="Abrir un reclamo" fields="{{ fields }}" submit-label="Enviar reclamo" success-title="Recibimos tu reclamo" success-body="Te enviaremos la próxima actualización antes del [fecha], por email y WhatsApp." wa-intro="Hola, quiero abrir un reclamo:"></dc-import>
-      </div>
+      <figure class="split__photo rv">
+        <img src="assets/img/photos/entrega-caja-800.webp" width="800" height="1000" alt="Una persona entrega una caja de cartón" loading="lazy" decoding="async">
+      </figure>
     </div>
   </section>
 </main>
-<dc-import name="Site-Footer" wa-page="Reclamos y seguro"></dc-import>
+<dc-import name="Site-Footer" wa-page="Seguro"></dc-import>
 </x-dc>
 <script type="application/json" data-page>
 {
- "waHref": {"$wa": "Hola, vengo de la página Reclamos y seguro"},
- "steps": [
-  {"t": "Fotografiamos al recibir.", "d": "Cada paquete queda documentado con foto, peso y medidas en tu cuenta."},
-  {"t": "Abres el reclamo.", "d": "Dentro de [X] días después de la entrega, con fotos del daño."},
-  {"t": "Revisamos el caso.", "d": "Comparamos las fotos de recepción y entrega y te respondemos en [X] días hábiles."},
-  {"t": "Resolvemos.", "d": "[Forma de compensación según cobertura]."}
- ],
- "fields": [
-  {"name": "guia", "label": "Número de guía", "required": true, "placeholder": "TBX-0000-0000"},
-  {"name": "email", "label": "Email", "type": "email", "required": true, "autocomplete": "email"},
-  {"name": "descripcion", "label": "Qué pasó", "type": "textarea", "required": true, "placeholder": "Describe el daño o faltante"},
-  {"name": "foto", "label": "Foto del daño", "type": "file", "accept": "image/jpeg,image/png,image/heic", "maxMb": 10, "hint": "JPG, PNG o HEIC, máximo 10 MB.", "full": true},
-  {"name": "consent", "short": "Tratamiento de datos", "label": "Acepto el tratamiento de mis datos personales.", "type": "check", "required": true, "linkHref": "Legal-Datos.dc.html", "linkLabel": "Ver política"}
- ]
+ "waHref": {"$wa": "Hola, creo que mi caja se perdió. Mi número de casillero es:  y mi número de guía es: "}
 }
 </script>
 </body>

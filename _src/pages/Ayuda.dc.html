@@ -7,7 +7,7 @@
 <x-dc>
 <helmet>
 <title>Preguntas frecuentes | TerraBox</title>
-<meta name="description" content="Respuestas sobre precios, tiempos, aduana, productos, casillero, pagos, reclamos y rastreo de envíos de Estados Unidos a Colombia.">
+<meta name="description" content="Respuestas sobre precios, tiempos, aduana, productos, casillero, pagos, seguro y rastreo de envíos de Estados Unidos a Colombia.">
 </helmet>
 <dc-import name="Site-Header" active="ayuda" wa-page="Preguntas frecuentes"></dc-import>
 <main id="main" tabindex="-1">
@@ -16,9 +16,9 @@
       <nav class="phero__crumb" aria-label="Ruta de navegación"><a href="Inicio.dc.html">Inicio</a> / <span aria-current="page">Preguntas frecuentes</span></nav>
       <h1 id="h1" class="display">Preguntas frecuentes.</h1>
       <div class="phero__main">
-      <p class="statement">Precios, tiempos, aduana, productos, casillero, pagos, reclamos y rastreo, en respuestas cortas.</p>
+      <p class="statement">Precios, tiempos, aduana, productos, casillero, pagos, seguro y rastreo, en respuestas cortas.</p>
       <div class="psearch" role="search">
-        <x-import component-from-global-scope="TerraboxCargoDesignSystem_cccd87.Input" label="Busca tu pregunta" type="search" placeholder="Por ejemplo: impuestos, celulares, cuánto tarda" id="faq-search" size="lg"></x-import>
+        <x-import component-from-global-scope="TerraboxCargoDesignSystem_cccd87.Input" label="Busca tu pregunta" type="search" placeholder="Por ejemplo: impuestos, almacenamiento, cuánto tarda" id="faq-search" size="lg"></x-import>
         <p id="faq-count" class="psearch__status" role="status" aria-live="polite"></p>
       </div>
       <nav aria-label="Categorías">
@@ -55,7 +55,7 @@
     <div class="wrap closing">
       <div class="closing__text">
         <h2 id="mas-h" class="heading rv">¿No encontraste tu respuesta?</h2>
-        <p class="statement rv">Una persona del equipo te responde por WhatsApp en horario de atención.</p>
+        <p class="statement rv">Una persona del equipo te responde. Escríbenos por WhatsApp.</p>
       </div>
       <div class="actions rv">
         <a class="btn btn--wa" href="{{ waHref }}" target="_blank" rel="noopener"><i data-icon="message-circle"></i>Escribir por WhatsApp</a>
@@ -76,14 +76,14 @@
     {
      "id": "cuanto-cuesta",
      "q": "¿Cuánto cuesta enviar desde Miami?",
-     "a": "Courier: US$30 hasta 10 libras y US$3 por cada libra adicional. Comercial: US$55 hasta 10 libras y US$5,50 por libra adicional. Celular: US$80 por envío. Incluye seguro y transporte nacional a ciudades principales.",
+     "a": "Courier a Colombia: US$30 hasta 10 libras y US$3 por cada libra adicional. Incluye seguro y transporte nacional a ciudades principales.",
      "href": "Tarifas.dc.html#calculadora",
      "linkLabel": "Calcular mi envío"
     },
     {
      "id": "cargos-ocultos",
      "q": "¿Hay cargos adicionales?",
-     "a": "Tu cotización muestra flete, impuestos y seguro por separado antes de pagar. Almacenamiento después de [X] días: US$[X].",
+     "a": "Tu cotización muestra flete e impuestos por separado antes de pagar. Almacenamiento después de 30 días: US$1 por día.",
      "href": "Tarifas.dc.html#precios",
      "linkLabel": "Ver qué incluye"
     }
@@ -96,14 +96,14 @@
     {
      "id": "cuanto-tarda",
      "q": "¿Cuánto tarda?",
-     "a": "Tiempo de entrega: 5 a 7 días hábiles.",
+     "a": "Ciudades principales: 5 a 7 días hábiles. Otras ciudades y municipios: 10 a 12 días hábiles.",
      "href": "Envios-Colombia.dc.html#tiempos",
      "linkLabel": "Ver tiempos por ciudad"
     },
     {
      "id": "dias-salida",
      "q": "¿Qué días despachan?",
-     "a": "Despachamos [días de despacho].",
+     "a": "Despachamos desde Miami varias veces por semana.",
      "href": "Envios-Colombia.dc.html#tiempos",
      "linkLabel": "Ver cobertura"
     }
@@ -116,7 +116,7 @@
     {
      "id": "impuestos",
      "q": "¿Debo pagar impuestos?",
-     "a": "Depende del valor y del tipo de compra. Te los mostramos en la cotización antes de pagar.",
+     "a": "En Colombia, los envíos con valor declarado de hasta US$200 no pagan impuestos. Por encima de US$200 se pagan impuestos adicionales (arancel e IVA).",
      "href": "Aduana-Impuestos.dc.html",
      "linkLabel": "Ver guía de impuestos"
     }
@@ -126,13 +126,6 @@
    "id": "productos",
    "t": "Productos",
    "items": [
-    {
-     "id": "celulares",
-     "q": "¿Puedo enviar celulares?",
-     "a": "[Respuesta confirmada sobre cantidad permitida y requisitos].",
-     "href": "Productos-Restringidos.dc.html#celulares",
-     "linkLabel": "Ver reglas para celulares"
-    },
     {
      "id": "prohibidos",
      "q": "¿Qué no puedo enviar?",
@@ -149,14 +142,14 @@
     {
      "id": "consolidar",
      "q": "¿Pueden juntar compras de varias tiendas?",
-     "a": "Sí. Consolidamos sin costo [o: por US$X] para que pagues un solo flete.",
+     "a": "Sí. Consolidamos gratis para que pagues un solo flete.",
      "href": "Consolidacion.dc.html",
      "linkLabel": "Ver consolidación"
     },
     {
      "id": "almacenamiento",
      "q": "¿Cuánto tiempo guardan mis paquetes?",
-     "a": "[X] días sin costo desde que llegan a la bodega.",
+     "a": "30 días sin costo desde que llegan a la bodega. Después cobramos US$1 por día.",
      "href": "Casillero-Virtual.dc.html",
      "linkLabel": "Ver cómo funciona"
     }
@@ -169,7 +162,7 @@
     {
      "id": "medios-pago",
      "q": "¿Cómo pago?",
-     "a": "En línea desde tu cuenta, al aprobar la cotización. Medios de pago: [medios confirmados].",
+     "a": "Con tarjeta, Zelle o transferencia a Bancolombia, al aprobar la cotización.",
      "href": "Casillero-Virtual.dc.html",
      "linkLabel": "Ver el proceso"
     }
@@ -177,14 +170,14 @@
   },
   {
    "id": "reclamos",
-   "t": "Daños y reclamos",
+   "t": "Seguro",
    "items": [
     {
-     "id": "danado",
-     "q": "¿Qué pasa si mi paquete llega dañado?",
-     "a": "Lo documentamos con fotos al recibirlo y gestionamos tu reclamo en [X] días hábiles.",
+     "id": "seguro",
+     "q": "¿Qué cubre el seguro?",
+     "a": "La tarifa incluye seguro: cubre la pérdida total de la caja, hasta US$100 por caja. No hay seguro adicional. Si crees que tu caja se perdió, escríbenos por WhatsApp o correo con tu número de casillero y tu número de guía.",
      "href": "Reclamos-Seguro.dc.html",
-     "linkLabel": "Ver proceso de reclamos"
+     "linkLabel": "Ver seguro"
     }
    ]
   },
@@ -217,14 +210,14 @@
     {
      "id": "cuanto-cuesta",
      "q": "¿Cuánto cuesta enviar desde Miami?",
-     "a": "Courier: US$30 hasta 10 libras y US$3 por cada libra adicional. Comercial: US$55 hasta 10 libras y US$5,50 por libra adicional. Celular: US$80 por envío. Incluye seguro y transporte nacional a ciudades principales.",
+     "a": "Courier a Colombia: US$30 hasta 10 libras y US$3 por cada libra adicional. Incluye seguro y transporte nacional a ciudades principales.",
      "href": "Tarifas.dc.html#calculadora",
      "linkLabel": "Calcular mi envío"
     },
     {
      "id": "cargos-ocultos",
      "q": "¿Hay cargos adicionales?",
-     "a": "Tu cotización muestra flete, impuestos y seguro por separado antes de pagar. Almacenamiento después de [X] días: US$[X].",
+     "a": "Tu cotización muestra flete e impuestos por separado antes de pagar. Almacenamiento después de 30 días: US$1 por día.",
      "href": "Tarifas.dc.html#precios",
      "linkLabel": "Ver qué incluye"
     }
@@ -237,14 +230,14 @@
     {
      "id": "cuanto-tarda",
      "q": "¿Cuánto tarda?",
-     "a": "Tiempo de entrega: 5 a 7 días hábiles.",
+     "a": "Ciudades principales: 5 a 7 días hábiles. Otras ciudades y municipios: 10 a 12 días hábiles.",
      "href": "Envios-Colombia.dc.html#tiempos",
      "linkLabel": "Ver tiempos por ciudad"
     },
     {
      "id": "dias-salida",
      "q": "¿Qué días despachan?",
-     "a": "Despachamos [días de despacho].",
+     "a": "Despachamos desde Miami varias veces por semana.",
      "href": "Envios-Colombia.dc.html#tiempos",
      "linkLabel": "Ver cobertura"
     }
@@ -257,7 +250,7 @@
     {
      "id": "impuestos",
      "q": "¿Debo pagar impuestos?",
-     "a": "Depende del valor y del tipo de compra. Te los mostramos en la cotización antes de pagar.",
+     "a": "En Colombia, los envíos con valor declarado de hasta US$200 no pagan impuestos. Por encima de US$200 se pagan impuestos adicionales (arancel e IVA).",
      "href": "Aduana-Impuestos.dc.html",
      "linkLabel": "Ver guía de impuestos"
     }
@@ -267,13 +260,6 @@
    "id": "productos",
    "t": "Productos",
    "items": [
-    {
-     "id": "celulares",
-     "q": "¿Puedo enviar celulares?",
-     "a": "[Respuesta confirmada sobre cantidad permitida y requisitos].",
-     "href": "Productos-Restringidos.dc.html#celulares",
-     "linkLabel": "Ver reglas para celulares"
-    },
     {
      "id": "prohibidos",
      "q": "¿Qué no puedo enviar?",
@@ -290,14 +276,14 @@
     {
      "id": "consolidar",
      "q": "¿Pueden juntar compras de varias tiendas?",
-     "a": "Sí. Consolidamos sin costo [o: por US$X] para que pagues un solo flete.",
+     "a": "Sí. Consolidamos gratis para que pagues un solo flete.",
      "href": "Consolidacion.dc.html",
      "linkLabel": "Ver consolidación"
     },
     {
      "id": "almacenamiento",
      "q": "¿Cuánto tiempo guardan mis paquetes?",
-     "a": "[X] días sin costo desde que llegan a la bodega.",
+     "a": "30 días sin costo desde que llegan a la bodega. Después cobramos US$1 por día.",
      "href": "Casillero-Virtual.dc.html",
      "linkLabel": "Ver cómo funciona"
     }
@@ -310,7 +296,7 @@
     {
      "id": "medios-pago",
      "q": "¿Cómo pago?",
-     "a": "En línea desde tu cuenta, al aprobar la cotización. Medios de pago: [medios confirmados].",
+     "a": "Con tarjeta, Zelle o transferencia a Bancolombia, al aprobar la cotización.",
      "href": "Casillero-Virtual.dc.html",
      "linkLabel": "Ver el proceso"
     }
@@ -318,14 +304,14 @@
   },
   {
    "id": "reclamos",
-   "t": "Daños y reclamos",
+   "t": "Seguro",
    "items": [
     {
-     "id": "danado",
-     "q": "¿Qué pasa si mi paquete llega dañado?",
-     "a": "Lo documentamos con fotos al recibirlo y gestionamos tu reclamo en [X] días hábiles.",
+     "id": "seguro",
+     "q": "¿Qué cubre el seguro?",
+     "a": "La tarifa incluye seguro: cubre la pérdida total de la caja, hasta US$100 por caja. No hay seguro adicional. Si crees que tu caja se perdió, escríbenos por WhatsApp o correo con tu número de casillero y tu número de guía.",
      "href": "Reclamos-Seguro.dc.html",
-     "linkLabel": "Ver proceso de reclamos"
+     "linkLabel": "Ver seguro"
     }
    ]
   },
@@ -376,7 +362,7 @@
    "href": "#pagos"
   },
   {
-   "t": "Daños y reclamos",
+   "t": "Seguro",
    "href": "#reclamos"
   },
   {

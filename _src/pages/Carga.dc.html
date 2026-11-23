@@ -7,7 +7,7 @@
 <x-dc>
 <helmet>
 <title>Carga aérea y marítima Miami–Colombia | TerraBox</title>
-<meta name="description" content="Envío de cajas y carga desde Miami a Colombia por aire o por mar. Compara tiempos, mínimos y documentos, y solicita tu tarifa.">
+<meta name="description" content="Envío de cajas y carga desde Miami a Colombia por aire o por mar. Cuéntanos qué necesitas mover y solicita tu cotización.">
 </helmet>
 <dc-import name="Site-Header" active="servicios" wa-page="Carga aérea y marítima"></dc-import>
 <main id="main" tabindex="-1">
@@ -16,9 +16,9 @@
       <nav class="phero__crumb" aria-label="Ruta de navegación"><a href="Inicio.dc.html">Inicio</a> / <span>Servicios</span> / <span aria-current="page">Carga aérea y marítima</span></nav>
       <h1 id="h1" class="display">Carga aérea y marítima.</h1>
       <div class="phero__main">
-      <p class="statement">Cajas y carga desde Miami, por aire o por mar. Compara tiempos, mínimos y documentos, y solicita tu tarifa.</p>
+      <p class="statement">Cajas y carga desde Miami, por aire o por mar. Cuéntanos qué necesitas mover y te enviamos una cotización.</p>
       <div class="actions">
-        <a class="btn btn--accent" href="Solicitar-Tarifa.dc.html?tipo=carga">Solicitar tarifa <i data-icon="arrow-right" class="btn__arrow"></i></a>
+        <a class="btn btn--accent" href="Solicitar-Tarifa.dc.html?tipo=carga">Solicita tu cotización <i data-icon="arrow-right" class="btn__arrow"></i></a>
         <a class="link-arrow" href="{{ waHref }}" target="_blank" rel="noopener">Escribir por WhatsApp <i data-icon="arrow-right" class="btn__arrow"></i></a>
       </div>
       </div>
@@ -30,45 +30,16 @@
     <div class="wrap">
       <div class="head">
         <h2 id="cmp-h" class="heading rv">Aire o mar.</h2>
-        <p class="statement rv">Compara tiempos, mínimos y forma de cobro antes de elegir.</p>
-      </div>
-      <div class="dtable-wrap rv">
-        <table class="dtable">
-          <caption class="sr-only">Carga aérea y carga marítima comparadas</caption>
-          <thead><tr><th scope="col"><span class="sr-only">Concepto</span></th><th scope="col">Carga aérea</th><th scope="col">Carga marítima</th></tr></thead>
-          <tbody>
-            <sc-for list="{{ rows }}" as="r">
-              <tr><th scope="row">{{ r.k }}</th><td>{{ r.air }}</td><td>{{ r.sea }}</td></tr>
-            </sc-for>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--tone" aria-labelledby="hace-h">
-    <div class="wrap">
-      <div class="head">
-        <h2 id="hace-h" class="heading rv">Nos ocupamos del camino completo.</h2>
-        <p class="statement rv">Cobertura y límites del seguro: <a href="Reclamos-Seguro.dc.html">Reclamos y seguro</a></p>
+        <p class="statement rv">Elegimos contigo el modo según tu urgencia, el volumen y el valor de la mercancía.</p>
       </div>
       <div class="cols2">
         <div class="rv">
-          <h3>Qué gestionamos</h3>
-          <ul>
-            <li>[Recogida en Estados Unidos: confirmar]</li>
-            <li>Almacenamiento en nuestra bodega de Miami: [condiciones]</li>
-            <li>[Coordinación aduanera: confirmar alcance]</li>
-            <li>Entrega en Colombia: [cobertura]</li>
-          </ul>
+          <h3>Carga aérea</h3>
+          <p>Para urgencias y mercancía de valor.</p>
         </div>
         <div class="rv">
-          <h3>Documentos</h3>
-          <ul>
-            <li>Factura comercial</li>
-            <li>Lista de empaque con pesos y medidas</li>
-            <li>[Documentos adicionales confirmados por el agente de aduanas]</li>
-          </ul>
+          <h3>Carga marítima</h3>
+          <p>Para volumen alto y mercancía de bajo valor por kilo.</p>
         </div>
       </div>
     </div>
@@ -81,7 +52,7 @@
         <p class="rv"><a class="link-arrow" href="Empresas.dc.html">¿Importas con frecuencia? Ver cuentas para empresas <i data-icon="arrow-right" class="btn__arrow"></i></a></p>
       </div>
       <div class="actions rv">
-        <a class="btn btn--accent" href="Solicitar-Tarifa.dc.html?tipo=carga">Solicitar tarifa <i data-icon="arrow-right" class="btn__arrow"></i></a>
+        <a class="btn btn--accent" href="Solicitar-Tarifa.dc.html?tipo=carga">Solicita tu cotización <i data-icon="arrow-right" class="btn__arrow"></i></a>
       </div>
     </div>
   </section>
@@ -90,13 +61,7 @@
 </x-dc>
 <script type="application/json" data-page>
 {
- "waHref": {"$wa": "Hola, vengo de la página Carga aérea y marítima"},
- "rows": [
-  {"k": "Tiempo de tránsito", "air": "[X–Y] días hábiles", "sea": "[X–Y] semanas"},
-  {"k": "Mínimo", "air": "[X] lb", "sea": "[X] ft³"},
-  {"k": "Ideal para", "air": "Urgencias y mercancía de valor", "sea": "Volumen alto y bajo valor por kilo"},
-  {"k": "Se cobra por", "air": "Libra (peso real o volumétrico)", "sea": "Pie cúbico [confirmar]"}
- ]
+ "waHref": {"$wa": "Hola, vengo de la página Carga aérea y marítima"}
 }
 </script>
 </body>

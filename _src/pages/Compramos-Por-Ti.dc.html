@@ -44,24 +44,15 @@
     <div class="wrap">
       <div class="head">
         <h2 id="fee-h" class="heading rv">Tarifa y pago.</h2>
-        <p class="statement rv">Tarifa de servicio: [X] % del valor del producto, mínimo US$[X].</p>
+        <p class="statement rv">Tarifa de servicio: 10 % del valor del producto, mínimo US$20.</p>
       </div>
       <div class="cols2">
-        <div class="rv"><h3>Medios de pago</h3><p>[medios de pago confirmados].</p></div>
+        <div class="rv"><h3>Medios de pago</h3><p>Tarjeta, Zelle y transferencia a Bancolombia.</p></div>
         <div class="rv"><h3>Lo que no podemos comprar</h3><p>Los productos prohibidos o restringidos para envío a Colombia. <a href="Productos-Restringidos.dc.html">Ver la lista</a></p></div>
       </div>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="faq-h">
-    <div class="wrap aside">
-      <div class="aside__head">
-        <h2 id="faq-h" class="heading rv">Devoluciones y tiempos.</h2>
-        <p class="rv">Abre cada pregunta para ver la respuesta.</p>
-      </div>
-      <dc-import name="Faq" items="{{ faqs }}"></dc-import>
-    </div>
-  </section>
 
   <section id="solicitar" class="section section--tone" aria-labelledby="form-h">
     <div class="wrap contact">
@@ -71,7 +62,7 @@
         <p class="rv">¿Prefieres comprar tú? <a href="Consolidacion.dc.html">Consolidamos tus compras</a> en un solo envío.</p>
       </div>
       <div class="contact__form rv">
-        <dc-import name="Lead-Form" form-id="compra" endpoint="compra" aria-label="Solicitar una compra" fields="{{ fields }}" submit-label="Solicitar cotización" success-title="Recibimos tu solicitud de compra" success-body="Te enviamos la cotización en [X] horas hábiles. No compramos nada hasta que la apruebes." wa-intro="Hola, quiero que compren este producto por mí:"></dc-import>
+        <dc-import name="Lead-Form" form-id="compra" endpoint="compra" aria-label="Solicitar una compra" fields="{{ fields }}" submit-label="Solicitar cotización" success-title="Recibimos tu solicitud de compra" success-body="Te enviamos la cotización. No compramos nada hasta que la apruebes." wa-intro="Hola, quiero que compren este producto por mí:"></dc-import>
       </div>
     </div>
   </section>
@@ -90,10 +81,6 @@
   {"name": "email", "label": "Email", "type": "email", "required": true, "autocomplete": "email"},
   {"name": "ciudad", "label": "Ciudad de entrega", "type": "select", "required": true, "options": "@cities"},
   {"name": "consent", "short": "Tratamiento de datos", "label": "Acepto el tratamiento de mis datos personales.", "type": "check", "required": true, "linkHref": "Legal-Datos.dc.html", "linkLabel": "Ver política"}
- ],
- "faqs": [
-  {"id": "devoluciones", "q": "¿Qué pasa si el producto no me sirve?", "a": "[Política confirmada de devoluciones para compras por encargo].", "href": "Reclamos-Seguro.dc.html", "linkLabel": "Ver reclamos"},
-  {"id": "tiempo-compra", "q": "¿Cuánto tardan en comprar?", "a": "[X] días hábiles después de que apruebas y pagas la cotización.", "href": "Envios-Colombia.dc.html#tiempos", "linkLabel": "Ver tiempos de entrega"}
  ]
 }
 </script>

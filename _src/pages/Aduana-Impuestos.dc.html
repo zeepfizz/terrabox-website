@@ -7,7 +7,7 @@
 <x-dc>
 <helmet>
 <title>Impuestos de compras en USA para Colombia | TerraBox</title>
-<meta name="description" content="Qué impuestos pagas al traer compras de Estados Unidos a Colombia, con ejemplos. Te los mostramos en la cotización antes de pagar.">
+<meta name="description" content="Qué impuestos pagas al traer compras de Estados Unidos a Colombia: hasta US$200 declarados por caja no pagas. Te los mostramos en la cotización antes de pagar.">
 </helmet>
 <dc-import name="Site-Header" active="envios" wa-page="Aduana e impuestos"></dc-import>
 <main id="main" tabindex="-1">
@@ -16,90 +16,48 @@
       <nav class="phero__crumb" aria-label="Ruta de navegación"><a href="Inicio.dc.html">Inicio</a> / <a href="Envios-Colombia.dc.html">Envíos a Colombia</a> / <span aria-current="page">Aduana e impuestos</span></nav>
       <h1 id="h1" class="display">Aduana e impuestos.</h1>
       <div class="phero__main">
-      <p class="statement">¿Pagarás impuestos por tus compras en Estados Unidos? Depende del valor declarado, del tipo de producto y de si la compra es personal o comercial.</p>
+      <p class="statement">¿Pagarás impuestos por tus compras en Estados Unidos? En Colombia depende del valor declarado de cada caja.</p>
       <p class="phero__more">Te mostramos los impuestos por separado en tu cotización, antes de que apruebes el despacho.</p>
-      <p class="phero__note" role="note">Revisado el [fecha] por [agente de aduanas]. Las reglas pueden cambiar; confirmamos tu caso en la cotización.</p>
       </div>
-      <div class="phero__aside phero__fact"><p class="phero__num">US$200</p><p class="statement">declarados por caja: cero pago de impuestos.</p></div>
+      <div class="phero__aside phero__fact"><p class="phero__num">US$200</p><p class="statement">declarados por caja en Colombia: cero pago de impuestos.</p></div>
     </div>
   </section>
 
   <section class="section" aria-labelledby="tabla-h">
     <div class="wrap">
       <div class="head">
-        <h2 id="tabla-h" class="heading rv">Umbrales e impuestos.</h2>
-        <p class="statement rv">Declarado por caja hasta US$200: cero pago de impuestos. Por encima, pagas arancel e IVA.</p>
+        <h2 id="tabla-h" class="heading rv">Impuestos en Colombia.</h2>
+        <p class="statement rv">En Colombia, los envíos con valor declarado de hasta US$200 no pagan impuestos. Por encima de US$200 se pagan impuestos adicionales (arancel e IVA).</p>
       </div>
       <div class="dtable-wrap rv">
         <table class="dtable">
-          <caption class="sr-only">Impuestos según el valor declarado y el tipo de compra</caption>
-          <thead><tr><th scope="col">Valor declarado</th><th scope="col">Tipo de compra</th><th scope="col">Impuestos</th></tr></thead>
+          <caption class="sr-only">Impuestos en Colombia según el valor declarado por caja</caption>
+          <thead><tr><th scope="col">Valor declarado por caja</th><th scope="col">Impuestos</th></tr></thead>
           <tbody>
-            <tr><th scope="row">Hasta US$200 por caja</th><td>[Personal]</td><td>Cero pago de impuestos.</td></tr>
-            <tr><th scope="row">Más de US$200 por caja</th><td>[Personal o comercial]</td><td>Paga impuestos adicionales (arancel e IVA). [Porcentajes por confirmar]</td></tr>
+            <tr><th scope="row">Hasta US$200</th><td>Cero pago de impuestos.</td></tr>
+            <tr><th scope="row">Más de US$200</th><td>Paga impuestos adicionales (arancel e IVA).</td></tr>
           </tbody>
         </table>
       </div>
+      <p class="after rv">Esta regla es solo para Colombia. Si envías a otro país, <a href="{{ waHref }}" target="_blank" rel="noopener">escríbenos y te contamos</a>.</p>
     </div>
   </section>
 
   <section class="section section--tone" aria-labelledby="tipo-h">
     <div class="wrap split">
       <div class="split__text">
-        <h2 id="tipo-h" class="heading rv">Personal o comercial.</h2>
-        <div class="tblock rv">
-          <h3>Compra personal</h3>
-          <p>[Definición confirmada: productos para uso propio, cantidades no comerciales y condiciones aplicables.]</p>
-        </div>
-        <div class="tblock rv">
-          <h3>Compra comercial</h3>
-          <p>[Definición confirmada: mercancía para la venta, cantidades y requisitos. Si importas para vender, revisa <a href="Revendedores.dc.html">Revendedores</a>.]</p>
-        </div>
-      </div>
-      <figure class="split__photo rv">
-        <img src="assets/img/photos/compra-celular-800.webp" srcset="assets/img/photos/compra-celular-800.webp 800w, assets/img/photos/compra-celular.webp 1600w" sizes="(min-width:1024px) 40vw, 100vw" width="800" height="450" alt="Un hombre paga una compra en línea desde su celular" loading="lazy" decoding="async">
-      </figure>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="ej-h">
-    <div class="wrap">
-      <div class="head">
-        <h2 id="ej-h" class="heading rv">Lo que pagarías en una compra típica.</h2>
-        <p class="statement rv">Unos tenis, un celular o mercancía para vender.</p>
-      </div>
-      <table class="ptable ptable--light rv">
-        <caption class="sr-only">Impuestos estimados en tres compras de ejemplo</caption>
-        <tbody>
-          <sc-for list="{{ examples }}" as="e">
-            <tr><th scope="row">{{ e.t }}<span>Valor declarado: {{ e.v }}. Impuestos estimados:</span></th><td>US$[X]</td></tr>
-          </sc-for>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section class="section section--tone" aria-labelledby="docs-h">
-    <div class="wrap">
-      <div class="head">
-        <h2 id="docs-h" class="heading rv">Lo que necesitamos de ti.</h2>
-      </div>
-      <ul class="clist clist--lg">
-        <li class="rv">La factura de compra de cada paquete, que subes al prealertar.</li>
-        <li class="rv">El valor declarado real de lo que compraste.</li>
-        <li class="rv">[Documento de identidad, cuando se requiera para el despacho.]</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="faq-h">
-    <div class="wrap aside">
-      <div class="aside__head">
-        <h2 id="faq-h" class="heading rv">Facturas, pagos y consolidación.</h2>
-        <p class="rv">Abre cada pregunta para ver la respuesta.</p>
+        <h2 id="tipo-h" class="heading rv">Envío courier.</h2>
+        <p class="statement rv">Envío courier: hasta 6 unidades iguales por caja y sin fin de venta.</p>
+        <h3 class="rv">Lo que necesitamos de ti</h3>
+        <ul class="clist clist--lg">
+          <li class="rv">La factura de compra de cada paquete, que subes al prealertar.</li>
+          <li class="rv">El valor declarado real de lo que compraste.</li>
+        </ul>
         <div class="actions rv"><a class="btn btn--primary" href="Tarifas.dc.html#calculadora">Calcular mi envío <i data-icon="arrow-right" class="btn__arrow"></i></a><a class="link-arrow" href="{{ waHref }}" target="_blank" rel="noopener">Consultar mi caso por WhatsApp <i data-icon="arrow-right" class="btn__arrow"></i></a></div>
       </div>
-      <dc-import name="Faq" items="{{ faqs }}"></dc-import>
+      <figure class="split__photo rv">
+        <img src="assets/img/photos/compra-online-800.webp" srcset="assets/img/photos/compra-online-800.webp 800w, assets/img/photos/compra-online.webp 1600w" sizes="(min-width:1024px) 40vw, 100vw" width="800" height="450" alt="Un hombre paga una compra en línea" loading="lazy" decoding="async">
+      </figure>
     </div>
   </section>
 
@@ -108,17 +66,7 @@
 </x-dc>
 <script type="application/json" data-page>
 {
- "waHref": {"$wa": "Quiero confirmar si puedo enviar este producto"},
- "examples": [
-  {"t": "Unos tenis para ti", "v": "US$[X]"},
-  {"t": "Un celular", "v": "US$[X]"},
-  {"t": "Mercancía para vender", "v": "US$[X]"}
- ],
- "faqs": [
-  {"id": "cuando-pago", "q": "¿Cuándo pago los impuestos?", "a": "[Respuesta confirmada: en la cotización de despacho, junto con el flete.]", "href": "Tarifas.dc.html#calculadora", "linkLabel": "Calcular mi envío"},
-  {"id": "sin-factura", "q": "¿Qué pasa si no tengo la factura?", "a": "[Respuesta confirmada por el agente de aduanas.]", "href": "Ayuda.dc.html", "linkLabel": "Ver más preguntas"},
-  {"id": "varias-compras", "q": "¿Consolidar cambia los impuestos?", "a": "[Respuesta confirmada: efecto de sumar valores declarados al consolidar.]", "href": "Consolidacion.dc.html", "linkLabel": "Ver consolidación"}
- ]
+ "waHref": {"$wa": "Hola, quiero saber qué impuestos pago al enviar a mi país"}
 }
 </script>
 </body>

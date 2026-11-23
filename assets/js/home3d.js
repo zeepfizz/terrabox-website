@@ -7,6 +7,7 @@ import * as THREE from '../vendor/three.module.min.js';
 const C = { deep: 0x0a1a4d, navy: 0x15369c, blue: 0x228ecf, cyan: 0x4dd1f3, white: 0xffffff, pale: 0xd9e1f5, ground: 0x0d2263, red: 0xe5484d };
 const FONT = '"Instrument Sans", system-ui, sans-serif';
 const TB = window.TB || {};
+const LOCKER = TB.lockerExample || 'TB-300';
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function start() {
@@ -110,7 +111,7 @@ function start() {
     g.textAlign = 'left'; g.textBaseline = 'alphabetic';
     if (label.mode === 'address') {
       g.fillStyle = hex(C.deep); g.font = '500 ' + h * 0.09 + 'px ' + FONT; g.fillText('Full name', w * 0.06, h * 0.43);
-      let ns = h * 0.17; g.font = '700 ' + ns + 'px ' + FONT; while (g.measureText('Tu nombre TBX-0000').width > w * 0.88 && ns > 8) { ns *= 0.95; g.font = '700 ' + ns + 'px ' + FONT; } g.fillText('Tu nombre TBX-0000', w * 0.06, h * 0.62);
+      let ns = h * 0.17; g.font = '700 ' + ns + 'px ' + FONT; while (g.measureText('Tu nombre ' + LOCKER).width > w * 0.88 && ns > 8) { ns *= 0.95; g.font = '700 ' + ns + 'px ' + FONT; } g.fillText('Tu nombre ' + LOCKER, w * 0.06, h * 0.62);
       g.font = '500 ' + h * 0.1 + 'px ' + FONT; g.fillText('Miami, FL · Estados Unidos', w * 0.06, h * 0.78);
       g.fillStyle = hex(C.deep); let x = w * 0.06; const bars = [3, 1, 4, 1, 2, 1, 5, 1, 3, 2, 1, 4, 1, 2, 3, 1, 5, 1, 2, 1, 4, 2, 1, 3];
       bars.forEach((b, i) => { if (i % 2 === 0) g.fillRect(x, h * 0.84, b * w * 0.006, h * 0.1); x += b * w * 0.006 + w * 0.004; });
@@ -158,7 +159,7 @@ function start() {
   {
     const x = RX[0], z = -2.4;
     add(mesh(new THREE.CylinderGeometry(0.07, 0.07, 3.2, 12), C.pale, x - 1.6, 1.6, z));
-    const s = sign([{ text: 'Miami, FL', size: 0.34, y: 0.34 }, { text: 'TBX-0000', size: 0.3, weight: 600, y: 0.72 }], 2.6, 1.3, { bg: C.white, fg: C.deep });
+    const s = sign([{ text: 'Miami, FL', size: 0.34, y: 0.34 }, { text: LOCKER, size: 0.3, weight: 600, y: 0.72 }], 2.6, 1.3, { bg: C.white, fg: C.deep });
     s.position.set(x - 0.2, 2.6, z + 0.06); add(s);
     add(mesh(box(2.7, 1.4, 0.1), C.navy, x - 0.2, 2.6, z));
     const pin = new THREE.Group();
@@ -234,13 +235,13 @@ function start() {
   const END_X = 140;
   add(house(END_X + 0.2, -1.9));
 
-  // price boxes (the public Colombia prices from config.js: courier minimum, extra pound, phone)
+  // price boxes (the public Colombia prices from config.js: courier minimum, extra pound, tax-free declared value)
   const PX = 104;
   const CO = TB.pricing.destinations.CO.types;
   const priceBoxes = [
     [TB.money(CO.courier.min), 'hasta ' + Math.floor(CO.courier.min / CO.courier.perLb) + ' libras', 0.74, -2.2],
     ['+' + TB.money(CO.courier.perLb), 'cada libra adicional', 1, -0.1],
-    [TB.money(CO.celular.fixed), 'un celular por envío', 1.24, 2.5]
+    [TB.money(TB.pricing.taxFreeUpTo), 'declarado sin impuestos', 1.24, 2.5]
   ].map(([a, b, s, dx]) => {
     const bx = makeBox((g, w, h) => {
       drawWordmark(g, w * 0.06, h * 0.2, h * 0.13);

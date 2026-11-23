@@ -7,13 +7,13 @@
 <x-dc>
 <helmet>
 <title>Consolidar paquetes en Miami | TerraBox</title>
-<meta name="description" content="Agrupamos tus compras de varias tiendas en un solo envío a Colombia para que pagues un solo flete. Reempaque y retiro de cajas.">
+<meta name="description" content="Agrupamos tus compras de varias tiendas en un solo envío a Colombia para que pagues un solo flete. Consolidación y retiro de cajas gratis.">
 </helmet>
 <dc-import name="Site-Header" active="servicios" wa-page="Consolidación" sticky-cta="{{ true }}"></dc-import>
 <main id="main" tabindex="-1">
   <section class="phero" aria-labelledby="h1">
     <div class="wrap phero__grid">
-      <nav class="phero__crumb" aria-label="Ruta de navegación"><a href="Inicio.dc.html">Inicio</a> / <span>Servicios</span> / <span aria-current="page">Consolidación y reempaque</span></nav>
+      <nav class="phero__crumb" aria-label="Ruta de navegación"><a href="Inicio.dc.html">Inicio</a> / <span>Servicios</span> / <span aria-current="page">Consolidación</span></nav>
       <h1 id="h1" class="display">Un solo envío.</h1>
       <div class="phero__main">
       <p class="statement">Recibimos tus paquetes de distintas tiendas, los agrupamos en una sola caja y te cobramos un solo flete.</p>
@@ -48,24 +48,24 @@
       </div>
       <div class="dtable-wrap rv">
         <table class="dtable">
-          <caption class="sr-only">Tres paquetes por separado o consolidados</caption>
+          <caption class="sr-only">Tres paquetes de 3 libras por separado o consolidados</caption>
           <thead><tr><th scope="col">Concepto</th><th scope="col">Por separado</th><th scope="col">Consolidados</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">Peso cobrado</th><td>[X] lb</td><td>[X] lb</td></tr>
-            <tr><th scope="row">Cargos mínimos</th><td>3 × US$[X]</td><td>1 × US$[X]</td></tr>
-            <tr><th scope="row">Consolidación</th><td>—</td><td>[Gratis o US$X]</td></tr>
-            <tr class="is-total"><th scope="row">Total</th><td>US$[X]</td><td>US$[X]</td></tr>
+          <tbody data-consol data-n="3" data-lb="3">
+            <tr><th scope="row">Peso</th><td>3 cajas de 3 lb</td><td>1 caja de 9 lb</td></tr>
+            <tr><th scope="row">Flete</th><td data-consol="each">3 × US$30</td><td data-consol="one">US$30</td></tr>
+            <tr><th scope="row">Consolidación</th><td>—</td><td>Gratis</td></tr>
+            <tr class="is-total"><th scope="row">Total</th><td data-consol="sep">US$90</td><td data-consol="tot">US$30</td></tr>
+            <tr class="is-total"><th scope="row">Ahorras</th><td></td><td data-consol="save">US$60</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="after note rv">[Fotos reales de antes y después de consolidar, pendientes.]</p>
     </div>
   </section>
 
   <section class="section" aria-labelledby="opt-h">
     <div class="wrap aside">
       <div class="aside__head">
-        <h2 id="opt-h" class="heading rv">Opciones de reempaque.</h2>
+        <h2 id="opt-h" class="heading rv">Servicios en bodega.</h2>
         <p class="rv">Las eliges al consolidar, paquete por paquete.</p>
       </div>
       <div class="aside__body">
@@ -81,7 +81,7 @@
   <section class="section section--tone" aria-labelledby="faq-h">
     <div class="wrap aside">
       <div class="aside__head">
-        <h2 id="faq-h" class="heading rv">Límites, espera e impuestos.</h2>
+        <h2 id="faq-h" class="heading rv">Límites y almacenamiento.</h2>
         <p class="rv">¿No puedes pagar en la tienda? <a href="Compramos-Por-Ti.dc.html">Compramos por ti</a>. ¿Importas para vender? <a href="Revendedores.dc.html">Ver servicios para revendedores</a>.</p>
         <div class="actions rv"><a class="btn btn--primary" href="Registro.dc.html" data-tb-url="register">Abrir casillero gratis <i data-icon="arrow-right" class="btn__arrow"></i></a></div>
       </div>
@@ -92,22 +92,21 @@
 </main>
 <dc-import name="Site-Footer" wa-page="Consolidación"></dc-import>
 </x-dc>
+<script src="assets/js/pages/consolidacion.js"></script>
 <script type="application/json" data-page>
 {
  "steps": [
   {"t": "Llegan tus paquetes", "d": "Cada uno aparece en tu cuenta con foto, peso y medidas."},
-  {"t": "Eliges cuáles agrupar", "d": "Seleccionas los paquetes y las opciones de reempaque."},
+  {"t": "Eliges cuáles agrupar", "d": "Seleccionas los paquetes y los servicios que quieras."},
   {"t": "Te enviamos la cotización", "d": "La apruebas, pagas en línea y despachamos en el siguiente día de salida."}
  ],
  "options": [
-  {"t": "Retiro de cajas originales", "d": "Quitamos cajas vacías para reducir el peso volumétrico.", "p": "[Gratis o US$X]"},
-  {"t": "Reempaque reforzado", "d": "Para artículos frágiles o de valor.", "p": "US$[X]"},
-  {"t": "Retiro de facturas", "d": "Útil si envías un regalo o mercancía para vender.", "p": "[Condición]"}
+  {"t": "Retiro de cajas originales", "d": "Quitamos cajas vacías para reducir el peso volumétrico.", "p": "Gratis"},
+  {"t": "Retiro de facturas", "d": "Útil si envías un regalo o mercancía para vender.", "p": "Gratis, pídelo a atención al cliente"}
  ],
  "faqs": [
-  {"id": "cuantos", "q": "¿Cuántos paquetes puedo consolidar?", "a": "[Límite confirmado de paquetes o peso por consolidación].", "href": "Tarifas.dc.html", "linkLabel": "Ver tarifas"},
-  {"id": "espera", "q": "¿Cuánto tiempo esperan mis paquetes?", "a": "[X] días sin costo mientras llegan tus otras compras.", "href": "Casillero-Virtual.dc.html#almacenamiento", "linkLabel": "Ver almacenamiento"},
-  {"id": "impuestos-consolidar", "q": "¿Consolidar cambia los impuestos?", "a": "[Respuesta confirmada por el agente de aduanas].", "href": "Aduana-Impuestos.dc.html", "linkLabel": "Ver guía de impuestos"}
+  {"id": "cuantos", "q": "¿Cuántos paquetes puedo consolidar?", "a": "Los límites de cada caja dependen de las reglas para envíos courier del país de destino.", "href": "Tarifas.dc.html", "linkLabel": "Ver tarifas"},
+  {"id": "espera", "q": "¿Cuánto tiempo esperan mis paquetes?", "a": "30 días sin costo mientras llegan tus otras compras.", "href": "Casillero-Virtual.dc.html#almacenamiento", "linkLabel": "Ver almacenamiento"}
  ]
 }
 </script>

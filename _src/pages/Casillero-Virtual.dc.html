@@ -25,9 +25,8 @@
       <div class="phero__aside"><div class="label" role="group" aria-label="Ejemplo de tu dirección en Miami">
           <div class="label__top"><img src="assets/img/logo-horizontal.svg" alt="TerraBox Cargo" width="148" height="25"><span>Miami, FL</span></div>
           <div class="label__lines">
-            <p class="label__name">Full name: <strong>Tu nombre TBX-0000</strong></p>
-            <p>Address: <strong>[Dirección de la bodega]</strong></p>
-            <p>City: <strong>Miami</strong> · State: <strong>FL</strong> · ZIP: <strong>[código postal]</strong></p>
+            <p class="label__name">Nombre: <strong>Tu nombre {{ cfg.lockerExample }}</strong></p>
+            <p>Al registrarte te enviamos tu dirección completa en Miami con tu número de casillero.</p>
           </div>
         </div></div>
     </div>
@@ -62,7 +61,7 @@
           <li class="rv">Cotización con flete e impuestos por separado</li>
           <li class="rv">Número de guía para seguir tu envío</li>
         </ul>
-        <p class="note rv">Ejemplo en tu cuenta: Recibido en Miami · TBX-[número]-0001 · 2,10 lb · 14 × 10 × 6 in · Amazon. [Foto real del paquete, pendiente.]</p>
+        <p class="note rv">Ejemplo en tu cuenta: Recibido en Miami · {{ cfg.lockerExample }} · 2,10 lb · 14 × 10 × 6 in · Amazon.</p>
       </div>
       <figure class="split__photo rv"><img src="assets/img/photos/bodega-equipo-800.webp" srcset="assets/img/photos/bodega-equipo-800.webp 800w, assets/img/photos/bodega-equipo.webp 1400w" sizes="(min-width:1024px) 40vw, 100vw" width="800" height="533" alt="Personas caminando por un pasillo de una bodega de paquetes" loading="lazy" decoding="async"></figure>
         </div>
@@ -79,9 +78,9 @@
           <h3>Gratis</h3>
           <ul>
             <li>Abrir y mantener tu casillero</li>
-            <li>Almacenamiento por [X] días</li>
+            <li>Almacenamiento por 30 días</li>
             <li>Foto de cada paquete</li>
-            <li>Consolidación [condición]</li>
+            <li>Consolidación de tus paquetes</li>
           </ul>
         </div>
         <div class="rv">
@@ -89,8 +88,7 @@
           <ul>
             <li>Flete y entrega, por caja según el peso, con seguro incluido. <a href="Tarifas.dc.html">Ver tarifas</a></li>
             <li>Impuestos, cuando aplican. <a href="Aduana-Impuestos.dc.html">Ver guía</a></li>
-            <li>Seguro opcional, adicional a la cobertura incluida</li>
-            <li>Almacenamiento después de [X] días: US$[X] por [periodo]</li>
+            <li>Almacenamiento después de 30 días: US$1 por día</li>
           </ul>
         </div>
       </div>
@@ -112,7 +110,7 @@
     <div class="wrap closing">
       <div class="closing__text">
         <h2 id="cta-h" class="heading rv">Abre tu casillero.</h2>
-        <p class="rv"><a class="link-arrow" href="Negocios.dc.html">¿Importas para vender? Ver planes para negocios <i data-icon="arrow-right" class="btn__arrow"></i></a></p>
+        <p class="rv"><a class="link-arrow" href="Negocios.dc.html">¿Envías con frecuencia? Pide tu tarifa preferencial <i data-icon="arrow-right" class="btn__arrow"></i></a></p>
       </div>
       <div class="actions rv">
         <a class="btn btn--accent" href="Registro.dc.html" data-tb-url="register">Abrir casillero gratis <i data-icon="arrow-right" class="btn__arrow"></i></a>
@@ -128,13 +126,13 @@
  "waHref": {"$wa": "Hola, vengo de la página Cómo funciona"},
  "steps": [
   {"img": "compra-portatil", "w": 800, "h": 533, "alt": "Una persona compra en línea desde su portátil con una tarjeta en la mano", "t": "Abre", "d": "Te registras gratis y recibes tu dirección en Miami."},
-  {"img": "compra-celular", "w": 800, "h": 450, "alt": "Un hombre paga una compra en línea desde su celular", "t": "Compra", "d": "Usas tu dirección TerraBox al pagar en cualquier tienda de Estados Unidos."},
+  {"img": "compra-online", "w": 800, "h": 450, "alt": "Un hombre paga una compra en línea", "t": "Compra", "d": "Usas tu dirección TerraBox al pagar en cualquier tienda de Estados Unidos."},
   {"img": "bodega-equipo", "w": 800, "h": 533, "alt": "Personas caminando por un pasillo de una bodega de paquetes", "t": "Recibimos y consolidamos", "d": "Fotografiamos cada paquete, lo agrupamos con tus otras compras y te enviamos la cotización."},
   {"img": "caja-puerta", "w": 800, "h": 533, "alt": "Una caja de cartón junto a la puerta de una casa", "t": "Recíbelo", "d": "Apruebas, pagas en línea y sigues tu envío hasta tu puerta."}
  ],
  "faqs": [
-  {"id": "formato-direccion", "q": "¿Cómo escribo la dirección en la tienda?", "a": "Tu nombre con tu número de casillero TBX, la dirección de la bodega, Miami, FL y el código postal.", "href": "Tiendas.dc.html", "linkLabel": "Ver el paso a paso"},
-  {"id": "almacenamiento", "q": "¿Cuánto tiempo guardan mis paquetes?", "a": "[X] días sin costo desde que llegan a la bodega. Después cobramos US$[X] por [periodo].", "href": "#incluye", "linkLabel": "Ver qué incluye la tarifa"},
+  {"id": "formato-direccion", "q": "¿Cómo escribo la dirección en la tienda?", "a": "Tu nombre con tu número de casillero (por ejemplo, TB-300) y la dirección en Miami que te enviamos al registrarte.", "href": "Tiendas.dc.html", "linkLabel": "Ver el paso a paso"},
+  {"id": "almacenamiento", "q": "¿Cuánto tiempo guardan mis paquetes?", "a": "30 días sin costo desde que llegan a la bodega. Después cobramos US$1 por día.", "href": "#incluye", "linkLabel": "Ver qué incluye la tarifa"},
   {"id": "varias-tiendas", "q": "¿Puedo comprar en varias tiendas?", "a": "Sí. Recibimos todos tus paquetes y los consolidamos en un solo envío.", "href": "Consolidacion.dc.html", "linkLabel": "Ver consolidación"},
   {"id": "prealerta", "q": "¿Qué es prealertar?", "a": "Es avisarnos en tu cuenta qué compraste y subir la factura, para identificar el paquete cuando llega.", "href": "Ayuda.dc.html", "linkLabel": "Ver más preguntas"}
  ]
