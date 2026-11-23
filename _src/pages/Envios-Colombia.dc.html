@@ -31,7 +31,7 @@
     <div class="wrap">
       <div class="head">
         <h2 id="tarifas-h" class="heading rv">Desde US$30, con entrega a domicilio.</h2>
-        <p class="statement rv">Incluye seguro y transporte nacional a ciudades principales. Tiempo de entrega: 5 a 7 días hábiles.</p>
+        <p class="statement rv">Incluye seguro y transporte nacional a ciudades principales. Tiempo de entrega: 5 a 7 días hábiles a ciudades principales.</p>
       </div>
       <table class="ptable ptable--light rv">
         <caption class="sr-only">Precio de envío courier (US$), igual para todo el país</caption>
@@ -48,8 +48,8 @@
   <section id="tiempos" class="section section--tone" aria-labelledby="tiempos-h">
     <div class="wrap split split--top">
       <div class="split__text">
-        <h2 id="tiempos-h" class="heading rv">[Más de X] municipios.</h2>
-        <p class="statement rv">Despachamos [días de despacho]. La entrega final la realiza [nombre del aliado de última milla], con número de guía para seguimiento.</p>
+        <h2 id="tiempos-h" class="heading rv">Entregamos en toda Colombia.</h2>
+        <p class="statement rv">Despachamos desde Miami varias veces por semana. Entregamos con transportadoras aliadas, con número de guía para seguimiento.</p>
         <ul class="plist rv">
           <sc-for list="{{ tiers }}" as="t">
             <li><strong>{{ t.d }}</strong><span class="plist__v">{{ t.t }}</span></li>
@@ -70,37 +70,25 @@
       <div class="cols2">
         <div class="rv">
           <h3 id="tax-h">Te mostramos los impuestos antes de pagar</h3>
-          <p>Los impuestos dependen del valor declarado, el tipo de producto y si la compra es personal o comercial. Tu cotización los detalla siempre por separado.</p>
+          <p>En Colombia, los envíos con valor declarado de hasta US$200 no pagan impuestos. Por encima de US$200 se pagan impuestos adicionales (arancel e IVA). Tu cotización los detalla siempre por separado.</p>
           <a class="link-arrow" href="Aduana-Impuestos.dc.html">Leer la guía de aduana e impuestos <i data-icon="arrow-right" class="btn__arrow"></i></a>
         </div>
         <div class="rv">
           <h3 id="rest-h">Revisa qué se puede enviar</h3>
-          <p>Celulares, baterías de litio, perfumes, suplementos y medicamentos tienen reglas especiales. <a href="Productos-Restringidos.dc.html">Ver lista completa</a> o escríbenos con el enlace del producto y te confirmamos antes de que compres.</p>
+          <p>Baterías de litio, perfumes, suplementos y medicamentos tienen reglas especiales. <a href="Productos-Restringidos.dc.html">Ver lista completa</a> o escríbenos con el enlace del producto y te confirmamos antes de que compres.</p>
           <a class="link-arrow" href="{{ waCheck }}" target="_blank" rel="noopener">Consultar un producto por WhatsApp <i data-icon="arrow-right" class="btn__arrow"></i></a>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section section--tone" aria-labelledby="test-h">
-    <div class="wrap">
-      <div class="head">
-        <h2 id="test-h" class="heading rv">Clientes en Colombia.</h2>
-      </div>
-      <ul class="quotes">
-        <sc-for list="{{ three }}" as="t">
-          <li class="rv"><figure><blockquote>[Testimonio de cliente colombiano, pendiente de autorización]</blockquote><figcaption>[Nombre], [ciudad]</figcaption></figure></li>
-        </sc-for>
-      </ul>
-    </div>
-  </section>
 
   <section class="section field" aria-labelledby="close-h">
     <div class="wrap closing">
       <div class="closing__text">
         <h2 id="close-h" class="heading rv">Abre tu casillero.</h2>
         <p class="statement rv">Recibe tu dirección en Miami al instante.</p>
-        <p class="rv"><a class="link-arrow" href="Negocios.dc.html">¿Importas para vender? Ver planes para negocios <i data-icon="arrow-right" class="btn__arrow"></i></a></p>
+        <p class="rv"><a class="link-arrow" href="Negocios.dc.html">¿Envías con frecuencia? Pide tu tarifa preferencial <i data-icon="arrow-right" class="btn__arrow"></i></a></p>
       </div>
       <div class="actions rv">
         <a class="btn btn--accent" href="Registro.dc.html" data-tb-url="register">Abrir casillero gratis <i data-icon="arrow-right" class="btn__arrow"></i></a>
@@ -118,17 +106,13 @@
   {"w": "Hasta 10 libras", "p": "US$30", "dp": "CO.courier.min"},
   {"w": "12 libras", "p": "US$36", "dp": null},
   {"w": "20 libras", "p": "US$60", "dp": null},
-  {"w": "Cada libra adicional", "p": "US$3", "dp": "CO.courier.perLb"},
-  {"w": "Comercial, hasta 10 libras", "p": "US$55", "dp": "CO.comercial.min"},
-  {"w": "Comercial, cada libra adicional", "p": "US$5,50", "dp": "CO.comercial.perLb"},
-  {"w": "Celular, por envío", "p": "US$80", "dp": "CO.celular.fixed"}
+  {"w": "Cada libra adicional", "p": "US$3", "dp": "CO.courier.perLb"}
+
  ],
  "tiers": [
-  {"d": "Bogotá, Medellín, Cali, Barranquilla", "t": "5 a 7 días hábiles"},
-  {"d": "Otras capitales", "t": "[X–Y] días hábiles"},
-  {"d": "Municipios y zonas rurales", "t": "[X–Y] días hábiles"}
+  {"d": "Ciudades principales", "t": "5 a 7 días hábiles"},
+  {"d": "Otras ciudades y municipios", "t": "10 a 12 días hábiles"}
  ],
- "three": [1, 2, 3],
  "waHref": {"$wa": "Hola, vengo de la página Envíos a Colombia"},
  "waCheck": {"$wa": "Quiero confirmar si puedo enviar este producto"}
 }

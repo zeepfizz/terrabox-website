@@ -16,10 +16,10 @@
       <nav class="phero__crumb" aria-label="Ruta de navegación"><a href="Inicio.dc.html">Inicio</a> / <span aria-current="page">Negocios</span></nav>
       <h1 id="h1" class="display">Importa para vender.</h1>
       <div class="phero__main">
-      <p class="statement">Con tu costo bajo control: consolidación, inspección, despachos fijos y un asesor asignado. Tu tarifa, por escrito.</p>
+      <p class="statement">Consolidación gratis, retiro de facturas y un asesor que te arma una tarifa según tu volumen. Tu tarifa, por escrito.</p>
       <div class="actions">
         <a class="btn btn--accent" href="Solicitar-Tarifa.dc.html">Solicitar tarifa <i data-icon="arrow-right" class="btn__arrow"></i></a>
-        <a class="link-arrow" href="#planes">Comparar planes <i data-icon="arrow-down" class="btn__arrow btn__arrow--down"></i></a>
+        <a class="link-arrow" href="#frecuencia">¿Envías con frecuencia? <i data-icon="arrow-down" class="btn__arrow btn__arrow--down"></i></a>
       </div>
       </div>
       <figure class="phero__aside phero__photo"><img src="assets/img/photos/bodega-equipo-800.webp" srcset="assets/img/photos/bodega-equipo-800.webp 800w, assets/img/photos/bodega-equipo.webp 1400w" sizes="(min-width:1024px) 34vw, 100vw" width="800" height="533" alt="Personas caminando por un pasillo de una bodega de paquetes" decoding="async"></figure>
@@ -40,39 +40,24 @@
         </div>
         <div class="rv">
           <h3>Empresas e importadores</h3>
-          <p>Mueves cajas o estibas con regularidad y necesitas almacenamiento, documentos y despachos programados.</p>
+          <p>Mueves cajas o estibas con regularidad y necesitas almacenamiento y despachos frecuentes.</p>
           <a class="link-arrow" href="Empresas.dc.html">Ver Empresas <i data-icon="arrow-right" class="btn__arrow"></i></a>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="planes" class="section section--tone" aria-labelledby="planes-h">
-    <div class="wrap">
-      <div class="head">
-        <h2 id="planes-h" class="heading rv">Pagas según lo que mueves.</h2>
-        <p class="statement rv">Del casillero personal a la tarifa negociada para empresas.</p>
+  <section id="frecuencia" class="section section--tone" aria-labelledby="frec-h">
+    <div class="wrap split">
+      <div class="split__text">
+        <h2 id="frec-h" class="heading rv">¿Envías con frecuencia?</h2>
+        <p class="statement rv">Si eres revendedor o haces varios envíos al mes, puedes acceder a una tarifa preferencial según tu volumen mensual. Escríbenos y un asesor te arma una propuesta en menos de {{ cfg.advisorReplyHours }} horas.</p>
+        <div class="actions rv">
+          <a class="btn btn--primary" href="Solicitar-Tarifa.dc.html">Solicitar tarifa <i data-icon="arrow-right" class="btn__arrow"></i></a>
+          <a class="link-arrow" href="{{ waHref }}" target="_blank" rel="noopener">Hablar con un asesor <i data-icon="arrow-right" class="btn__arrow"></i></a>
+        </div>
       </div>
-      <ul class="plans">
-        <sc-for list="{{ plans }}" as="p">
-          <li class="rv" aria-labelledby="{{ p.hid }}">
-            <div class="plans__a">
-              <h3 id="{{ p.hid }}">{{ p.t }}</h3>
-              <sc-if value="{{ p.rec }}"><p class="plans__rec">Recomendado para revendedores.</p></sc-if>
-              <dl>
-                <div><dt>Volumen mensual</dt><dd>{{ p.vol }}</dd></div>
-                <div><dt>Tarifa</dt><dd>{{ p.rate }}</dd></div>
-              </dl>
-            </div>
-            <div class="plans__b">
-              <ul>
-                <sc-for list="{{ p.inc }}" as="i"><li>{{ i }}</li></sc-for>
-              </ul>
-              <a class="btn {{ p.btn }}" href="{{ p.href }}">{{ p.cta }} <i data-icon="arrow-right" class="btn__arrow"></i></a>
-            </div>
-          </li>
-        </sc-for>
-      </ul>
+      <figure class="split__photo rv"><img src="assets/img/photos/bodega-estantes-800.webp" srcset="assets/img/photos/bodega-estantes-800.webp 800w, assets/img/photos/bodega-estantes.webp 1400w" sizes="(min-width:1024px) 40vw, 100vw" width="800" height="1067" alt="Estanterías altas con paquetes en una bodega" loading="lazy" decoding="async"></figure>
     </div>
   </section>
 
@@ -83,8 +68,8 @@
       </div>
       <ol class="seq">
         <li class="rv"><h3>Solicitas tu tarifa</h3><p>Nos cuentas qué vendes, tu volumen y tu frecuencia de compra.</p></li>
-        <li class="rv"><h3>Recibes la tarifa por escrito</h3><p>Un asesor te responde en [24] horas hábiles.</p></li>
-        <li class="rv"><h3>Empiezas a enviar</h3><p>Tu cuenta queda marcada con tu plan desde el primer despacho.</p></li>
+        <li class="rv"><h3>Recibes la tarifa por escrito</h3><p>Un asesor te arma una propuesta en menos de {{ cfg.advisorReplyHours }} horas.</p></li>
+        <li class="rv"><h3>Empiezas a enviar</h3><p>Tu cuenta queda con tu tarifa preferencial desde el primer despacho.</p></li>
       </ol>
     </div>
   </section>
@@ -93,7 +78,7 @@
     <div class="wrap closing">
       <div class="closing__text">
         <h2 id="cta-h" class="heading rv">Recibe tu tarifa por escrito.</h2>
-        <p class="rv"><a class="link-arrow" href="Tarifas.dc.html">¿Un envío puntual? Ver tarifas por libra <i data-icon="arrow-right" class="btn__arrow"></i></a></p>
+        <p class="rv"><a class="link-arrow" href="Tarifas.dc.html">¿Un envío puntual? Ver tarifas <i data-icon="arrow-right" class="btn__arrow"></i></a></p>
       </div>
       <div class="actions rv">
         <a class="btn btn--accent" href="Solicitar-Tarifa.dc.html">Solicitar tarifa <i data-icon="arrow-right" class="btn__arrow"></i></a>
@@ -106,12 +91,7 @@
 </x-dc>
 <script type="application/json" data-page>
 {
- "waHref": {"$wa": "Hola, vengo de la página Negocios"},
- "plans": [
-  {"t": "Personal", "vol": "Hasta [X] lb", "rate": "Desde US$30", "inc": ["Casillero gratis en Miami", "Foto de cada paquete", "Consolidación"], "href": "Registro.dc.html", "cta": "Abrir casillero gratis", "rec": false, "hid": "plan-personal", "btn": "btn--tone"},
-  {"t": "Revendedor", "vol": "[X]–[Y] lb", "rate": "US$[X] por libra", "inc": ["Todo lo del plan Personal", "Inspección y fotos de mercancía", "Retiro de facturas y reempaque", "Despachos fijos [días]", "Asesor asignado por WhatsApp"], "href": "Solicitar-Tarifa.dc.html?tipo=revendedor", "cta": "Solicitar tarifa de revendedor", "rec": true, "hid": "plan-revendedor", "btn": "btn--primary"},
-  {"t": "Empresa", "vol": "Más de [Y] lb", "rate": "Tarifa negociada", "inc": ["Todo lo del plan Revendedor", "Carga aérea y marítima", "Almacenamiento [condiciones]", "Asesor dedicado"], "href": "Solicitar-Tarifa.dc.html?tipo=empresa", "cta": "Solicitar tarifa de empresa", "rec": false, "hid": "plan-empresa", "btn": "btn--tone"}
- ]
+ "waHref": {"$wa": "Hola, vengo de la página Negocios"}
 }
 </script>
 </body>

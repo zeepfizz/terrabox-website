@@ -16,17 +16,15 @@
       <nav class="phero__crumb" aria-label="Ruta de navegación"><a href="Inicio.dc.html">Inicio</a> / <a href="Negocios.dc.html">Negocios</a> / <span aria-current="page">Revendedores</span></nav>
       <h1 id="h1" class="display">Tu margen, bajo control.</h1>
       <div class="phero__main">
-      <p class="statement">Importa para vender: consolidamos a tus proveedores en Miami, inspeccionamos la mercancía y te damos el costo real por unidad.</p>
-      <p class="phero__more">Lo sabes antes de fijar tu precio en Mercado Libre, Instagram o tu tienda online.</p>
+      <p class="statement">Importa para vender: consolidamos a tus proveedores en Miami, revisamos la mercancía y te armamos una tarifa según tu volumen.</p>
       <div class="actions">
-        <a class="btn btn--accent" href="#solicitar">Solicitar tarifa de revendedor <i data-icon="arrow-down" class="btn__arrow btn__arrow--down"></i></a>
+        <a class="btn btn--accent" href="#solicitar">Solicitar tarifa preferencial <i data-icon="arrow-down" class="btn__arrow btn__arrow--down"></i></a>
         <a class="link-arrow" href="{{ waHref }}" target="_blank" rel="noopener">Hablar con un asesor <i data-icon="arrow-right" class="btn__arrow"></i></a>
       </div>
       <nav aria-label="En esta página">
         <ul class="index">
           <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#ejemplo">Ejemplo de costo</a></li>
-          <li><a href="#tarifas">Tarifas</a></li>
+          <li><a href="#frecuencia">Tarifa preferencial</a></li>
           <li><a href="#solicitar">Solicitar</a></li>
         </ul>
       </nav>
@@ -40,10 +38,10 @@
       <div class="split__text">
         <h2 id="prob-h" class="heading rv">El precio es solo el comienzo.</h2>
         <p class="statement rv">El envío dentro de Estados Unidos, el flete internacional, los impuestos y la comisión de tu canal de venta pueden convertir un buen producto en una pérdida.</p>
-        <p class="rv">La mayoría de casilleros te cobra por libra. Nosotros te ayudamos a calcular cuánto ganas.</p>
+        <p class="rv">Con una tarifa preferencial según tu volumen, sabes cuánto pagas por cada envío.</p>
       </div>
       <figure class="split__photo rv">
-        <img src="assets/img/photos/compra-celular-800.webp" srcset="assets/img/photos/compra-celular-800.webp 800w, assets/img/photos/compra-celular.webp 1600w" sizes="(min-width:1024px) 40vw, 100vw" width="800" height="450" alt="Un hombre paga una compra en línea desde su celular" loading="lazy" decoding="async">
+        <img src="assets/img/photos/compra-online-800.webp" srcset="assets/img/photos/compra-online-800.webp 800w, assets/img/photos/compra-online.webp 1600w" sizes="(min-width:1024px) 40vw, 100vw" width="800" height="450" alt="Un hombre paga una compra en línea" loading="lazy" decoding="async">
       </figure>
     </div>
   </section>
@@ -62,39 +60,17 @@
     </div>
   </section>
 
-  <section id="ejemplo" class="section" aria-labelledby="ej-h">
-    <div class="wrap">
-      <div class="head">
-        <h2 id="ej-h" class="heading rv">Así se calcula tu margen.</h2>
-        <p class="statement rv">Cifras ilustrativas: cada concepto, por unidad, del proveedor a tu ganancia.</p>
-      </div>
-      <div class="dtable-wrap rv">
-        <table class="dtable">
-          <caption class="sr-only">Costo y ganancia por unidad, cifras ilustrativas</caption>
-          <thead><tr><th scope="col">Concepto</th><th scope="col" class="num">Por unidad</th></tr></thead>
-          <tbody>
-            <sc-for list="{{ landed }}" as="r">
-              <sc-if value="{{ r.total }}"><tr class="is-total"><th scope="row">{{ r.k }}</th><td class="num">{{ r.v }}</td></tr></sc-if>
-              <sc-if value="{{ r.notTotal }}"><tr><th scope="row">{{ r.k }}</th><td class="num">{{ r.v }}</td></tr></sc-if>
-            </sc-for>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
 
-  <section id="tarifas" class="section field" aria-labelledby="tar-h">
+  <section id="frecuencia" class="section field" aria-labelledby="tar-h">
     <div class="wrap">
       <div class="head">
-        <h2 id="tar-h" class="heading rv">Tarifas por volumen.</h2>
-        <p class="statement rv">El plan Revendedor es para quien compra con frecuencia para vender.</p>
+        <h2 id="tar-h" class="heading rv">¿Envías con frecuencia?</h2>
+        <p class="statement rv">Si eres revendedor o haces varios envíos al mes, puedes acceder a una tarifa preferencial según tu volumen mensual. Escríbenos y un asesor te arma una propuesta en menos de {{ cfg.advisorReplyHours }} horas.</p>
       </div>
-      <ul class="plist plist--3 rv">
-        <sc-for list="{{ tiers }}" as="t">
-          <li><strong>{{ t.p }}</strong><span>{{ t.v }}</span><span class="plist__v">{{ t.r }}</span></li>
-        </sc-for>
-      </ul>
-      <p class="after rv"><a class="link-arrow" href="Negocios.dc.html#planes">Comparar los tres planes <i data-icon="arrow-right" class="btn__arrow"></i></a></p>
+      <div class="actions rv">
+        <a class="btn btn--accent" href="#solicitar">Solicitar tarifa preferencial <i data-icon="arrow-down" class="btn__arrow btn__arrow--down"></i></a>
+        <a class="link-arrow" href="{{ waHref }}" target="_blank" rel="noopener">Hablar con un asesor <i data-icon="arrow-right" class="btn__arrow"></i></a>
+      </div>
     </div>
   </section>
 
@@ -107,9 +83,7 @@
           <li class="rv">Contamos unidades contra tu prealerta</li>
           <li class="rv">Fotografiamos el estado de cada caja y producto</li>
           <li class="rv">Te avisamos de faltantes o daños antes del despacho</li>
-          <li class="rv">[Otros puntos de inspección confirmados]</li>
         </ul>
-        <p class="note rv">[Fotos reales de inspección, pendientes.]</p>
       </div>
       <figure class="split__photo rv">
         <img src="assets/img/photos/bodega-equipo-800.webp" srcset="assets/img/photos/bodega-equipo-800.webp 800w, assets/img/photos/bodega-equipo.webp 1400w" sizes="(min-width:1024px) 40vw, 100vw" width="800" height="533" alt="Personas caminando por un pasillo de una bodega de paquetes" loading="lazy" decoding="async">
@@ -130,15 +104,15 @@
   <section id="solicitar" class="section" aria-labelledby="sol-h">
     <div class="wrap contact">
       <div class="contact__text">
-        <h2 id="sol-h" class="heading rv">Tu tarifa en [24] horas.</h2>
-        <p class="statement rv">Cuéntanos qué vendes: tus productos, volumen mensual y frecuencia de compra. Un asesor te responde con una propuesta por escrito.</p>
+        <h2 id="sol-h" class="heading rv">Tu propuesta en 24 horas.</h2>
+        <p class="statement rv">Cuéntanos qué vendes y cuántos envíos haces al mes. Un asesor te arma una propuesta por escrito en menos de {{ cfg.advisorReplyHours }} horas.</p>
         <p class="rv">¿Quieres darnos más detalle? <a href="Solicitar-Tarifa.dc.html?tipo=revendedor">Usa el formulario completo</a>.</p>
         <figure class="contact__photo rv">
           <img src="assets/img/photos/bodega-estantes-800.webp" width="800" height="1067" alt="Estanterías altas con paquetes en una bodega" loading="lazy" decoding="async">
         </figure>
       </div>
       <div class="contact__form rv">
-        <dc-import name="Lead-Form" form-id="rev" endpoint="solicitud" aria-label="Solicitar tarifa de revendedor" fields="{{ fields }}" initial="{{ initial }}" submit-label="Solicitar tarifa de revendedor" success-body="Te escribimos en [24] horas hábiles con tu tarifa por escrito." wa-intro="Hola, quiero una tarifa de revendedor:"></dc-import>
+        <dc-import name="Lead-Form" form-id="rev" endpoint="solicitud" aria-label="Solicitar tarifa de revendedor" fields="{{ fields }}" initial="{{ initial }}" submit-label="Solicitar tarifa preferencial" success-body="Un asesor te escribe en menos de 24 horas con tu propuesta por escrito." wa-intro="Hola, quiero una tarifa de revendedor:"></dc-import>
       </div>
     </div>
   </section>
@@ -160,15 +134,15 @@
    "d": "de cada paquete al llegar: confirmas cantidades y estado antes del envío."
   },
   {
-   "t": "Retiro de facturas y reempaque",
-   "d": "para que la mercancía llegue lista para vender."
+   "t": "Retiro de facturas gratis,",
+   "d": "pídelo a atención al cliente."
   },
   {
-   "t": "Almacenamiento gratuito por [X] días",
+   "t": "Almacenamiento gratuito por 30 días",
    "d": "mientras completas tu pedido."
   },
   {
-   "t": "Despachos fijos [días],",
+   "t": "Despachos varias veces por semana,",
    "d": "para que planees tu inventario."
   },
   {
@@ -176,106 +150,25 @@
    "d": "por WhatsApp, que conoce tu negocio."
   }
  ],
- "landed": [
-  {
-   "k": "Precio del proveedor",
-   "v": "US$[X]",
-   "total": false,
-   "notTotal": true
-  },
-  {
-   "k": "Envío a Miami",
-   "v": "US$[X]",
-   "total": false,
-   "notTotal": true
-  },
-  {
-   "k": "Flete a Colombia (consolidado)",
-   "v": "US$[X]",
-   "total": false,
-   "notTotal": true
-  },
-  {
-   "k": "Impuestos estimados",
-   "v": "US$[X]",
-   "total": false,
-   "notTotal": true
-  },
-  {
-   "k": "Costo puesto en Colombia",
-   "v": "US$[X] (COP [X])",
-   "total": true,
-   "notTotal": false
-  },
-  {
-   "k": "Precio de venta en Mercado Libre",
-   "v": "COP [X]",
-   "total": false,
-   "notTotal": true
-  },
-  {
-   "k": "Comisión y envío de Mercado Libre",
-   "v": "COP [X]",
-   "total": false,
-   "notTotal": true
-  },
-  {
-   "k": "Ganancia por unidad",
-   "v": "COP [X] ([X] %)",
-   "total": true,
-   "notTotal": false
-  }
- ],
- "tiers": [
-  {
-   "p": "Personal",
-   "v": "Hasta [X] lb",
-   "r": "Desde US$30"
-  },
-  {
-   "p": "Revendedor",
-   "v": "[X]–[Y] lb",
-   "r": "US$[X] por libra"
-  },
-  {
-   "p": "Empresa",
-   "v": "Más de [Y] lb",
-   "r": "Tarifa negociada y asesor dedicado"
-  }
- ],
  "faqs": [
-  {
-   "id": "minimo",
-   "q": "¿Hay un volumen mínimo?",
-   "a": "[Volumen mínimo confirmado para el plan Revendedor].",
-   "href": "Negocios.dc.html#planes",
-   "linkLabel": "Ver planes"
-  },
   {
    "id": "facturas",
    "q": "¿Pueden retirar las facturas?",
-   "a": "Sí, retiramos facturas y reempacamos. [Condiciones].",
+   "a": "Sí, retiramos facturas gratis: pídelo a atención al cliente.",
    "href": "Consolidacion.dc.html",
-   "linkLabel": "Ver reempaque"
-  },
-  {
-   "id": "devoluciones-rev",
-   "q": "¿Qué pasa si un proveedor envía algo equivocado?",
-   "a": "[Proceso confirmado de devoluciones a proveedores].",
-   "href": "Reclamos-Seguro.dc.html",
-   "linkLabel": "Ver reclamos"
+   "linkLabel": "Ver consolidación"
   },
   {
    "id": "pago-rev",
    "q": "¿Cómo pago?",
-   "a": "[Medios de pago y condiciones para cuentas de revendedor].",
+   "a": "Con tarjeta, Zelle o transferencia a Bancolombia.",
    "href": "Ayuda.dc.html",
    "linkLabel": "Ver más preguntas"
   },
   {
    "id": "dias-despacho",
    "q": "¿Qué días despachan?",
-   "a": "Despachamos [días de despacho] desde Miami.",
+   "a": "Despachamos desde Miami varias veces por semana.",
    "href": "Envios-Colombia.dc.html#tiempos",
    "linkLabel": "Ver tiempos de entrega"
   }
@@ -301,19 +194,12 @@
    "name": "productos",
    "label": "Qué vendes",
    "required": true,
-   "placeholder": "Ropa deportiva, accesorios de celular…"
+   "placeholder": "Ropa deportiva, accesorios de tecnología…"
   },
   {
    "name": "volumen",
-   "label": "Volumen mensual aproximado",
-   "type": "select",
-   "required": true,
-   "options": [
-    "Menos de [X] lb",
-    "[X]–[Y] lb",
-    "Más de [Y] lb",
-    "Aún no lo sé"
-   ]
+   "label": "¿Cuántos envíos haces al mes?",
+   "hint": "Un número aproximado está bien."
   },
   {
    "name": "consent",

@@ -42,10 +42,23 @@ def esc(v):
     return html.escape('' if v is None else str(v), quote=True)
 
 
+def read_config():
+    """Text, number and null values written one per line in assets/js/config.js (waNumber, email, …)."""
+    src = (ROOT / 'assets' / 'js' / 'config.js').read_text(encoding='utf-8')
+    cfg = {}
+    for m in re.finditer(r"^\s{2}(\w+):\s*('([^']*)'|(\d+)|null)\s*,", src, re.M):
+        cfg[m.group(1)] = m.group(3) if m.group(3) is not None else (int(m.group(4)) if m.group(4) else None)
+    social = re.search(r"social:\s*\{([^}]*)\}", src)
+    cfg['social'] = {k: v for k, v in re.findall(r"(\w+):\s*'([^']+)'", social.group(1))} if social else {}
+    return cfg
+
+
+CFG = read_config()
+
+
 def wa(text):
-    # The number is filled in at runtime from assets/js/config.js (see site.js).
     from urllib.parse import quote
-    return 'https://wa.me/?text=' + quote(text or '', safe='')
+    return 'https://wa.me/' + (CFG.get('waNumber') or '') + '?text=' + quote(text or '', safe='')
 
 
 ATTR_RE = re.compile(r'([\w:.-]+)(?:\s*=\s*"([^"]*)")?')
@@ -102,7 +115,8 @@ def prop_value(raw, ctx):
     m = EXPR_RE.fullmatch(raw.strip())
     if m:
         return lookup(m.group(1), ctx)
-    return html.unescape(raw)
+    # Text with {{ }} inside (e.g. a form message naming the advisor) is filled in here, once.
+    return EXPR_RE.sub(lambda mm: str(lookup(mm.group(1), ctx)), html.unescape(raw))
 
 
 # ---------------------------------------------------------------- template engine
@@ -345,8 +359,8 @@ FOOTER_COLS = [
                 ('Calculadora', 'Tarifas.dc.html#calculadora'), ('Artículos prohibidos', 'Productos-Restringidos'), ('Rastrear envío', 'Rastreo')]),
     ('Servicios', [('Consolidación', 'Consolidacion'), ('Compramos por ti', 'Compramos-Por-Ti'), ('Carga aérea y marítima', 'Carga'),
                    ('Negocios', 'Negocios'), ('Revendedores', 'Revendedores'), ('Empresas', 'Empresas')]),
-    ('Ayuda', [('Preguntas frecuentes', 'Ayuda'), ('Aduana e impuestos', 'Aduana-Impuestos'), ('Reclamos y seguro', 'Reclamos-Seguro'),
-               ('Tiendas recomendadas', 'Tiendas'), ('Nosotros', 'Nosotros'), ('Contacto', 'Contacto')]),
+    ('Ayuda', [('Preguntas frecuentes', 'Ayuda'), ('Aduana e impuestos', 'Aduana-Impuestos'), ('Seguro', 'Reclamos-Seguro'),
+               ('Tiendas recomendadas', 'Tiendas'), ('Contacto', 'Contacto')]),
 ]
 
 
@@ -366,20 +380,24 @@ def site_footer(p, ctx, page):
         f'<nav class="ftr__col" aria-labelledby="ftr-{i}"><h2 class="ftr__title" id="ftr-{i}">{esc(t)}</h2><ul>'
         + ''.join(f'<li><a href="{h if ".dc.html" in h else h + ".dc.html"}">{esc(l)}</a></li>' for l, h in links)
         + '</ul></nav>' for i, (t, links) in enumerate(FOOTER_COLS))
-    return FOOTER_TPL.format(cols=cols, wa=wa_href, wa_icon=WA_ICON, credits=photo_credits())
+    contact = ''
+    if CFG.get('email'):
+        contact += f'<p><a href="mailto:{esc(CFG["email"])}">{esc(CFG["email"])}</a></p>'
+    social = ''.join(
+        f'<a href="{esc(u)}" aria-label="{name} de TerraBox (se abre en una pestaña nueva)" target="_blank" rel="noopener"><i data-icon="{k}"></i></a>'
+        for k, name in (('instagram', 'Instagram'), ('facebook', 'Facebook')) for u in [CFG['social'].get(k)] if u)
+    if social:
+        contact += f'<p class="ftr__social">{social}</p>'
+    return FOOTER_TPL.format(cols=cols, wa=wa_href, wa_icon=WA_ICON, credits=photo_credits(), contact=contact)
 
 
 FOOTER_TPL = """<footer class="ftr">
   <div class="ftr__inner">
     <div class="ftr__top">
       <div class="ftr__contact">
-        <p class="ftr__claim">Compra en Estados Unidos y recíbelo en Colombia en 5 a 7 días hábiles, con seguro incluido.</p>
+        <p class="ftr__claim">Compra en Estados Unidos y recíbelo en Colombia en 5 a 7 días hábiles a ciudades principales, con seguro incluido.</p>
         <a href="{wa}" target="_blank" rel="noopener" class="btn btn--wa">{wa_icon}Escribir por WhatsApp</a>
-        <p><a data-tb="email" href="Contacto.dc.html">[email]</a><br><span data-tb="hours">[horario de atención]</span></p>
-        <p class="ftr__social">
-          <a href="#" data-social="instagram" hidden aria-label="Instagram de TerraBox (se abre en una pestaña nueva)" target="_blank" rel="noopener"><i data-icon="instagram"></i></a>
-          <a href="#" data-social="facebook" hidden aria-label="Facebook de TerraBox (se abre en una pestaña nueva)" target="_blank" rel="noopener"><i data-icon="facebook"></i></a>
-        </p>
+        {contact}
       </div>
       {cols}
     </div>
@@ -530,11 +548,13 @@ def build_page(path):
     data_m = re.search(r'<script type="application/json" data-page>(.*?)</script>', tail, re.S)
     ctx = json.loads(data_m.group(1)) if data_m else {}
     ctx = expand_wa(ctx)
+    ctx['cfg'] = CFG
     if re.search(r'data-dc-script', tail):
         raise ValueError(f'{name}: still has the prototype script; convert it to a data-page JSON block')
     tail = re.sub(r'<script type="application/json" data-page>.*?</script>', '', tail, flags=re.S)
     scripts = ''.join(m.group(0) + '\n' for m in re.finditer(r'<script\b[^>]*>.*?</script>', tail, re.S))
     styles += ''.join(m.group(0) + '\n' for m in re.finditer(r'<link rel="stylesheet"[^>]*>', helmet))
+    styles += ''.join(m.group(0) + '\n' for m in re.finditer(r'<meta name="robots"[^>]*>', helmet))
     head_extra = styles + ''.join(m.group(0) + '\n' for m in re.finditer(r'<script type="application/ld\+json">.*?</script>', helmet, re.S))
     if ctx.get('faqLd'):
         head_extra += '<script type="application/ld+json">' + json.dumps(faq_ld(ctx['faqLd']), ensure_ascii=False) + '</script>\n'

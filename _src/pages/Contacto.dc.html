@@ -26,10 +26,10 @@
     <div class="wrap contact">
       <div class="contact__text">
         <h2 id="form-h" class="heading rv">Escríbenos.</h2>
-        <p class="statement rv">Déjanos tu mensaje y te respondemos por email o por WhatsApp en horario de atención.</p>
+        <p class="statement rv">Déjanos tu mensaje y te respondemos por email o por WhatsApp.</p>
         <dl class="contact__data rv">
-          <div><dt>Email</dt><dd><a data-tb="email" href="#form-h">[email]</a></dd></div>
-          <div><dt>Horario de atención</dt><dd data-tb="hours">[horario de atención]</dd></div>
+          <div><dt>Email</dt><dd><a href="mailto:{{ cfg.email }}">{{ cfg.email }}</a></dd></div>
+          <div><dt>WhatsApp</dt><dd><a href="{{ waHref }}" target="_blank" rel="noopener">{{ cfg.waDisplay }}</a></dd></div>
           <div><dt>Negocios</dt><dd>¿Buscas una tarifa para tu negocio? <a href="Solicitar-Tarifa.dc.html">Solicitar tarifa</a></dd></div>
         </dl>
         <figure class="contact__photo rv">
@@ -52,7 +52,7 @@
   {"name": "nombre", "label": "Nombre", "required": true, "autocomplete": "name"},
   {"name": "email", "label": "Email", "type": "email", "required": true, "autocomplete": "email"},
   {"name": "whatsapp", "label": "WhatsApp", "type": "tel", "autocomplete": "tel", "hint": "Opcional"},
-  {"name": "tema", "label": "Tema", "type": "select", "required": true, "options": ["Mi casillero", "Un envío en curso", "Tarifas", "Aduana e impuestos", "Reclamos", "Negocios: tarifas para revendedores o empresas", "Otro"]},
+  {"name": "tema", "label": "Tema", "type": "select", "required": true, "options": ["Mi casillero", "Un envío en curso", "Tarifas", "Aduana e impuestos", "Una caja perdida", "Negocios: tarifas para revendedores o empresas", "Otro"]},
   {"name": "mensaje", "label": "Mensaje", "type": "textarea", "required": true},
   {"name": "consent", "short": "Tratamiento de datos", "label": "Acepto el tratamiento de mis datos personales.", "type": "check", "required": true, "linkHref": "Legal-Datos.dc.html", "linkLabel": "Ver política"}
  ]

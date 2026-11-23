@@ -7,7 +7,7 @@
 <x-dc>
 <helmet>
 <title>Tu casillero en Miami: compra en EE.&nbsp;UU. y recíbelo en Colombia | TerraBox Cargo</title>
-<meta name="description" content="Casillero en Miami y envíos a Colombia en 5 a 7 días hábiles. Desde US$30 con seguro y transporte nacional incluidos. Calcula tu envío.">
+<meta name="description" content="Casillero en Miami y envíos a Colombia en 5 a 7 días hábiles a ciudades principales. Desde US$30 con seguro y transporte nacional incluidos. Calcula tu envío.">
 <meta name="body-class" content="home3d">
 <link rel="stylesheet" href="assets/css/home3d.css">
 </helmet>
@@ -19,7 +19,7 @@
   <section class="s3 s3--hero" data-scene="hero" aria-labelledby="hero-h">
     <div class="s3__body"><div class="wrap"><div class="s3__col">
       <h1 id="hero-h" class="display">Tu casillero en Miami.</h1>
-      <p class="statement">Compra en tiendas de Estados Unidos y recíbelo en tu casa en Colombia en 5 a 7 días hábiles.</p>
+      <p class="statement">Compra en tiendas de Estados Unidos y recíbelo en tu casa en Colombia en 5 a 7 días hábiles a ciudades principales.</p>
       <p class="hero__price">Desde <span data-price="from">US$30</span>, con seguro incluido.</p>
       <div class="actions">
         <a class="btn btn--accent" href="Registro.dc.html" data-tb-url="register">Regístrate gratis <i data-icon="arrow-right" class="btn__arrow"></i></a>
@@ -28,7 +28,7 @@
       <form class="track" role="search" aria-labelledby="track-h" novalidate>
         <h2 id="track-h" class="track__title">¿Ya enviaste? Rastrea tu guía</h2>
         <div class="track__row">
-          <label class="track__field"><span class="sr-only">Número de guía</span><input class="track__input" name="guia" type="text" autocomplete="off" placeholder="Número de guía, ej. TBX-0000-0000"></label>
+          <label class="track__field"><span class="sr-only">Número de guía</span><input class="track__input" name="guia" type="text" autocomplete="off" placeholder="Número de guía"></label>
           <button type="submit" class="btn btn--accent">Rastrear <i data-icon="search"></i></button>
         </div>
         <p class="track__msg" role="alert"></p>
@@ -76,9 +76,8 @@
       <h2 id="dir-h" class="heading">Tu dirección en Miami.</h2>
       <p class="statement">Al registrarte recibes una dirección en nuestra bodega con tu número de casillero. La escribes al pagar en cualquier tienda y nosotros hacemos el resto.</p>
       <dl class="addr3">
-        <div><dt>Full name</dt><dd>Tu nombre TBX-0000</dd></div>
-        <div><dt>Address</dt><dd>[Dirección de la bodega]</dd></div>
-        <div><dt>City, State, ZIP</dt><dd>Miami, FL [código postal]</dd></div>
+        <div><dt>Nombre</dt><dd>Tu nombre {{ cfg.lockerExample }}</dd></div>
+        <div><dt>Dirección</dt><dd>Al registrarte te enviamos tu dirección completa en Miami con tu número de casillero.</dd></div>
       </dl>
       <div class="actions">
         <a class="btn btn--accent" href="Registro.dc.html" data-tb-url="register">Regístrate gratis <i data-icon="arrow-right" class="btn__arrow"></i></a>
@@ -104,7 +103,7 @@
   <section class="s3 s3--cierre" data-scene="cierre" aria-labelledby="cierre-h">
     <div class="s3__body"><div class="wrap"><div class="s3__col">
       <h2 id="cierre-h" class="display">En tu puerta.</h2>
-      <p class="statement">De 5 a 7 días hábiles después de salir de Miami, con seguro y transporte nacional incluidos.</p>
+      <p class="statement">De 5 a 7 días hábiles a ciudades principales después de salir de Miami, con seguro y transporte nacional incluidos.</p>
       <div class="actions">
         <a class="btn btn--accent" href="Registro.dc.html" data-tb-url="register">Regístrate gratis <i data-icon="arrow-right" class="btn__arrow"></i></a>
         <a class="link-arrow" href="Tarifas.dc.html">Ver tarifas <i data-icon="arrow-right" class="btn__arrow"></i></a>
@@ -117,13 +116,12 @@
     <div class="wrap contact">
       <div class="contact__text">
         <h2 id="contacto-h" class="heading rv">Habla con una persona.</h2>
-        <p class="statement rv">Te respondemos por WhatsApp en horario de atención.</p>
+        <p class="statement rv">Escríbenos por WhatsApp.</p>
         <div class="actions rv">
           <a class="btn btn--wa btn--big" href="{{ waHref }}" target="_blank" rel="noopener"><i data-icon="message-circle"></i>Escribir por WhatsApp</a>
         </div>
         <dl class="contact__data rv">
-          <div><dt>Email</dt><dd><a data-tb="email" href="Contacto.dc.html">[email]</a></dd></div>
-          <div><dt>Horario</dt><dd data-tb="hours">[horario de atención]</dd></div>
+          <div><dt>Email</dt><dd><a href="mailto:{{ cfg.email }}">{{ cfg.email }}</a></dd></div>
         </dl>
       </div>
       <div class="contact__form rv">
@@ -142,10 +140,10 @@
  "waHref": {"$wa": "Hola, vengo de la página de inicio"},
  "route": [
   {"img": "compra-portatil", "w": 800, "h": 533, "alt": "Una persona compra en línea desde su portátil con una tarjeta en la mano", "t": "Te registras", "s": "Registro", "d": "Regístrate y recibe tu dirección en Miami."},
-  {"img": "compra-celular", "w": 800, "h": 450, "alt": "Un hombre paga una compra en línea desde su celular", "t": "Compras", "s": "Compra", "d": "Compra en tus tiendas favoritas de EE. UU."},
+  {"img": "compra-online", "w": 800, "h": 450, "alt": "Un hombre paga una compra en línea", "t": "Compras", "s": "Compra", "d": "Compra en tus tiendas favoritas de EE. UU."},
   {"img": "bodega-equipo", "w": 800, "h": 533, "alt": "Personas caminando por un pasillo de una bodega de paquetes", "t": "Lo recibimos en Miami", "s": "Miami", "d": "Recibimos y revisamos tu paquete en bodega."},
   {"img": "avion-carga", "w": 800, "h": 533, "alt": "Un avión de carga en la pista", "t": "Vuela a Colombia", "s": "Vuelo", "d": "Lo enviamos a Colombia (aduana incluida en el proceso)."},
-  {"img": "caja-puerta", "w": 800, "h": 533, "alt": "Una caja de cartón junto a la puerta de una casa", "t": "Llega a tu puerta", "s": "Tu puerta", "d": "Lo recibes en tu puerta en 5 a 7 días hábiles."}
+  {"img": "caja-puerta", "w": 800, "h": 533, "alt": "Una caja de cartón junto a la puerta de una casa", "t": "Llega a tu puerta", "s": "Tu puerta", "d": "Lo recibes en tu puerta en 5 a 7 días hábiles a ciudades principales."}
  ],
  "bans": {"$data": "prohibidos"},
  "fields": [

@@ -16,10 +16,10 @@
       <nav class="phero__crumb" aria-label="Ruta de navegación"><a href="Inicio.dc.html">Inicio</a> / <a href="Envios-Colombia.dc.html">Envíos a Colombia</a> / <span aria-current="page">Tiendas recomendadas</span></nav>
       <h1 id="h1" class="display">Dónde comprar.</h1>
       <div class="phero__main">
-      <p class="statement">Tiendas que envían a direcciones en Miami, con un consejo para cada una.</p>
-      <p class="phero__note">Actualizado el [fecha].</p>
+      <p class="statement">Tiendas que envían a direcciones en Miami. Usa tu dirección TerraBox al pagar.</p>
+      <p class="phero__note">Actualizado en 2026.</p>
       </div>
-      <figure class="phero__aside phero__photo"><img src="assets/img/photos/compra-celular-800.webp" srcset="assets/img/photos/compra-celular-800.webp 800w, assets/img/photos/compra-celular.webp 1600w" sizes="(min-width:1024px) 34vw, 100vw" width="800" height="450" alt="Un hombre paga una compra en línea desde su celular" decoding="async"></figure>
+      <figure class="phero__aside phero__photo"><img src="assets/img/photos/compra-online-800.webp" srcset="assets/img/photos/compra-online-800.webp 800w, assets/img/photos/compra-online.webp 1600w" sizes="(min-width:1024px) 34vw, 100vw" width="800" height="450" alt="Un hombre paga una compra en línea" decoding="async"></figure>
     </div>
   </section>
 
@@ -31,7 +31,7 @@
       </div>
       <ul class="tlist tlist--2">
         <sc-for list="{{ stores }}" as="s">
-          <li class="rv"><strong>{{ s.n }}:</strong> {{ s.t }}</li>
+          <li class="rv"><strong>{{ s.n }}</strong></li>
         </sc-for>
       </ul>
     </div>
@@ -53,11 +53,10 @@
         <div class="label" role="group" aria-label="Ejemplo de tu dirección en el formulario de la tienda">
           <div class="label__top"><img src="assets/img/logo-horizontal.svg" alt="TerraBox Cargo" width="148" height="25" loading="lazy"><span>Miami, FL</span></div>
           <div class="label__lines">
-            <p class="label__name">Full name: <strong>Tu nombre TBX-[número]</strong></p>
-            <p>Address line 1: <strong>[Dirección de la bodega]</strong></p>
-            <p>Address line 2: <strong>TBX-[número]</strong></p>
-            <p>City: <strong>Miami</strong> · State: <strong>FL</strong> · ZIP: <strong>[código postal]</strong></p>
-            <p>Phone: <strong>[teléfono de la bodega]</strong></p>
+            <p class="label__name">Nombre: <strong>Tu nombre {{ cfg.lockerExample }}</strong></p>
+            <p>Dirección (línea 1): <strong>la que te damos al registrarte</strong></p>
+            <p>Ciudad / Estado / ZIP: <strong>Miami, FL, el ZIP que te damos</strong></p>
+            <p>Teléfono: <strong>{{ cfg.waDisplay }}</strong></p>
           </div>
         </div>
       </div>
@@ -71,44 +70,34 @@
 {
  "stores": [
   {
-   "n": "Amazon",
-   "t": "[Consejo verificado para comprar en Amazon con dirección en Miami]"
+   "n": "Amazon"
   },
   {
-   "n": "Walmart",
-   "t": "[Consejo verificado para comprar en Walmart con dirección en Miami]"
+   "n": "Walmart"
   },
   {
-   "n": "Target",
-   "t": "[Consejo verificado para comprar en Target con dirección en Miami]"
+   "n": "Target"
   },
   {
-   "n": "eBay",
-   "t": "[Consejo verificado para comprar en eBay con dirección en Miami]"
+   "n": "eBay"
   },
   {
-   "n": "Best Buy",
-   "t": "[Consejo verificado para comprar en Best Buy con dirección en Miami]"
+   "n": "Best Buy"
   },
   {
-   "n": "Apple",
-   "t": "[Consejo verificado para comprar en Apple con dirección en Miami]"
+   "n": "Apple"
   },
   {
-   "n": "Nike",
-   "t": "[Consejo verificado para comprar en Nike con dirección en Miami]"
+   "n": "Nike"
   },
   {
-   "n": "Sephora",
-   "t": "[Consejo verificado para comprar en Sephora con dirección en Miami]"
+   "n": "Sephora"
   },
   {
-   "n": "Shein",
-   "t": "[Consejo verificado para comprar en Shein con dirección en Miami]"
+   "n": "Shein"
   },
   {
-   "n": "Temu",
-   "t": "[Consejo verificado para comprar en Temu con dirección en Miami]"
+   "n": "Temu"
   }
  ],
  "steps": [
@@ -120,11 +109,11 @@
   {
    "n": "2",
    "t": "Pega tu nombre y número de casillero.",
-   "d": "Escribe TBX-[número] junto a tu nombre y en la segunda línea de dirección."
+   "d": "Escribe tu número de casillero (por ejemplo, TB-300) junto a tu nombre."
   },
   {
    "n": "3",
-   "t": "Usa Miami, FL y el código postal.",
+   "t": "Usa Miami, FL y el ZIP que te damos.",
    "d": "La tienda calcula el envío nacional hasta nuestra bodega."
   },
   {

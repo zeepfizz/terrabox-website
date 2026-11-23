@@ -30,9 +30,10 @@ Contact data, links and prices live in one file, **`assets/js/config.js`**:
 
 | Setting | What it does |
 |---|---|
-| `waNumber` | WhatsApp number in international format without `+` (e.g. `13055551234`). Every WhatsApp button uses it. |
-| `email`, `hours` | Shown in the footer and contact sections. |
-| `social` | Instagram / Facebook profile URLs. The footer icons appear once set. |
+| `waNumber`, `waDisplay` | WhatsApp number without `+` (17863271803) and how it is written (+1 (786) 327-1803). Every WhatsApp button uses it. |
+| `email`, `hours` | Shown in the footer and contact sections. `null` means not published (hours today). |
+| `lockerExample`, `advisorName`, `advisorReplyHours`, `legalDate`, `legalName` | Locker format example (TB-300), the commercial advisor, her reply time and the legal-page data. |
+| `social` | Instagram / Facebook profile URLs. The footer icons appear only when set. |
 | `urls.login`, `urls.register` | Where **Ingresar** and **Registrarse** point (today the site's own pages; later `app.terraboxcargo.com`). |
 | `pricing` | Public prices from the owner's onboarding sheet, per destination (`destinations`): Colombia air Courier US$3/lb with a US$30 minimum, Comercial US$5.50/lb with a US$55 minimum, phone US$80 per shipment; México by land US$4.50/lb with a US$45 minimum plus US$10 insurance, phone US$150; Ecuador US$70 per shipment up to 8 lb. Also `roundUp` (4,2 lb is charged as 5 lb) and the Colombia tax-free limit (US$200). The calculator and every `data-price` element use these values. |
 | `track(guia)` | What "Rastrea tu envío" does. Until there is a tracking system it opens WhatsApp with the guide number. |
@@ -45,7 +46,12 @@ To change text, edit that file — or edit the generated `.html` directly for a 
 
 ```bash
 python _src/build.py
+node scripts/check-contenido.mjs
 ```
+
+`_src/build.py` also reads the one-line values of `config.js` (WhatsApp, email, …) so the built pages carry them.
+`scripts/check-contenido.mjs` fails if a built page shows a `[placeholder]` or a term the owner asked not to publish
+(see `docs/handoff-datos-v2.md`, section 5), and checks the consolidation example against the price code.
 
 The build writes every `*.html` page in this folder and `assets/css/interactions.css`. The shared header, footer and FAQ
 markup is defined in `_src/build.py`; the price table (`precios`) and the box calculator (`caja`) are shared partials in `_src/partials/`; the prohibited-items

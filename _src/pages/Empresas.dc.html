@@ -16,7 +16,7 @@
       <nav class="phero__crumb" aria-label="Ruta de navegación"><a href="Inicio.dc.html">Inicio</a> / <a href="Negocios.dc.html">Negocios</a> / <span aria-current="page">Empresas e importadores</span></nav>
       <h1 id="h1" class="display">Cuentas de empresa.</h1>
       <div class="phero__main">
-      <p class="statement">Tu operación de importación, sin un freight forwarder: cajas y estibas, almacenamiento en Miami y despachos programados.</p>
+      <p class="statement">Tu operación de importación, sin un freight forwarder: cajas y estibas, almacenamiento en Miami y despachos varias veces por semana.</p>
       <p class="phero__more">Para negocios que ya superaron el casillero, con un asesor que conoce tu operación.</p>
       <div class="actions">
         <a class="btn btn--accent" href="Solicitar-Tarifa.dc.html?tipo=empresa&amp;llamada=1">Agendar llamada <i data-icon="arrow-right" class="btn__arrow"></i></a>
@@ -51,21 +51,9 @@
           <li class="rv">Te enviamos una propuesta por escrito.</li>
           <li class="rv">Un asesor dedicado coordina cada despacho contigo.</li>
         </ol>
-        <p class="rv">Límites del seguro y reclamos: <a href="Reclamos-Seguro.dc.html">Reclamos y seguro</a>. Almacenamiento: [condiciones].</p>
+        <p class="rv">Seguro incluido: hasta US$100 por caja en caso de pérdida (<a href="Reclamos-Seguro.dc.html">ver seguro</a>). Almacenamiento: 30 días gratis.</p>
       </div>
       <figure class="split__photo rv"><img src="assets/img/photos/avion-carga-800.webp" srcset="assets/img/photos/avion-carga-800.webp 800w, assets/img/photos/avion-carga.webp 1600w" sizes="(min-width:1024px) 40vw, 100vw" width="800" height="533" alt="Un avión de carga en la pista" loading="lazy" decoding="async"></figure>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="docs-h">
-    <div class="wrap">
-      <div class="head">
-        <h2 id="docs-h" class="heading rv">Documentos que necesitas.</h2>
-        <p class="statement rv">Te decimos qué falta y lo revisamos antes del despacho.</p>
-      </div>
-      <ul class="clist clist--lg">
-        <sc-for list="{{ docs }}" as="d"><li class="rv">{{ d }}</li></sc-for>
-      </ul>
     </div>
   </section>
 
@@ -85,18 +73,26 @@
 </x-dc>
 <script type="application/json" data-page>
 {
- "waHref": {"$wa": "Hola, vengo de la página Empresas"},
+ "waHref": {
+  "$wa": "Hola, vengo de la página Empresas"
+ },
  "services": [
-  {"t": "Despachos programados", "d": "Salidas fijas [días] para que planees tu inventario."},
-  {"t": "Almacenamiento en Miami", "d": "Recibimos de varios proveedores y guardamos hasta completar tu carga. [Condiciones]."},
-  {"t": "Aire o mar", "d": "Elegimos contigo el modo según urgencia, volumen y valor."},
-  {"t": "Documentos", "d": "Te decimos qué se necesita y revisamos que esté completo antes del despacho."}
- ],
- "docs": [
-  "Factura comercial",
-  "Lista de empaque",
-  "RUT de la empresa [confirmar]",
-  "[Registros o permisos según el producto]"
+  {
+   "t": "Despachos frecuentes",
+   "d": "Despachamos desde Miami varias veces por semana para que planees tu inventario."
+  },
+  {
+   "t": "Almacenamiento en Miami",
+   "d": "Recibimos de varios proveedores y guardamos tu carga 30 días gratis."
+  },
+  {
+   "t": "Aire o mar",
+   "d": "Elegimos contigo el modo según urgencia, volumen y valor."
+  },
+  {
+   "t": "Un asesor dedicado",
+   "d": "Te arma una propuesta por escrito en menos de 24 horas."
+  }
  ]
 }
 </script>
