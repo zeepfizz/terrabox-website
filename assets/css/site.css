@@ -14,8 +14,6 @@ main:focus{outline:none}
 #menu-movil:not([hidden]){display:flex!important}
 #menu-movil [id^="m-"]:not([hidden]){display:flex}
 #sticky-bar:not([hidden]){display:grid!important}
-#cookie-banner:not([hidden]),#cookie-cfg:not([hidden]){display:flex!important}
-
 /* FAQ */
 .faq [role="region"]:not([hidden]){display:flex!important}
 

@@ -11,8 +11,8 @@ window.TB = window.TB || {
   lockerExample: 'TB-300',              // locker number format TB-000
   advisorName: 'Maria Jacome',          // commercial advisor (Solicitar tarifa)
   advisorReplyHours: 24,
-  legalDate: 'noviembre de 2026',
-  legalName: 'TerraBox Cargo LLC',
+  legalDate: '25 de noviembre de 2026',
+  legalName: 'TERRA BOX CARGO, LLC',
   social: { instagram: null, facebook: null }, // full profile URLs; the icons appear only when set
   // Ingresar / Registrarse buttons. Later (TerraBox OS, F3): 'https://app.terraboxcargo.com/...'
   urls: { login: 'ingresar.html', register: 'registro.html' },

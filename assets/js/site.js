@@ -109,16 +109,49 @@
   // ---------------------------------------------------------------- cookies
   function initCookies() {
     const banner = $('#cookie-banner'); if (!banner) return;
-    const cfg = $('#cookie-cfg'), analytics = $('#cookie-analytics'), cfgBtn = $('[data-cookie="configure"]', banner);
-    let consent = null; try { consent = localStorage.getItem('tb_cookie_consent'); } catch (e) {}
-    const setCfg = on => { cfg.hidden = !on; cfgBtn.textContent = on ? 'Guardar selección' : 'Configurar'; };
-    const save = v => { try { localStorage.setItem('tb_cookie_consent', v); } catch (e) {} consent = v; banner.hidden = true; setCfg(false); window.dispatchEvent(new Event('scroll')); };
-    banner.hidden = !!consent;
-    $('[data-cookie="accept"]', banner).addEventListener('click', () => save('all'));
-    $('[data-cookie="reject"]', banner).addEventListener('click', () => save('necessary'));
-    cfgBtn.addEventListener('click', () => { if (!cfg.hidden) save(analytics.checked ? 'all' : 'necessary'); else setCfg(true); });
-    const reopen = $('#cookie-reopen');
-    reopen && reopen.addEventListener('click', () => { analytics.checked = consent === 'all'; setCfg(true); banner.hidden = false; });
+    const notice = $('#cookie-notice'), panel = $('#cookie-cfg'), status = $('#cookie-status');
+    const storageKey = 'tb_cookie_consent', acknowledged = 'acknowledged';
+    let showNotice = true, opener, statusTimer;
+    try { showNotice = localStorage.getItem(storageKey) !== acknowledged; } catch {}
+
+    function syncFloatingActions() {
+      window.dispatchEvent(new Event('scroll'));
+    }
+
+    function closePreferences() {
+      const focusedInBanner = banner.contains(document.activeElement);
+      panel.hidden = true;
+      notice.hidden = false;
+      banner.hidden = !showNotice;
+      if (opener && (!banner.contains(opener) || showNotice)) opener.focus({ preventScroll: true });
+      else if (focusedInBanner) $('#main').focus({ preventScroll: true });
+      opener = null;
+      syncFloatingActions();
+    }
+
+    $$('[data-cookie-preferences]').forEach(button => button.addEventListener('click', () => {
+      opener = button;
+      notice.hidden = true;
+      panel.hidden = false;
+      banner.hidden = false;
+      $('#cookie-cfg-title').focus({ preventScroll: true });
+      syncFloatingActions();
+    }));
+    $('[data-cookie-close]', panel).addEventListener('click', closePreferences);
+    panel.addEventListener('keydown', event => {
+      if (event.key === 'Escape') closePreferences();
+    });
+    $$('[data-cookie-save]', banner).forEach(button => button.addEventListener('click', () => {
+      let message = 'Guardamos tu elección en este navegador.';
+      try { localStorage.setItem(storageKey, acknowledged); }
+      catch { message = 'Tu navegador impidió guardar la elección. Es posible que veas este aviso en tu próxima visita.'; }
+      showNotice = false;
+      closePreferences();
+      status.textContent = message;
+      clearTimeout(statusTimer);
+      statusTimer = setTimeout(() => { status.textContent = ''; }, 7000);
+    }));
+    banner.hidden = !showNotice;
     const y = $('#year'); if (y) y.textContent = new Date().getFullYear();
   }
 
@@ -200,8 +233,10 @@
           (f.options || []).map(o => '<label class="lf-chip' + (radio ? ' lf-chip--radio' : '') + '"><input type="' + (radio ? 'radio' : 'checkbox') + '" name="' + (radio ? id : esc(f.name)) + '" value="' + esc(o) + '">' + esc(o) + '</label>').join('') +
           '</div>' + hint + '</fieldset>';
       } else if (t === 'check') {
-        inner = '<label class="lf-check"><input id="' + id + '" type="checkbox" aria-describedby="' + d + '"><span>' + esc(f.label) +
-          (f.linkHref ? ' <a href="' + esc(f.linkHref) + '" target="_blank" rel="noopener">' + esc(f.linkLabel) + ' (se abre en una pestaña nueva)</a>' : '') + '</span></label>' + hint;
+        inner = '<label class="lf-check"><input id="' + id + '" type="checkbox" aria-describedby="' + d + '"' +
+          (f.required ? ' required' : '') + '><span>' + esc(f.label) +
+          (f.linkHref ? ' <a href="' + esc(f.linkHref) + '" target="_blank" rel="noopener">' + esc(f.linkLabel) + '</a>' : '') +
+          esc(f.labelEnd || '') + '</span></label>' + hint;
       } else if (t === 'file') {
         inner = '<label for="' + id + '" class="tb-label">' + label + '</label><input id="' + id + '" type="file" accept="' + esc(f.accept || '') + '" aria-describedby="' + d + '" class="lf-file">' + hint;
       }
@@ -296,8 +331,13 @@
 
     function summaryText() {
       return (P.waIntro || 'Hola, quiero enviar esta solicitud:') + '\n' + fields
-        .filter(f => visible(f) && !['check', 'password', 'file'].includes(f.type))
-        .map(f => { const x = v[f.name]; const s = Array.isArray(x) ? x.join(', ') : x; return s ? f.label + ': ' + s : null; })
+        .filter(f => visible(f) && !['password', 'file'].includes(f.type))
+        .map(f => {
+          const value = v[f.name];
+          if (f.type === 'check') return value && f.linkHref ? [f.label, f.linkLabel].join(' ') + (f.labelEnd || '') : null;
+          const display = Array.isArray(value) ? value.join(', ') : value;
+          return display ? f.label + ': ' + display : null;
+        })
         .filter(Boolean).join('\n');
     }
 

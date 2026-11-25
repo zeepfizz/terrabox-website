@@ -31,3 +31,28 @@
 
 /* Ayuda: on phones the search comes first; the hero photo shows from tablet width up. */
 @media (max-width:767.98px){.phero__photo--desk{display:none}}
+
+.legal-page .phero__aside{grid-column:1 / -1;grid-row:auto;margin-top:clamp(20px,3vw,36px)}
+.legal-copy{max-width:760px;padding-block:clamp(36px,6vw,72px);font-size:1.0625rem;line-height:1.65;overflow-wrap:anywhere}
+.legal-copy > * + *{margin-top:1rem}
+.legal-copy h2{margin-top:2.25rem;font-size:clamp(1.35rem,3vw,1.8rem);line-height:1.2}
+.legal-copy a:not(.btn){color:var(--link);text-decoration:underline;text-underline-offset:.18em}
+.legal-copy ul{padding-inline-start:1.35em;list-style:disc}
+.legal-copy li + li{margin-top:.375rem}
+.legal-index{padding:1.25rem;border:1px solid var(--border-default)}
+.legal-index h2{margin:0 0 .75rem}
+.legal-table{overflow-x:auto}
+.legal-table table{width:100%;min-width:36rem;border-collapse:collapse;text-align:left}
+.legal-table :is(th,td){padding:.75rem;border:1px solid var(--border-default);vertical-align:top}
+.legal-table th{font-weight:600}
+@media print{
+  .legal-page :is(#site-header,.ftr,.cookie,.cookie-status,.float-wa,.phero__crumb,.actions,.legal-index,.skip-link){display:none!important}
+  .legal-page .phero{padding:0;background:#fff;color:#000}
+  .legal-page .phero :is(h1,p){color:#000}
+  .legal-page .phero h1{font-size:2rem}
+  .legal-copy{max-width:none;padding-block:1rem;font-size:10pt}
+  .legal-copy h2{break-after:avoid}
+  .legal-table{overflow:visible}
+  .legal-table table{min-width:0}
+  .legal-table tr{break-inside:avoid}
+}

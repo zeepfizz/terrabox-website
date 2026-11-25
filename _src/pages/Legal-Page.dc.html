@@ -6,31 +6,21 @@
 <body>
 <x-dc>
 <helmet>
-<!-- Shared legal page body, rendered by legal_page() in _src/build.py with {title, summary}. -->
+<!-- Shared legal page body, rendered by legal_page() in _src/build.py. -->
 </helmet>
 <section class="phero" aria-labelledby="h1">
   <div class="wrap phero__grid">
     <nav class="phero__crumb" aria-label="Ruta de navegación"><a href="Inicio.dc.html">Inicio</a> / <span aria-current="page">{{ title }}</span></nav>
-    <h1 id="h1" class="display">{{ title }}.</h1>
-      <div class="phero__main">
-    <p class="phero__more">Documento legal de TerraBox Cargo.</p>
-    </div>
-      <div class="phero__aside phero__fact"><p class="statement">Última actualización: [fecha].</p><div class="actions"><button type="button" class="btn btn--accent" onClick="{{ print }}">Imprimir</button></div></div>
-    </div>
-</section>
-<section class="section" aria-labelledby="resumen-h">
-  <div class="wrap aside">
-    <div class="aside__head">
-      <h2 id="resumen-h" class="heading">En resumen.</h2>
-    </div>
-    <div class="aside__body">
-      <ul class="clist clist--lg">
-        <sc-for list="{{ summary }}" as="s"><li>{{ s }}</li></sc-for>
-      </ul>
-      <p class="note" role="note">[Texto legal completo, pendiente de redacción y revisión por un abogado conforme a la normativa colombiana y estadounidense aplicable.]</p>
+    <h1 id="h1" class="display">{{ title }}</h1>
+    <div class="phero__aside phero__fact">
+      <p>{{ dateLabel }}: {{ cfg.legalDate }}.</p>
+      <div class="actions"><button type="button" class="btn btn--accent" onclick="window.print()">Imprimir</button></div>
     </div>
   </div>
 </section>
+<article class="wrap legal-copy" aria-labelledby="h1">
+  <dc-import name="Include" file="{{ file }}"></dc-import>
+</article>
 </x-dc>
 </body>
 </html>
