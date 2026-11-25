@@ -10,9 +10,8 @@ import vm from 'node:vm';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
 // Pages that are still published but deliberately left out of the check:
-// nosotros.html is parked (noindex, not linked); the three legal pages wait for docs/textos-legales.md.
+// nosotros.html is parked (noindex, not linked).
 const PARKED = { 'nosotros.html': 'parked (noindex)' };
-const PENDING_LEGAL = ['legal-terminos.html', 'legal-datos.html', 'legal-cookies.html'];
 
 const FORBIDDEN = [
   { label: 'old locker format TBX', re: /\btbx\b/ },
@@ -53,7 +52,7 @@ for (const file of readdirSync(ROOT).filter(f => f.endsWith('.html')).sort()) {
   const text = pageText(readFileSync(join(ROOT, file), 'utf8'));
   const markers = [...text.matchAll(/\[[^\[\]]{1,200}\]/g)].map(m => m[0]);
   if (markers.length) {
-    (PENDING_LEGAL.includes(file) ? warnings : problems).push(`${file}: placeholders ${markers.slice(0, 4).join(' ')}${markers.length > 4 ? ` (+${markers.length - 4})` : ''}`);
+    problems.push(`${file}: placeholders ${markers.slice(0, 4).join(' ')}${markers.length > 4 ? ` (+${markers.length - 4})` : ''}`);
   }
   const t = norm(text);
   for (const f of FORBIDDEN) {

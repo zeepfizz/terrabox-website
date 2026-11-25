@@ -407,25 +407,39 @@ FOOTER_TPL = """<footer class="ftr">
         <a href="Legal-Terminos.dc.html">Términos y condiciones</a>
         <a href="Legal-Datos.dc.html">Tratamiento de datos</a>
         <a href="Legal-Cookies.dc.html">Cookies</a>
-        <button type="button" id="cookie-reopen">Preferencias de cookies</button>
+        <button type="button" data-cookie-preferences aria-controls="cookie-cfg">Preferencias de cookies</button>
       </p>
       <p>© <span id="year">2026</span> TerraBox Cargo</p>
       <p class="ftr__credits">{credits}</p>
     </div>
   </div>
 </footer>
-<div id="cookie-banner" class="cookie" role="region" aria-label="Aviso de cookies" hidden>
-  <p>Usamos cookies necesarias para que el sitio funcione. Con tu permiso, usamos también cookies de medición. <a href="Legal-Cookies.dc.html">Ver política de cookies</a></p>
-  <div id="cookie-cfg" class="cookie__cfg" hidden>
-    <label><input type="checkbox" checked disabled>Necesarias (siempre activas)</label>
-    <label><input type="checkbox" id="cookie-analytics">Medición y análisis</label>
-  </div>
-  <div class="cookie__actions">
-    <button type="button" class="btn btn--tone" data-cookie="reject">Rechazar</button>
-    <button type="button" class="btn btn--tone" data-cookie="configure">Configurar</button>
-    <button type="button" class="btn btn--tone" data-cookie="accept">Aceptar</button>
-  </div>
+<div id="cookie-banner" class="cookie" hidden>
+  <section id="cookie-notice" class="cookie__view" aria-labelledby="cookie-notice-title">
+    <h2 id="cookie-notice-title">Preferencias de cookies</h2>
+    <p>Usamos el almacenamiento de tu navegador para recordar que revisaste este aviso. El sitio no usa cookies opcionales de medición ni de publicidad.</p>
+    <div class="cookie__actions">
+      <button type="button" class="btn btn--primary" data-cookie-save>Entendido</button>
+      <button type="button" class="btn btn--tone" data-cookie-preferences aria-controls="cookie-cfg">Ver preferencias</button>
+    </div>
+  </section>
+  <section id="cookie-cfg" class="cookie__view" aria-labelledby="cookie-cfg-title" hidden>
+    <h2 id="cookie-cfg-title" tabindex="-1">Preferencias de cookies</h2>
+    <p>Puedes volver a este panel desde el pie de página.</p>
+    <dl class="cookie__types">
+      <dt><strong>Almacenamiento necesario</strong> · Activo</dt>
+      <dd>Guarda tu elección en este navegador y dispositivo.</dd>
+      <dt><strong>Cookies opcionales</strong> · Sin cookies activas</dt>
+      <dd>TerraBox no usa cookies opcionales de medición ni de publicidad en este sitio.</dd>
+    </dl>
+    <div class="cookie__actions">
+      <button type="button" class="btn btn--primary" data-cookie-save>Guardar y cerrar</button>
+      <button type="button" class="btn btn--tone" data-cookie-close>Cerrar</button>
+    </div>
+  </section>
+  <p class="cookie__policy"><a href="Legal-Cookies.dc.html">Política de cookies</a></p>
 </div>
+<div id="cookie-status" class="cookie-status" role="status"></div>
 <a href="{wa}" target="_blank" rel="noopener" id="float-wa" class="float-wa" aria-label="Escribir por WhatsApp (se abre en una pestaña nueva)">{wa_icon}</a>"""
 
 
@@ -447,8 +461,7 @@ def faq(p, ctx, page):
 def legal_page(p, ctx, page):
     src = (SRC / 'Legal-Page.dc.html').read_text(encoding='utf-8')
     tpl = src[src.index('</helmet>') + len('</helmet>'):src.index('</x-dc>')]
-    tpl = tpl.replace('onClick="{{ print }}"', 'onclick="window.print()"')
-    return render(tpl, {'title': p.get('title'), 'summary': p.get('summary') or []}, page)
+    return render(tpl, {**ctx, **p}, page)
 
 
 def include(p, ctx, page):

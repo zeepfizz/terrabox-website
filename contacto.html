@@ -80,7 +80,7 @@
         </figure>
       </div>
       <div class="contact__form rv">
-        <div class="lead-form" data-config="{&quot;formId&quot;: &quot;con&quot;, &quot;endpoint&quot;: &quot;contacto&quot;, &quot;ariaLabel&quot;: &quot;Formulario de contacto&quot;, &quot;fields&quot;: [{&quot;name&quot;: &quot;nombre&quot;, &quot;label&quot;: &quot;Nombre&quot;, &quot;required&quot;: true, &quot;autocomplete&quot;: &quot;name&quot;}, {&quot;name&quot;: &quot;email&quot;, &quot;label&quot;: &quot;Email&quot;, &quot;type&quot;: &quot;email&quot;, &quot;required&quot;: true, &quot;autocomplete&quot;: &quot;email&quot;}, {&quot;name&quot;: &quot;whatsapp&quot;, &quot;label&quot;: &quot;WhatsApp&quot;, &quot;type&quot;: &quot;tel&quot;, &quot;autocomplete&quot;: &quot;tel&quot;, &quot;hint&quot;: &quot;Opcional&quot;}, {&quot;name&quot;: &quot;tema&quot;, &quot;label&quot;: &quot;Tema&quot;, &quot;type&quot;: &quot;select&quot;, &quot;required&quot;: true, &quot;options&quot;: [&quot;Mi casillero&quot;, &quot;Un envío en curso&quot;, &quot;Tarifas&quot;, &quot;Aduana e impuestos&quot;, &quot;Una caja perdida&quot;, &quot;Negocios: tarifas para revendedores o empresas&quot;, &quot;Otro&quot;]}, {&quot;name&quot;: &quot;mensaje&quot;, &quot;label&quot;: &quot;Mensaje&quot;, &quot;type&quot;: &quot;textarea&quot;, &quot;required&quot;: true}, {&quot;name&quot;: &quot;consent&quot;, &quot;short&quot;: &quot;Tratamiento de datos&quot;, &quot;label&quot;: &quot;Acepto el tratamiento de mis datos personales.&quot;, &quot;type&quot;: &quot;check&quot;, &quot;required&quot;: true, &quot;linkHref&quot;: &quot;legal-datos.html&quot;, &quot;linkLabel&quot;: &quot;Ver política&quot;}], &quot;redirectOn&quot;: {&quot;field&quot;: &quot;tema&quot;, &quot;value&quot;: &quot;Negocios: tarifas para revendedores o empresas&quot;, &quot;href&quot;: &quot;solicitar-tarifa.html&quot;}, &quot;submitLabel&quot;: &quot;Enviar mensaje&quot;, &quot;successTitle&quot;: &quot;Recibimos tu mensaje&quot;, &quot;successBody&quot;: &quot;Te respondemos lo antes posible.&quot;, &quot;waIntro&quot;: &quot;Hola, les escribo desde la página de contacto:&quot;}"></div>
+        <div class="lead-form" data-config="{&quot;formId&quot;: &quot;con&quot;, &quot;endpoint&quot;: &quot;contacto&quot;, &quot;ariaLabel&quot;: &quot;Formulario de contacto&quot;, &quot;fields&quot;: [{&quot;name&quot;: &quot;nombre&quot;, &quot;label&quot;: &quot;Nombre&quot;, &quot;required&quot;: true, &quot;autocomplete&quot;: &quot;name&quot;}, {&quot;name&quot;: &quot;email&quot;, &quot;label&quot;: &quot;Email&quot;, &quot;type&quot;: &quot;email&quot;, &quot;required&quot;: true, &quot;autocomplete&quot;: &quot;email&quot;}, {&quot;name&quot;: &quot;whatsapp&quot;, &quot;label&quot;: &quot;WhatsApp&quot;, &quot;type&quot;: &quot;tel&quot;, &quot;autocomplete&quot;: &quot;tel&quot;, &quot;hint&quot;: &quot;Opcional&quot;}, {&quot;name&quot;: &quot;tema&quot;, &quot;label&quot;: &quot;Tema&quot;, &quot;type&quot;: &quot;select&quot;, &quot;required&quot;: true, &quot;options&quot;: [&quot;Mi casillero&quot;, &quot;Un envío en curso&quot;, &quot;Tarifas&quot;, &quot;Aduana e impuestos&quot;, &quot;Una caja perdida&quot;, &quot;Negocios: tarifas para revendedores o empresas&quot;, &quot;Otro&quot;]}, {&quot;name&quot;: &quot;mensaje&quot;, &quot;label&quot;: &quot;Mensaje&quot;, &quot;type&quot;: &quot;textarea&quot;, &quot;required&quot;: true}, {&quot;name&quot;: &quot;consent&quot;, &quot;short&quot;: &quot;Tratamiento de datos&quot;, &quot;label&quot;: &quot;Autorizo a TerraBox Cargo a tratar mis datos para responder y gestionar mi solicitud, según la&quot;, &quot;type&quot;: &quot;check&quot;, &quot;required&quot;: true, &quot;linkHref&quot;: &quot;legal-datos.html&quot;, &quot;linkLabel&quot;: &quot;Política de tratamiento de datos personales&quot;, &quot;labelEnd&quot;: &quot;.&quot;}], &quot;redirectOn&quot;: {&quot;field&quot;: &quot;tema&quot;, &quot;value&quot;: &quot;Negocios: tarifas para revendedores o empresas&quot;, &quot;href&quot;: &quot;solicitar-tarifa.html&quot;}, &quot;submitLabel&quot;: &quot;Enviar mensaje&quot;, &quot;successTitle&quot;: &quot;Recibimos tu mensaje&quot;, &quot;successBody&quot;: &quot;Te respondemos lo antes posible.&quot;, &quot;waIntro&quot;: &quot;Hola, les escribo desde la página de contacto:&quot;}"></div>
       </div>
     </div>
   </section>
@@ -101,25 +101,39 @@
         <a href="legal-terminos.html">Términos y condiciones</a>
         <a href="legal-datos.html">Tratamiento de datos</a>
         <a href="legal-cookies.html">Cookies</a>
-        <button type="button" id="cookie-reopen">Preferencias de cookies</button>
+        <button type="button" data-cookie-preferences aria-controls="cookie-cfg">Preferencias de cookies</button>
       </p>
       <p>© <span id="year">2026</span> TerraBox Cargo</p>
       <p class="ftr__credits">Fotografías: Unsplash (Vitaly Gariev, rupixen, Ruchindra Gunasekara, Adrian Sulyok, Peaky_82, MealPro, Antonio Cuellar, Andrés Gómez, Michael Schmid, Brandable Box, RoseBox).</p>
     </div>
   </div>
 </footer>
-<div id="cookie-banner" class="cookie" role="region" aria-label="Aviso de cookies" hidden>
-  <p>Usamos cookies necesarias para que el sitio funcione. Con tu permiso, usamos también cookies de medición. <a href="legal-cookies.html">Ver política de cookies</a></p>
-  <div id="cookie-cfg" class="cookie__cfg" hidden>
-    <label><input type="checkbox" checked disabled>Necesarias (siempre activas)</label>
-    <label><input type="checkbox" id="cookie-analytics">Medición y análisis</label>
-  </div>
-  <div class="cookie__actions">
-    <button type="button" class="btn btn--tone" data-cookie="reject">Rechazar</button>
-    <button type="button" class="btn btn--tone" data-cookie="configure">Configurar</button>
-    <button type="button" class="btn btn--tone" data-cookie="accept">Aceptar</button>
-  </div>
+<div id="cookie-banner" class="cookie" hidden>
+  <section id="cookie-notice" class="cookie__view" aria-labelledby="cookie-notice-title">
+    <h2 id="cookie-notice-title">Preferencias de cookies</h2>
+    <p>Usamos el almacenamiento de tu navegador para recordar que revisaste este aviso. El sitio no usa cookies opcionales de medición ni de publicidad.</p>
+    <div class="cookie__actions">
+      <button type="button" class="btn btn--primary" data-cookie-save>Entendido</button>
+      <button type="button" class="btn btn--tone" data-cookie-preferences aria-controls="cookie-cfg">Ver preferencias</button>
+    </div>
+  </section>
+  <section id="cookie-cfg" class="cookie__view" aria-labelledby="cookie-cfg-title" hidden>
+    <h2 id="cookie-cfg-title" tabindex="-1">Preferencias de cookies</h2>
+    <p>Puedes volver a este panel desde el pie de página.</p>
+    <dl class="cookie__types">
+      <dt><strong>Almacenamiento necesario</strong> · Activo</dt>
+      <dd>Guarda tu elección en este navegador y dispositivo.</dd>
+      <dt><strong>Cookies opcionales</strong> · Sin cookies activas</dt>
+      <dd>TerraBox no usa cookies opcionales de medición ni de publicidad en este sitio.</dd>
+    </dl>
+    <div class="cookie__actions">
+      <button type="button" class="btn btn--primary" data-cookie-save>Guardar y cerrar</button>
+      <button type="button" class="btn btn--tone" data-cookie-close>Cerrar</button>
+    </div>
+  </section>
+  <p class="cookie__policy"><a href="legal-cookies.html">Política de cookies</a></p>
 </div>
+<div id="cookie-status" class="cookie-status" role="status"></div>
 <a href="https://wa.me/17863271803?text=Hola%2C%20vengo%20de%20la%20p%C3%A1gina%20Contacto" target="_blank" rel="noopener" id="float-wa" class="float-wa" aria-label="Escribir por WhatsApp (se abre en una pestaña nueva)"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></a>
 <script src="assets/js/config.js"></script>
 <script src="assets/js/calculator.js"></script>

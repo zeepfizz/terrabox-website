@@ -192,12 +192,16 @@ textarea.lf-control{height:auto;min-height:160px;padding:14px 16px;font-size:var
 }
 
 /* cookie banner (floats) */
-.cookie{position:fixed;left:16px;right:16px;bottom:16px;z-index:250;max-width:560px;margin:0 auto;background:#fff;color:var(--ink);box-shadow:0 16px 48px rgba(10,26,77,.26);padding:24px;flex-direction:column;gap:16px}
-.cookie p{font-size:var(--fs-small);line-height:1.5}
-.cookie__cfg{flex-direction:column;gap:8px}
-.cookie__cfg label{display:flex;gap:10px;align-items:center;font-size:var(--fs-small);cursor:pointer}
-.cookie__cfg input{width:20px;height:20px;accent-color:var(--action)}
-.cookie__actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.cookie,.cookie-status{position:fixed;left:16px;right:16px;bottom:16px;z-index:250;max-width:560px;margin:0 auto;background:#fff;color:var(--ink);box-shadow:0 16px 48px rgba(10,26,77,.26);padding:24px;font-size:var(--fs-small);line-height:1.5}
+.cookie{display:flex;flex-direction:column;gap:12px;max-height:calc(100dvh - 32px);overflow:auto}
+.cookie__view{display:grid;gap:12px}
+.cookie__view h2{font-size:1.125rem}
+.cookie__types{display:grid;gap:4px;margin:0}
+.cookie__types dt:not(:first-child){margin-top:8px}
+.cookie__types dd{margin:0}
+.cookie__actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.cookie__policy a{color:var(--link);text-decoration:underline;text-underline-offset:.18em}
+.cookie-status:empty{padding:0;box-shadow:none;pointer-events:none}
 .cookie .btn{min-height:48px;padding:0 8px;font-size:var(--fs-small)}
 
 /* ------------------------------------------------ home hero */
@@ -622,5 +626,5 @@ address{font-style:normal}
   .route__stop h3{margin-top:16px}
 }
 @media (max-width:1023.98px){body:has(#sticky-bar){padding-bottom:76px}}
-@media (min-width:1024px){.cookie{left:var(--margin);right:auto;margin:0;max-width:440px}.cookie__actions{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:1024px){.cookie,.cookie-status{left:var(--margin);right:auto;margin:0;max-width:440px}}
 img[src*="caja-carton"]{object-position:center 75%}
