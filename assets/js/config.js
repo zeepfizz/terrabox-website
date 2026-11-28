@@ -52,9 +52,17 @@ window.TB = window.TB || {
     }
   },
 
-  // Form, tracking and login endpoints (URLs that accept JSON POST, e.g. a Formspree form URL).
-  // NOT SUPPLIED: forms validate, then offer to send the same details by WhatsApp.
-  endpoints: { registro: null, solicitud: null, contacto: null, compra: null, rastreo: null, login: null },
+  // Form, tracking and login endpoints (URLs that accept JSON POST).
+  // The four forms go to TerraBox OS (/admin/solicitudes). If it is down or unreachable, the form offers to send the same
+  // details by WhatsApp. Tracking and login are not connected yet.
+  endpoints: {
+    registro: 'https://terrabox-os.vercel.app/api/web/solicitudes',
+    solicitud: 'https://terrabox-os.vercel.app/api/web/solicitudes',
+    contacto: 'https://terrabox-os.vercel.app/api/web/solicitudes',
+    compra: 'https://terrabox-os.vercel.app/api/web/solicitudes',
+    rastreo: null,
+    login: null
+  },
 
   // What the "Rastrea tu envío" buttons do. Until there is a tracking system, open WhatsApp with the guide number.
   track(guia) {

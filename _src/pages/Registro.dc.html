@@ -16,7 +16,7 @@
       <nav class="phero__crumb" aria-label="Ruta de navegación"><a href="Inicio.dc.html">Inicio</a> / <span aria-current="page">Registro</span></nav>
       <h1 id="h1" class="display">Abre tu casillero.</h1>
       <div class="phero__main">
-      <p class="statement">Es gratis y recibes tu dirección en Miami al instante. Tu documento te lo pedimos solo en tu primer despacho.</p>
+      <p class="statement">Es gratis. Revisamos tu registro y te enviamos tu casillero y tu dirección en Miami por WhatsApp y correo en menos de 24 horas hábiles. Tu documento te lo pedimos solo en tu primer despacho.</p>
       </div>
       <figure class="phero__aside phero__photo"><img src="assets/img/photos/entrega-puerta-800.webp" srcset="assets/img/photos/entrega-puerta-800.webp 800w, assets/img/photos/entrega-puerta.webp 1600w" sizes="(min-width:1024px) 34vw, 100vw" width="800" height="450" alt="Una pareja recibe una caja en la puerta de su casa" decoding="async"></figure>
     </div>
@@ -37,7 +37,7 @@
       </div>
       <div class="contact__form">
         <div id="reg-form">
-          <dc-import name="Lead-Form" form-id="reg" endpoint="registro" aria-label="Crear cuenta" fields="{{ fields }}" initial="{{ initial }}" omit-passwords="{{ false }}" submit-label="Abrir casillero gratis" wa-intro="Hola, quiero abrir mi casillero TerraBox:"></dc-import>
+          <dc-import name="Lead-Form" form-id="reg" endpoint="registro" aria-label="Crear cuenta" fields="{{ fields }}" initial="{{ initial }}" omit-passwords="{{ true }}" submit-label="Abrir casillero gratis" wa-intro="Hola, quiero abrir mi casillero TerraBox:"></dc-import>
         </div>
         <div id="reg-done" class="reg-done" hidden tabindex="-1">
           <h2 class="heading">Esta es tu dirección en Miami.</h2>
@@ -64,7 +64,6 @@
   {"name": "pais", "label": "País", "type": "select", "required": true, "options": "@countries", "autocomplete": "country-name"},
   {"name": "ciudad", "label": "Ciudad", "required": true, "autocomplete": "address-level2", "placeholder": "Por ejemplo: Medellín"},
   {"name": "direccion", "label": "Dirección", "required": true, "autocomplete": "street-address", "full": true, "placeholder": "Calle, número, apartamento o barrio", "hint": "A esta dirección llevamos tus paquetes."},
-  {"name": "password", "label": "Contraseña", "type": "password", "required": true, "autocomplete": "new-password", "hint": "Al menos 8 caracteres y un número."},
   {"name": "uso", "label": "¿Para qué usarás tu casillero?", "type": "radio", "required": true, "options": ["Para mí", "Para mi negocio"]},
   {"name": "terms", "short": "Términos y condiciones", "label": "He leído y acepto los", "type": "check", "required": true, "linkHref": "Legal-Terminos.dc.html", "linkLabel": "Términos y condiciones", "labelEnd": " de TerraBox Cargo."},
   {"name": "consent", "short": "Tratamiento de datos", "label": "Autorizo a TerraBox Cargo a tratar mis datos para abrir y administrar mi casillero, gestionar mis envíos y prestarme soporte, según la", "type": "check", "required": true, "linkHref": "Legal-Datos.dc.html", "linkLabel": "Política de tratamiento de datos personales", "labelEnd": "."}
